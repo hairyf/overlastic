@@ -48,6 +48,7 @@ defineEmits(['cancel', 'confirm'])
 // Get Overlay information from useOverlayMeta
 const { visible, confirm, cancel } = useOverlayMeta({
   // Animation duration to avoid premature destruction of components
+  // Only use component in template and no need to define
   animation: 1000
 })
 </script>
