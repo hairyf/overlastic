@@ -1,6 +1,6 @@
 import { AppContext, Component } from 'vue'
 
-import { transformOverlayMethod } from './transform'
+import { transformOverlay } from './transform'
 /**
  * 调起 overlay 组件
  * @param component 组件
@@ -12,5 +12,5 @@ export function useOverlayCall<P = any, R = any>(component: Component, options?:
   props?: P,
   appContext?: AppContext
 }) {
-  return transformOverlayMethod<P, R>(component, options?.appContext)(options?.props as any)
+  return transformOverlay<P, R>(component, options?.appContext)(options?.props as any)
 }

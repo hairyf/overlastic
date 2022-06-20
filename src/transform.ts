@@ -12,7 +12,7 @@ export type ImperativeOverlay<Props, Result> = (props?: ExtractInferTypes<Props>
  * @param options 弹出层配置
  * @returns 命令式弹出层
  */
-export function transformOverlayMethod<P = any, R = void>(component: Component, appContext?: AppContext): ImperativeOverlay<P, R> {
+export function transformOverlay<P = any, R = void>(component: Component, appContext?: AppContext): ImperativeOverlay<P, R> {
   const executor = (props: any, resolve: Function, reject: Function) => {
     const meta: Partial<OverlayMeta> = reactive({})
     const Provider = defineComponent({
