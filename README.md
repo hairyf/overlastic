@@ -6,7 +6,7 @@
 
 > [中文](./README_CN.md) | English
 
-A unified `overlay` (`popup`) `Vue2/Vue3` utils
+A universal `overlay` (`popup`) `Vue2/Vue3` utils
 
 it can achieve: 
 
