@@ -22,16 +22,17 @@ pnpm add unoverlay-vue
 yarn add unoverlay-vue
 ```
 
-Global installation can make popup layer contextual
+Global installation makes all overlay inherit the app context
 
 ```ts
 // main.js
 import { createApp } from 'vue'
 import App from './App.vue'
-import UnoverlayVue from 'unoverlay-vue'
-createApp(App)
-  .use(UnoverlayVue)
-  .mount('#app')
+import unoverlay from 'unoverlay-vue'
+
+const app = createApp(App)
+app.use(unoverlay)
+app.mount('#app')
 ```
 
 ## 📖 Usage(Basic)

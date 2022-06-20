@@ -8,8 +8,8 @@ export { useOverlayComp } from './utils'
 const install = (app: App) => {
   context.parent = app._context
 }
-const UnoverlayVue = { install }
+const unoverlay = { install }
 
 export { install }
 
-export default UnoverlayVue
+export default unoverlay

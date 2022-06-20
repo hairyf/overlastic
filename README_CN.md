@@ -22,6 +22,19 @@ pnpm add unoverlay-vue
 yarn add unoverlay-vue
 ```
 
+全局安装可以使所有弹出层继承上下文
+
+```ts
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import unoverlay from 'unoverlay-vue'
+
+const app = createApp(App)
+app.use(unoverlay)
+app.mount('#app')
+```
+
 ## 📖 基本使用
 
 定义弹出层组件
