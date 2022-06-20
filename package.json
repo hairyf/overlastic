@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "ptsup src/index.ts --dts --meta",
-    "publish:ci": "yarn build && bumpp"
+    "publish:ci": "bumpp && yarn build && pnpm publish"
   },
   "license": "MIT",
   "dependencies": {
