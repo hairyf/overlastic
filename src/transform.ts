@@ -1,7 +1,7 @@
 import type { Component, ExtractPropTypes } from 'vue'
 import { defineComponent, h, provide, ref } from 'vue'
 import { renderInstance } from './render'
-import { OverlayMetaKey } from './meta'
+import { OverlayMeta, OverlayMetaKey } from './meta'
 
 export type ExtractInferTypes<Props> = Props extends ExtractPropTypes<infer E> ? E : ExtractPropTypes<Props>
 export type ImperativeOverlay<Props, Result> = (props?: ExtractInferTypes<Props>) => Promise<Result>
@@ -14,6 +14,7 @@ export type ImperativeOverlay<Props, Result> = (props?: ExtractInferTypes<Props>
  */
 export function transformImperativeOverlay<P = any, R = void>(component: Component): ImperativeOverlay<P, R> {
   const executor = (props: any, resolve: Function, reject: Function) => {
+    const meta: Partial<OverlayMeta> = {}
     const Provider = defineComponent({
       setup: () => {
         const visible = ref(false)
@@ -29,13 +30,15 @@ export function transformImperativeOverlay<P = any, R = void>(component: Compone
           _vanish?.()
           reject?.()
         }
-        provide(OverlayMetaKey, { cancel, confirm, vanish, visible, vnode })
+        const assignMeta = Object.assign(meta, { cancel, confirm, vanish, visible })
+        provide(OverlayMetaKey, assignMeta)
       },
       render() {
         return h(component as any, props)
       },
     })
     const { vanish: _vanish, vnode } = renderInstance(Provider)
+    meta.vnode = vnode
   }
 
   const caller = (props: any) =>
