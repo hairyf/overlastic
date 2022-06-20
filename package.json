@@ -1,0 +1,48 @@
+{
+  "name": "unoverlay-vue",
+  "version": "0.0.1-beta.0",
+  "main": "index.ts",
+  "publishConfig": {
+    "main": "index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
+    "unpkg": "./index.iife.min.js",
+    "jsdelivr": "./index.iife.min.js",
+    "exports": {
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      },
+      "./*": "./*"
+    },
+    "directory": "dist"
+  },
+  "scripts": {
+    "build": "ptsup src/index.ts --dts --meta",
+    "publish:ci": "yarn build && bumpp"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "delay": "^5.0.0",
+    "lodash": "^4",
+    "vue-demi": "latest"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.25.1",
+    "@types/lodash": "^4",
+    "bumpp": "^8.2.1",
+    "eslint": "^8.18.0",
+    "ptsup": "^0.0.5",
+    "typescript": "^4.7.4",
+    "vue": "^3.0.0"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  }
+}
