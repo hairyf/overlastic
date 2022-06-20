@@ -22,7 +22,7 @@ pnpm add unoverlay-vue
 yarn add unoverlay-vue
 ```
 
-全局安装可以使所有弹出层继承上下文
+在 main.js 中全局安装可以使所有弹出层继承上下文
 
 ```ts
 // main.js
