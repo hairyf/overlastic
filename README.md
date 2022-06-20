@@ -22,6 +22,18 @@ pnpm add unoverlay-vue
 yarn add unoverlay-vue
 ```
 
+Global installation can make popup layer contextual
+
+```ts
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import UnoverlayVue from 'unoverlay-vue'
+createApp(App)
+  .use(UnoverlayVue)
+  .mount('#app')
+```
+
 ## 📖 Usage(Basic)
 
 define overlay component
@@ -33,7 +45,7 @@ define overlay component
 </template>
 <script setup>
 import { defineProps, defineEmits } from 'vue'
-import { useOverlayMeta } from '@hairy/vue-utils'
+import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
   // If you want to use it as a component in template,
@@ -56,24 +68,24 @@ const { visible, confirm, cancel } = useOverlayMeta({
 
 After creating the callback, call it in `Javascript`/`Typescript`
 ```ts
-import { transformImperativeOverlay } from 'unoverlay-vue'
+import { transformOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
 // Convert to imperative popup
-const callback = transformImperativeOverlay(OverlayComponent)
+const callback = transformOverlay(OverlayComponent)
 // Call the component and get the value of confirm
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
 
-or call directly with `useImperativeOverlay`
+or call directly with `useOverlay`
 
 ```ts
-import { useImperativeOverlay } from 'unoverlay-vue'
+import { useOverlayComp } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const value = await useImperativeOverlay(OverlayComponent, {
-  title: 'useOverlay'
+const value = await useOverlayComp(OverlayComponent, {
+  props: { title: 'useOverlay' }
 })
 // value === "useOverlay:confirmed"
 ```
@@ -119,7 +131,7 @@ Take [element-plus@2.15.7(dialog)](https://element.eleme.cn/#/en-US/component/di
 </template>
 <script setup>
 import { defineProps, defineEmits } from 'vue'
-import { useOverlayMeta } from '@hairy/vue-utils'
+import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
 })
@@ -131,10 +143,10 @@ const { visible, confirm, cancel } = useOverlayMeta({
 ```
 
 ```ts
-import { transformImperativeOverlay } from 'unoverlay-vue'
+import { transformOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const callback = transformImperativeOverlay(OverlayComponent)
+const callback = transformOverlay(OverlayComponent)
 const value = await callback({ title: 'myElDialog' })
 // value === "myElDialog:confirmed"
 ```
@@ -161,7 +173,7 @@ Reference props in .vue
 </template>
 <script setup>
 import { defineProps, defineEmits } from 'vue'
-import { useOverlayMeta } from '@hairy/vue-utils'
+import { useOverlayMeta } from 'unoverlay-vue'
 import { OverlayParams, OverlayResolved } from './props'
 const props = defineProps<OverlayParams>()
 const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
@@ -173,12 +185,12 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 Handle in another separate .js
 
 ```ts
-import { transformImperativeOverlay } from 'unoverlay-vue'
+import { transformOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 import type { OverlayParams, OverlayResolved } from './define.ts'
 
 // Convert to imperative popup
-const callback = transformImperativeOverlay<OverlayParams, OverlayResolved>(OverlayComponent)
+const callback = transformOverlay<OverlayParams, OverlayResolved>(OverlayComponent)
 ```
 
 > If you have requirements for vue's props runtime validation, you can define it like this: 
@@ -200,7 +212,7 @@ export type OverlayResolved = string
 </template>
 <script setup>
 import { defineProps, defineEmits } from 'vue'
-import { useOverlayMeta } from '@hairy/vue-utils'
+import { useOverlayMeta } from 'unoverlay-vue'
 import { overlayProps, OverlayResolved } from './props'
 const props = defineProps(overlayProps)
 const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
@@ -208,6 +220,23 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 })
 </script>
 ```
+
+## App context inheritance
+
+> If you globally registered `unoverlay-vue`, it will automatically inherit your app context.
+
+```ts
+import Component from './overlay.vue'
+import { getCurrentInstance } from 'vue'
+
+// in your setup method
+const { appContext } = getCurrentInstance()!
+useOverlayComp(Component, {
+  props: {},
+  appContext
+})
+```
+
 
 # License
 

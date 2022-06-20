@@ -1,4 +1,4 @@
-import type { Component, ExtractPropTypes } from 'vue'
+import { AppContext, Component, ExtractPropTypes, reactive } from 'vue'
 import { defineComponent, h, provide, ref } from 'vue'
 import { renderInstance } from './render'
 import { OverlayMeta, OverlayMetaKey } from './meta'
@@ -12,9 +12,9 @@ export type ImperativeOverlay<Props, Result> = (props?: ExtractInferTypes<Props>
  * @param options 弹出层配置
  * @returns 命令式弹出层
  */
-export function transformImperativeOverlay<P = any, R = void>(component: Component): ImperativeOverlay<P, R> {
+export function transformOverlay<P = any, R = void>(component: Component, appContext?: AppContext): ImperativeOverlay<P, R> {
   const executor = (props: any, resolve: Function, reject: Function) => {
-    const meta: Partial<OverlayMeta> = {}
+    const meta: Partial<OverlayMeta> = reactive({})
     const Provider = defineComponent({
       setup: () => {
         const visible = ref(false)
@@ -27,7 +27,7 @@ export function transformImperativeOverlay<P = any, R = void>(component: Compone
           visible.value = false
         }
         function vanish() {
-          _vanish?.()
+          instance.vanish?.()
           reject?.()
         }
         const assignMeta = Object.assign(meta, { cancel, confirm, vanish, visible })
@@ -37,8 +37,8 @@ export function transformImperativeOverlay<P = any, R = void>(component: Compone
         return h(component as any, props)
       },
     })
-    const { vanish: _vanish, vnode } = renderInstance(Provider)
-    meta.vnode = vnode
+    const instance = renderInstance(Provider, appContext)
+    meta.vnode = instance.vnode
   }
 
   const caller = (props: any) =>

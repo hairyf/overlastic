@@ -1,4 +1,4 @@
-import type { InjectionKey, Ref, VNode } from 'vue-demi'
+import { AppContext, InjectionKey, provide, Ref, VNode } from 'vue-demi'
 import { getCurrentInstance, inject, onMounted, ref, watch } from 'vue-demi'
 import delay from 'delay'
 import noop from 'lodash/noop'
@@ -75,5 +75,6 @@ export const useOverlayMeta = (options: UseOverlayMetaOptions = {}) => {
   if (immediate)
     onMounted(() => (meta.visible.value = true))
 
+  provide(OverlayMetaKey, null)
   return meta
 }

@@ -33,7 +33,7 @@ yarn add unoverlay-vue
 </template>
 <script setup>
 import { defineProps, defineEmits } from 'vue'
-import { useOverlayMeta } from '@hairy/vue-utils'
+import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
   // 如果您想将其用作 template 中的组件使用,
@@ -56,23 +56,23 @@ const { visible, confirm, cancel } = useOverlayMeta({
 
 创建回调后，在 `Javascript` / `Typescript` 中调用
 ```ts
-import { transformImperativeOverlay } from 'unoverlay-vue'
+import { transformOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
 // 转换为命令式回调
-const callback = transformImperativeOverlay(OverlayComponent)
+const callback = transformOverlay(OverlayComponent)
 // 调用组件并获取 confirm 回调的值
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
 
-或直接使用 `useImperativeOverlay` 传入 `params` 调用
+或直接使用 `useOverlay` 传入 `params` 调用
 
 ```ts
-import { useImperativeOverlay } from 'unoverlay-vue'
+import { useOverlayComp } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const value = await useImperativeOverlay(OverlayComponent, {
+const value = await useOverlayComp(OverlayComponent, {
   title: 'useOverlay'
 })
 // value === "useOverlay:confirmed"
@@ -119,7 +119,7 @@ const cancel = () => {
 </template>
 <script setup>
 import { defineProps, defineEmits } from 'vue'
-import { useOverlayMeta } from '@hairy/vue-utils'
+import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
 })
@@ -131,10 +131,10 @@ const { visible, confirm, cancel } = useOverlayMeta({
 ```
 
 ```ts
-import { transformImperativeOverlay } from 'unoverlay-vue'
+import { transformOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const callback = transformImperativeOverlay(OverlayComponent)
+const callback = transformOverlay(OverlayComponent)
 const value = await callback({ title: 'myElDialog' })
 // value === "myElDialog:confirmed"
 ```
@@ -161,7 +161,7 @@ export type OverlayResolved = string
 </template>
 <script setup>
 import { defineProps, defineEmits } from 'vue'
-import { useOverlayMeta } from '@hairy/vue-utils'
+import { useOverlayMeta } from 'unoverlay-vue'
 import { OverlayParams, OverlayResolved } from './props'
 const props = defineProps<OverlayParams>()
 const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
@@ -173,11 +173,11 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 在另外一个 ts 文件中处理
 
 ```ts
-import { transformImperativeOverlay } from 'unoverlay-vue'
+import { transformOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 import type { OverlayParams, OverlayResolved } from './define.ts'
 
-const callback = transformImperativeOverlay<OverlayParams, OverlayResolved>(OverlayComponent)
+const callback = transformOverlay<OverlayParams, OverlayResolved>(OverlayComponent)
 ```
 
 > 如果你对 vue 的 props 运行时验证有需求，可以这样定义：
@@ -199,13 +199,29 @@ export type OverlayResolved = string
 </template>
 <script setup>
 import { defineProps, defineEmits } from 'vue'
-import { useOverlayMeta } from '@hairy/vue-utils'
+import { useOverlayMeta } from 'unoverlay-vue'
 import { overlayProps, OverlayResolved } from './props'
 const props = defineProps(overlayProps)
 const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
   animation: 1000
 })
 </script>
+```
+
+## 继承应用上下文
+
+> 如果你全局注册了 `unoverlay-vue` ，它会自动继承你的应用上下文。
+
+```ts
+import Component from './overlay.vue'
+import { getCurrentInstance } from 'vue'
+
+// 在你的 setup 中
+const { appContext } = getCurrentInstance()!
+useOverlayComp(Component, {
+  props: {},
+  appContext
+})
 ```
 
 # License

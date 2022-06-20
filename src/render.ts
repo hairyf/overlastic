@@ -1,9 +1,11 @@
-import type { Component, VNode } from 'vue'
+import type { AppContext, Component, VNode } from 'vue'
 import { defineComponent, h, render } from 'vue'
+import { context } from './global'
 
 export interface RenderInstanceOptions {
   setup?: (vnode: VNode, vanish: Function) => void
   root?: HTMLElement
+  parent?: AppContext
 }
 /**
  * 渲染组件实例
@@ -34,11 +36,17 @@ export const renderInstance = (
     },
   })
 
+
+
   // 创建虚拟节点, 渲染组件
   const container = document.createElement('div')
   const vnode = h(Component, props)
-  render(vnode, container)
+  if (context.parent)
+    vnode.appContext = context.parent
+  if (options.parent)
+    vnode.appContext = options.parent
 
+  render(vnode, container)
   // append document.body
   if (container.firstElementChild) {
     const root = options.root || document.body
