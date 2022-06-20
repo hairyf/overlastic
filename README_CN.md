@@ -1,5 +1,9 @@
 # unoverlay-vue
 
+![image](https://user-images.githubusercontent.com/1655312/70054926-8d469d80-15e9-11ea-9fdc-c8f65bf9bc85.png)
+
+> Oh, this image is from [vuejs-overlay](https://github.com/fattihkoca/vuejs-overlay), but he's really cool and I'm lazy so I stole it (sorry)
+
 > 中文 | [English](./README.md)
 
 通用的弹出层 Vue2/3 工具

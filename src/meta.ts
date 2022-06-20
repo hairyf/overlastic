@@ -2,6 +2,7 @@ import type { InjectionKey, Ref, VNode } from 'vue-demi'
 import { getCurrentInstance, inject, onMounted, ref, watch } from 'vue-demi'
 import delay from 'delay'
 import noop from 'lodash/noop'
+import { useVModel } from '@vueuse/core'
 
 export interface OverlayMeta {
   /** 调取失败，更改 visible，且当 animation 结束后销毁 */
@@ -27,7 +28,8 @@ export interface UseOverlayMetaOptions {
 
 export const useDefaultMeta = (): OverlayMeta => {
   const instance = getCurrentInstance()
-  const visible = ref(false)
+  
+  const visible = instance ? useVModel(instance.props, 'visible') as Ref<boolean> : ref(false)
 
   const cancel = (value?: any) => {
     visible.value = false
