@@ -1,4 +1,4 @@
-import { AppContext, createApp } from "vue";
+import { AppContext } from "vue";
 export const context = {
-  parent: null as null | AppContext
+  appContext: null as null | AppContext
 }

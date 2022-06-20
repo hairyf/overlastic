@@ -14,3 +14,4 @@ export function useOverlayCall<P = any, R = any>(component: Component, options?:
 }) {
   return transformOverlay<P, R>(component, options?.appContext)(options?.props as any)
 }
+

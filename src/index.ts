@@ -6,7 +6,7 @@ export { ImperativeOverlay, transformOverlay } from './transform'
 export { useOverlayCall } from './utils'
 
 const install = (app: App) => {
-  context.parent = app._context
+  context.appContext = app._context
 }
 const unoverlay = { install }
 
