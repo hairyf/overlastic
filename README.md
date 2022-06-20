@@ -69,11 +69,11 @@ const { visible, confirm, cancel } = useOverlayMeta({
 
 Create a callback, call it in `Javascript`/`Typescript`
 ```ts
-import { transformOverlay } from 'unoverlay-vue'
+import { transformOverlayMethod } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
 // Convert to imperative popup
-const callback = transformOverlay(OverlayComponent)
+const callback = transformOverlayMethod(OverlayComponent)
 // Call the component and get the value of confirm
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
@@ -82,10 +82,10 @@ const value = await callback({ title: 'callbackOverlay' })
 or use in `setup`
 
 ```ts
-import { useOverlayComp } from 'unoverlay-vue'
+import { useOverlayCall } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const value = await useOverlayComp(OverlayComponent, {
+const value = await useOverlayCall(OverlayComponent, {
   props: { title: 'useOverlay' }
 })
 // value === "useOverlay:confirmed"
@@ -144,10 +144,10 @@ const { visible, confirm, cancel } = useOverlayMeta({
 ```
 
 ```ts
-import { transformOverlay } from 'unoverlay-vue'
+import { transformOverlayMethod } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const callback = transformOverlay(OverlayComponent)
+const callback = transformOverlayMethod(OverlayComponent)
 const value = await callback({ title: 'myElDialog' })
 // value === "myElDialog:confirmed"
 ```
@@ -186,12 +186,12 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 Handle in another separate .js
 
 ```ts
-import { transformOverlay } from 'unoverlay-vue'
+import { transformOverlayMethod } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 import type { OverlayParams, OverlayResolved } from './define.ts'
 
 // Convert to imperative popup
-const callback = transformOverlay<OverlayParams, OverlayResolved>(OverlayComponent)
+const callback = transformOverlayMethod<OverlayParams, OverlayResolved>(OverlayComponent)
 ```
 
 > If you have requirements for vue's props runtime validation, you can define it like this: 
@@ -232,7 +232,7 @@ import { getCurrentInstance } from 'vue'
 
 // in your setup method
 const { appContext } = getCurrentInstance()!
-useOverlayComp(Component, {
+useOverlayCall(Component, {
   props: {},
   appContext
 })

@@ -70,11 +70,11 @@ const { visible, confirm, cancel } = useOverlayMeta({
 创建回调, 在 `Javascript` / `Typescript` 中调用
 
 ```ts
-import { transformOverlay } from 'unoverlay-vue'
+import { transformOverlayMethod } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
 // 转换为命令式回调
-const callback = transformOverlay(OverlayComponent)
+const callback = transformOverlayMethod(OverlayComponent)
 // 调用组件并获取 confirm 回调的值
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
@@ -83,10 +83,10 @@ const value = await callback({ title: 'callbackOverlay' })
 或在 `setup` 中调用
 
 ```ts
-import { useOverlayComp } from 'unoverlay-vue'
+import { useOverlayCall } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const value = await useOverlayComp(OverlayComponent, {
+const value = await useOverlayCall(OverlayComponent, {
   props: { title: 'useOverlay' }
 })
 // value === "useOverlay:confirmed"
@@ -145,10 +145,10 @@ const { visible, confirm, cancel } = useOverlayMeta({
 ```
 
 ```ts
-import { transformOverlay } from 'unoverlay-vue'
+import { transformOverlayMethod } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const callback = transformOverlay(OverlayComponent)
+const callback = transformOverlayMethod(OverlayComponent)
 const value = await callback({ title: 'myElDialog' })
 // value === "myElDialog:confirmed"
 ```
@@ -187,11 +187,11 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 在另外一个 ts 文件中处理
 
 ```ts
-import { transformOverlay } from 'unoverlay-vue'
+import { transformOverlayMethod } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 import type { OverlayParams, OverlayResolved } from './define.ts'
 
-const callback = transformOverlay<OverlayParams, OverlayResolved>(OverlayComponent)
+const callback = transformOverlayMethod<OverlayParams, OverlayResolved>(OverlayComponent)
 ```
 
 > 如果你对 vue 的 props 运行时验证有需求，可以这样定义：
@@ -232,7 +232,7 @@ import { getCurrentInstance } from 'vue'
 
 // 在你的 setup 中
 const { appContext } = getCurrentInstance()!
-useOverlayComp(Component, {
+useOverlayCall(Component, {
   props: {},
   appContext
 })
