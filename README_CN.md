@@ -67,7 +67,8 @@ const { visible, confirm, cancel } = useOverlayMeta({
 </script>
 ```
 
-创建回调后，在 `Javascript` / `Typescript` 中调用
+创建回调, 在 `Javascript` / `Typescript` 中调用
+
 ```ts
 import { transformOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
@@ -79,19 +80,19 @@ const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
 
-或直接使用 `useOverlay` 传入 `params` 调用
+或在 `setup` 中调用
 
 ```ts
 import { useOverlayComp } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
 const value = await useOverlayComp(OverlayComponent, {
-  title: 'useOverlay'
+  props: { title: 'useOverlay' }
 })
 // value === "useOverlay:confirmed"
 ```
 
-或在组件中使用
+或在 `template` 中调用
 
 ```vue
 <!-- overlay.vue -->

@@ -67,7 +67,7 @@ const { visible, confirm, cancel } = useOverlayMeta({
 </script>
 ```
 
-After creating the callback, call it in `Javascript`/`Typescript`
+Create a callback, call it in `Javascript`/`Typescript`
 ```ts
 import { transformOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
@@ -79,7 +79,7 @@ const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
 
-or call directly with `useOverlay`
+or use in `setup`
 
 ```ts
 import { useOverlayComp } from 'unoverlay-vue'
@@ -91,7 +91,7 @@ const value = await useOverlayComp(OverlayComponent, {
 // value === "useOverlay:confirmed"
 ```
 
-or use in the component
+or use in component
 
 ```vue
 <!-- overlay.vue -->
