@@ -26,7 +26,7 @@ yarn add unoverlay-vue
 
 定义弹出层组件
 
-```html
+```vue
 <!-- overlay.vue -->
 <template>
   <div v-if="visible" @click="confirm(title + ':confirmed')"> {{ title }} </div>
@@ -79,7 +79,7 @@ const value = await useImperativeOverlay(OverlayComponent, {
 
 或在组件中使用
 
-```html
+```vue
 <!-- overlay.vue -->
 <template>
   <overlay-component
@@ -108,7 +108,7 @@ const cancel = () => {
 
 以[element-plus@2.15.7(dialog)](https://element.eleme.cn/#/zh-CN/component/dialog)为例（你也可以使用其他组件库）
 
-```html
+```vue
 <!-- overlay.vue -->
 <template>
   <el-dialog :title="title" :visible.sync="visible" @close="cancel()">
@@ -153,7 +153,7 @@ export type OverlayResolved = string
 
 在 .vue 中使用
 
-```html
+```vue
 <!-- index.vue -->
 <template>
   <div v-if="visible" @click="confirm('string')"> {{ title }} </div>
@@ -191,7 +191,7 @@ export type OverlayParams = ExtractInferTypes<typeof overlayProps>
 export type OverlayResolved = string
 ```
 
-```html
+```vue
 <!-- index.vue -->
 <template>
   <div v-if="visible" @click="confirm('string')"> {{ title }} </div>

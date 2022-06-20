@@ -26,7 +26,7 @@ yarn add unoverlay-vue
 
 define overlay component
 
-```html
+```vue
 <!-- overlay.vue -->
 <template>
   <div v-if="visible" @click="confirm(title + ':confirmed')"> {{ title }} </div>
@@ -79,7 +79,7 @@ const value = await useImperativeOverlay(OverlayComponent, {
 
 or use in the component
 
-```html
+```vue
 <!-- overlay.vue -->
 <template>
   <overlay-component
@@ -108,7 +108,7 @@ You can use your imagination boldly!
 
 Take [element-plus@2.15.7(dialog)](https://element.eleme.cn/#/en-US/component/dialog) as an example (of course, you can use other component libraries)
 
-```html
+```vue
 <!-- overlay.vue -->
 <template>
   <el-dialog :title="title" :visible.sync="visible" @close="cancel()">
@@ -153,7 +153,7 @@ export type OverlayResolved = string
 
 Reference props in .vue
 
-```html
+```vue
 <!-- index.vue -->
 <template>
   <div v-if="visible" @click="confirm('string')"> {{ title }} </div>
@@ -192,7 +192,7 @@ export type OverlayParams = ExtractInferTypes<typeof overlayProps>
 export type OverlayResolved = string
 ```
 
-```html
+```vue
 <!-- index.vue -->
 <template>
   <div v-if="visible" @click="confirm('string')"> {{ title }} </div>
