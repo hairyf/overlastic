@@ -48,6 +48,7 @@ defineEmits(['cancel', 'confirm'])
 // 从 useOverlayMeta 获取 Overlay 信息
 const { visible, confirm, cancel } = useOverlayMeta({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
+  // 仅在 template 中使用 component 则不需要定义
   animation: 1000
 })
 </script>
