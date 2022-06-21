@@ -13,6 +13,7 @@
 - 制作类似于 `element-plus/naiveui/vuetifyjs/vant`... 的 [Message](https://element.eleme.cn/#/en-US/component/message) 或 [Dialog](https://element.eleme.cn/#/en-US/component/dialog)
 - 同时支持两种调用方式（ tempalte 或 js/ts）
 - 使用现有组件库（如 element-plus）集成和定制化功能
+- 支持组件继承全局应用上下文
 
 ## ⚙️ Install
 
