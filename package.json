@@ -1,6 +1,6 @@
 {
   "name": "unoverlay-vue",
-  "version": "0.0.2-beta.3",
+  "version": "0.0.2-beta.4",
   "main": "index.ts",
   "keywords": [
     "unified",
