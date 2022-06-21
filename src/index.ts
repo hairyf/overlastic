@@ -1,5 +1,5 @@
-import { App } from 'vue'
-import { context } from './global'
+import type { App } from 'vue'
+import { context } from './internal'
 
 export { useOverlayMeta } from './meta'
 export { ImperativeOverlay, transformOverlay } from './transform'
@@ -9,7 +9,5 @@ const install = (app: App) => {
   context.appContext = app._context
 }
 const unoverlay = { install }
-
 export { install }
-
 export default unoverlay

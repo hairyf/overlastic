@@ -1,12 +1,12 @@
-import { AppContext, Component, createVNode, VNode } from 'vue'
-import { defineComponent, h, render } from 'vue'
-import { context } from './global'
+import type { Component, VNode } from 'vue'
+import { createVNode, defineComponent, h, render } from 'vue'
+import { context } from '../internal'
+import type { MountOverlayOptions } from './interface'
 
-export interface RenderInstanceOptions {
-  root?: HTMLElement
+export interface RenderInstanceOptions extends MountOverlayOptions {
   setup?: (vnode: VNode, vanish: Function) => void
-  appContext?: AppContext
 }
+
 /**
  * 渲染组件实例
  * @param component 组件

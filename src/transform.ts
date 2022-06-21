@@ -1,10 +1,12 @@
-import { AppContext, Component, ExtractPropTypes, reactive, VNode } from 'vue'
-import { defineComponent, h, provide, ref } from 'vue'
-import { renderInstance } from './render'
-import { OverlayMeta, OverlayMetaKey } from './meta'
+import type { Component, ExtractPropTypes } from 'vue'
+import { provide, ref } from 'vue'
+
+import { renderInstance } from './helper/render'
+import type { MountOverlayOptions } from './helper/interface'
+import { OverlayMetaKey } from './internal'
 
 export type ExtractInferTypes<Props> = Props extends ExtractPropTypes<infer E> ? E : ExtractPropTypes<Props>
-export type ImperativeOverlay<Props, Result> = (props?: ExtractInferTypes<Props>) => Promise<Result>
+export type ImperativeOverlay<Params, Resolved> = (props?: ExtractInferTypes<Params>, options?: MountOverlayOptions) => Promise<Resolved>
 
 /**
  * 转换命令式弹出层 Api
@@ -12,9 +14,13 @@ export type ImperativeOverlay<Props, Result> = (props?: ExtractInferTypes<Props>
  * @param options 弹出层配置
  * @returns 命令式弹出层
  */
-export function transformOverlay<P = any, R = void>(component: Component, appContext?: AppContext): ImperativeOverlay<P, R> {
-  const executor = (props: any, resolve: Function, reject: Function) => {
+export function transformOverlay<Params = any, Resolved = void>(
+  component: Component,
+): ImperativeOverlay<Params, Resolved> {
+  const executor = (props: any, resolve: Function, reject: Function, options?: MountOverlayOptions) => {
     renderInstance(component, props, {
+      appContext: options?.appContext,
+      root: options?.root,
       setup: (vnode, _vanish) => {
         const visible = ref(false)
         function cancel(value: any) {
@@ -30,19 +36,18 @@ export function transformOverlay<P = any, R = void>(component: Component, appCon
           reject?.()
         }
         provide(OverlayMetaKey, {
-          cancel, confirm,
-          vanish, visible,
-          vnode
+          cancel,
+          confirm,
+          vanish,
+          visible,
+          vnode,
         })
       },
-      appContext,
     })
   }
-
-  const caller = (props: any) =>
+  const caller = (props: any, options?: any) =>
     new Promise<any>((resolve, reject) => {
-      executor(props, resolve, reject)
+      executor(props, resolve, reject, options)
     })
-
   return caller
 }
