@@ -75,7 +75,7 @@ Create a callback, call it in `Javascript`/`Typescript`
 import { transformOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-// Convert to imperative popup
+// Convert to imperative overlay
 const callback = transformOverlay(OverlayComponent)
 // Call the component and get the value of confirm
 const value = await callback({ title: 'callbackOverlay' })
@@ -197,7 +197,7 @@ import { transformOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 import type { OverlayParams, OverlayResolved } from './define.ts'
 
-// Convert to imperative popup
+// Convert to imperative overlay
 const callback = transformOverlay<OverlayParams, OverlayResolved>(OverlayComponent)
 ```
 
