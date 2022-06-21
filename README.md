@@ -293,7 +293,7 @@ Call overlay component directly
 useOverlayCall(Component, { props: {/* props */}, /*  MountOverlayOptions */ })
 ```
 
-返回类型
+return types
 
 ```ts
 interface OverlayMeta {
