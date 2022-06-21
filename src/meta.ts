@@ -59,7 +59,8 @@ export const useDefaultMeta = (): OverlayMeta => {
  */
 export const useOverlayMeta = (options: UseOverlayMetaOptions = {}) => {
   const { animation = 0, immediate = true } = options
-  const meta = inject(OverlayMetaKey, useDefaultMeta())
+  const defaultMeta = useDefaultMeta()
+  const meta = inject(OverlayMetaKey, defaultMeta) || defaultMeta
 
   // 为了简便性和合理的逻辑组合，将 animation 逻辑移至 meta 创建时
   // 组件式调用直接获取默认值，vanish 将没有任何效果，不进行 watch
