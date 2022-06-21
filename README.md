@@ -11,7 +11,7 @@ A universal `overlay` (`popup`) `Vue2/Vue3` utils
 it can achieve: 
 
 - Make [Message](https://element.eleme.cn/#/en-US/component/message) or [Dialog](https://element.eleme.cn/#/en-US/component/dialog) similar to `element-plus` / `naiveui` / `vuetifyjs` / `vant`...
-- Supports two calling methods at the same time (component or javascript-api)
+- Supports two calling methods at the same time (template or js/ts)
 - Integrate and customize functions using existing component libraries (such as element-plus)
 
 ## ⚙️ Install
