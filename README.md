@@ -27,8 +27,8 @@ Global installation makes all overlay inherit the app context
 ```ts
 // main.js
 import { createApp } from 'vue'
-import App from './App.vue'
 import unoverlay from 'unoverlay-vue'
+import App from './App.vue'
 
 const app = createApp(App)
 app.use(unoverlay)
@@ -41,11 +41,8 @@ define overlay component
 
 ```vue
 <!-- overlay.vue -->
-<template>
-  <div v-if="visible" @click="confirm(title + ':confirmed')"> {{ title }} </div>
-</template>
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue'
 import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
@@ -65,6 +62,12 @@ const { visible, confirm, cancel } = useOverlayMeta({
   animation: 1000
 })
 </script>
+
+<template>
+  <div v-if="visible" @click="confirm(`${title}:confirmed`)">
+    {{ title }}
+  </div>
+</template>
 ```
 
 Create a callback, call it in `Javascript`/`Typescript`
@@ -95,14 +98,6 @@ or use in component
 
 ```vue
 <!-- overlay.vue -->
-<template>
-  <overlay-component
-    v-model:visible="visible"
-    @confirm="confirm"
-    @cancel="cancel"
-  >
-  </overlay-component>
-</template>
 <script setup>
 import OverlayComponent from './overlay.vue'
 const visible = ref(false)
@@ -114,6 +109,14 @@ const cancel = () => {
   // ...
 }
 </script>
+
+<template>
+  <overlay-component
+    v-model:visible="visible"
+    @confirm="confirm"
+    @cancel="cancel"
+  />
+</template>
 ```
 
 You can use your imagination boldly!
@@ -124,14 +127,8 @@ Take [element-plus@2.15.7(dialog)](https://element.eleme.cn/#/en-US/component/di
 
 ```vue
 <!-- overlay.vue -->
-<template>
-  <el-dialog :title="title" :visible.sync="visible" @close="cancel()">
-    <!-- your content -->
-    <button @click="confirm(title + ':confirmed')"></button>
-  </el-dialog>
-</template>
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue'
 import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
@@ -141,6 +138,13 @@ const { visible, confirm, cancel } = useOverlayMeta({
   animation: 1000
 })
 </script>
+
+<template>
+  <el-dialog v-model:visible="visible" :title="title" @close="cancel()">
+    <!-- your content -->
+    <button @click="confirm(`${title}:confirmed`)" />
+  </el-dialog>
+</template>
 ```
 
 ```ts
@@ -169,18 +173,21 @@ Reference props in .vue
 
 ```vue
 <!-- index.vue -->
-<template>
-  <div v-if="visible" @click="confirm('string')"> {{ title }} </div>
-</template>
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue'
 import { useOverlayMeta } from 'unoverlay-vue'
-import { OverlayParams, OverlayResolved } from './props'
+import type { OverlayParams, OverlayResolved } from './props'
 const props = defineProps<OverlayParams>()
 const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
   animation: 1000
 })
 </script>
+
+<template>
+  <div v-if="visible" @click="confirm('string')">
+    {{ title }}
+  </div>
+</template>
 ```
 
 Handle in another separate .js
@@ -208,18 +215,22 @@ export type OverlayResolved = string
 
 ```vue
 <!-- index.vue -->
-<template>
-  <div v-if="visible" @click="confirm('string')"> {{ title }} </div>
-</template>
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue'
 import { useOverlayMeta } from 'unoverlay-vue'
-import { overlayProps, OverlayResolved } from './props'
+import type { OverlayResolved } from './props'
+import { overlayProps } from './props'
 const props = defineProps(overlayProps)
 const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
   animation: 1000
 })
 </script>
+
+<template>
+  <div v-if="visible" @click="confirm('string')">
+    {{ title }}
+  </div>
+</template>
 ```
 
 ## App context inheritance
@@ -227,8 +238,8 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 > If you globally registered `unoverlay-vue`, it will automatically inherit your app context.
 
 ```ts
-import Component from './overlay.vue'
 import { getCurrentInstance } from 'vue'
+import Component from './overlay.vue'
 
 // in your setup method
 const { appContext } = getCurrentInstance()!
@@ -238,7 +249,66 @@ useOverlayCall(Component, {
 })
 ```
 
+## API descriptions
 
+### Type Declarations 
+
+```ts
+interface MountOverlayOptions {
+  /** The dom node that hangs when rendering */
+  root?: HTMLElement
+  /** Used to inherit the current application context */
+  appContext?: AppContext
+}
+interface UseOverlayMetaOptions {
+  /** Animation duration to avoid premature destruction of components */
+  animation?: number
+  /** whether to set visible to true immediately */
+  immediate?: boolean
+}
+```
+
+### transformOverlay
+
+Used to convert the overlay component to a callable callback
+
+```ts
+const caller = transformOverlay(Component)
+caller({/* props */}, {/* MountOverlayOptions */})
+```
+
+### useOverlayMeta
+
+Obtaining overlay information in the overlay component component is the core function of overlay-vue
+
+```ts
+useOverlayMeta({/* UseOverlayMetaOptions */})
+```
+
+### useOverlayCall
+
+Call overlay component directly
+
+```ts
+useOverlayCall(Component, { props: {/* props */}, /*  MountOverlayOptions */ })
+```
+
+返回类型
+
+```ts
+interface OverlayMeta {
+  /** Call resolve, change visible, and destroy when animation ends */
+  cancel: Function
+  /** Call reject, change visible, and destroy when animation ends */
+  confirm: Function
+  /** Destroy the current instance (immediately, and the call fails), only cancel is called in the template */
+  vanish: Function
+  /** Control overlay display and hide */
+  visible: Ref<boolean>
+  /** rendered vnode */
+  vnode?: VNode
+}
+```
 # License
 
 [MIT](LICENSE) Copyright (c) 2019-PRESENT

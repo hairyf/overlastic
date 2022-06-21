@@ -6,7 +6,9 @@ import { useVModel } from '@vueuse/core'
 import { OverlayMetaKey } from './internal'
 
 export interface UseOverlayMetaOptions {
+  /** 动画时长，避免过早销毁组件 */
   animation?: number
+  /** 是否立即将 visible 设为 true */
   immediate?: boolean
 }
 

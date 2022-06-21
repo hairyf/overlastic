@@ -27,8 +27,8 @@ yarn add unoverlay-vue
 ```ts
 // main.js
 import { createApp } from 'vue'
-import App from './App.vue'
 import unoverlay from 'unoverlay-vue'
+import App from './App.vue'
 
 const app = createApp(App)
 app.use(unoverlay)
@@ -41,11 +41,8 @@ app.mount('#app')
 
 ```vue
 <!-- overlay.vue -->
-<template>
-  <div v-if="visible" @click="confirm(title + ':confirmed')"> {{ title }} </div>
-</template>
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue'
 import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
@@ -65,6 +62,12 @@ const { visible, confirm, cancel } = useOverlayMeta({
   animation: 1000
 })
 </script>
+
+<template>
+  <div v-if="visible" @click="confirm(`${title}:confirmed`)">
+    {{ title }}
+  </div>
+</template>
 ```
 
 创建回调, 在 `Javascript` / `Typescript` 中调用
@@ -96,14 +99,6 @@ const value = await useOverlayCall(OverlayComponent, {
 
 ```vue
 <!-- overlay.vue -->
-<template>
-  <overlay-component
-    v-model:visible="visible"
-    @confirm="confirm"
-    @cancel="cancel"
-  >
-  </overlay-component>
-</template>
 <script setup>
 import OverlayComponent from './overlay.vue'
 const visible = ref(false)
@@ -115,6 +110,14 @@ const cancel = () => {
   // ...
 }
 </script>
+
+<template>
+  <overlay-component
+    v-model:visible="visible"
+    @confirm="confirm"
+    @cancel="cancel"
+  />
+</template>
 ```
 
 你可以大胆地发挥你的想象力！
@@ -125,14 +128,8 @@ const cancel = () => {
 
 ```vue
 <!-- overlay.vue -->
-<template>
-  <el-dialog :title="title" :visible.sync="visible" @close="cancel()">
-    <!-- 你的定制化内容 -->
-    <button @click="confirm(title + ':confirmed')"></button>
-  </el-dialog>
-</template>
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue'
 import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
@@ -142,6 +139,13 @@ const { visible, confirm, cancel } = useOverlayMeta({
   animation: 1000
 })
 </script>
+
+<template>
+  <el-dialog v-model:visible="visible" :title="title" @close="cancel()">
+    <!-- 你的定制化内容 -->
+    <button @click="confirm(`${title}:confirmed`)" />
+  </el-dialog>
+</template>
 ```
 
 ```ts
@@ -170,18 +174,21 @@ export type OverlayResolved = string
 
 ```vue
 <!-- index.vue -->
-<template>
-  <div v-if="visible" @click="confirm('string')"> {{ title }} </div>
-</template>
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue'
 import { useOverlayMeta } from 'unoverlay-vue'
-import { OverlayParams, OverlayResolved } from './props'
+import type { OverlayParams, OverlayResolved } from './props'
 const props = defineProps<OverlayParams>()
 const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
   animation: 1000
 })
 </script>
+
+<template>
+  <div v-if="visible" @click="confirm('string')">
+    {{ title }}
+  </div>
+</template>
 ```
 
 在另外一个 ts 文件中处理
@@ -208,18 +215,22 @@ export type OverlayResolved = string
 
 ```vue
 <!-- index.vue -->
-<template>
-  <div v-if="visible" @click="confirm('string')"> {{ title }} </div>
-</template>
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue'
 import { useOverlayMeta } from 'unoverlay-vue'
-import { overlayProps, OverlayResolved } from './props'
+import type { OverlayResolved } from './props'
+import { overlayProps } from './props'
 const props = defineProps(overlayProps)
 const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
   animation: 1000
 })
 </script>
+
+<template>
+  <div v-if="visible" @click="confirm('string')">
+    {{ title }}
+  </div>
+</template>
 ```
 
 ## 继承应用上下文
@@ -227,8 +238,8 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 > 如果你全局注册了 `unoverlay-vue` ，它会自动继承你的应用上下文。
 
 ```ts
-import Component from './overlay.vue'
 import { getCurrentInstance } from 'vue'
+import Component from './overlay.vue'
 
 // 在你的 setup 中
 const { appContext } = getCurrentInstance()!
@@ -236,6 +247,67 @@ useOverlayCall(Component, {
   props: {},
   appContext
 })
+```
+
+## API 描述
+
+### Type Declarations 
+
+```ts
+interface MountOverlayOptions {
+  /** 渲染时挂在的 dom 节点 */
+  root?: HTMLElement
+  /** 用于继承当前应用上下文 */
+  appContext?: AppContext
+}
+interface UseOverlayMetaOptions {
+  /** 动画时长，避免过早销毁组件 */
+  animation?: number
+  /** 是否立即将 visible 设为 true */
+  immediate?: boolean
+}
+```
+
+### transformOverlay
+
+用于转换 overlay component 为可调用回调
+
+```ts
+const caller = transformOverlay(Component)
+caller({/* props */}, {/* MountOverlayOptions */})
+```
+
+### useOverlayMeta
+
+在 overlay component 组件中获取 overlay 信息，是 unoverlay-vue 的核心函数
+
+```ts
+useOverlayMeta({/* UseOverlayMetaOptions */})
+```
+
+### useOverlayCall
+
+直接调取 overlay component 组件
+
+```ts
+useOverlayCall(Component, { props: {/* props */}, /*  MountOverlayOptions */ })
+```
+
+返回类型
+
+```ts
+interface OverlayMeta {
+  /** 调取失败，更改 visible，且当 animation 结束后销毁 */
+  cancel: Function
+  /** 调取成功，更改 visible，且当 animation 结束后销毁 */
+  confirm: Function
+  /** 销毁当前实例（立即，且调用失败），不是 overlay 则调用 reject */
+  vanish: Function
+  /** 控制弹出层显示与隐藏 */
+  visible: Ref<boolean>
+  /** 渲染的 vnode */
+  vnode?: VNode
+}
 ```
 
 # License
