@@ -6,13 +6,12 @@
 
 > 中文 | [English](./README.md)
 
-通用的弹出层 Vue2/3 工具
-
-他可以做这些事情: 
+通用的弹出层 Vue2/3 制作工具，它可以: 
 
 - 制作类似于 `element-plus/naiveui/vuetifyjs/vant`... 的 [Message](https://element.eleme.cn/#/en-US/component/message) 或 [Dialog](https://element.eleme.cn/#/en-US/component/dialog)
-- 同时支持两种调用方式（组件或javascript-api）
+- 同时支持两种调用方式（ tempalte 或 js/ts）
 - 使用现有组件库（如 element-plus）集成和定制化功能
+- 支持组件继承全局应用上下文
 
 ## ⚙️ Install
 
@@ -58,7 +57,7 @@ defineEmits(['cancel', 'confirm'])
 // 从 useOverlayMeta 获取 Overlay 信息
 const { visible, confirm, cancel } = useOverlayMeta({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
-  // 仅在 template 中使用 component 则不需要定义
+  // 仅在 template 中使用则不需要定义
   animation: 1000
 })
 </script>
@@ -120,7 +119,7 @@ const cancel = () => {
 </template>
 ```
 
-你可以大胆地发挥你的想象力！
+你可以大胆地发挥你的想象力，unoverlay-vue 可以让你实现大部分关于弹出层的组件！
 
 ## 🏔️ 定制化弹出层
 
@@ -233,7 +232,7 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 </template>
 ```
 
-## 继承应用上下文
+## 👆 继承应用上下文
 
 > 如果你全局注册了 `unoverlay-vue` ，它会自动继承你的应用上下文。
 
@@ -249,7 +248,7 @@ useOverlayCall(Component, {
 })
 ```
 
-## API 描述
+## ✍️ API 描述
 
 ### Type Declarations 
 
