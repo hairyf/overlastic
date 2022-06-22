@@ -10,6 +10,12 @@ export interface UseOverlayMetaOptions {
   animation?: number
   /** 是否立即将 visible 设为 true */
   immediate?: boolean
+  /**
+   * template 使用的 v-model 字段
+   *
+   * @default 'visible'
+   */
+  model?: string
 }
 
 /**
@@ -22,13 +28,13 @@ export interface UseOverlayMetaOptions {
  * @returns
  */
 export function useOverlayMeta(options: UseOverlayMetaOptions = {}) {
-  const { animation = 0, immediate = true } = options
-  const defaultMeta = getDefaultMeta()
+  const { animation = 0, immediate = true, model = 'visible' } = options
+  const defaultMeta = getTemplateMeta(model)
   const meta = inject(OverlayMetaKey, defaultMeta) || defaultMeta
 
   // 为了简便性和合理的逻辑组合，将 animation 逻辑移至 meta 创建时
   // 组件式调用直接获取默认值，vanish 将没有任何效果，不进行 watch
-  !meta.__is_default
+  !meta.isTemplate
     && watch(meta.visible, async () => {
       if (meta.visible.value)
         return undefined
@@ -44,10 +50,10 @@ export function useOverlayMeta(options: UseOverlayMetaOptions = {}) {
   return meta
 }
 
-export function getDefaultMeta() {
+export function getTemplateMeta(model: string) {
   const instance = getCurrentInstance()
 
-  const visible = instance ? useVModel(instance.props, 'visible') as Ref<boolean> : ref(false)
+  const visible = instance ? useVModel(instance.props, model) as Ref<boolean> : ref(false)
 
   const cancel = (value?: any) => {
     visible.value = false
@@ -62,6 +68,6 @@ export function getDefaultMeta() {
     confirm,
     vanish: noop,
     visible,
-    __is_default: true,
+    isTemplate: true,
   }
 }

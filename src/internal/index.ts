@@ -16,7 +16,7 @@ export interface OverlayMeta {
   /** visible 包装层属性，控制弹出层显示与隐藏 */
   visible: Ref<boolean>
   /** 使用默认的值(component 式调用) */
-  __is_default?: boolean
+  isTemplate?: boolean
 }
 
 export const OverlayMetaKey: InjectionKey<OverlayMeta> = Symbol('__imperative_overlay_key')
