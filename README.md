@@ -156,6 +156,42 @@ const value = await callback({ title: 'myElDialog' })
 // value === "myElDialog:confirmed"
 ```
 
+
+
+## call `confirm` or `cancel` externally
+
+The function of the return value of `Model` includes not only `Promise`, but also `confirm` and `cancel` based on this
+
+```ts
+const Model = transformOverlay(MyComponent)
+const promiser = Model({/* you props */})
+
+function close() {
+  promiser.cancel()
+}
+function yes() {
+  promiser.confirm({/* you resolved value */})
+}
+```
+
+> Since rendering needs to wait, `cancel / confirm` in promiser cannot be called immediately, and it is generally recommended to use it inside the callback function.
+
+## App context inheritance
+
+> If you globally registered `unoverlay-vue`, it will automatically inherit your app context.
+
+```ts
+import { getCurrentInstance } from 'vue'
+import Component from './overlay.vue'
+
+// in your setup method
+const { appContext } = getCurrentInstance()!
+useOverlayCall(Component, {
+  props: {},
+  appContext
+})
+```
+
 ## ⌨️ Typescript
 
 If you want the component to have the correct type declaration when called in the callback,
@@ -231,22 +267,6 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
     {{ title }}
   </div>
 </template>
-```
-
-## App context inheritance
-
-> If you globally registered `unoverlay-vue`, it will automatically inherit your app context.
-
-```ts
-import { getCurrentInstance } from 'vue'
-import Component from './overlay.vue'
-
-// in your setup method
-const { appContext } = getCurrentInstance()!
-useOverlayCall(Component, {
-  props: {},
-  appContext
-})
 ```
 
 ## API descriptions

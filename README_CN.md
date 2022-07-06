@@ -156,6 +156,40 @@ const value = await callback({ title: 'myElDialog' })
 // value === "myElDialog:confirmed"
 ```
 
+## 在外部调用 `confirm` 或 `cancel`
+
+`Model` 的返回值的功能不仅仅包括 `Promise` 在此基础还有 `confirm` 和 `cancel`
+
+```ts
+const Model = transformOverlay(MyComponent)
+const promiser = Model({/* you props */})
+
+function close() {
+  promiser.cancel()
+}
+function yes() {
+  promiser.confirm({/* you resolved value */})
+}
+```
+
+> 由于渲染需要等待， promiser 中的 `cancel / confirm` 不能立即调用，一般建议在回调函数内部中使用。
+
+## 👆 继承应用上下文
+
+> 如果你全局注册了 `unoverlay-vue` ，它会自动继承你的应用上下文。
+
+```ts
+import { getCurrentInstance } from 'vue'
+import Component from './overlay.vue'
+
+// 在你的 setup 中
+const { appContext } = getCurrentInstance()!
+useOverlayCall(Component, {
+  props: {},
+  appContext
+})
+```
+
 ## ⌨️ Typescript
 
 如果您希望组件在回调中调用时具有正确的类型声明，
@@ -230,22 +264,6 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
     {{ title }}
   </div>
 </template>
-```
-
-## 👆 继承应用上下文
-
-> 如果你全局注册了 `unoverlay-vue` ，它会自动继承你的应用上下文。
-
-```ts
-import { getCurrentInstance } from 'vue'
-import Component from './overlay.vue'
-
-// 在你的 setup 中
-const { appContext } = getCurrentInstance()!
-useOverlayCall(Component, {
-  props: {},
-  appContext
-})
 ```
 
 ## ✍️ API 描述
