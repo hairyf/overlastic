@@ -8,7 +8,7 @@ import { OverlayMetaKey } from './internal'
 export type ImperativePromise<T = any> = Promise<T> & { cancel: Function; confirm: Function }
 
 export type ExtractInferTypes<Props> = Props extends ExtractPropTypes<infer E> ? E : ExtractPropTypes<Props>
-export type ImperativeOverlay<Params, Resolved> = (props?: ExtractInferTypes<Params>, options?: MountOverlayOptions) => Promise<Resolved>
+export type ImperativeOverlay<Params, Resolved> = (props?: ExtractInferTypes<Params>, options?: MountOverlayOptions) => ImperativePromise<Resolved>
 
 export interface ExePromiserOptions {
   resolve: Function
