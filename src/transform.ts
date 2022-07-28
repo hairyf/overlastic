@@ -22,7 +22,7 @@ export interface ExePromiserOptions {
  * @param options 弹出层配置
  * @returns 命令式弹出层
  */
-export function transformOverlay<Params = any, Resolved = void>(
+export function createOverlay<Params = any, Resolved = void>(
   component: Component,
 ): ImperativeOverlay<Params, Resolved> {
   const executor = (props: any, promiser: ExePromiserOptions, mountOptions?: MountOverlayOptions) => {
@@ -61,7 +61,7 @@ export function transformOverlay<Params = any, Resolved = void>(
   const caller = (props: any, options?: any) => {
     const promiser = createPromiser<ImperativePromise>()
     const notAllowedError = function () {
-      throw new Error('transformOverlay - Error: It is not allowed to call confirm and cancel externally immediately, please wait for the component to render')
+      throw new Error('createOverlay - Error: It is not allowed to call confirm and cancel externally immediately, please wait for the component to render')
     }
     promiser.promise.confirm = notAllowedError
     promiser.promise.cancel = notAllowedError

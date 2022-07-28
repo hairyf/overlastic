@@ -1,9 +1,9 @@
 import type { Component } from 'vue'
 import type { MountOverlayOptions } from './helper/interface'
 
-import { transformOverlay } from './transform'
+import { createOverlay } from './transform'
 
-export interface UseOverlayCallOptions<P = any> extends MountOverlayOptions {
+export interface ExecuteOverlayOptions<P = any> extends MountOverlayOptions {
   props?: P
 }
 
@@ -14,7 +14,7 @@ export interface UseOverlayCallOptions<P = any> extends MountOverlayOptions {
  * @param options imperativeOverlay 的配置
  * @returns
  */
-export function useOverlayCall<P = any, R = any>(component: Component, options?: UseOverlayCallOptions<P>) {
-  return transformOverlay<P, R>(component)(options?.props as any, options)
+export function executeOverlay<P = any, R = any>(component: Component, options?: ExecuteOverlayOptions<P>) {
+  return createOverlay<P, R>(component)(options?.props as any, options)
 }
 

@@ -72,11 +72,11 @@ const { visible, confirm, cancel } = useOverlayMeta({
 创建回调, 在 `Javascript` / `Typescript` 中调用
 
 ```ts
-import { transformOverlay } from 'unoverlay-vue'
+import { createOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
 // 转换为命令式回调
-const callback = transformOverlay(OverlayComponent)
+const callback = createOverlay(OverlayComponent)
 // 调用组件并获取 confirm 回调的值
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
@@ -85,10 +85,10 @@ const value = await callback({ title: 'callbackOverlay' })
 或在 `setup` 中调用
 
 ```ts
-import { useOverlayCall } from 'unoverlay-vue'
+import { executeOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const value = await useOverlayCall(OverlayComponent, {
+const value = await executeOverlay(OverlayComponent, {
   props: { title: 'useOverlay' }
 })
 // value === "useOverlay:confirmed"
@@ -148,10 +148,10 @@ const { visible, confirm, cancel } = useOverlayMeta({
 ```
 
 ```ts
-import { transformOverlay } from 'unoverlay-vue'
+import { createOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const callback = transformOverlay(OverlayComponent)
+const callback = createOverlay(OverlayComponent)
 const value = await callback({ title: 'myElDialog' })
 // value === "myElDialog:confirmed"
 ```
@@ -161,7 +161,7 @@ const value = await callback({ title: 'myElDialog' })
 `Model` 的返回值的功能不仅仅包括 `Promise` 在此基础还有 `confirm` 和 `cancel`
 
 ```ts
-const Model = transformOverlay(MyComponent)
+const Model = createOverlay(MyComponent)
 const promiser = Model({/* you props */})
 
 function close() {
@@ -184,7 +184,7 @@ import Component from './overlay.vue'
 
 // 在你的 setup 中
 const { appContext } = getCurrentInstance()!
-useOverlayCall(Component, {
+executeOverlay(Component, {
   props: {},
   appContext
 })
@@ -227,11 +227,11 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 在另外一个 ts 文件中处理
 
 ```ts
-import { transformOverlay } from 'unoverlay-vue'
+import { createOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 import type { OverlayParams, OverlayResolved } from './define.ts'
 
-const callback = transformOverlay<OverlayParams, OverlayResolved>(OverlayComponent)
+const callback = createOverlay<OverlayParams, OverlayResolved>(OverlayComponent)
 ```
 
 > 如果你对 vue 的 props 运行时验证有需求，可以这样定义：
@@ -285,12 +285,12 @@ interface UseOverlayMetaOptions {
 }
 ```
 
-### transformOverlay
+### createOverlay
 
 用于转换 overlay component 为可调用回调
 
 ```ts
-const caller = transformOverlay(Component)
+const caller = createOverlay(Component)
 caller({/* props */}, {/* MountOverlayOptions */})
 ```
 
@@ -302,12 +302,12 @@ caller({/* props */}, {/* MountOverlayOptions */})
 useOverlayMeta({/* UseOverlayMetaOptions */})
 ```
 
-### useOverlayCall
+### executeOverlay
 
 直接调取 overlay component 组件
 
 ```ts
-useOverlayCall(Component, { props: {/* props */}, /*  MountOverlayOptions */ })
+executeOverlay(Component, { props: {/* props */}, /*  MountOverlayOptions */ })
 ```
 
 返回类型
