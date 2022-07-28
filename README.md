@@ -4,7 +4,7 @@
 
 > Oh, this image is from [vuejs-overlay](https://github.com/fattihkoca/vuejs-overlay), but he's really cool and I'm lazy so I stole it (sorry)
 
-> [中文](./README_CN.md) | English
+> [中文](./README_CN.md) | English or see [github.io/unoverlay-vue](https://tuimao233.github.io/unoverlay-vue/)
 
 A universal `overlay` (`popup`) `Vue2/Vue3` utils
 
