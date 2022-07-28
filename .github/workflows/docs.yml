@@ -24,4 +24,4 @@ jobs:
         # 要使用的构建命令
         BUILD_SCRIPT: npm i pnpm -g && pnpm i && pnpm docs:build
         # 构建结果存储目录
-        BUILD_DIR: .vitepress/dist/
+        BUILD_DIR: docs/.vitepress/dist/
