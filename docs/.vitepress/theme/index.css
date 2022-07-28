@@ -1,0 +1,5 @@
+@media (min-width: 960px) {
+  .image-src {
+    max-width: 500px !important;
+  }
+}
