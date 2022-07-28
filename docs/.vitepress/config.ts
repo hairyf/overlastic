@@ -39,6 +39,10 @@ const nav: DefaultTheme.NavItem[] = [
     text: 'Guide',
     link: '/en/guide/what-is-unoverlay-vue',
   },
+  {
+    text: 'Github',
+    link: 'https://github.com/TuiMao233/unoverlay-vue',
+  },
 ]
 
 const config = defineConfig({
