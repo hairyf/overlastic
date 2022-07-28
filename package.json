@@ -30,8 +30,21 @@
     "directory": "dist"
   },
   "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
     "build": "ptsup -r src index.ts --dts --meta --clean",
     "change": "bumpp"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search",
+        "@types/react",
+        "react",
+        "react-dom"
+      ]
+    }
   },
   "license": "MIT",
   "dependencies": {
@@ -52,6 +65,7 @@
     "ptsup": "^0.0.5",
     "typescript": "^4.7.4",
     "vite": "^2.9.12",
+    "vitepress": "1.0.0-alpha.4",
     "vitest": "^0.15.2",
     "vue": "^3.0.0"
   },
