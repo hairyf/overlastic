@@ -15,3 +15,5 @@ Unoverlay Vue 是用于在 Vue3 | Vue2 Composition-api 制造模态框的基本�
 
 从 Vue3 的 Composition-api 起，以及市面上的 Model 组件我得到了很大的启发，Unoverlay Vue 使得能使定义 Model 组件变得非常的轻松和强大，
 它不仅仅支持在 Typescript、Javascript 中调用，当您想要 template 的模板优势时，使用 Unoverlay Vue 制作的 Model 依旧能胜任工作。
+
+- [Vue3 模态(Modal) 类组件的思考](https://juejin.cn/post/7112107238969311262)
