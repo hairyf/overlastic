@@ -1,4 +1,4 @@
-import type { Component } from 'vue'
+import type { Component } from 'vue-demi'
 import type { MountOverlayOptions } from './helper/interface'
 
 import { createOverlay } from './transform'

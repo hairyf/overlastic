@@ -1,5 +1,5 @@
-import type { Component, VNode } from 'vue'
-import { createVNode, defineComponent, h, render } from 'vue'
+import type { Component, VNode } from 'vue-demi'
+import { createVNode, defineComponent, h, render } from 'vue-demi'
 import { context } from '../internal'
 import type { MountOverlayOptions } from './interface'
 

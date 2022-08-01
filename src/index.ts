@@ -1,4 +1,4 @@
-import type { App } from 'vue'
+import type { App } from 'vue-demi'
 import { context } from './internal'
 
 export { useOverlayMeta } from './meta'

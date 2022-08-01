@@ -50,8 +50,8 @@ export function useOverlayMeta(options: UseOverlayMetaOptions = {}) {
   const defaultMeta = getTemplateMeta(model, options)
   const meta = inject(OverlayMetaKey, defaultMeta) || defaultMeta
 
-  // 为了简便性和合理的逻辑组合，将 animation 逻辑移至 meta 创建时
-  // 组件式调用直接获取默认值，vanish 将没有任何效果，不进行 watch
+  // The component directly obtains the default value
+  // vanish will have no effect, and no watch will be performed.
   if (!meta.isTemplate && automatic) {
     watch(meta.visible, async () => {
       if (meta.visible.value)

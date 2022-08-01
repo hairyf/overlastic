@@ -1,5 +1,5 @@
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue-demi'
 import { useOverlayMeta } from './index.esm'
 export default defineComponent({
   setup: () => {

@@ -1,4 +1,4 @@
-import type { AppContext, InjectionKey, Ref, VNode } from 'vue'
+import type { AppContext, InjectionKey, Ref, VNode } from 'vue-demi'
 
 export const context = {
   appContext: null as null | AppContext,

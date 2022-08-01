@@ -1,5 +1,5 @@
-import type { Component, ExtractPropTypes } from 'vue'
-import { provide, ref } from 'vue'
+import type { Component, ExtractPropTypes } from 'vue-demi'
+import { provide, ref } from 'vue-demi'
 
 import { renderInstance } from './helper/render'
 import type { MountOverlayOptions } from './helper/interface'
