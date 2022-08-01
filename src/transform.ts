@@ -30,7 +30,7 @@ export function createOverlay<Params = any, Resolved = void>(
     renderInstance(component, props, {
       appContext: mountOptions?.appContext,
       root: mountOptions?.root,
-      setup: (vnode, _vanish) => {
+      provide: (vnode, _vanish) => {
         const visible = ref(false)
         function cancel(value: any) {
           reject?.(value)

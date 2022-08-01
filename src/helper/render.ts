@@ -4,7 +4,7 @@ import { context } from '../internal'
 import type { MountOverlayOptions } from './interface'
 
 export interface RenderInstanceOptions extends MountOverlayOptions {
-  setup?: (vnode: VNode, vanish: Function) => void
+  provide?: (vnode: VNode, vanish: Function) => void
 }
 
 /**
@@ -28,9 +28,9 @@ export const renderInstance = (
 
   // 创建高阶组件, 注入销毁方法与组件
   const Provider = defineComponent({
-    name: component.name,
+    name: `${component.name}OverlayProvider`,
     setup() {
-      options.setup?.(vnode, vanish)
+      options.provide?.(vnode, vanish)
     },
     render() {
       return h(component as any, props)
@@ -39,12 +39,10 @@ export const renderInstance = (
 
   // 创建虚拟节点, 渲染组件
   const container = document.createElement('div')
+  container.className = 'overlay-container'
   const vnode = createVNode(Provider, props)
 
-  if (context.appContext)
-    vnode.appContext = context.appContext
-  if (options.appContext)
-    vnode.appContext = options.appContext
+  vnode.appContext = options.appContext || context.appContext
 
   render(vnode, container)
 

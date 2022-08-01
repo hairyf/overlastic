@@ -18,3 +18,4 @@ export function executeOverlay<P = any, R = any>(component: Component, options?:
   return createOverlay<P, R>(component)(options?.props as any, options)
 }
 
+export const noop: Function = () => {}

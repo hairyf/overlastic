@@ -1,47 +1,66 @@
 import type { Ref } from 'vue-demi'
 import { getCurrentInstance, inject, onMounted, provide, ref, watch } from 'vue-demi'
 import delay from 'delay'
-import noop from 'lodash/noop'
 import { useVModel } from '@vueuse/core'
 import { OverlayMetaKey } from './internal'
+import { noop } from './utils'
 
 export interface UseOverlayMetaOptions {
-  /** 动画时长，避免过早销毁组件 */
+  /** animation duration to avoid premature destruction of components */
   animation?: number
-  /** 是否立即将 visible 设为 true */
+  /** whether to set visible to true immediately */
   immediate?: boolean
   /**
-   * template 使用的 v-model 字段
+   * v-model fields used by template
    *
    * @default 'visible'
    */
   model?: string
+  /**
+   * cancel event name used by the template
+   *
+   * @default 'cancel'
+   */
+  cancel?: string
+  /**
+   * confirm event name used by the template
+   *
+   * @default 'confirm'
+   */
+  confirm?: string
+  /**
+   * whether to automatically handle components based on visible and animation
+   *
+   * @default true
+   */
+  automatic?: boolean
 }
 
 /**
- * 获取弹出层元信息
- * @function cancel 调取失败，更改 visible，且当 animation 结束后销毁
- * @function confirm 调取成功，更改 visible，且当 animation 结束后销毁
- * @function vanish 销毁当前实例（立即调用，且会调用失败）
- * @field vnode 当前包装层的 VNode
- * @field visible 包装层属性，控制弹出层显示与隐藏
+ * get overlay layer meta information
+ * @function cancel  the notification cancel, modify visible, and destroy it after the animation ends
+ * @function confirm the notification confirm, modify visible, and destroy it after the animation ends
+ * @function vanish destroy the current instance (immediately)
+ * @field vnode the VNode of the current injection layer
+ * @field visible control popup display and hide
  * @returns
  */
 export function useOverlayMeta(options: UseOverlayMetaOptions = {}) {
-  const { animation = 0, immediate = true, model = 'visible' } = options
-  const defaultMeta = getTemplateMeta(model)
+  const { animation = 0, immediate = true, model = 'visible', automatic = true } = options
+  const defaultMeta = getTemplateMeta(model, options)
   const meta = inject(OverlayMetaKey, defaultMeta) || defaultMeta
 
   // 为了简便性和合理的逻辑组合，将 animation 逻辑移至 meta 创建时
   // 组件式调用直接获取默认值，vanish 将没有任何效果，不进行 watch
-  !meta.isTemplate
-    && watch(meta.visible, async () => {
+  if (!meta.isTemplate && automatic) {
+    watch(meta.visible, async () => {
       if (meta.visible.value)
         return undefined
       if (animation > 0)
         await delay(animation)
       meta.vanish?.()
     })
+  }
 
   if (immediate)
     onMounted(() => (meta.visible.value = true))
@@ -50,18 +69,18 @@ export function useOverlayMeta(options: UseOverlayMetaOptions = {}) {
   return meta
 }
 
-export function getTemplateMeta(model: string) {
+export function getTemplateMeta(model: string, options: UseOverlayMetaOptions = {}) {
   const instance = getCurrentInstance()
 
   const visible = instance ? useVModel(instance.props, model) as Ref<boolean> : ref(false)
 
   const cancel = (value?: any) => {
     visible.value = false
-    instance?.emit('cancel', value)
+    instance?.emit(options.cancel || 'cancel', value)
   }
   const confirm = (value?: any) => {
     visible.value = false
-    instance?.emit('confirm', value)
+    instance?.emit(options.confirm || 'confirm', value)
   }
   return {
     cancel,
