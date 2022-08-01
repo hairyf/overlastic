@@ -5,17 +5,17 @@ export const context = {
 }
 
 export interface OverlayMeta {
-  /** 调取失败，更改 visible，且当 animation 结束后销毁 */
+  /** the notification cancel, modify visible, and destroy it after the animation ends */
   cancel: Function
-  /** 调取成功，更改 visible，且当 animation 结束后销毁 */
+  /** the notification confirm, modify visible, and destroy it after the animation ends */
   confirm: Function
-  /** 销毁当前实例（立即，且调用失败），不是 overlay 则调用 reject */
+  /** destroy the current instance (immediately) */
   vanish: Function
-  /** vnode 当前包装层的 VNode */
+  /** vnode the VNode of the current injection layer */
   vnode?: VNode
-  /** visible 包装层属性，控制弹出层显示与隐藏 */
+  /** visible control popup display and hide */
   visible: Ref<boolean>
-  /** 使用默认的值(component 式调用) */
+  /** use in template */
   isTemplate?: boolean
 }
 

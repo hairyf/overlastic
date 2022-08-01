@@ -8,11 +8,9 @@ export interface ExecuteOverlayOptions<P = any> extends MountOverlayOptions {
 }
 
 /**
- * 调起 overlay 组件
- * @param component 组件
- * @param props 参数
- * @param options imperativeOverlay 的配置
- * @returns
+ * Execute overlay component
+ * @param component Component
+ * @param options mount options and props
  */
 export function executeOverlay<P = any, R = any>(component: Component, options?: ExecuteOverlayOptions<P>) {
   return createOverlay<P, R>(component)(options?.props as any, options)
