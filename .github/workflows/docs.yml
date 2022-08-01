@@ -22,6 +22,6 @@ jobs:
         # 构建结果存储的分支
         TARGET_BRANCH: gh_pages
         # 要使用的构建命令
-        BUILD_SCRIPT: npm i pnpm -g && pnpm i && pnpm docs:build
+        BUILD_SCRIPT: npm i pnpm -g && pnpm install --no-frozen-lockfile && pnpm docs:build
         # 构建结果存储目录
         BUILD_DIR: docs/.vitepress/dist/
