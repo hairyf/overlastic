@@ -13,7 +13,10 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Advanced',
       items: [
-        { text: 'Customized Component', link: '/en/advanced/customized' },
+        { text: 'Context Inherited', link: '/en/advanced/inherited-context' },
+        { text: 'External Control', link: '/en/advanced/external-control' },
+        { text: 'Custom Components', link: '/en/advanced/customized' },
+        { text: 'Typescript', link: '/en/advanced/typescript' },
       ],
     },
   ],
@@ -28,7 +31,10 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: '高级',
       items: [
-        { text: '定制化', link: '/zh/advanced/customized' },
+        { text: '上下文继承', link: '/zh/advanced/inherited-context' },
+        { text: '外部控制', link: '/zh/advanced/external-control' },
+        { text: '组件定制化', link: '/zh/advanced/customized' },
+        { text: 'Typescript', link: '/zh/advanced/typescript' },
       ],
     },
   ],
