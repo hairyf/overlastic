@@ -16,4 +16,8 @@ export function executeOverlay<P = any, R = any>(component: Component, options?:
   return createOverlay<P, R>(component)(options?.props as any, options)
 }
 
+export function delay(milliseconds: number) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
 export const noop: Function = () => {}
