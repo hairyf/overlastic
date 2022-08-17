@@ -52,7 +52,6 @@ const nav: DefaultTheme.NavItem[] = [
 ]
 
 const config = defineConfig({
-  base: '/unoverlay-vue/',
   lang: 'zh',
   locales: {
     '/': {
