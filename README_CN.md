@@ -4,7 +4,7 @@
 
 > Oh, this image is from [vuejs-overlay](https://github.com/fattihkoca/vuejs-overlay), but he's really cool and I'm lazy so I stole it (sorry)
 
-> [English](./README.md) | 中文 or see [github.io/unoverlay-vue](https://tuimao233.github.io/unoverlay-vue/zh/)
+> [English](./README.md) | 中文 or see [github.io/unoverlay-vue](https://unoverlay-vue.vercel.app/zh/)
 
 通用的弹出层 Vue2/3 制作工具，它可以: 
 
