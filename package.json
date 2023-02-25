@@ -1,6 +1,6 @@
 {
   "name": "unoverlay-vue",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "index.ts",
   "keywords": [
     "unified",
@@ -46,6 +46,14 @@
       ]
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/unoverlay-vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/unoverlay-vue/issues"
+  },
+  "homepage": "https://github.com/TuiMao233/unoverlay-vue#readme",
   "license": "MIT",
   "dependencies": {
     "@vueuse/core": "^8.7.4",
