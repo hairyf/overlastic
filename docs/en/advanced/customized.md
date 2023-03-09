@@ -17,7 +17,7 @@ const { visible, confirm, cancel } = useOverlayMeta({
 </script>
 
 <template>
-  <el-dialog v-model:visible="visible" :title="title" @close="cancel()">
+  <el-dialog v-model="visible" :title="title" @close="cancel()">
     <!-- your content -->
     <button @click="confirm(`${title}:confirmed`)" />
   </el-dialog>
