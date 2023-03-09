@@ -1,10 +1,10 @@
-/* eslint-disable vue/one-component-per-file */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { App, AppContext, Component, VNode } from 'vue-demi'
+import type { Component } from 'vue-demi'
 import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
 import { context } from '../internal'
 import { createGlobalNode } from '../utils'
+import { defineProviderComp } from './define'
 import type { MountOptions } from './interface'
 
 export interface RenderInstanceOptions extends MountOptions {
@@ -24,14 +24,10 @@ export const renderInstance = (
 
   const name = `${component.name}OverlayProvider`
 
-  const Provider = defineComponent({
+  const Provider = defineProviderComp(component, {
+    setup: options.setup,
+    props,
     name,
-    setup() {
-      options.setup?.()
-    },
-    render() {
-      return h(component as any, props)
-    },
   })
 
   const container = createGlobalNode(name)
@@ -48,6 +44,10 @@ export const renderInstance = (
   }
 
   return { vanish, vnode }
+}
+
+export function renderVNode() {
+
 }
 
 export function createChildApp(
