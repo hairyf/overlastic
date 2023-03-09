@@ -1,4 +1,4 @@
-import type { AppContext, InjectionKey, Ref, VNode } from 'vue-demi'
+import type { AppContext, InjectionKey, Ref } from 'vue-demi'
 
 export const context = {
   appContext: null as null | AppContext,
@@ -11,8 +11,6 @@ export interface OverlayMeta {
   confirm: Function
   /** destroy the current instance (immediately) */
   vanish: Function
-  /** vnode the VNode of the current injection layer */
-  vnode?: VNode
   /** visible control popup display and hide */
   visible: Ref<boolean>
   /** use in template */

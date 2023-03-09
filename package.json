@@ -1,7 +1,7 @@
 {
   "name": "unoverlay-vue",
   "version": "0.2.4",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "keywords": [
     "unified",
     "overlay",

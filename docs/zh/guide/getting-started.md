@@ -83,13 +83,13 @@ const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
 
-你也可以通过 `executeOverlay` 直接调起组件，跳过 `createOverlay` 方法。
+你也可以通过 `renderOverlay` 直接调起组件，跳过 `createOverlay` 方法。
 
 ```ts
-import { executeOverlay } from 'unoverlay-vue'
+import { renderOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const value = await executeOverlay(OverlayComponent, {
+const value = await renderOverlay(OverlayComponent, {
   props: { title: 'useOverlay' }
 })
 // value === "useOverlay:confirmed"

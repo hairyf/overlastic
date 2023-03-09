@@ -1,10 +1,14 @@
-import type { Component, VNode } from 'vue-demi'
-import { createVNode, defineComponent, h, render } from 'vue-demi'
-import { context } from '../internal'
-import type { MountOverlayOptions } from './interface'
+/* eslint-disable vue/one-component-per-file */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import type { App, Component, VNode } from 'vue-demi'
+import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
-export interface RenderInstanceOptions extends MountOverlayOptions {
-  provide?: (vnode: VNode, vanish: Function) => void
+import { context } from '../internal'
+import { createGlobalNode } from '../utils'
+import type { MountOptions } from './interface'
+
+export interface RenderInstanceOptions extends MountOptions {
+  setup?: () => void
 }
 
 export const renderInstance = (
@@ -18,20 +22,21 @@ export const renderInstance = (
     render(null, container)
   }
 
+  const name = `${component.name}OverlayProvider`
+
   const Provider = defineComponent({
-    name: `${component.name}OverlayProvider`,
+    name,
     setup() {
-      options.provide?.(vnode, vanish)
+      options.setup?.()
     },
     render() {
       return h(component as any, props)
     },
   })
 
-  const container = document.createElement('div')
-  container.className = 'overlay-container'
-  const vnode = createVNode(Provider, props)
+  const container = createGlobalNode(name)
 
+  const vnode = createVNode(Provider)
   vnode.appContext = options.appContext || context.appContext
 
   render(vnode, container)
@@ -43,4 +48,41 @@ export const renderInstance = (
   }
 
   return { vanish, vnode }
+}
+
+export function createChildApp(
+  component: Component,
+  props?: Record<string, any>,
+  options: RenderInstanceOptions = {}) {
+  const id = `${component.name || ''}OverlayProvider`
+
+  const vanish = () => {
+    app.unmount()
+    container.remove()
+  }
+
+  const Provider = defineComponent({
+    name: id,
+    setup() {
+      options.setup?.()
+    },
+    render() {
+      return h(component as any, props)
+    },
+  })
+
+  const app = createApp(Provider)
+
+  const parent = options.appContext?.app || context.appContext?.app
+  if (parent) {
+    app.config.globalProperties = parent.config.globalProperties
+    const { reload, ...appContext } = parent._context as any
+    Object.assign(app._context, appContext)
+  }
+
+  const container = createGlobalNode(id, options.root)
+
+  app.mount(container)
+
+  return { vanish, app }
 }

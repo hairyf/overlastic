@@ -85,10 +85,10 @@ const value = await callback({ title: 'callbackOverlay' })
 或在 `setup` 中调用
 
 ```ts
-import { executeOverlay } from 'unoverlay-vue'
+import { renderOverlay } from 'unoverlay-vue'
 import OverlayComponent from './overlay.vue'
 
-const value = await executeOverlay(OverlayComponent, {
+const value = await renderOverlay(OverlayComponent, {
   props: { title: 'useOverlay' }
 })
 // value === "useOverlay:confirmed"

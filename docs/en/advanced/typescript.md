@@ -26,7 +26,7 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 </script>
 ```
 
-- Step.3: 在使用 `createOverlay` 或 `executeOverlay` 时传入类型
+- Step.3: 在使用 `createOverlay` 或 `renderOverlay` 时传入类型
 
 ```ts
 import { createOverlay } from 'unoverlay-vue'
