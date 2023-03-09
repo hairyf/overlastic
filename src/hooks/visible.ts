@@ -1,7 +1,13 @@
 import { ref } from 'vue'
-import type { ExePromiserOptions } from '../transform'
+import type { ImperativePromise } from '../transform'
 
-export function useVisible(promiser: ExePromiserOptions, _vanish: Function) {
+export interface ExecutorPromiserOptions {
+  resolve: Function
+  reject: Function
+  promise: ImperativePromise<any>
+}
+
+export function useVisible(promiser: ExecutorPromiserOptions, _vanish: Function) {
   const { reject, resolve, promise } = promiser
 
   const visible = ref(false)
