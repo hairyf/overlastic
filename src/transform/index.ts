@@ -1,14 +1,14 @@
 import type { Component, ExtractPropTypes } from 'vue-demi'
 import { provide, ref } from 'vue-demi'
 
-import { renderInstance } from './helper/render'
-import type { MountOverlayOptions } from './helper/interface'
-import { OverlayMetaKey } from './internal'
+import { renderInstance } from '../helper/render'
+import type { MountOverlayOptions } from '../helper/interface'
+import { OverlayMetaKey } from '../internal'
+import { createPromiser } from '../utils'
 
 export type ImperativePromise<T = any> = Promise<T> & { cancel: Function; confirm: Function }
 
-export type ExtractInferTypes<Props> = Props extends ExtractPropTypes<infer E> ? E : ExtractPropTypes<Props>
-export type ImperativeOverlay<Params, Resolved> = (props?: ExtractInferTypes<Params>, options?: MountOverlayOptions) => ImperativePromise<Resolved>
+export type ImperativeOverlay<Params, Resolved> = (props?: ExtractPropTypes<Params>, options?: MountOverlayOptions) => ImperativePromise<Resolved>
 
 export interface ExePromiserOptions {
   resolve: Function
@@ -16,11 +16,15 @@ export interface ExePromiserOptions {
   promise: ImperativePromise<any>
 }
 
+export interface ExecuteOverlayOptions<P = any> extends MountOverlayOptions {
+  props?: P
+}
+
 /**
  * Create imperative overlay
  * @param component Component
  */
-export function createOverlay<Params = any, Resolved = void>(
+export function createOverlay<Params, Resolved = void>(
   component: Component,
 ): ImperativeOverlay<Params, Resolved> {
   const executor = (props: any, promiser: ExePromiserOptions, mountOptions?: MountOverlayOptions) => {
@@ -69,12 +73,11 @@ export function createOverlay<Params = any, Resolved = void>(
   return caller
 }
 
-export function createPromiser<P = Promise<any>>() {
-  let resolve!: Function
-  let reject!: Function
-  const promise = new Promise<any>((_resolve, _reject) => {
-    resolve = _resolve
-    reject = _reject
-  }) as unknown as P
-  return { promise, reject, resolve }
+/**
+ * Execute overlay component
+ * @param component Component
+ * @param options mount options and props
+ */
+export function executeOverlay<P = any, R = any>(component: Component, options?: ExecuteOverlayOptions<P>) {
+  return createOverlay<P, R>(component)(options?.props as any, options)
 }
