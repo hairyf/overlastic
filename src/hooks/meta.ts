@@ -4,7 +4,7 @@ import { useVModel } from '@vueuse/core'
 import { OverlayMetaKey } from '../internal'
 import { delay, noop } from '../utils'
 
-export interface UseOverlayMetaOptions {
+export interface OverlayMetaOptions {
   /** animation duration to avoid premature destruction of components */
   animation?: number
   /** whether to set visible to true immediately */
@@ -44,7 +44,7 @@ export interface UseOverlayMetaOptions {
  * @field visible control popup display and hide
  * @returns
  */
-export function useOverlayMeta(options: UseOverlayMetaOptions = {}) {
+export function useOverlayMeta(options: OverlayMetaOptions = {}) {
   const { animation = 0, immediate = true, model = 'visible', automatic = true } = options
   const defaultMeta = getTemplateMeta(model, options)
   const meta = inject(OverlayMetaKey, defaultMeta) || defaultMeta
@@ -68,7 +68,7 @@ export function useOverlayMeta(options: UseOverlayMetaOptions = {}) {
   return meta
 }
 
-export function getTemplateMeta(model: string, options: UseOverlayMetaOptions = {}) {
+export function getTemplateMeta(model: string, options: OverlayMetaOptions = {}) {
   const instance = getCurrentInstance()
 
   const visible = instance ? useVModel(instance.props, model) as Ref<boolean> : ref(false)

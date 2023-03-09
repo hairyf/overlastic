@@ -1,6 +1,6 @@
 /* eslint-disable vue/one-component-per-file */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { App, Component, VNode } from 'vue-demi'
+import type { App, AppContext, Component, VNode } from 'vue-demi'
 import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
 import { context } from '../internal'

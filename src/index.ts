@@ -4,12 +4,11 @@ import { context } from './internal'
 const install = (app: App) => {
   context.appContext = app._context
 }
-
 const unoverlay = { install }
 
+export type { ImperativeOverlay, RenderOptions } from './transform'
+export { useOverlayMeta, OverlayMetaOptions } from './hooks'
+export { createOverlay, renderOverlay } from './transform'
 export { install }
 
-export type { ImperativeOverlay, RenderOptions } from './transform'
-export { useOverlayMeta, UseOverlayMetaOptions } from './hooks/meta'
-export { createOverlay, renderOverlay } from './transform'
 export default unoverlay

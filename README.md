@@ -1,4 +1,4 @@
-# unoverlay-vue
+# vue-overlays
 
 ![image](https://user-images.githubusercontent.com/1655312/70054926-8d469d80-15e9-11ea-9fdc-c8f65bf9bc85.png)
 

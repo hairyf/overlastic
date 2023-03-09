@@ -1,8 +1,8 @@
 import type { Component, ExtractPropTypes } from 'vue-demi'
 import { provide } from 'vue-demi'
 
-import { renderInstance } from '../helper/render'
-import type { MountOptions } from '../helper/interface'
+import { renderInstance } from '../helper'
+import type { MountOptions } from '../helper'
 import { OverlayMetaKey } from '../internal'
 import { allowed, createPromiser } from '../utils'
 import { useVisible } from '../hooks'
