@@ -25,7 +25,7 @@ yarn add unoverlay-vue
 
 ```ts
 // main.js
-import { createApp } from 'vue'
+import { createApp } from 'vue-demi'
 import unoverlay from 'unoverlay-vue'
 import App from './App.vue'
 
@@ -41,7 +41,7 @@ app.mount('#app')
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { defineEmits, defineProps } from 'vue'
+import { defineEmits, defineProps } from 'vue-demi'
 import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,

@@ -1,9 +1,10 @@
-let portalIndex = 1
+export const UnifiedOverlayProviderID = 'unified-overlay'
 
-export function createGlobalNode(id?: string, root: HTMLElement = document.body) {
+export function createGlobalNode(id = '', root: HTMLElement = document.body) {
   const el = document.createElement('div')
 
-  el.id = `${id}--${portalIndex++}`
+  if (id)
+    el.id = id
 
   root.appendChild(el)
 

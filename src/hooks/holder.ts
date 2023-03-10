@@ -1,11 +1,11 @@
-import type { Component } from 'vue'
-import { Teleport, h, nextTick, provide, reactive, ref } from 'vue'
+import type { Component } from 'vue-demi'
+import { Teleport, h, nextTick, provide, reactive, ref } from 'vue-demi'
 
 import mitt from 'mitt'
 
 import type { MountOptions } from '../helper'
 import { defineProviderComponent } from '../helper'
-import { createImperativePromiser } from '../utils'
+import { createImperativePromiser, varName } from '../utils'
 import { OverlayMetaKey } from '../internal'
 import type { ImperativeOverlay } from '../transform'
 import type { VisiblePromiseOptions } from './visible'
@@ -18,11 +18,14 @@ export function useInjectionHolder<Props, Resolved = void>(
   options: Omit<MountOptions, 'appContext'> = {},
 ): InjectionHolder<Props, Resolved> {
   const { callback, scripts, props, refresh } = useRefreshMetadata()
+  const name = varName(options.id, options.autoIncrement)
 
   function render() {
     return h(Teleport,
-      { to: options.root || document.body },
-      [h(component, props.value)],
+      { to: options.root || document.body, disabled: !!(options.root === false) },
+      [
+        h('div', { id: name }, [h(component, props.value)]),
+      ],
     )
   }
 
@@ -46,6 +49,7 @@ export function useRefreshMetadata() {
     events,
     vanish,
   })
+  const scripts = useVisibleScripts(visible, options)
 
   function vanish() {
     refresh.value = false
@@ -62,8 +66,6 @@ export function useRefreshMetadata() {
     Object.assign(options, { promiser })
     return promiser.promise
   }
-
-  const scripts = useVisibleScripts(visible, options)
 
   return { callback, scripts, props, refresh }
 }

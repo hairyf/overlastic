@@ -57,13 +57,12 @@
   "license": "MIT",
   "dependencies": {
     "@vueuse/core": "^8.7.4",
-    "lodash": "^4",
     "mitt": "^3.0.0",
+    "pascal-case": "latest",
     "vue-demi": "latest"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.1",
-    "@types/lodash": "^4",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vitejs/plugin-vue-jsx": "^1.3.10",
     "@vue/test-utils": "^2.0.0",

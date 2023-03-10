@@ -1,18 +1,19 @@
 import type { Component, ExtractPropTypes } from 'vue-demi'
 import { provide, ref } from 'vue-demi'
 
-import { renderVNode } from '../helper'
+import { renderChildApp } from '../helper'
 import type { MountOptions } from '../helper'
 import { OverlayMetaKey } from '../internal'
 import type { ImperativePromise } from '../utils'
-import { createImperativePromiser } from '../utils'
+import { createImperativePromiser, noop } from '../utils'
+
 import { useVisibleScripts } from '../hooks'
 
 export interface ImperativeOverlay<Props, Resolved> {
   (props?: ExtractPropTypes<Props>, options?: MountOptions): ImperativePromise<Resolved>
 }
 
-export interface RenderOptions<Props = unknown> extends MountOptions {
+export interface RenderOptions<Props> extends MountOptions {
   props?: ExtractPropTypes<Props>
 }
 
@@ -22,13 +23,13 @@ export interface RenderOptions<Props = unknown> extends MountOptions {
  */
 export function createOverlay<Props, Resolved = void>(component: Component): ImperativeOverlay<Props, Resolved> {
   function executor(props: any, promiser: any, options?: any) {
-    let vanish: Function
+    const caches = { vanish: noop }
     function setup() {
       const visible = ref(false)
-      const scripts = useVisibleScripts(visible, { promiser, vanish })
+      const scripts = useVisibleScripts(visible, Object.assign(caches, { promiser }))
       provide(OverlayMetaKey, scripts)
     }
-    ({ vanish } = renderVNode(component, props, { ...options, setup }))
+    caches.vanish = renderChildApp(component, props, { ...options, setup }).vanish
   }
 
   function caller(props: any, options?: any) {

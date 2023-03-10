@@ -2,56 +2,51 @@
 import type { Component } from 'vue-demi'
 import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
+import { pascalCase } from 'pascal-case'
 import { context } from '../internal'
-import { createGlobalNode } from '../utils'
+import { createGlobalNode, varName } from '../utils'
 import { defineProviderComponent } from './define'
 import type { MountOptions } from './interface'
 
-export interface RenderVNodeOptions extends MountOptions {
+export interface RenderChildOptions extends MountOptions {
   setup?: () => void
 }
 
 export function renderVNode(
   component: Component,
   props?: Record<string, any>,
-  options: RenderVNodeOptions = {},
+  options: RenderChildOptions = {},
 ) {
   // There is no need to call document.body.removeChild(container.firstElementChild) here
   // Because calling render(null, container) does the work for us
+  const name = varName(options.id, options.autoIncrement)
 
   function vanish() {
     render(null, container)
+    container.remove()
   }
 
-  const name = `${component.name}OverlayProvider`
-
   const Provider = defineProviderComponent(component, {
+    name: pascalCase(name),
     setup: options.setup,
     props,
-    name,
   })
 
-  const container = createGlobalNode(name)
-
   const vnode = createVNode(Provider)
+  const container = createGlobalNode(name, options.root || document.body)
+
   vnode.appContext = options.appContext || context.appContext
 
   render(vnode, container)
 
-  // append document.body
-  if (container.firstElementChild) {
-    const root = options.root || document.body
-    root.append(container.firstElementChild)
-  }
-
-  return { vanish, vnode }
+  return { vanish }
 }
 
 export function renderChildApp(
   component: Component,
   props?: Record<string, any>,
-  options: RenderVNodeOptions = {}) {
-  const id = `${component.name || ''}OverlayProvider`
+  options: RenderChildOptions = {}) {
+  const name = varName(options.id, options.autoIncrement)
 
   function vanish() {
     app.unmount()
@@ -59,7 +54,7 @@ export function renderChildApp(
   }
 
   const Provider = defineComponent({
-    name: id,
+    name: pascalCase(name),
     setup() {
       options.setup?.()
     },
@@ -77,9 +72,9 @@ export function renderChildApp(
     Object.assign(app._context, appContext)
   }
 
-  const container = createGlobalNode(id, options.root)
+  const container = createGlobalNode(name, options.root || document.body)
 
   app.mount(container)
 
-  return { vanish, app }
+  return { vanish }
 }

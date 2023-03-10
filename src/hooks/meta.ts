@@ -3,18 +3,60 @@ import { getCurrentInstance, inject, onMounted, provide, ref, watch } from 'vue-
 import { useVModel } from '@vueuse/core'
 import { OverlayMetaKey } from '../internal'
 import { delay, noop } from '../utils'
-import type { OverlayMetaOptions } from '../types'
+
+export interface OverlayOptions {
+  /** animation duration to avoid premature destruction of components */
+  animation?: number
+  /** whether to set visible to true immediately */
+  immediate?: boolean
+  /**
+   * v-model fields used by template
+   *
+   * @default 'visible'
+   */
+  model?: string
+  /**
+   * cancel event name used by the template
+   *
+   * @default 'cancel'
+   */
+  cancel?: string
+  /**
+   * confirm event name used by the template
+   *
+   * @default 'confirm'
+   */
+  confirm?: string
+  /**
+   * whether to automatically handle components based on visible and animation
+   *
+   * @default true
+   */
+  automatic?: boolean
+}
+
+export interface OverlayMeta {
+  /** the notification cancel, modify visible, and destroy it after the animation ends */
+  cancel: Function
+  /** the notification confirm, modify visible, and destroy it after the animation ends */
+  confirm: Function
+  /** destroy the current instance (immediately) */
+  vanish: Function
+  /** visible control popup display and hide */
+  visible: Ref<boolean>
+  /** use in template */
+  isTemplate?: boolean
+}
 
 /**
  * get overlay layer meta information
  * @function cancel  the notification cancel, modify visible, and destroy it after the animation ends
  * @function confirm the notification confirm, modify visible, and destroy it after the animation ends
  * @function vanish destroy the current instance (immediately)
- * @field vnode the VNode of the current injection layer
  * @field visible control popup display and hide
  * @returns
  */
-export function useOverlayMeta(options: OverlayMetaOptions = {}) {
+export function useOverlayMeta(options: OverlayOptions = {}) {
   const { animation = 0, immediate = true, model = 'visible', automatic = true } = options
   const meta = inject(OverlayMetaKey, useTemplateMeta(model, options))
 
@@ -37,7 +79,7 @@ export function useOverlayMeta(options: OverlayMetaOptions = {}) {
   return meta
 }
 
-export function useTemplateMeta(model: string, options: OverlayMetaOptions = {}) {
+export function useTemplateMeta(model: string, options: OverlayOptions = {}) {
   const instance = getCurrentInstance()
 
   const visible = instance ? useVModel(instance.props, model) as Ref<boolean> : ref(false)

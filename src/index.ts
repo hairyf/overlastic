@@ -7,9 +7,10 @@ const install = (app: App) => {
 const unoverlay = { install }
 
 export type { ImperativeOverlay, RenderOptions } from './transform'
-export type { OverlayMetaOptions } from './hooks'
+export type { OverlayOptions, OverlayMeta, InjectionHolder } from './hooks'
 export { useOverlayMeta, useInjectionHolder } from './hooks'
 export { createOverlay, renderOverlay } from './transform'
+export { UnifiedOverlayProvider } from './components'
 export { install }
 
 export default unoverlay

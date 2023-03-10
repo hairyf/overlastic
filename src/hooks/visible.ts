@@ -1,4 +1,4 @@
-import type { Ref } from 'vue'
+import type { Ref } from 'vue-demi'
 import type { Emitter } from 'mitt'
 import { OverEvents } from '../internal'
 import type { ImperativePromiser } from '../utils'

@@ -1,5 +1,5 @@
-import type { Component, RenderFunction, SetupContext } from 'vue'
-import { defineComponent, h } from 'vue'
+import type { Component, RenderFunction, SetupContext } from 'vue-demi'
+import { defineComponent, h } from 'vue-demi'
 
 export interface ComponentOptions {
   name?: string
@@ -12,7 +12,7 @@ export function defineProviderComponent(component: Component, options: Component
     return h(component, options.props)
   }
   const Provider = defineComponent({
-    name: options.name || `${component.name || ''}OverlayProvider`,
+    name: options.name,
     setup: options.setup,
     render: options.render === false
       ? undefined

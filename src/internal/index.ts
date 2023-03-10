@@ -1,17 +1,5 @@
-import type { AppContext, InjectionKey, Ref } from 'vue-demi'
-
-export interface OverlayMeta {
-  /** the notification cancel, modify visible, and destroy it after the animation ends */
-  cancel: Function
-  /** the notification confirm, modify visible, and destroy it after the animation ends */
-  confirm: Function
-  /** destroy the current instance (immediately) */
-  vanish: Function
-  /** visible control popup display and hide */
-  visible: Ref<boolean>
-  /** use in template */
-  isTemplate?: boolean
-}
+import type { AppContext, InjectionKey } from 'vue-demi'
+import type { OverlayMeta } from '../hooks'
 
 export const context = {
   appContext: null as null | AppContext,

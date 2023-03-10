@@ -1,7 +1,7 @@
 import { it } from 'vitest'
-import { defineComponent } from 'vue'
-import { renderVNode } from '../src/helper/render'
+import { defineComponent } from 'vue-demi'
+import { renderChildApp } from '../src/helper/render'
 
 it('render basic', () => {
-  renderVNode(defineComponent({}), {})
+  renderChildApp(defineComponent({}), {})
 })
