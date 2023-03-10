@@ -23,5 +23,5 @@ export function createImperativePromiser<T = void>() {
   const promiser = createPromiser<{ confirm: Function; cancel: Function }, T>()
   promiser.promise.confirm = allowed
   promiser.promise.cancel = allowed
-  return promiser as ImperativePromiser
+  return promiser as ImperativePromiser<T>
 }

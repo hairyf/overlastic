@@ -35,7 +35,7 @@ export function createOverlay<Props, Resolved = void>(component: Component): Imp
   function caller(props: any, options?: any) {
     const promiser = createImperativePromiser()
     executor(props, promiser, options)
-    return promiser.promise as ImperativePromise<Resolved>
+    return promiser.promise as unknown as ImperativePromise<Resolved>
   }
 
   return caller
