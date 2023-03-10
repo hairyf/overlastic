@@ -3,37 +3,7 @@ import { getCurrentInstance, inject, onMounted, provide, ref, watch } from 'vue-
 import { useVModel } from '@vueuse/core'
 import { OverlayMetaKey } from '../internal'
 import { delay, noop } from '../utils'
-
-export interface OverlayMetaOptions {
-  /** animation duration to avoid premature destruction of components */
-  animation?: number
-  /** whether to set visible to true immediately */
-  immediate?: boolean
-  /**
-   * v-model fields used by template
-   *
-   * @default 'visible'
-   */
-  model?: string
-  /**
-   * cancel event name used by the template
-   *
-   * @default 'cancel'
-   */
-  cancel?: string
-  /**
-   * confirm event name used by the template
-   *
-   * @default 'confirm'
-   */
-  confirm?: string
-  /**
-   * whether to automatically handle components based on visible and animation
-   *
-   * @default true
-   */
-  automatic?: boolean
-}
+import type { OverlayMetaOptions } from '../types'
 
 /**
  * get overlay layer meta information
@@ -46,8 +16,7 @@ export interface OverlayMetaOptions {
  */
 export function useOverlayMeta(options: OverlayMetaOptions = {}) {
   const { animation = 0, immediate = true, model = 'visible', automatic = true } = options
-  const defaultMeta = getTemplateMeta(model, options)
-  const meta = inject(OverlayMetaKey, defaultMeta) || defaultMeta
+  const meta = inject(OverlayMetaKey, useTemplateMeta(model, options))
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
@@ -68,7 +37,7 @@ export function useOverlayMeta(options: OverlayMetaOptions = {}) {
   return meta
 }
 
-export function getTemplateMeta(model: string, options: OverlayMetaOptions = {}) {
+export function useTemplateMeta(model: string, options: OverlayMetaOptions = {}) {
   const instance = getCurrentInstance()
 
   const visible = instance ? useVModel(instance.props, model) as Ref<boolean> : ref(false)

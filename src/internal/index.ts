@@ -1,9 +1,5 @@
 import type { AppContext, InjectionKey, Ref } from 'vue-demi'
 
-export const context = {
-  appContext: null as null | AppContext,
-}
-
 export interface OverlayMeta {
   /** the notification cancel, modify visible, and destroy it after the animation ends */
   cancel: Function
@@ -17,4 +13,12 @@ export interface OverlayMeta {
   isTemplate?: boolean
 }
 
+export const context = {
+  appContext: null as null | AppContext,
+}
 export const OverlayMetaKey: InjectionKey<OverlayMeta> = Symbol('__imperative_overlay_key')
+
+export enum OverEvents {
+  Cancel = 'cancel',
+  Confirm = 'confirm',
+}

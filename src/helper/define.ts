@@ -5,16 +5,18 @@ export interface ComponentOptions {
   name?: string
   props?: any
   setup?: (props: any, context: SetupContext) => RenderFunction | void | any
-  render?: Function
+  render?: Function | false
 }
-export function defineProviderComp(component: Component, options: ComponentOptions) {
+export function defineProviderComponent(component: Component, options: ComponentOptions) {
   function defaultRender() {
     return h(component, options.props)
   }
   const Provider = defineComponent({
-    name: options.name,
+    name: options.name || `${component.name || ''}OverlayProvider`,
     setup: options.setup,
-    render: options.render || defaultRender,
+    render: options.render === false
+      ? undefined
+      : (options.render || defaultRender),
   })
   return Provider
 }

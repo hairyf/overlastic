@@ -4,27 +4,28 @@ import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
 import { context } from '../internal'
 import { createGlobalNode } from '../utils'
-import { defineProviderComp } from './define'
+import { defineProviderComponent } from './define'
 import type { MountOptions } from './interface'
 
-export interface RenderInstanceOptions extends MountOptions {
+export interface RenderVNodeOptions extends MountOptions {
   setup?: () => void
 }
 
-export const renderInstance = (
+export function renderVNode(
   component: Component,
   props?: Record<string, any>,
-  options: RenderInstanceOptions = {},
-) => {
+  options: RenderVNodeOptions = {},
+) {
   // There is no need to call document.body.removeChild(container.firstElementChild) here
   // Because calling render(null, container) does the work for us
-  const vanish = () => {
+
+  function vanish() {
     render(null, container)
   }
 
   const name = `${component.name}OverlayProvider`
 
-  const Provider = defineProviderComp(component, {
+  const Provider = defineProviderComponent(component, {
     setup: options.setup,
     props,
     name,
@@ -46,17 +47,13 @@ export const renderInstance = (
   return { vanish, vnode }
 }
 
-export function renderVNode() {
-
-}
-
-export function createChildApp(
+export function renderChildApp(
   component: Component,
   props?: Record<string, any>,
-  options: RenderInstanceOptions = {}) {
+  options: RenderVNodeOptions = {}) {
   const id = `${component.name || ''}OverlayProvider`
 
-  const vanish = () => {
+  function vanish() {
     app.unmount()
     container.remove()
   }

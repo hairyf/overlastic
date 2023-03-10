@@ -1,31 +1,34 @@
-import { ref } from 'vue'
-import type { ImperativePromise } from '../transform'
+import type { Ref } from 'vue'
+import type { Emitter } from 'mitt'
+import { OverEvents } from '../internal'
+import type { ImperativePromiser } from '../utils'
 
-export interface ExecutorPromiserOptions {
-  resolve: Function
-  reject: Function
-  promise: ImperativePromise<any>
+export interface VisiblePromiseOptions {
+  promiser?: ImperativePromiser
+  vanish?: Function
+  events?: Emitter<any>
 }
 
-export function useVisible(promiser: ExecutorPromiserOptions, _vanish: Function) {
-  const { reject, resolve, promise } = promiser
-
-  const visible = ref(false)
-  function cancel(value: any) {
-    reject?.(value)
+export function useVisibleScripts(visible: Ref<boolean>, options: VisiblePromiseOptions) {
+  function cancel(value?: any) {
+    options.promiser?.reject(value)
+    options.events?.emit(OverEvents.Cancel, value)
     visible.value = false
   }
-  function confirm(value: any) {
-    resolve?.(value)
+  function confirm(value?: any) {
+    options.promiser?.resolve(value)
+    options.events?.emit(OverEvents.Confirm, value)
     visible.value = false
   }
   function vanish() {
-    _vanish?.()
-    reject?.()
+    options.vanish?.()
+    options.promiser?.reject()
   }
 
-  promise.confirm = confirm
-  promise.cancel = cancel
+  if (options.promiser) {
+    options.promiser.promise.confirm = confirm
+    options.promiser.promise.cancel = cancel
+  }
 
   return { visible, confirm, cancel, vanish }
 }

@@ -1,16 +1,12 @@
 import type { Component, ExtractPropTypes } from 'vue-demi'
-import { provide } from 'vue-demi'
+import { provide, ref } from 'vue-demi'
 
-import { renderInstance } from '../helper'
+import { renderVNode } from '../helper'
 import type { MountOptions } from '../helper'
 import { OverlayMetaKey } from '../internal'
-import { allowed, createPromiser } from '../utils'
-import { useVisible } from '../hooks'
-
-export interface ImperativePromise<T = any> extends Promise<T> {
-  cancel: Function
-  confirm: Function
-}
+import type { ImperativePromise } from '../utils'
+import { createImperativePromiser } from '../utils'
+import { useVisibleScripts } from '../hooks'
 
 export interface ImperativeOverlay<Props, Resolved> {
   (props?: ExtractPropTypes<Props>, options?: MountOptions): ImperativePromise<Resolved>
@@ -28,17 +24,17 @@ export function createOverlay<Props, Resolved = void>(component: Component): Imp
   function executor(props: any, promiser: any, options?: any) {
     let vanish: Function
     function setup() {
-      provide(OverlayMetaKey, useVisible(promiser, vanish))
+      const visible = ref(false)
+      const scripts = useVisibleScripts(visible, { promiser, vanish })
+      provide(OverlayMetaKey, scripts)
     }
-    ({ vanish } = renderInstance(component, props, { ...options, setup }))
+    ({ vanish } = renderVNode(component, props, { ...options, setup }))
   }
 
   function caller(props: any, options?: any) {
-    const promiser = createPromiser<ImperativePromise>()
-    promiser.promise.confirm = allowed
-    promiser.promise.cancel = allowed
+    const promiser = createImperativePromiser()
     executor(props, promiser, options)
-    return promiser.promise
+    return promiser.promise as ImperativePromise<Resolved>
   }
 
   return caller

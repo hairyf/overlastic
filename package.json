@@ -58,6 +58,7 @@
   "dependencies": {
     "@vueuse/core": "^8.7.4",
     "lodash": "^4",
+    "mitt": "^3.0.0",
     "vue-demi": "latest"
   },
   "devDependencies": {
