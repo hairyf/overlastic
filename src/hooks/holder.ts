@@ -11,9 +11,9 @@ import type { ImperativeOverlay } from '../transform'
 import type { VisiblePromiseOptions } from './visible'
 import { useVisibleScripts } from './visible'
 
-export type InjectionHolder<Props, Resolved> = [Component, ImperativeOverlay<Props, Resolved>]
+export type InjectionHolder<Props, Resolved> = [ImperativeOverlay<Props, Resolved>, Component]
 
-export function useInjectionHolder<Props, Resolved = void>(
+export function useInjectHolder<Props, Resolved = void>(
   component: Component,
   options: Omit<MountOptions, 'appContext'> = {},
 ): InjectionHolder<Props, Resolved> {
@@ -37,7 +37,7 @@ export function useInjectionHolder<Props, Resolved = void>(
     },
   })
 
-  return [holder, callback as any]
+  return [callback as any, holder]
 }
 
 export function useRefreshMetadata() {

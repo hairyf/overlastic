@@ -8,6 +8,8 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: 'What is Unoverlay Vue?', link: '/en/guide/what-is-unoverlay-vue' },
         { text: 'Getting Started', link: '/en/guide/getting-started' },
+        { text: 'Template Support', link: '/en/guide/in-template' },
+        { text: 'Devtools', link: '/en/guide/devtools' },
       ],
     },
     {
@@ -16,6 +18,7 @@ const sidebar: DefaultTheme.Sidebar = {
         { text: 'Context Inherited', link: '/en/advanced/context-inherited' },
         { text: 'External Control', link: '/en/advanced/external-control' },
         { text: 'Custom Components', link: '/en/advanced/customized' },
+        { text: 'Holder', link: '/en/advanced/holder' },
         { text: 'Typescript', link: '/en/advanced/typescript' },
       ],
     },
@@ -26,6 +29,8 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: '什么是 Unoverlay Vue?', link: '/zh/guide/what-is-unoverlay-vue' },
         { text: '开始使用', link: '/zh/guide/getting-started' },
+        { text: '模板支持', link: '/zh/guide/in-template' },
+        { text: '组件调试', link: '/zh/guide/devtools' },
       ],
     },
     {
@@ -33,7 +38,8 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: '上下文继承', link: '/zh/advanced/context-inherited' },
         { text: '外部控制', link: '/zh/advanced/external-control' },
-        { text: '组件定制化', link: '/zh/advanced/customized' },
+        { text: '定制化', link: '/zh/advanced/customized' },
+        { text: '持有者', link: '/zh/advanced/holder' },
         { text: 'Typescript', link: '/zh/advanced/typescript' },
       ],
     },

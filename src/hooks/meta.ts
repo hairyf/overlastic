@@ -15,18 +15,24 @@ export interface OverlayOptions {
    * @default 'visible'
    */
   model?: string
+
   /**
+   * template use event name
+   */
+  event?: {
+    /**
    * cancel event name used by the template
    *
    * @default 'cancel'
    */
-  cancel?: string
-  /**
+    cancel?: string
+    /**
    * confirm event name used by the template
    *
    * @default 'confirm'
    */
-  confirm?: string
+    confirm?: string
+  }
   /**
    * whether to automatically handle components based on visible and animation
    *
@@ -81,16 +87,17 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
 
 export function useTemplateMeta(model: string, options: OverlayOptions = {}) {
   const instance = getCurrentInstance()
+  const events = options.event || {}
 
   const visible = instance ? useVModel(instance.props, model) as Ref<boolean> : ref(false)
 
   const cancel = (value?: any) => {
     visible.value = false
-    instance?.emit(options.cancel || 'cancel', value)
+    instance?.emit(events.cancel || 'cancel', value)
   }
   const confirm = (value?: any) => {
     visible.value = false
-    instance?.emit(options.confirm || 'confirm', value)
+    instance?.emit(events.confirm || 'confirm', value)
   }
   return {
     cancel,

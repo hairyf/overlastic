@@ -44,19 +44,11 @@ import { defineEmits, defineProps } from 'vue'
 import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
-  // If you want to use it as a component in template,
-  // you need to define visible in props
-  visible: Boolean
 })
-
-// Define the events used in the component(optional)
-// This allows you to use hints in components
-defineEmits(['cancel', 'confirm'])
 
 // Get Overlay information from useOverlayMeta
 const { visible, confirm, cancel } = useOverlayMeta({
   // Animation duration to avoid premature destruction of components
-  // Only use component in template and no need to define
   animation: 1000
 })
 </script>
@@ -93,31 +85,4 @@ const value = await renderOverlay(OverlayComponent, {
   props: { title: 'useOverlay' }
 })
 // value === "useOverlay:confirmed"
-```
-
-### Step.2-2: In Template
-
-You can still use components in template and enjoy the advantages brought by template.
-
-```vue
-<!-- overlay.vue -->
-<script setup>
-import OverlayComponent from './overlay.vue'
-const visible = ref(false)
-
-const confirm = () => {
-  // ...
-}
-const cancel = () => {
-  // ...
-}
-</script>
-
-<template>
-  <overlay-component
-    v-model:visible="visible"
-    @confirm="confirm"
-    @cancel="cancel"
-  />
-</template>
 ```
