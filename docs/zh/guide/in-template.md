@@ -11,7 +11,7 @@
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { defineEmits, defineProps } from 'vue'
+import { defineEmits, defineProps } from 'vue-demi'
 import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
@@ -34,7 +34,7 @@ const { visible, confirm, cancel } = useOverlayMeta({
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { defineEmits, defineProps } from 'vue'
+import { defineEmits, defineProps } from 'vue-demi'
 import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
@@ -73,7 +73,7 @@ const cancel = () => {
 </script>
 
 <template>
-  <overlay-component
+  <OverlayComponent
     v-model:visible="visible"
     @confirm="confirm"
     @cancel="cancel"

@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Component } from 'vue-demi'
 import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
 import { pascalCase } from 'pascal-case'
 import { context } from '../internal'
-import { createGlobalNode, varName } from '../../utils'
+import { createGlobalNode, varName } from @unified-overlay/utils
+import type { MountOptions } from '../types'
 import { defineProviderComponent } from './define'
-import type { MountOptions } from './interface'
 
 export interface RenderChildOptions extends MountOptions {
   setup?: () => void
@@ -17,10 +16,10 @@ export function renderVNode(
   props?: Record<string, any>,
   options: RenderChildOptions = {},
 ) {
-  // There is no need to call document.body.removeChild(container.firstElementChild) here
-  // Because calling render(null, container) does the work for us
   const name = varName(options.id, options.autoIncrement)
 
+  // There is no need to call document.body.removeChild(container.firstElementChild) here
+  // Because calling render(null, container) does the work for us
   function vanish() {
     render(null, container)
     container.remove()

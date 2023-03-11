@@ -1,0 +1,61 @@
+{
+  "name": "@unified-overlay/vue",
+  "version": "0.3.0",
+  "license": "MIT",
+  "homepage": "https://github.com/TuiMao233/unified-overlay#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/unified-overlay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/unified-overlay/issues"
+  },
+  "keywords": [
+    "unified",
+    "overlay",
+    "component",
+    "popup",
+    "vue"
+  ],
+  "publishConfig": {
+    "main": "index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
+    "unpkg": "./index.iife.min.js",
+    "jsdelivr": "./index.iife.min.js",
+    "exports": {
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      },
+      "./*": "./*"
+    },
+    "directory": "dist"
+  },
+  "scripts": {
+    "build": "ptsup -r src index.ts --dts --meta --clean --target es2020",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build",
+    "release": "bumpp && npm publish"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "mitt": "^3.0.0",
+    "pascal-case": "latest"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.3",
+    "vue-demi": "^0.13.11",
+    "vue": "^3.0.0"
+  }
+}

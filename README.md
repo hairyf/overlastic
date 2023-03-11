@@ -111,7 +111,7 @@ const cancel = () => {
 </script>
 
 <template>
-  <overlay-component
+  <OverlayComponent
     v-model:visible="visible"
     @confirm="confirm"
     @cancel="cancel"

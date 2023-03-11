@@ -2,7 +2,7 @@ import type { Ref } from 'vue-demi'
 import { getCurrentInstance, inject, onMounted, provide, ref, watch } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
 import { OverlayMetaKey } from '../internal'
-import { delay, noop } from '../../utils'
+import { delay, noop } from @unified-overlay/utils
 
 export interface OverlayOptions {
   /** animation duration to avoid premature destruction of components */

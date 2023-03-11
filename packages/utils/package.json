@@ -1,0 +1,39 @@
+{
+  "name": "@unified-overlay/utils",
+  "version": "0.3.0",
+  "license": "MIT",
+  "homepage": "https://github.com/TuiMao233/unified-overlay#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/unified-overlay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/unified-overlay/issues"
+  },
+  "keywords": [
+    "unified",
+    "overlay",
+    "utils"
+  ],
+  "publishConfig": {
+    "main": "index.cjs.js",
+    "types": "./index.d.ts",
+    "module": "./index.esm.js",
+    "unpkg": "./index.iife.min.js",
+    "jsdelivr": "./index.iife.min.js",
+    "exports": {
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      },
+      "./*": "./*"
+    },
+    "directory": "dist"
+  },
+  "scripts": {
+    "build": "ptsup -r src index.ts --dts --meta --clean --target es2020",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build",
+    "release": "bumpp && npm publish"
+  }
+}

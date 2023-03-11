@@ -5,7 +5,7 @@ Take [element-plus@2.15.7(dialog)](https://element.eleme.cn/#/en-US/component/di
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { defineEmits, defineProps } from 'vue'
+import { defineEmits, defineProps } from 'vue-demi'
 import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,

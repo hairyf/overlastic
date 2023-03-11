@@ -1,83 +1,38 @@
 {
-  "name": "unified-overlay",
+  "name": "unified-overlays",
   "version": "0.3.0",
-  "license": "MIT",
-  "homepage": "https://github.com/TuiMao233/unified-overlay#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TuiMao233/unified-overlay.git"
-  },
-  "bugs": {
-    "url": "https://github.com/TuiMao233/unified-overlay/issues"
-  },
+  "private": true,
   "keywords": [
     "unified",
     "overlay",
     "component",
-    "popup",
-    "vue",
-    "react"
+    "popup"
   ],
-  "main": "src/index.ts",
-  "publishConfig": {
-    "main": "index.cjs.js",
-    "types": "./index.d.ts",
-    "module": "./index.esm.js",
-    "unpkg": "./index.iife.min.js",
-    "jsdelivr": "./index.iife.min.js",
-    "exports": {
-      ".": {
-        "import": "./index.esm.js",
-        "require": "./index.cjs.js"
-      },
-      "./*": "./*"
-    },
-    "directory": "dist"
-  },
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch src",
-    "lint": "eslint .",
-    "prepublishOnly": "npm run build",
-    "test": "vitest",
-    "release": "bumpp && npm publish",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs"
   },
-  "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.1",
-    "vue": "^2.0.0 || >=3.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
-    }
-  },
-  "dependencies": {
-    "@vueuse/core": "^8.7.4",
-    "mitt": "^3.0.0",
-    "pascal-case": "latest",
-    "vue-demi": "latest"
-  },
-  "devDependencies": {
-    "@antfu/eslint-config": "^0.25.1",
-    "@types/react-dom": "^18.0.11",
+  "optionalDependencies": {
+    "@antfu/eslint-config": "^0.36.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vitejs/plugin-vue-jsx": "^1.3.10",
     "@vue/test-utils": "^2.0.0",
     "bumpp": "^8.2.1",
-    "eslint": "^8.18.0",
+    "eslint": "^8.28.0",
     "jsdom": "^20.0.0",
-    "ptsup": "^0.0.5",
+    "tsup": "^6.6.3",
+    "vite": "^4.1.0",
+    "vitepress": "1.0.0-alpha.51",
+    "vitest": "^0.29.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tsup": "^6.6.3",
-    "typescript": "^4.7.4",
-    "vite": "^2.9.12",
-    "vitepress": "1.0.0-alpha.4",
-    "vitest": "^0.15.2",
-    "vue": "^3.0.0"
+    "typescript": "^4.9.3"
   },
   "pnpm": {
     "peerDependencyRules": {

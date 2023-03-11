@@ -22,7 +22,7 @@ yarn add unoverlay-vue
 
 ```ts
 // main.js
-import { createApp } from 'vue'
+import { createApp } from 'vue-demi'
 import unoverlay from 'unoverlay-vue'
 
 const app = createApp({})
@@ -40,7 +40,7 @@ Unoverlay Vue 适用于绝大多数组件，使用 `useOverlayMeta` 能对组件
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { defineEmits, defineProps } from 'vue'
+import { defineEmits, defineProps } from 'vue-demi'
 import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,

@@ -16,7 +16,7 @@ export type OverlayResolved = string
 ```vue
 <!-- index.vue -->
 <script setup lang="ts">
-import { defineEmits, defineProps } from 'vue'
+import { defineEmits, defineProps } from 'vue-demi'
 import { useOverlayMeta } from 'unoverlay-vue'
 import type { OverlayParams, OverlayResolved } from './props'
 const props = defineProps<OverlayParams>()
@@ -41,7 +41,7 @@ const callback = createOverlay<OverlayParams, OverlayResolved>(OverlayComponent)
 - Step.1: Externally defined parameter type
 
 ```ts
-import type { ExtractInferTypes } from 'vue'
+import type { ExtractInferTypes } from 'vue-demi'
 // define.ts
 export const overlayProps = {
   title: String
@@ -54,7 +54,7 @@ export type OverlayResolved = string
 
 ```vue
 <script setup lang="ts">
-import { defineEmits, defineProps } from 'vue'
+import { defineEmits, defineProps } from 'vue-demi'
 import { useOverlayMeta } from 'unoverlay-vue'
 import type { OverlayResolved } from './props'
 import { overlayProps } from './props'
