@@ -3,9 +3,9 @@ import { Teleport, h, nextTick, provide, reactive, ref } from 'vue-demi'
 
 import mitt from 'mitt'
 
+import { createImperativePromiser, varName } from '@unoverlays/utils'
 import type { MountOptions } from '../helper'
 import { defineProviderComponent } from '../helper'
-import { createImperativePromiser, varName } from '@unified-overlays/utils'
 import { OverlayMetaKey } from '../internal'
 import type { ImperativeOverlay } from '../transform'
 import type { VisiblePromiseOptions } from './visible'

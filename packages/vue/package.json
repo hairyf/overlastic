@@ -1,14 +1,14 @@
 {
-  "name": "@unified-overlays/vue",
+  "name": "@unoverlays/react",
   "version": "0.3.0",
   "license": "MIT",
-  "homepage": "https://github.com/TuiMao233/unified-overlays#readme",
+  "homepage": "https://github.com/TuiMao233/unoverlays#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TuiMao233/unified-overlays.git"
+    "url": "git+https://github.com/TuiMao233/unoverlays.git"
   },
   "bugs": {
-    "url": "https://github.com/TuiMao233/unified-overlays/issues"
+    "url": "https://github.com/TuiMao233/unoverlays/issues"
   },
   "keywords": [
     "unified",
@@ -48,7 +48,7 @@
     }
   },
   "dependencies": {
-    "@unified-overlays/utils": "workspace:*",
+    "@unoverlays/utils": "workspace:*",
     "mitt": "^3.0.0",
     "pascal-case": "latest"
   },

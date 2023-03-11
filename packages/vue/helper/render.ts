@@ -3,7 +3,7 @@ import type { Component } from 'vue-demi'
 import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
 import { pascalCase } from 'pascal-case'
-import { createGlobalNode, varName } from '@unified-overlays/utils'
+import { createGlobalNode, varName } from '@unoverlays/utils'
 import { context } from '../internal'
 import type { MountOptions } from '../types'
 import { defineProviderComponent } from './define'

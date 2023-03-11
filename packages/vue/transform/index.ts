@@ -1,8 +1,8 @@
 import type { Component, ExtractPropTypes } from 'vue-demi'
 import { provide, ref } from 'vue-demi'
 
-import type { ImperativePromise } from '@unified-overlays/utils'
-import { createImperativePromiser, noop } from '@unified-overlays/utils'
+import type { ImperativePromise } from '@unoverlays/utils'
+import { createImperativePromiser, noop } from '@unoverlays/utils'
 import { renderChildApp } from '../helper'
 import type { MountOptions } from '../helper'
 import { OverlayMetaKey } from '../internal'

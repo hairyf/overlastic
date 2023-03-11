@@ -1,7 +1,7 @@
 import type { Ref } from 'vue-demi'
 import type { Emitter } from 'mitt'
 import { OverEvents } from '../internal'
-import type { ImperativePromiser } from '@unified-overlays/utils'
+import type { ImperativePromiser } from '@unoverlays/utils'
 
 export interface VisiblePromiseOptions {
   promiser?: ImperativePromiser
