@@ -1,11 +1,11 @@
 ---
 layout: home
 
-title: Unoverlay Vue
+title: Unoverlays
 titleTemplate: A universal overlay (popup) Vue utils
 
 hero:
-  name: Unoverlay Vue
+  name: Unoverlays
   text: A universal overlay (popup) Vue utils
   tagline: Simple, lightweight tool library for any scene you have in overlay.
   actions:
@@ -17,7 +17,7 @@ hero:
       link: https://github.com/TuiMao233/unoverlay-vue
   image:
     src: /logo.png
-    alt: Unoverlay Vue
+    alt: Unoverlays
 features:
   - title: Based on vue composition api
     details: It has good expansibility, allowing you to use it without any constraints.

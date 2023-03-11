@@ -6,7 +6,7 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Introduction',
       items: [
-        { text: 'What is Unoverlay Vue?', link: '/en/guide/what-is-unoverlay-vue' },
+        { text: 'What is Unoverlays?', link: '/en/guide/what-is-unoverlay-vue' },
         { text: 'Getting Started', link: '/en/guide/getting-started' },
         { text: 'Template Support', link: '/en/guide/in-template' },
         { text: 'Devtools', link: '/en/guide/devtools' },
@@ -29,6 +29,7 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: '什么是 Unoverlays?', link: '/zh/guide/what-is-unoverlays' },
         { text: '开始使用', link: '/zh/guide/getting-started' },
+        { text: '外部控制', link: '/zh/guide/external-control' },
       ],
     },
     {
@@ -38,12 +39,18 @@ const sidebar: DefaultTheme.Sidebar = {
         { text: '模板支持', link: '/zh/vue/in-template' },
         { text: '组件调试', link: '/zh/vue/devtools' },
         { text: '上下文继承', link: '/zh/vue/context-inherited' },
-        { text: '外部控制', link: '/zh/vue/external-control' },
         { text: '定制化', link: '/zh/vue/customized' },
         { text: '持有者', link: '/zh/vue/holder' },
         { text: 'Typescript', link: '/zh/vue/typescript' },
       ],
-
+    },
+    {
+      text: 'React.js',
+      items: [
+        { text: '基础使用', link: '/zh/react/' },
+        { text: 'JSX 支持', link: '/zh/react/in-jsx' },
+        { text: '持有者', link: '/zh/react/holder' },
+      ],
     },
   ],
 }

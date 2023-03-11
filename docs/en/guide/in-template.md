@@ -1,6 +1,6 @@
 # Template Support
 
-Components created with `unoverlay vue` support not only the use of imperative method calls, but also the use of `<template>`.
+Components created with `Unoverlays` support not only the use of imperative method calls, but also the use of `<template>`.
 
 > It supports the components used in `<template>`, and also supports the use of callback calls, which will not affect each other's functions. This is an option.
 

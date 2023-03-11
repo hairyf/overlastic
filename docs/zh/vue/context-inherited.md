@@ -1,6 +1,6 @@
 # 👆 继承上下文
 
-如果你全局注册了 Unoverlay Vue，它会自动继承你的应用上下文，你也可以通过更细致的控制来传入上下文。
+如果你全局注册了 Unoverlays，它会自动继承你的应用上下文，你也可以通过更细致的控制来传入上下文。
 
 ```ts
 import { getCurrentInstance } from 'vue-demi'

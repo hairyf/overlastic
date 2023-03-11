@@ -1,6 +1,6 @@
-# What is Unoverlay Vue?
+# What is Unoverlays?
 
-Unoverlay Vue is the basic tool for making modals in Vue3 | Vue2 Composition-api, it can do many things, including but not limited to:
+Unoverlays is the basic tool for making modals in Vue3 | Vue2 Composition-api, it can do many things, including but not limited to:
 
 - Make [Message](https://element.eleme.cn/#/en-US/component/message) or [Dialog](https://element.eleme.cn/#/en-US/component/dialog) similar to `element-plus` / `naiveui` / `vuetifyjs` / `vant`...
 - Supports two calling methods at the same time (template or js/ts)
@@ -13,5 +13,5 @@ In today's increasingly complex business scenarios, we are often troubled by the
 When saving component status, it is often necessary to control the model process (` open model '->' edit data '->' @ confirm '->' save data ')
 This greatly increases the workload and generates a large amount of redundant code when components are reused.
 
-From the Composition-api of Vue3 and the current model components, I got a lot of inspiration. Unoverlay Vue makes it very easy and powerful to define model components,
-It not only supports calls in Typescript and Javascript, but also models made with Unoverlay Vue are still competent when template rendering is required.
+From the Composition-api of Vue3 and the current model components, I got a lot of inspiration. Unoverlays makes it very easy and powerful to define model components,
+It not only supports calls in Typescript and Javascript, but also models made with Unoverlays are still competent when template rendering is required.
