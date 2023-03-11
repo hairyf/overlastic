@@ -6,7 +6,7 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Introduction',
       items: [
-        { text: 'What is Unoverlays?', link: '/en/guide/what-is-unoverlay-vue' },
+        { text: 'What is Unoverlays?', link: '/en/guide/what-is-unoverlays' },
         { text: 'Getting Started', link: '/en/guide/getting-started' },
       ],
     },
