@@ -1,41 +1,41 @@
 # Template Support
 
-Components created with `Unoverlays` support not only the use of imperative method calls, but also the use of `<template>`.
+使用 `unoverlay-vue` 创建的组件，除了支持使用命令式（Imperative）方法调用外，还支持在 `<template>` 中使用。
 
-> It supports the components used in `<template>`, and also supports the use of callback calls, which will not affect each other's functions. This is an option.
+> 支持了 `<template>` 中使用的组件，同样也支持使用 callback 调用，并不会影响彼此功能，这是一项可选项。
 
-### Step.1: Define Component
+### 步骤.1: Define Component
 
-When used in `<template>`, you need to explicitly define `module` and `event`.
+在 `<template>` 中使用，需要显式定义 `modal` 与 `event`。
 
 ```vue
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
-  // To use in Template, you need to define the fields used by v-modal (the default to visible)
+  // 在 Template 中使用，需要定义 v-modal 所使用的字段（默认对应 visible）
   visible: Boolean
 })
 
-// Define the event type used in the component (default: cancel, confirm)
+// 定义组件中使用的事件类型（默认：cancel、confirm）
 defineEmits(['cancel', 'confirm'])
 
 const { visible, confirm, cancel } = useOverlayMeta({
-  // If you use template rendering, animation can be defined without
+  // 如果使用 template 渲染，animation 则可以不需要定义
   // animation: 1000,
 })
 </script>
 ```
 
-If you want to replace with other fields and event names, you can pass in the corresponding configuration through `useOverlayMeta`.
+如果您想替换为其他的字段与事件名，可以通过 `useOverlayMeta` 传入对应的配置实现。
 
 ```vue
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from 'unoverlay-vue'
 const props = defineProps({
   title: String,
   modalValue: Boolean
@@ -54,9 +54,9 @@ const { visible, confirm, cancel } = useOverlayMeta({
 </template>
 ```
 
-### Step.2: In Template
+### 步骤.2: In Template
 
-After defining `module` and `event`, you can use pop-up layer components in `<template>`.
+定义 `modal` 与 `event` 后，即可在 `<template>` 中使用弹出层组件。
 
 ```vue
 <!-- overlay.vue -->

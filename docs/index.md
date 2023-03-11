@@ -15,11 +15,11 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/TuiMao233/unoverlay-vue
-  image:
-    src: /logo.png
-    alt: Unoverlays
+  # image:
+  #   src: /logo.png
+  #   alt: Unoverlays
 features:
-  - title: Based on vue composition api
+  - title: Based on Hooks
     details: It has good expansibility, allowing you to use it without any constraints.
   - title: Simple API
     details: Lets you create powerful overlays with minimal effort.

@@ -15,11 +15,11 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/TuiMao233/unoverlay-vue
-  image:
-    src: /logo.png
-    alt: Unoverlays
+  # image:
+  #   src: /logo.png
+  #   alt: Unoverlays
 features:
-  - title: 基于 Vue Composition-api
+  - title: 基于 Hooks
     details: 不受任何限制的使用。
   - title: 简单的 API
     details: 创建强大的弹出层。

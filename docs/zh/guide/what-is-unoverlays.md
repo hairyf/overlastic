@@ -3,7 +3,7 @@
 Unoverlays 是构建弹出层的统一插件，创建回调（命令式）方法、以及在 Vue Template 或 React Jsx 中（声明式）使用。
 
 - 制作类似于 `element-plus/antd`... 的 Message 或 Dialog
-- 同时支持两种调用方式（ tempalte 或 js/ts）
+- 同时支持回调（命令式）与Template/JSX（声明式）
 - 使用现有组件库（如 element-plus、antd）集成和定制化功能
 - 支持组件继承全局应用上下文
 - 支持 `vue2|3`、`react` 等前端渐进式框架。

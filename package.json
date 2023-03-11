@@ -23,7 +23,7 @@
     "jsdom": "^20.0.0",
     "tsup": "^6.6.3",
     "vite": "^4.1.0",
-    "vitepress": "1.0.0-alpha.51",
+    "vitepress": "1.0.0-alpha.4",
     "vitest": "^0.29.2"
   },
   "devDependencies": {
@@ -38,5 +38,8 @@
         "react-dom"
       ]
     }
+  },
+  "dependencies": {
+    "vue": "^3.0.0"
   }
 }

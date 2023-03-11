@@ -8,18 +8,29 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: 'What is Unoverlays?', link: '/en/guide/what-is-unoverlay-vue' },
         { text: 'Getting Started', link: '/en/guide/getting-started' },
-        { text: 'Template Support', link: '/en/guide/in-template' },
-        { text: 'Devtools', link: '/en/guide/devtools' },
       ],
     },
     {
-      text: 'Advanced',
+      text: 'Vue.js',
       items: [
-        { text: 'Context Inherited', link: '/en/advanced/context-inherited' },
-        { text: 'External Control', link: '/en/advanced/external-control' },
-        { text: 'Custom Components', link: '/en/advanced/customized' },
-        { text: 'Holder', link: '/en/advanced/holder' },
-        { text: 'Typescript', link: '/en/advanced/typescript' },
+        { text: 'Basic Usage', link: '/en/vue/' },
+        { text: 'Template Support', link: '/en/vue/in-template' },
+        { text: 'Component Devtools', link: '/en/vue/devtools' },
+        { text: 'Context Inherited', link: '/en/vue/context-inherited' },
+        { text: 'Custom Components', link: '/en/vue/customized' },
+        { text: 'Holder', link: '/en/vue/holder' },
+        { text: 'Typescript', link: '/en/vue/typescript' },
+      ],
+    },
+    {
+      text: 'React.js',
+      items: [
+        { text: 'Basic Usage', link: '/en/react/' },
+        { text: 'JSX Support', link: '/en/react/in-jsx' },
+        { text: 'Context Inherited', link: '/en/react/context-inherited' },
+        { text: 'Custom Components', link: '/en/react/customized' },
+        { text: 'Holder', link: '/en/react/holder' },
+        { text: 'Typescript', link: '/en/react/typescript' },
       ],
     },
   ],
@@ -71,15 +82,14 @@ const nav: DefaultTheme.NavItem[] = [
 
 const config = defineConfig({
   lang: 'zh',
-  title: 'Unified Overlays',
   locales: {
-    root: {
-      label: 'English',
-      lang: 'en',
+    '/': {
+      lang: 'en-US',
+      title: 'Unified Overlays',
     },
-    zh: {
-      label: '中文',
-      lang: 'zh',
+    '/zh/': {
+      lang: 'zh-CN',
+      title: 'Unified Overlays',
     },
   },
   lastUpdated: true,
@@ -89,6 +99,13 @@ const config = defineConfig({
     footer: {
       message: 'MIT Licensed',
       copyright: 'Copyright © 2019-present TuiMao233',
+    },
+    localeLinks: {
+      text: '',
+      items: [
+        { text: 'English', link: '/' },
+        { text: '简体中文', link: '/zh/' },
+      ],
     },
   },
 })
