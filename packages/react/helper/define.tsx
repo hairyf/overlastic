@@ -9,7 +9,9 @@ interface ProviderProps extends PropsWithChildren<Partial<OverlayMeta>> {}
 export const UnifiedOverlayProvider: FunctionComponent<ProviderProps> = (props) => {
   const [visible, setVisible] = useState(false)
   const { children, ...metadata } = props
-  return <OverlayContext.Provider value={{ visible, setVisible, ...metadata }}>
-    {children}
-</OverlayContext.Provider>
+  return (
+    <OverlayContext.Provider value={{ visible, setVisible, ...metadata }}>
+        {children}
+    </OverlayContext.Provider>
+  )
 }

@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@unoverlays/utils": "workspace:*",
+    "@vueuse/core": "^9.13.0",
     "mitt": "^3.0.0",
     "pascal-case": "latest"
   },
