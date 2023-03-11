@@ -4,8 +4,8 @@ import { provide, ref } from 'vue-demi'
 import { renderChildApp } from '../helper'
 import type { MountOptions } from '../helper'
 import { OverlayMetaKey } from '../internal'
-import type { ImperativePromise } from '../utils'
-import { createImperativePromiser, noop } from '../utils'
+import type { ImperativePromise } from '../../utils'
+import { createImperativePromiser, noop } from '../../utils'
 
 import { useVisibleScripts } from '../hooks'
 

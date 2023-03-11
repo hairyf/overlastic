@@ -4,7 +4,7 @@ import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
 import { pascalCase } from 'pascal-case'
 import { context } from '../internal'
-import { createGlobalNode, varName } from '../utils'
+import { createGlobalNode, varName } from '../../utils'
 import { defineProviderComponent } from './define'
 import type { MountOptions } from './interface'
 
