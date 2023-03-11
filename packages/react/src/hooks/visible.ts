@@ -1,16 +1,16 @@
 import type { Emitter } from 'mitt'
 import type { ImperativePromiser } from '@unoverlays/utils'
-import type { Dispatch, SetStateAction } from 'react'
+import { useState } from 'react'
 import { OverEvents } from '../internal'
 
 export interface VisiblePromiseOptions {
   promiser?: ImperativePromiser
   vanish?: Function
   events?: Emitter<any>
+  isJsx?: boolean
 }
-
-export function useVisibleScripts(_visible: [boolean, Dispatch<SetStateAction<boolean>>], options: VisiblePromiseOptions) {
-  const [visible, setVisible] = _visible
+export function useVisibleScripts(options: VisiblePromiseOptions) {
+  const [visible, setVisible] = useState(false)
 
   function cancel(value?: any) {
     options.promiser?.reject(value)
@@ -22,6 +22,7 @@ export function useVisibleScripts(_visible: [boolean, Dispatch<SetStateAction<bo
     options.events?.emit(OverEvents.Confirm, value)
     setVisible(false)
   }
+
   function vanish() {
     options.vanish?.()
     options.promiser?.reject()
@@ -32,5 +33,5 @@ export function useVisibleScripts(_visible: [boolean, Dispatch<SetStateAction<bo
     options.promiser.promise.cancel = cancel
   }
 
-  return { setVisible, visible, confirm, cancel, vanish }
+  return { setVisible, visible, confirm, cancel, vanish, isJsx: options.isJsx }
 }

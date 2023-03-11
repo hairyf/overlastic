@@ -1,4 +1,4 @@
-import { delay, noop } from '@unoverlays/utils'
+import { delay as _delay, noop } from '@unoverlays/utils'
 import type { Dispatch, SetStateAction } from 'react'
 import { useContext, useEffect } from 'react'
 
@@ -10,7 +10,6 @@ export interface OverlayOptions {
   animation?: number
   /** whether to set visible to true immediately */
   immediate?: boolean
-
   /**
    * pass in the required props on jsx
    */
@@ -60,28 +59,18 @@ export interface OverlayMeta {
 }
 
 export function useOverlayMeta(options: OverlayOptions = {}) {
-  const { animation = 0, immediate = true, automatic = true } = options
-  const meta = useContext(OverlayContext) || useJSXMeta()
+  const { immediate = true } = options
+  const meta = useContext(OverlayContext)
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
+  automatic(meta, options)
 
-  async function autoClose() {
-    if (meta.visible)
-      return
-    if (animation > 0)
-      await delay(animation)
-    meta.vanish?.()
-  }
-
-  if (!meta.isJsx && automatic) {
-    useEffect(() => {
-      autoClose()
-    }, [meta.visible])
-  }
-
-  if (immediate)
-    useEffect(() => meta.setVisible?.(true), [])
+  useMount(() => {
+    if (immediate)
+      meta.setVisible?.(true)
+  })
+  return meta
 }
 
 export function useJSXMeta(options: OverlayOptions = {}) {
@@ -105,5 +94,28 @@ export function useJSXMeta(options: OverlayOptions = {}) {
     vanish: noop,
     visible: props[value],
     isTemplate: true,
+  }
+}
+
+export function useMount(callback: Function = noop) {
+  useEffect(() => callback(), [])
+}
+
+export function automatic(meta: OverlayMeta, options: OverlayOptions) {
+  const { animation = 0, automatic = true } = options
+  async function delay() {
+    if (!automatic)
+      return
+    if (animation > 0)
+      await _delay(animation)
+    meta.vanish?.()
+  }
+
+  for (const key of ['confirm', 'cancel'] as const) {
+    const affirm = meta[key]
+    meta[key] = function (value: any) {
+      affirm(value)
+      delay()
+    }
   }
 }

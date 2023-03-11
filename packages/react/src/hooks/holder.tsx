@@ -1,5 +1,6 @@
-import { createImperativePromiser, delay, varName } from '@unoverlays/utils'
+import { createImperativePromiser, varName } from '@unoverlays/utils'
 import mitt from 'mitt'
+import { pascalCase } from 'pascal-case'
 import type { FC } from 'react'
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -17,6 +18,7 @@ export function useInjectHolder<Props, Resolved = void>(
   options: MountOptions = {},
 ): InjectionHolder<Props, Resolved> {
   const { callback, scripts, props, refresh } = useRefreshMetadata()
+
   const name = varName(options.id, options.autoIncrement)
   const root = options.root || document.body
   const isTeleport = options.root !== false
@@ -27,9 +29,11 @@ export function useInjectHolder<Props, Resolved = void>(
   }
 
   const holder = (
-    <OverlayContext.Provider value={scripts}>
-      {refresh ? render() : null}
-    </OverlayContext.Provider>
+    <OverlayContext.Provider
+      value={scripts}
+      children={refresh ? render() : null}
+      {...{ id: pascalCase(name) }}
+    />
   )
 
   return [callback as any, holder]
@@ -38,14 +42,12 @@ export function useInjectHolder<Props, Resolved = void>(
 export function useRefreshMetadata() {
   const { current: events } = useRef(mitt())
   const [props, setProps] = useState<any>()
-  const [visible, setVisible] = useState(false)
-  const [refresh, setRefresh] = useState<boolean | Promise<boolean>>(false)
-
+  const [refresh, setRefresh] = useState(false)
   const { current: options } = useRef<VisiblePromiseOptions>({
     events,
     vanish,
   })
-  const scripts = useVisibleScripts([visible, setVisible], options)
+  const scripts = useVisibleScripts(options)
 
   function vanish() {
     setRefresh(false)
@@ -53,15 +55,13 @@ export function useRefreshMetadata() {
     events.off('*')
   }
 
-  async function callback(_props: any) {
-    props.value = _props
+  async function callback(props: any) {
+    setProps(props)
     setRefresh(true)
-    await delay()
-    setVisible(true)
     const promiser = createImperativePromiser()
     Object.assign(options, { promiser })
     return promiser.promise
   }
 
-  return { callback, scripts, props, refresh, visible, setVisible }
+  return { callback, scripts, props, refresh }
 }

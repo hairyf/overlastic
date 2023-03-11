@@ -41,7 +41,8 @@
   },
   "dependencies": {
     "@unoverlays/utils": "workspace:*",
-    "mitt": "^3.0.0"
+    "mitt": "^3.0.0",
+    "pascal-case": "^3.1.2"
   },
   "peerDependencies": {
     "react": ">=18",

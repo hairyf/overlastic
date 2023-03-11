@@ -36,11 +36,13 @@ importers:
       '@types/react-dom': ^18.0.10
       '@unoverlays/utils': workspace:*
       mitt: ^3.0.0
+      pascal-case: ^3.1.2
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
       '@unoverlays/utils': link:../utils
       mitt: 3.0.0
+      pascal-case: 3.1.2
     devDependencies:
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.10

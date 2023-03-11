@@ -1,8 +1,10 @@
-import ReactDOM from 'react-dom'
 import React from 'react'
 import { createGlobalNode, varName } from '@unoverlays/utils'
+import { createRoot } from 'react-dom/client'
+import { pascalCase } from 'pascal-case'
 import type { MountOptions } from '../types'
 import { OverlayContext } from '../internal'
+import { defineProviderComponent } from './define'
 
 export interface RenderOptions extends MountOptions {
   setup?: () => any
@@ -17,20 +19,26 @@ export function renderReactDOM(
   const container = createGlobalNode(name, options.root || document.body)
 
   function vanish() {
-    ReactDOM.unmountComponentAtNode(container)
-    container.parentNode?.removeChild(container)
+    requestAnimationFrame(() => {
+      root.unmount()
+      container.remove()
+    })
   }
 
-  function UnifiedOverlayProvider() {
+  const UnifiedOverlayProvider = defineProviderComponent(() => {
     const scripts = options.setup?.()
     return (
-      <OverlayContext.Provider value={scripts}>
-        <Component {...props} />
-      </OverlayContext.Provider>
+      <OverlayContext.Provider
+        value={scripts}
+        children={<Component {...props} />}
+        {...{ id: pascalCase(name) }}
+      />
     )
-  }
+  })
 
-  ReactDOM.render(<UnifiedOverlayProvider />, container)
+  const root = createRoot(container)
+
+  root.render(<UnifiedOverlayProvider />)
 
   return { vanish }
 }

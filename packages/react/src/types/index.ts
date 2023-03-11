@@ -16,7 +16,7 @@ export interface MountOptions {
    *
    * @default document.body
    */
-  root?: HTMLElement | false
+  root?: HTMLElement | null | false
 }
 
 export type PropsWidthOverlays<P = unknown> = P & {

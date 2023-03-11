@@ -1,7 +1,6 @@
 import type { ImperativePromise } from '@unoverlays/utils'
 import { createImperativePromiser, noop } from '@unoverlays/utils'
 import type { FC } from 'react'
-import { useState } from 'react'
 import { renderReactDOM } from '../helper/render'
 import { useVisibleScripts } from '../hooks/visible'
 import type { MountOptions } from '../types'
@@ -22,11 +21,7 @@ export function createOverlay<Props, Resolved = void>(component: FC): Imperative
   function executor(props: any, promiser: any, options?: any) {
     const caches = { vanish: noop }
     function setup() {
-      const visible = useState(false)
-      const scripts = useVisibleScripts(
-        visible,
-        Object.assign(caches, { promiser }),
-      )
+      const scripts = useVisibleScripts(Object.assign(caches, { promiser }))
       return scripts
     }
     caches.vanish = renderReactDOM(component, props, { ...options, setup }).vanish
