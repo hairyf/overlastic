@@ -2,11 +2,11 @@
 layout: home
 
 title: Unoverlays
-titleTemplate: Vue 的通用弹出层（模态、消息）Utils
+titleTemplate: 通用弹出层
 
 hero:
   name: Unoverlays
-  text: Vue 的通用弹出层（模态、消息） Utils
+  text: 通用弹出层
   tagline: 简单、轻量级的工具库，适用于弹出层中任何场景。
   actions:
     - theme: brand

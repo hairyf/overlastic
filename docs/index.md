@@ -2,11 +2,11 @@
 layout: home
 
 title: Unoverlays
-titleTemplate: A universal overlay (popup) Vue utils
+titleTemplate: Unified Overlays
 
 hero:
   name: Unoverlays
-  text: A universal overlay (popup) Vue utils
+  text: Unified Overlays
   tagline: Simple, lightweight tool library for any scene you have in overlay.
   actions:
     - theme: brand
