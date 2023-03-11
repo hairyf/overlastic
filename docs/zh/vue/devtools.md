@@ -2,6 +2,8 @@
 
 在使用 `createOverlay` 时会创建一个 Vue 子应用，这个应用区别与主应用，可在 [Vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN) 中查看与调试组件。 
 
+你也可以使用 [useInjectHolder](/zh/vue/holder) 在组件内部创建弹出层，并继承应用的当前上下文。
+
 ![html](/html.png)
 
 ---

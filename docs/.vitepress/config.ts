@@ -49,7 +49,10 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: '基础使用', link: '/zh/react/' },
         { text: 'JSX 支持', link: '/zh/react/in-jsx' },
+        { text: '上下文继承', link: '/zh/react/context-inherited' },
+        { text: '定制化', link: '/zh/react/customized' },
         { text: '持有者', link: '/zh/react/holder' },
+        { text: 'Typescript', link: '/zh/react/typescript' },
       ],
     },
   ],

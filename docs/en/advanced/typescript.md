@@ -5,10 +5,10 @@ If you want the component to have the correct type declaration when called in th
 - Step.1: Externally defined parameter type
 
 ```ts
-export interface OverlayParams {
+export interface Params {
   title?: string
 }
-export type OverlayResolved = string
+export type Resolved = string
 ```
 
 - Step.2: Components use parameter types
@@ -18,9 +18,9 @@ export type OverlayResolved = string
 <script setup lang="ts">
 import { defineEmits, defineProps } from 'vue-demi'
 import { useOverlayMeta } from '@unoverlays/vue'
-import type { OverlayParams, OverlayResolved } from './props'
-const props = defineProps<OverlayParams>()
-const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
+import type { Params, Resolved } from './props'
+const props = defineProps<Params>()
+const { visible, confirm, cancel } = useOverlayMeta<Resolved>({
   animation: 1000
 })
 </script>
@@ -31,9 +31,9 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 ```ts
 import { createOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
-import type { OverlayParams, OverlayResolved } from './define.ts'
+import type { Params, Resolved } from './define.ts'
 
-const callback = createOverlay<OverlayParams, OverlayResolved>(OverlayComponent)
+const callback = createOverlay<Params, Resolved>(OverlayComponent)
 ```
 
 > If you have requirements for vue's props runtime validation, you can define it like this: 
@@ -46,8 +46,8 @@ import type { ExtractInferTypes } from 'vue-demi'
 export const overlayProps = {
   title: String
 }
-export type OverlayParams = ExtractInferTypes<typeof overlayProps>
-export type OverlayResolved = string
+export type Params = ExtractInferTypes<typeof overlayProps>
+export type Resolved = string
 ```
 
 - Step.2: Components use parameter types
@@ -56,10 +56,10 @@ export type OverlayResolved = string
 <script setup lang="ts">
 import { defineEmits, defineProps } from 'vue-demi'
 import { useOverlayMeta } from '@unoverlays/vue'
-import type { OverlayResolved } from './props'
+import type { Resolved } from './props'
 import { overlayProps } from './props'
 const props = defineProps(overlayProps)
-const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
+const { visible, confirm, cancel } = useOverlayMeta<Resolved>({
   animation: 1000
 })
 </script>
