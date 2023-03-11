@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import ReactDOM from 'react-dom'
 import React from 'react'
+import { createGlobalNode, varName } from '@unoverlays/utils'
 import type { MountOptions } from '../types'
-import { createGlobalNode, varName } from '../utils'
 
 export function renderReactDOM(
   Component: React.Component,

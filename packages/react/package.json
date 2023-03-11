@@ -17,6 +17,7 @@
     "popup",
     "react"
   ],
+  "main": "./src/index.ts",
   "publishConfig": {
     "main": "index.cjs.js",
     "types": "./index.d.ts",
@@ -37,6 +38,9 @@
     "lint": "eslint .",
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
+  },
+  "dependencies": {
+    "@unoverlays/utils": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18",

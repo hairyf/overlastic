@@ -17,6 +17,7 @@
     "popup",
     "vue"
   ],
+  "main": "./src/index.ts",
   "publishConfig": {
     "main": "index.cjs.js",
     "types": "./index.d.ts",
