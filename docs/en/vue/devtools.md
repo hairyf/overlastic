@@ -1,8 +1,9 @@
 # Component devtools
 
-在使用 `createOverlay` 时会创建一个 Vue 子应用，这个应用区别与主应用，可在 [Vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN) 中查看与调试组件。 
+When using createOverlay, a Vue sub-application is created, which is different from the main application and can be viewed and debugged in [Vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN).
 
-你也可以使用 [useInjectHolder](/zh/vue/holder) 在组件内部创建弹出层，并继承应用的当前上下文。
+
+You can also use [useInjectHolder](/en/vue/holder) to create pop-ups inside components and inherit the current context of the application.
 
 ![html](/html.png)
 
@@ -10,15 +11,15 @@
 
 ![devtools](/devtools.png)
 
-生成根元素的 ID 与应用名称使用同一 ID，在创建组件时，会自动对 ID 进行 `PascalCase` 处理。
+The ID of the generated root element is the same as the application name, and the ID is automatically converted to PascalCase when creating components.
 
-可以通过渲染选项，更改生成 ID 名称。
+You can change the generated ID name through rendering options.
 
 ```ts
 const callback = createOverlay(OverlayComponent)
 callback({}, {
   id: 'custom-overlay',
-  // 关闭 ID 后续自增长
+  // Turn off automatic increment of ID
   autoIncrement: false
 })
 ```

@@ -1,6 +1,6 @@
 # Getting Started
 
-> Unoverlays only supports Vue3 | Vue2 Composition-api
+> Unoverlays 仅支持 Vue3 | Vue2 Composition-api
 
 ## Install
 
@@ -16,7 +16,7 @@ yarn add @unoverlays/vue
 
 ## Global
 
-You can register Unoverlays globally, which will inherit the application context for all popups.
+您可以全局注册 Unoverlays, 这将为所有的弹出层继承应用上下文。
 
 ```ts
 // main.js
@@ -31,9 +31,9 @@ app.use(unoverlay)
 
 
 
-### Step 1: Define Component
+### 步骤.1: Define Component
 
-Unoverlays is suitable for most components. Using useOverlayMeta can provide finer control over the component process.
+Unoverlays 适用于绝大多数组件，使用 `useOverlayMeta` 能对组件流程有更细致的控制。
 
 ```vue
 <!-- overlay.vue -->
@@ -44,13 +44,13 @@ const props = defineProps({
   title: String,
 })
 
-// Define the events used in the component (optional)
-// There will be event prompts when used in the component
+// 定义组件中使用的事件（可选）
+// 在组件中使用会有事件提示
 defineEmits(['cancel', 'confirm'])
 
-// Get Overlay information from useOverlayMeta
+// 从 useOverlayMeta 获取 Overlay 信息
 const { visible, confirm, cancel } = useOverlayMeta({
-  // Duration of popup layer animation to avoid premature destruction of the component
+  // 弹出层动画的持续时间, 可以避免组件过早被销毁
   animation: 1000,
 })
 </script>
@@ -64,20 +64,20 @@ const { visible, confirm, cancel } = useOverlayMeta({
 
 ### 步骤.2: Create Overlay
 
-You can use the `createOverlay` method to convert the component into a modal dialog in Javascript / Typescript, which allows you to call it.
+你可以通过 `createOverlay` 的方法将组件转换成模态框的方法，它允许你在 `Javascript` / `Typescript` 中调用。
 
 ```ts
 import { createOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 
-// Convert to imperative callback
+// 转换为命令式回调
 const callback = createOverlay(OverlayComponent)
-// Call the component and get the value of the confirm callback
+// 调用组件并获取 confirm 回调的值
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
 
-You can also use `renderOverlay` to directly call the component and skip the `createOverlay` method.
+你也可以通过 `renderOverlay` 直接调起组件，跳过 `createOverlay` 方法。
 
 ```ts
 import { renderOverlay } from '@unoverlays/vue'

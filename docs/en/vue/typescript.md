@@ -1,8 +1,8 @@
 # ⌨️ Typescript
 
-如果您希望组件在回调中调用时具有正确的类型声明，需要将 `props` 提取到一个单独的文件中，简单的案例：
+If you want your component to have the correct type declaration when called in a callback, you need to extract props to a separate file. Here's a simple example:
 
-- 步骤.1: 外部定义参数类型
+- Step 1: Define the parameter type externally.
 
 ```ts
 export interface Params {
@@ -11,7 +11,7 @@ export interface Params {
 export type Resolved = string
 ```
 
-- 步骤.2: 组件使用参数类型
+- Step 2: Use the parameter type in the component.
 
 ```vue
 <!-- index.vue -->
@@ -26,7 +26,7 @@ const { visible, confirm, cancel } = useOverlayMeta<Resolved>({
 </script>
 ```
 
-- 步骤.3: 在使用 `createOverlay` 或 `renderOverlay` 时传入类型
+- Step 3: Pass in the types when using `createOverlay` or `renderOverlay`.
 
 ```ts
 import { createOverlay } from '@unoverlays/vue'
@@ -36,9 +36,9 @@ import type { Params, Resolved } from './define.ts'
 const callback = createOverlay<Params, Resolved>(OverlayComponent)
 ```
 
-> 如果您对 vue 的 props 运行时验证有要求，你可以这么做：
+> If you have a runtime validation requirement for vue props, you can do the following:
 
-- 步骤.1: 外部定义参数类型
+- Step 1: Define the parameter type externally.
 
 ```ts
 import type { ExtractInferTypes } from 'vue-demi'
@@ -50,7 +50,7 @@ export type Params = ExtractInferTypes<typeof overlayProps>
 export type Resolved = string
 ```
 
-- 步骤.2: 组件使用参数类型
+- Step 2: Use the parameter type in the component.
 
 ```vue
 <script setup lang="ts">
@@ -65,4 +65,4 @@ const { visible, confirm, cancel } = useOverlayMeta<Resolved>({
 </script>
 ```
 
-- 步骤.3: 与上述一致, 则不在阐述
+- Step 3: Same as above, so I won't explain it again.

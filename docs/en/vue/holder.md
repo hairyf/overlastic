@@ -1,17 +1,17 @@
 # Injection Holder
 
-除了使用 `createOverlay` 与 `renderOverlay` 创建使用弹出层组件外，还支持使用 `useInjectHolder` 创建在组件内部的弹出层组件，并继承应用的当前上下文。
+In addition to using createOverlay and renderOverlay to create pop-up components, you can also use useInjectHolder to create pop-up components inside a component and inherit the current context of the application.
 
 ```vue
 <!-- App.vue -->
 <script setup>
 import { useInjectHolder } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
-// 通过 useInjectHolder(Component) 创建支持当前 context 的组件持有者
+// Use useInjectHolder(Component) to create a component holder that supports the current context.
 const [overlayApi, holder] = useInjectHolder(OverlayComponent)
 
 function open() {
-  // 打开弹出层
+  // Open the pop-up component.
   overlayApi()
     .then((result) => {})
 }
@@ -21,7 +21,7 @@ function open() {
   <div @click="overlayApi">
     open
   </div>
-  <!-- 使用 <component :is="holder" /> 挂载 -->
+  <!-- Use <component :is="holder" /> to mount the component holder. -->
   <component :is="holder" />
 </template>
 ```
