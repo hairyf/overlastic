@@ -17,7 +17,7 @@ export type OverlayResolved = string
 <!-- index.vue -->
 <script setup lang="ts">
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from 'unoverlay-vue'
+import { useOverlayMeta } from '@unoverlays/vue'
 import type { OverlayParams, OverlayResolved } from './props'
 const props = defineProps<OverlayParams>()
 const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
@@ -29,7 +29,7 @@ const { visible, confirm, cancel } = useOverlayMeta<OverlayResolved>({
 - Step.3: 在使用 `createOverlay` 或 `renderOverlay` 时传入类型
 
 ```ts
-import { createOverlay } from 'unoverlay-vue'
+import { createOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 import type { OverlayParams, OverlayResolved } from './define.ts'
 
@@ -55,7 +55,7 @@ export type OverlayResolved = string
 ```vue
 <script setup lang="ts">
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from 'unoverlay-vue'
+import { useOverlayMeta } from '@unoverlays/vue'
 import type { OverlayResolved } from './props'
 import { overlayProps } from './props'
 const props = defineProps(overlayProps)

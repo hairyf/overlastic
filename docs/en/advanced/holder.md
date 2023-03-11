@@ -10,7 +10,7 @@ When using `<component: is="holder"/>`, mount.
 ```vue
 <!-- App.vue -->
 <script setup>
-import { useInjectHolder } from 'unoverlay-vue'
+import { useInjectHolder } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 const [overlayApi, holder] = useInjectHolder(OverlayComponent)
 

@@ -12,7 +12,7 @@ When used in `<template>`, you need to explicitly define `module` and `event`.
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from 'unoverlay-vue'
+import { useOverlayMeta } from '@unoverlays/vue'
 const props = defineProps({
   title: String,
   // To use in Template, you need to define the fields used by v-modal (the default to visible)
@@ -35,7 +35,7 @@ If you want to replace with other fields and event names, you can pass in the co
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from 'unoverlay-vue'
+import { useOverlayMeta } from '@unoverlays/vue'
 const props = defineProps({
   title: String,
   modalValue: Boolean

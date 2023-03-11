@@ -27,7 +27,7 @@ Global installation makes all overlay inherit the app context
 ```ts
 // main.js
 import { createApp } from 'vue-demi'
-import unoverlay from 'unoverlay-vue'
+import unoverlay from '@unoverlays/vue'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -43,7 +43,7 @@ define overlay component
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from 'unoverlay-vue'
+import { useOverlayMeta } from '@unoverlays/vue'
 const props = defineProps({
   title: String,
   // If you want to use it as a component in template,
@@ -72,7 +72,7 @@ const { visible, confirm, cancel } = useOverlayMeta({
 
 Create a callback, call it in `Javascript`/`Typescript`
 ```ts
-import { createOverlay } from 'unoverlay-vue'
+import { createOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 
 // Convert to imperative overlay
@@ -85,7 +85,7 @@ const value = await callback({ title: 'callbackOverlay' })
 or use in `setup`
 
 ```ts
-import { renderOverlay } from 'unoverlay-vue'
+import { renderOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 
 const value = await renderOverlay(OverlayComponent, {

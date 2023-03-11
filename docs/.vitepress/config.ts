@@ -27,21 +27,23 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: '介绍',
       items: [
-        { text: '什么是 Unoverlay Vue?', link: '/zh/guide/what-is-unoverlay-vue' },
+        { text: '什么是 Unoverlays?', link: '/zh/guide/what-is-unoverlays' },
         { text: '开始使用', link: '/zh/guide/getting-started' },
-        { text: '模板支持', link: '/zh/guide/in-template' },
-        { text: '组件调试', link: '/zh/guide/devtools' },
       ],
     },
     {
-      text: '高级',
+      text: 'Vue.js',
       items: [
-        { text: '上下文继承', link: '/zh/advanced/context-inherited' },
-        { text: '外部控制', link: '/zh/advanced/external-control' },
-        { text: '定制化', link: '/zh/advanced/customized' },
-        { text: '持有者', link: '/zh/advanced/holder' },
-        { text: 'Typescript', link: '/zh/advanced/typescript' },
+        { text: '基础使用', link: '/zh/vue/' },
+        { text: '模板支持', link: '/zh/vue/in-template' },
+        { text: '组件调试', link: '/zh/vue/devtools' },
+        { text: '上下文继承', link: '/zh/vue/context-inherited' },
+        { text: '外部控制', link: '/zh/vue/external-control' },
+        { text: '定制化', link: '/zh/vue/customized' },
+        { text: '持有者', link: '/zh/vue/holder' },
+        { text: 'Typescript', link: '/zh/vue/typescript' },
       ],
+
     },
   ],
 }

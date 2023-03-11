@@ -23,7 +23,7 @@ You can register Unoverlay Vue globally, it will inherit the application context
 ```ts
 // main.js
 import { createApp } from 'vue-demi'
-import unoverlay from 'unoverlay-vue'
+import unoverlay from '@unoverlays/vue'
 
 const app = createApp({})
 app.use(unoverlay)
@@ -41,7 +41,7 @@ Unoverlay Vue is suitable for most components, using `useOverlayMeta` can have m
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from 'unoverlay-vue'
+import { useOverlayMeta } from '@unoverlays/vue'
 const props = defineProps({
   title: String,
 })
@@ -65,7 +65,7 @@ const { visible, confirm, cancel } = useOverlayMeta({
 You can convert a component into a modal with the `createOverlay` method, which allows you to call in `Javascript` / `Typescript`
 
 ```ts
-import { createOverlay } from 'unoverlay-vue'
+import { createOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 
 // Convert to imperative overlay
@@ -78,7 +78,7 @@ const value = await callback({ title: 'callbackOverlay' })
 You can also invoke the component directly via `renderOverlay`, skipping the `createOverlay` method.
 
 ```ts
-import { renderOverlay } from 'unoverlay-vue'
+import { renderOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 
 const value = await renderOverlay(OverlayComponent, {

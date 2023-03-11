@@ -6,7 +6,7 @@ Take [element-plus@2.15.7(dialog)](https://element.eleme.cn/#/en-US/component/di
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from 'unoverlay-vue'
+import { useOverlayMeta } from '@unoverlays/vue'
 const props = defineProps({
   title: String,
 })
@@ -25,7 +25,7 @@ const { visible, confirm, cancel } = useOverlayMeta({
 ```
 
 ```ts
-import { createOverlay } from 'unoverlay-vue'
+import { createOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 
 const callback = createOverlay(OverlayComponent)
