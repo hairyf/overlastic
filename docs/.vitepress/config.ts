@@ -59,14 +59,15 @@ const nav: DefaultTheme.NavItem[] = [
 
 const config = defineConfig({
   lang: 'zh',
+  title: 'Unified Overlays',
   locales: {
-    '/': {
-      lang: 'en-US',
-      title: 'Unoverlay Vue',
+    root: {
+      label: 'English',
+      lang: 'en',
     },
-    '/zh/': {
-      lang: 'zh-CN',
-      title: 'Unoverlay Vue',
+    zh: {
+      label: '中文',
+      lang: 'zh',
     },
   },
   lastUpdated: true,
@@ -76,13 +77,6 @@ const config = defineConfig({
     footer: {
       message: 'MIT Licensed',
       copyright: 'Copyright © 2019-present TuiMao233',
-    },
-    localeLinks: {
-      text: '',
-      items: [
-        { text: 'English', link: '/' },
-        { text: '简体中文', link: '/zh/' },
-      ],
     },
   },
 })

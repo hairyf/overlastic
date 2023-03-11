@@ -12,17 +12,8 @@
 
 ## packages
 
-- @unoverlays/vue - 在 Vue2|3 应用中使用 unoverlays 创建弹出层
-- @unoverlays/react - 在 React 应用中使用 UNoverlays 创建弹出层
-
-
-## Why?
-
-在如今日益繁琐的业务场景中，我们经常被重复的 Model 类定义工作所困扰，这意味着一旦遇到了 Model 类组件，我们需要不断重复定义 `cancel`、`confirm`、`visible` 等通用字段，
-在当保存组件状态时，经常的需要对 Model 流程进行控制（`open model` -> `edit data` -> `@confirm` -> `save data`）
-这极大的加剧了工作量，并在组件重复使用时产生大量的冗余代码。
-
-这个时候，则需要对 Modal 进行命令化（回调的方式），Unified Overlays 将多余的流程与状态统一管理，而当我们需要声明式使用时（即在 Vue Template 或 React Jsx）中，使用 Unified Overlays 创建组件依旧有效。
+- @unoverlays/vue - 在 Vue 应用中使用 Unified Overlays 创建弹出层
+- @unoverlays/react - 在 React 应用中使用 Unified Overlays 创建弹出层
 
 ## Devtools
 
@@ -36,6 +27,43 @@
 
 - `holder` 在对应的组件中插入持有者，使其在虚拟 DOM 当中。
 - `child-app` 创建独立的应用，由 devtools 识别新应用。
+
+## Why?
+
+在如今日益繁琐的业务场景中，我们经常被重复的 Model 类定义工作所困扰，这意味着一旦遇到了 Model 类组件，我们需要不断重复定义 `cancel`、`confirm`、`visible` 等通用字段，
+在当保存组件状态时，经常的需要对 Model 流程进行控制（`open model` -> `edit data` -> `@confirm` -> `save data`）
+这极大的加剧了工作量，并在组件重复使用时产生大量的冗余代码。
+
+这个时候，则需要对 Modal 进行命令化（回调的方式），Unified Overlays 将多余的流程与状态统一管理，而当我们需要声明式使用时（即在 Vue Template 或 React Jsx）中，使用 Unified Overlays 创建组件依旧有效。
+
+## Usage
+
+使用 `unoverlays` 提供的 `useOverlayMeta` Hook 创建弹出层组件（Vue、React）
+
+```ts
+// 在你的 Vue、React 弹出层组件中，使用 useOverlayMeta 获取弹出层元信息
+const { visible, confirm, cancel } = useOverlayMeta({
+  // 弹出层动画的持续时间, 可以避免组件过早被销毁
+  animation: 1000
+})
+```
+
+使用 `createOverlay|renderOverlay` 转换为命令式回调（callback）
+
+```ts
+const callback = createOverlay(OverlayComponent)
+const result = await callback(props)
+```
+
+---
+
+```ts
+const result = renderOverlay(OverlayComponent, {
+  props
+})
+```
+
+更多功能的使用，请查看 unoverlays 的[详细文档](https://unoverlays.vercel.app/zh/)。
 
 # License
 
