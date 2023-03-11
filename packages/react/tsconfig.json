@@ -5,12 +5,11 @@
     "moduleResolution": "node",
     "strict": true,
     "declaration": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "downlevelIteration": true,
-    "types": ["vitest/globals"],
     "lib": [
       "esnext",
       "dom"

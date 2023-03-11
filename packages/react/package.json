@@ -1,5 +1,5 @@
 {
-  "name": "@unified-overlays/utils",
+  "name": "@unified-overlay/vue",
   "version": "0.3.0",
   "license": "MIT",
   "homepage": "https://github.com/TuiMao233/unified-overlays#readme",
@@ -13,7 +13,9 @@
   "keywords": [
     "unified",
     "overlay",
-    "utils"
+    "component",
+    "popup",
+    "react"
   ],
   "publishConfig": {
     "main": "index.cjs.js",
@@ -35,5 +37,15 @@
     "lint": "eslint .",
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10"
   }
 }

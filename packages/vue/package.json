@@ -1,14 +1,14 @@
 {
-  "name": "@unified-overlay/vue",
+  "name": "@unified-overlays/vue",
   "version": "0.3.0",
   "license": "MIT",
-  "homepage": "https://github.com/TuiMao233/unified-overlay#readme",
+  "homepage": "https://github.com/TuiMao233/unified-overlays#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TuiMao233/unified-overlay.git"
+    "url": "git+https://github.com/TuiMao233/unified-overlays.git"
   },
   "bugs": {
-    "url": "https://github.com/TuiMao233/unified-overlay/issues"
+    "url": "https://github.com/TuiMao233/unified-overlays/issues"
   },
   "keywords": [
     "unified",
@@ -40,8 +40,6 @@
   },
   "peerDependencies": {
     "@vue/composition-api": "^1.0.0-rc.1",
-    "react": ">=18",
-    "react-dom": ">=18",
     "vue": "^2.0.0 || >=3.0.0"
   },
   "peerDependenciesMeta": {
@@ -55,7 +53,6 @@
     "pascal-case": "latest"
   },
   "devDependencies": {
-    "typescript": "^4.9.3",
     "vue": "^3.0.0",
     "vue-demi": "^0.13.11"
   }

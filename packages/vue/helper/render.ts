@@ -1,3 +1,4 @@
+/* eslint-disable unused-imports/no-unused-vars */
 import type { Component } from 'vue-demi'
 import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
