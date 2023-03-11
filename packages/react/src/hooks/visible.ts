@@ -1,6 +1,6 @@
-import type { Ref } from 'vue-demi'
 import type { Emitter } from 'mitt'
 import type { ImperativePromiser } from '@unoverlays/utils'
+import type { Dispatch, SetStateAction } from 'react'
 import { OverEvents } from '../internal'
 
 export interface VisiblePromiseOptions {
@@ -9,16 +9,18 @@ export interface VisiblePromiseOptions {
   events?: Emitter<any>
 }
 
-export function useVisibleScripts(visible: Ref<boolean>, options: VisiblePromiseOptions) {
+export function useVisibleScripts(_visible: [boolean, Dispatch<SetStateAction<boolean>>], options: VisiblePromiseOptions) {
+  const [visible, setVisible] = _visible
+
   function cancel(value?: any) {
     options.promiser?.reject(value)
     options.events?.emit(OverEvents.Cancel, value)
-    visible.value = false
+    setVisible(false)
   }
   function confirm(value?: any) {
     options.promiser?.resolve(value)
     options.events?.emit(OverEvents.Confirm, value)
-    visible.value = false
+    setVisible(false)
   }
   function vanish() {
     options.vanish?.()
@@ -30,5 +32,5 @@ export function useVisibleScripts(visible: Ref<boolean>, options: VisiblePromise
     options.promiser.promise.cancel = cancel
   }
 
-  return { visible, confirm, cancel, vanish }
+  return { setVisible, visible, confirm, cancel, vanish }
 }

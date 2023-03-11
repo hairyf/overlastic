@@ -18,3 +18,10 @@ export interface MountOptions {
    */
   root?: HTMLElement | false
 }
+
+export type PropsWidthOverlays<P = unknown> = P & {
+  visible?: boolean
+  onCancel?: Function
+  onConfirm?: Function
+  [key: string]: any
+}

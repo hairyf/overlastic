@@ -35,10 +35,12 @@ importers:
       '@types/react': ^18.0.27
       '@types/react-dom': ^18.0.10
       '@unoverlays/utils': workspace:*
+      mitt: ^3.0.0
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
       '@unoverlays/utils': link:../utils
+      mitt: 3.0.0
     devDependencies:
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.10
