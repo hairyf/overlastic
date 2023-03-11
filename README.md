@@ -1,4 +1,4 @@
-# vue-overlays
+# unoverlays
 
 > [中文](./README_CN.md) | English or see [unoverlays-docs](https://unoverlays.vercel.app/zh/)
 
