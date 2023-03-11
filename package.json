@@ -1,19 +1,24 @@
 {
-  "name": "unoverlay-vue",
+  "name": "unified-overlay",
   "version": "0.3.0",
-  "main": "src/index.ts",
+  "license": "MIT",
+  "homepage": "https://github.com/TuiMao233/unified-overlay#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/unified-overlay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TuiMao233/unified-overlay/issues"
+  },
   "keywords": [
     "unified",
     "overlay",
-    "vue overlay component",
-    "overlay-vuejs",
-    "overlay-vue",
-    "vuejs-overlay",
-    "vue-overlay",
+    "component",
     "popup",
     "vue",
-    "component"
+    "react"
   ],
+  "main": "src/index.ts",
   "publishConfig": {
     "main": "index.cjs.js",
     "types": "./index.d.ts",
@@ -30,11 +35,49 @@
     "directory": "dist"
   },
   "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch src",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build",
+    "test": "vitest",
+    "release": "bumpp && npm publish",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs",
-    "build": "ptsup -r src index.ts --dts --meta --clean --target es2020",
-    "change": "bumpp"
+    "docs:serve": "vitepress serve docs"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@vueuse/core": "^8.7.4",
+    "mitt": "^3.0.0",
+    "pascal-case": "latest",
+    "vue-demi": "latest"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.25.1",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vitejs/plugin-vue-jsx": "^1.3.10",
+    "@vue/test-utils": "^2.0.0",
+    "bumpp": "^8.2.1",
+    "eslint": "^8.18.0",
+    "jsdom": "^20.0.0",
+    "ptsup": "^0.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^6.6.3",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.12",
+    "vitepress": "1.0.0-alpha.4",
+    "vitest": "^0.15.2",
+    "vue": "^3.0.0"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -44,45 +87,6 @@
         "react",
         "react-dom"
       ]
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TuiMao233/unoverlay-vue.git"
-  },
-  "bugs": {
-    "url": "https://github.com/TuiMao233/unoverlay-vue/issues"
-  },
-  "homepage": "https://github.com/TuiMao233/unoverlay-vue#readme",
-  "license": "MIT",
-  "dependencies": {
-    "@vueuse/core": "^8.7.4",
-    "mitt": "^3.0.0",
-    "pascal-case": "latest",
-    "vue-demi": "latest"
-  },
-  "devDependencies": {
-    "@antfu/eslint-config": "^0.25.1",
-    "@vitejs/plugin-vue": "^2.3.3",
-    "@vitejs/plugin-vue-jsx": "^1.3.10",
-    "@vue/test-utils": "^2.0.0",
-    "bumpp": "^8.2.1",
-    "eslint": "^8.18.0",
-    "jsdom": "^20.0.0",
-    "ptsup": "^0.0.5",
-    "typescript": "^4.7.4",
-    "vite": "^2.9.12",
-    "vitepress": "1.0.0-alpha.4",
-    "vitest": "^0.15.2",
-    "vue": "^3.0.0"
-  },
-  "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.1",
-    "vue": "^2.0.0 || >=3.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
     }
   }
 }

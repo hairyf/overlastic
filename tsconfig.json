@@ -18,7 +18,7 @@
   },
   "exclude": [
     "**/dist/*.ts",
-    "**/dist/*.d.ts",
+    "**/dist/*.d.ts"
   ],
   "include": [
     "./**/*.ts",
@@ -26,6 +26,6 @@
     "./**/*.tsx",
     "./**/*.vue",
     "types/**.d.ts",
-    "types/**/**.d.ts",
+    "types/**/**.d.ts"
   ]
 }
