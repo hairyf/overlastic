@@ -50,12 +50,13 @@
     }
   },
   "dependencies": {
+    "@unified-overlays/utils": "workspace:*",
     "mitt": "^3.0.0",
     "pascal-case": "latest"
   },
   "devDependencies": {
     "typescript": "^4.9.3",
-    "vue-demi": "^0.13.11",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-demi": "^0.13.11"
   }
 }

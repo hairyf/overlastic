@@ -2,8 +2,8 @@ import type { Component } from 'vue-demi'
 import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
 import { pascalCase } from 'pascal-case'
+import { createGlobalNode, varName } from '@unified-overlays/utils'
 import { context } from '../internal'
-import { createGlobalNode, varName } from @unified-overlay/utils
 import type { MountOptions } from '../types'
 import { defineProviderComponent } from './define'
 

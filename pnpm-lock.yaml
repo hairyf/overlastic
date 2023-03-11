@@ -47,12 +47,14 @@ importers:
 
   packages/vue:
     specifiers:
+      '@unified-overlays/utils': workspace:^0.3.0
       mitt: ^3.0.0
       pascal-case: latest
       typescript: ^4.9.3
       vue: ^3.0.0
       vue-demi: ^0.13.11
     dependencies:
+      '@unified-overlays/utils': link:../utils
       mitt: 3.0.0
       pascal-case: 3.1.2
     devDependencies:
