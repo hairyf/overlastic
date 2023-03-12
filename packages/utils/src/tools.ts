@@ -1,5 +1,7 @@
 import { UnifiedOverlayProviderID } from './global'
 
+export const NAME_SPACES: Record<string, number> = {}
+
 export function noop() {}
 
 export function allowed() {
@@ -11,10 +13,11 @@ export function delay(milliseconds?: number) {
 }
 
 export function varName(id = UnifiedOverlayProviderID, auto = true) {
+  if (!NAME_SPACES[id])
+    NAME_SPACES[id] = 0
+
   if (auto)
-    return `${id}--${varName.index++}`
+    return `${id}--${++NAME_SPACES[id]}`
 
   return id
 }
-
-varName.index = 1

@@ -1,17 +1,17 @@
 import { allowed } from './tools'
 
-export type ImperativePromiser<T = void> = Promiser<{ confirm: Function; cancel: Function }, T>
+export type ImperativePromiser<T = void> = Promiser<{ confirm: (value: T) => void; cancel: Function }, T>
 export type ImperativePromise<T = void> = ImperativePromiser<T>['promise']
 
 export interface Promiser<P = object, T = void> {
   promise: Promise<T> & P
-  resolve: Function
+  resolve: (value: T) => void
   reject: Function
 }
 
 export function createPromiser<P, T = void>(): Promiser<P, T> {
-  let resolve!: Function
-  let reject!: Function
+  let resolve!: any
+  let reject!: any
   const promise = new Promise<any>((_resolve, _reject) => {
     resolve = _resolve
     reject = _reject

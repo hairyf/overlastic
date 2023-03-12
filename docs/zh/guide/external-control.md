@@ -6,13 +6,21 @@
 
 ```ts
 const Model = createOverlay(MyComponent)
-const promiser = Model({/* you props */})
+const instance = Model({/* you props */})
 
 function close() {
-  promiser.cancel()
+  instance.cancel('no')
+  instance.catch((value) => {
+    // log: no
+    console.log(value)
+  })
 }
 function yes() {
-  promiser.confirm({/* you resolved value */})
+  instance.confirm('yes')
+  instance.then((value) => {
+    // log: yes
+    console.log(value)
+  })
 }
 ```
 

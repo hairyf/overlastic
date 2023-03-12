@@ -78,8 +78,8 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
     })
   }
 
-  if (immediate)
-    onMounted(() => (meta.visible.value = true))
+  if (!meta.isTemplate && immediate)
+    onMounted(() => meta.visible.value = true)
 
   provide(OverlayMetaKey, null)
   return meta

@@ -1,5 +1,5 @@
 import React from 'react'
-import { createGlobalNode, varName } from '@unoverlays/utils'
+import { defineGlobalNode, varName } from '@unoverlays/utils'
 import { createRoot } from 'react-dom/client'
 import { pascalCase } from 'pascal-case'
 import type { MountOptions } from '../types'
@@ -16,7 +16,7 @@ export function renderReactDOM(
   options: RenderOptions = {},
 ) {
   const name = varName(options.id, options.autoIncrement)
-  const container = createGlobalNode(name, options.root || document.body)
+  const container = defineGlobalNode(name, options.root || document.body)
 
   function vanish() {
     requestAnimationFrame(() => {

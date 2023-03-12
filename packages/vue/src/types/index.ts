@@ -18,7 +18,7 @@ export interface MountOptions {
    *
    * @default document.body
    */
-  root?: HTMLElement | false
+  root?: HTMLElement | false | null
   /** current app context */
   appContext?: AppContext
 }

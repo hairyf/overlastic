@@ -1,12 +1,12 @@
+/* eslint-disable vue/one-component-per-file */
 /* eslint-disable unused-imports/no-unused-vars */
 import type { Component } from 'vue-demi'
 import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
 import { pascalCase } from 'pascal-case'
-import { createGlobalNode, varName } from '@unoverlays/utils'
+import { defineGlobalNode, varName } from '@unoverlays/utils'
 import { context } from '../internal'
 import type { MountOptions } from '../types'
-import { defineProviderComponent } from './define'
 
 export interface RenderChildOptions extends MountOptions {
   setup?: () => void
@@ -26,14 +26,14 @@ export function renderVNode(
     container.remove()
   }
 
-  const Provider = defineProviderComponent(component, {
+  const Provider = defineComponent({
     name: pascalCase(name),
     setup: options.setup,
-    props,
+    render: () => h(component, props),
   })
 
   const vnode = createVNode(Provider)
-  const container = createGlobalNode(name, options.root || document.body)
+  const container = defineGlobalNode(name, options.root || document.body)
 
   vnode.appContext = options.appContext || context.appContext
 
@@ -55,12 +55,8 @@ export function renderChildApp(
 
   const Provider = defineComponent({
     name: pascalCase(name),
-    setup() {
-      options.setup?.()
-    },
-    render() {
-      return h(component as any, props)
-    },
+    setup: options.setup,
+    render: () => h(component, props),
   })
 
   const app = createApp(Provider)
@@ -72,7 +68,7 @@ export function renderChildApp(
     Object.assign(app._context, appContext)
   }
 
-  const container = createGlobalNode(name, options.root || document.body)
+  const container = defineGlobalNode(name, options.root || document.body)
 
   app.mount(container)
 

@@ -110,7 +110,6 @@ export function automatic(meta: OverlayMeta, options: OverlayOptions) {
       await _delay(animation)
     meta.vanish?.()
   }
-
   for (const key of ['confirm', 'cancel'] as const) {
     const affirm = meta[key]
     meta[key] = function (value: any) {

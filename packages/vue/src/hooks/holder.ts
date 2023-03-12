@@ -1,11 +1,11 @@
 import type { Component } from 'vue-demi'
-import { Teleport, h, nextTick, provide, reactive, ref } from 'vue-demi'
+import { Teleport, defineComponent, h, nextTick, provide, reactive, ref } from 'vue-demi'
 
 import mitt from 'mitt'
 
 import { createImperativePromiser, varName } from '@unoverlays/utils'
-import type { MountOptions } from '../helper'
-import { defineProviderComponent } from '../helper'
+import { pascalCase } from 'pascal-case'
+import type { MountOptions } from '../types'
 import { OverlayMetaKey } from '../internal'
 import type { ImperativeOverlay } from '../transform'
 import type { VisiblePromiseOptions } from './visible'
@@ -22,22 +22,20 @@ export function useInjectHolder<Props, Resolved = void>(
 
   function render() {
     return h(Teleport,
-      { to: options.root || document.body, disabled: !!(options.root === false) },
-      [
-        h('div', { id: name }, [h(component, props.value)]),
-      ],
+      { to: options.root || document.body, disabled: options.root === false },
+      h('div', { id: name }, [h(component, props.value)]),
     )
   }
 
-  const holder = defineProviderComponent(component, {
-    render: false,
+  const Provider = defineComponent({
+    name: pascalCase(name),
     setup() {
       provide(OverlayMetaKey, scripts)
       return () => refresh.value ? render() : null
     },
   })
 
-  return [callback as any, holder]
+  return [callback as any, Provider]
 }
 
 export function useRefreshMetadata() {

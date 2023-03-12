@@ -24,6 +24,11 @@
     "vitest": "^0.29.2"
   },
   "devDependencies": {
+    "@unoverlays/react": "workspace:^0.3.2",
+    "@unoverlays/utils": "workspace:^0.3.1",
+    "@unoverlays/vue": "workspace:^0.3.2",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
     "ptsup": "^0.3.1",
     "typescript": "^4.9.3"
   },
@@ -38,6 +43,7 @@
     }
   },
   "dependencies": {
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-demi": "^0.13.11"
   }
 }
