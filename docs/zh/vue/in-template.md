@@ -1,6 +1,6 @@
 # Template Support
 
-使用 `unoverlay-vue` 创建的组件，除了支持使用命令式（Imperative）方法调用外，还支持在 `<template>` 中使用。
+使用 `@unoverlays/vue` 创建的组件，除了支持使用命令式（Imperative）方法调用外，还支持在 `<template>` 中使用。
 
 > 支持了 `<template>` 中使用的组件，同样也支持使用 callback 调用，并不会影响彼此功能，这是一项可选项。
 
@@ -12,7 +12,7 @@
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from 'unoverlay-vue'
+import { useOverlayMeta } from '@unoverlays/vue'
 const props = defineProps({
   title: String,
   // 在 Template 中使用，需要定义 v-modal 所使用的字段（默认对应 visible）
@@ -35,7 +35,7 @@ const { visible, confirm, cancel } = useOverlayMeta({
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from 'unoverlay-vue'
+import { useOverlayMeta } from '@unoverlays/vue'
 const props = defineProps({
   title: String,
   modalValue: Boolean

@@ -8,12 +8,12 @@ You can install `Unoverlays` by opening your terminal in your project and runnin
 
 With pnpm: 
 ```sh
-pnpm add unoverlay-vue
+pnpm add @unoverlays/vue
 ```
 
 With yarn:
 ```sh
-yarn add unoverlay-vue
+yarn add @unoverlays/vue
 ```
 
 ## Global

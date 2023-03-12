@@ -72,11 +72,11 @@ const sidebar: DefaultTheme.Sidebar = {
 const nav: DefaultTheme.NavItem[] = [
   {
     text: 'Guide',
-    link: '/en/guide/what-is-unoverlay-vue',
+    link: '/en/guide/what-is-unoverlays',
   },
   {
     text: 'Github',
-    link: 'https://github.com/TuiMao233/unoverlay-vue',
+    link: 'https://github.com/TuiMao233/unoverlays',
   },
 ]
 
