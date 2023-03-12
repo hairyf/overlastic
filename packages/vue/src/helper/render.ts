@@ -1,5 +1,5 @@
 /* eslint-disable vue/one-component-per-file */
-/* eslint-disable unused-imports/no-unused-vars */
+
 import type { Component } from 'vue-demi'
 import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
@@ -39,7 +39,7 @@ export function renderVNode(
 
   render(vnode, container)
 
-  return { vanish }
+  return { vanish, instance: vnode }
 }
 
 export function renderChildApp(
@@ -64,13 +64,12 @@ export function renderChildApp(
   const parent = options.appContext?.app || context.appContext?.app
   if (parent) {
     app.config.globalProperties = parent.config.globalProperties
-    const { reload, ...appContext } = parent._context as any
-    Object.assign(app._context, appContext)
+    Object.assign(app._context, parent._context)
   }
 
   const container = defineGlobalNode(name, options.root || document.body)
 
   app.mount(container)
 
-  return { vanish }
+  return { vanish, instance: app }
 }

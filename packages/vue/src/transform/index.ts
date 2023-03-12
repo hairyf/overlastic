@@ -46,7 +46,7 @@ export function createOverlay<Props, Resolved = void>(component: Component): Imp
  * @param component Component
  * @param options mount options and props
  */
-export function renderOverlay<Props = {}, Resolved = void>(
+export function renderOverlay<Props = unknown, Resolved = void>(
   component: Component,
   options: RenderOptions<Props> = {},
 ) {

@@ -1,13 +1,11 @@
 import type { Component } from 'vue-demi'
 import { Teleport, defineComponent, h, nextTick, provide, reactive, ref } from 'vue-demi'
 
-import mitt from 'mitt'
-
 import { createImperativePromiser, varName } from '@unoverlays/utils'
 import { pascalCase } from 'pascal-case'
 import type { MountOptions } from '../types'
-import { OverlayMetaKey } from '../internal'
 import type { ImperativeOverlay } from '../transform'
+import { OverlayMetaKey } from '../internal'
 import type { VisiblePromiseOptions } from './visible'
 import { useVisibleScripts } from './visible'
 
@@ -41,10 +39,8 @@ export function useInjectHolder<Props, Resolved = void>(
 export function useRefreshMetadata() {
   const visible = ref(false)
   const refresh = ref(false)
-  const events = mitt()
   const props = ref<any>()
   const options = reactive<VisiblePromiseOptions>({
-    events,
     vanish,
   })
   const scripts = useVisibleScripts(visible, options)
@@ -52,16 +48,17 @@ export function useRefreshMetadata() {
   function vanish() {
     refresh.value = false
     props.value = {}
-    events.off('*')
   }
 
   async function callback(_props: any) {
+    const promiser = createImperativePromiser()
+    options.promiser = promiser
+
     props.value = _props
     refresh.value = true
     await nextTick()
     visible.value = true
-    const promiser = createImperativePromiser()
-    Object.assign(options, { promiser })
+
     return promiser.promise
   }
 

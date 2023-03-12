@@ -1,6 +1,5 @@
 import { delay } from '@unoverlays/utils'
 import { mount } from '@vue/test-utils'
-import { nextTick } from 'vue'
 import { cancel, clear, confirm, isModalExists, openModal, queryModalTitle, queryModalWrapper, queryTransitionParent } from '../utils'
 import HolderContainer from './components/holder-container.vue'
 
@@ -20,7 +19,7 @@ describe('@unoverlays/vue:imperative-holder', () => {
 
     openModal(wrapper)
 
-    await nextTick()
+    await delay()
 
     expect(wrapper.get('.base-modal__mask').isVisible()).toBeTruthy()
 
@@ -39,7 +38,7 @@ describe('@unoverlays/vue:imperative-holder', () => {
 
     openModal(wrapper)
 
-    await nextTick()
+    await delay()
 
     expect(isModalExists()).toBeTruthy()
 
@@ -51,16 +50,47 @@ describe('@unoverlays/vue:imperative-holder', () => {
     clear()
   })
 
+  it('mount:animation', async () => {
+    const wrapper = mount(HolderContainer, {
+      props: {
+        animation: 200,
+      },
+    })
+
+    expect(isModalExists()).toBeFalsy()
+
+    openModal(wrapper)
+
+    await delay()
+
+    confirm()
+
+    expect(isModalExists()).toBeTruthy()
+
+    await delay(100)
+
+    expect(isModalExists()).toBeTruthy()
+
+    await delay(100)
+
+    expect(isModalExists()).toBeFalsy()
+
+    wrapper.unmount()
+    clear()
+  })
+
   it('emit:confirm', async () => {
     const wrapper = mount(HolderContainer)
 
     openModal(wrapper)
 
+    await delay()
+
     confirm()
 
-    await delay(10)
+    await delay()
 
-    expect(wrapper.get('.modal__value').text()).toBe('')
+    expect(wrapper.get('.modal__value').text()).toBe('confirm')
 
     wrapper.unmount()
     clear()
@@ -71,11 +101,13 @@ describe('@unoverlays/vue:imperative-holder', () => {
 
     openModal(wrapper)
 
+    await delay()
+
     cancel()
 
-    await nextTick()
+    await delay()
 
-    expect(wrapper.get('.modal__value').text()).toBe('')
+    expect(wrapper.get('.modal__value').text()).toBe('cancel')
 
     wrapper.unmount()
     clear()
@@ -90,7 +122,7 @@ describe('@unoverlays/vue:imperative-holder', () => {
 
     openModal(wrapper)
 
-    await nextTick()
+    await delay()
 
     expect(queryModalTitle().textContent).toBe('holder-modal-title')
 

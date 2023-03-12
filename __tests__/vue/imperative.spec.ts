@@ -1,4 +1,4 @@
-import { createOverlay } from '@unoverlays/vue'
+import { createOverlay, renderOverlay } from '@unoverlays/vue'
 import { cancel, clear, confirm, isModalExists, queryModalTitle } from '../utils'
 import Overlay from './components/overlay.vue'
 
@@ -8,6 +8,12 @@ describe('@unoverlays/vue:imperative', () => {
 
     callback()
 
+    expect(isModalExists()).toBeTruthy()
+    clear()
+  })
+
+  it('mount:render', () => {
+    renderOverlay(Overlay)
     expect(isModalExists()).toBeTruthy()
     clear()
   })
@@ -47,6 +53,12 @@ describe('@unoverlays/vue:imperative', () => {
     expect(instance).rejects.toBe('manual-cancel')
 
     instance.cancel('manual-cancel')
+    clear()
+  })
+
+  it('manual:not-allowed', () => {
+    const callback = createOverlay<unknown, string>(Overlay)
+    expect(callback().confirm('manual:not-allowed')).resolves.toBe('manual:not-allowed')
     clear()
   })
 

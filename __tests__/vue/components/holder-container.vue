@@ -5,12 +5,18 @@ import Overlay from './overlay.vue'
 
 const props = withDefaults(defineProps<{
   root?: any
+  animation?: number
 }>(), { root: undefined })
 
-const [callback, holder] = useInjectHolder<{ title?: string }, string>(Overlay, props)
+const [callback, holder] = useInjectHolder<{ title?: string; animation?: number }, string>(Overlay, props)
 
 async function getModalValue() {
-  result.value = await callback({ title: 'holder-modal-title' })
+  try {
+    result.value = await callback({ title: 'holder-modal-title', animation: props.animation })
+  }
+  catch (error: any) {
+    result.value = error
+  }
 }
 
 const result = ref<string>()

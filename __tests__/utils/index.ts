@@ -23,6 +23,9 @@ export function queryModalTitle() {
 export function isModalExists() {
   return !!queryModalWrapper()
 }
+export function isBasicExists() {
+  return !!document.querySelector('.basic')
+}
 
 export function clear() {
   queryModalWrapper()?.remove()

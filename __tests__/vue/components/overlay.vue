@@ -8,12 +8,16 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    animation: {
+      type: Number,
+      default: 0,
+    },
     title: String,
   },
   emits: ['confirm', 'cancel', 'update:visible'],
-  setup: () => {
+  setup: (props) => {
     const { confirm, cancel, vanish, visible } = useOverlayMeta({
-      animation: 2000,
+      animation: props.animation,
     })
     return { confirm, cancel, vanish, visible }
   },

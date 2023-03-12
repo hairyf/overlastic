@@ -1,6 +1,6 @@
 import { allowed } from './tools'
 
-export type ImperativePromiser<T = void> = Promiser<{ confirm: (value: T) => void; cancel: Function }, T>
+export type ImperativePromiser<T = void> = Promiser<{ confirm: (value: T) => ImperativePromise<T>; cancel: Function }, T>
 export type ImperativePromise<T = void> = ImperativePromiser<T>['promise']
 
 export interface Promiser<P = object, T = void> {

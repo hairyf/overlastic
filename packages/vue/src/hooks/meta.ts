@@ -1,5 +1,5 @@
 import type { Ref } from 'vue-demi'
-import { getCurrentInstance, inject, onMounted, provide, ref, watch } from 'vue-demi'
+import { getCurrentInstance, inject, onMounted, provide, watch } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
 import { delay, noop } from '@unoverlays/utils'
 import { OverlayMetaKey } from '../internal'
@@ -71,7 +71,7 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
   if (!meta.isTemplate && automatic) {
     watch(meta.visible, async () => {
       if (meta.visible.value)
-        return undefined
+        return
       if (animation > 0)
         await delay(animation)
       meta.vanish?.()
@@ -89,7 +89,10 @@ export function useTemplateMeta(model: string, options: OverlayOptions = {}) {
   const instance = getCurrentInstance()
   const events = options.event || {}
 
-  const visible = instance ? useVModel(instance.props, model) as Ref<boolean> : ref(false)
+  if (!instance)
+    throw new Error('Please use useOverlayMeta in component setup')
+
+  const visible = useVModel(instance.props, model, instance.emit, { passive: true }) as Ref<boolean>
 
   const cancel = (value?: any) => {
     visible.value = false
