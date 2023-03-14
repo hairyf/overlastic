@@ -41,8 +41,8 @@ export interface OverlayOptions {
 }
 
 export function mixinOverlayMeta(options: OverlayOptions = {}) {
-  const { animation = 0, immediate = true, model = 'visible', automatic = true } = options
-
+  const { animation = 0, immediate = true, model = 'visible', automatic = true, event = {} } = options
+  const { cancel = 'cancel', confirm = 'confirm' } = event
   const mixinOptions: ComponentOptions<Vue> = {
     inject: [OverlayMetaKey],
     props: { [model]: Boolean },
@@ -50,24 +50,19 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
       prop: model,
       event: 'change',
     },
-    data(this: any) {
-      if (this.$overlay)
-        return { runtime_visible: false }
-      return {}
-    },
     methods: {
       async $confirm(this: any, value: any) {
-        const result = this.$overlay?.confirm(value)
+        this.$overlay?.confirm(value)
+        this.$emit(confirm, value)
         this.$visible = false
-        return result
       },
       async $cancel(this: any, value: any) {
-        const result = this.$overlay?.cancel(value)
+        this.$overlay?.cancel(value)
+        this.$emit(cancel, value)
         this.$visible = false
-        return result
       },
     },
-    mounted(this: any) {
+    created(this: any) {
       if (immediate)
         this.$visible = true
     },

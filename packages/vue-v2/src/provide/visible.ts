@@ -25,7 +25,6 @@ export function createVisibleScripts(options: VisiblePromiseOptions) {
   }
 
   return {
-    visible: false,
     confirm,
     cancel,
     vanish,
