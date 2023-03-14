@@ -8,11 +8,9 @@ export interface VisiblePromiseOptions {
 export function createVisibleScripts(options: VisiblePromiseOptions) {
   function cancel(this: any, value?: any) {
     options.promiser?.reject(value)
-    this.$overlay.visible = false
   }
   function confirm(this: any, value?: any) {
     options.promiser?.resolve(value)
-    this.$overlay.visible = false
     return options.promiser?.promise
   }
   function vanish() {

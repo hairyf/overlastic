@@ -1,5 +1,6 @@
 import { delay } from '@unoverlays/utils'
-import type { Component } from 'vue'
+import type { ComponentOptions } from 'vue/types'
+import type Vue from 'vue'
 import { OverlayMetaKey } from '../internal'
 
 export interface OverlayOptions {
@@ -42,26 +43,36 @@ export interface OverlayOptions {
 export function mixinOverlayMeta(options: OverlayOptions = {}) {
   const { animation = 0, immediate = true, model = 'visible', automatic = true } = options
 
-  const mixinOptions: Component = {
+  const mixinOptions: ComponentOptions<Vue> = {
     inject: [OverlayMetaKey],
-
     model: {
       prop: model,
       event: 'change',
     },
-    mounted() {
-      if (immediate)
-        (this as any).$overlay.visible = true
+    data() {
+      return {
+        $visible: false,
+      }
     },
-    watch: {
-      async visible() {
-        if ((this as any).$overlay.visible || !automatic)
-          return
-        if (animation > 0)
-          await delay(animation)
-
-        ;(this as any).$overlay.vanish?.()
+    methods: {
+      async $confirm(this: any, value: any) {
+        const result = this.$overlay.confirm(value)
+        this.$visible = false
+        if (automatic)
+          delay(animation).then(this.$overlay.vanish)
+        return result
       },
+      async $cancel(this: any, value: any) {
+        const result = this.$overlay.cancel(value)
+        this.$visible = false
+        if (automatic)
+          delay(animation).then(this.$overlay.vanish)
+        return result
+      },
+    },
+    mounted(this: any) {
+      if (immediate)
+        this.$visible = true
     },
   }
 
