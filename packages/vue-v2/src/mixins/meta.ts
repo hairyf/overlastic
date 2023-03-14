@@ -72,23 +72,14 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
         this.$visible = true
     },
     computed: {
-      $isTemplate() {
-        return this.$overlay
-      },
       $visible: {
         set(this: any, value: any) {
-          if (this.$isTemplate)
-            this.$emit('change', value)
-          else
-            this.runtime_visible = value
+          this.$overlay ? (this.runtime_visible = value) : this.$emit('change', value)
           if (value === false && automatic)
             delay(animation).then(this.$overlay.vanish)
         },
         get(this: any) {
-          if (this.$isTemplate)
-            return this[model]
-          else
-            return this.runtime_visible
+          return this.$overlay ? this.runtime_visible : this[model]
         },
       },
     },
