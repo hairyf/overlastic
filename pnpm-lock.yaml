@@ -5,13 +5,14 @@ importers:
   .:
     specifiers:
       '@antfu/eslint-config': ^0.36.0
-      '@unoverlays/react': workspace:^0.3.2
-      '@unoverlays/utils': workspace:^0.3.1
-      '@unoverlays/vue': workspace:^0.3.2
+      '@unoverlays/react': workspace:*
+      '@unoverlays/utils': workspace:*
+      '@unoverlays/vue': workspace:*
       '@vitejs/plugin-vue': ^4.0.0
       '@vitejs/plugin-vue-jsx': ^3.0.0
       '@vitest/coverage-c8': ^0.29.2
       '@vue/test-utils': ^2.0.0
+      '@vueuse/core': ^9.13.0
       bumpp: ^8.2.1
       eslint: ^8.28.0
       jsdom: ^20.0.0
@@ -41,6 +42,7 @@ importers:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
       '@vitejs/plugin-vue-jsx': 3.0.0_vite@4.1.4+vue@3.2.47
       '@vitest/coverage-c8': 0.29.2_vitest@0.29.2
+      '@vueuse/core': 9.13.0_vue@3.2.47
       ptsup: 0.3.1
       typescript: 4.9.5
 
@@ -1311,7 +1313,6 @@ packages:
 
   /@types/web-bluetooth/0.0.16:
     resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
-    dev: false
 
   /@typescript-eslint/eslint-plugin/5.54.1_4rfaf6mlw2mmutqjcopwvbftpu:
     resolution: {integrity: sha512-a2RQAkosH3d3ZIV08s3DcL/mcGc2M/UC528VkPULFxR9VnVPT8pBu0IyBAJJmVsCmhVfwQX1v6q+QGnmSe1bew==, registry: https://registry.yarnpkg.com/, tarball: https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.54.1.tgz}
@@ -1676,7 +1677,6 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-    dev: false
 
   /@vueuse/metadata/8.9.4:
     resolution: {integrity: sha512-IwSfzH80bnJMzqhaapqJl9JRIiyQU0zsRGEgnxN6jhq7992cPUJIRfV+JHRIZXjYqbwt07E1gTEp0R0zPJ1aqw==}
@@ -1685,7 +1685,6 @@ packages:
 
   /@vueuse/metadata/9.13.0:
     resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
-    dev: false
 
   /@vueuse/shared/8.9.4_vue@3.2.47:
     resolution: {integrity: sha512-wt+T30c4K6dGRMVqPddexEVLa28YwxW5OFIPmzUHICjphfAuBFTTdDoyqREZNDOFJZ44ARH1WWQNCUK8koJ+Ag==}
@@ -1710,7 +1709,6 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-    dev: false
 
   /abab/2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.yarnpkg.com/abab/-/abab-2.0.6.tgz}
