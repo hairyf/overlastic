@@ -39,11 +39,6 @@
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
   },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
-    }
-  },
   "dependencies": {
     "@unoverlays/utils": "workspace:*",
     "pascal-case": "latest"
