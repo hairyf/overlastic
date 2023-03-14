@@ -1,9 +1,10 @@
-import Vue from 'vue'
+import type Vue from 'vue'
 import type { PluginObject } from 'vue/types/umd'
 import { context } from './internal'
 
 const install = (_ins: any, parent: any) => {
-  context.parent = parent || Vue
+  if (parent)
+    context.parent = parent
 }
 
 const unoverlay: PluginObject<Vue> = { install }

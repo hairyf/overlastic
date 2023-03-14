@@ -3,6 +3,7 @@ import Vue from 'vue'
 import { pascalCase } from 'pascal-case'
 import { defineGlobalNode, varName } from '@unoverlays/utils'
 import type { MountOptions } from '../types'
+import { context } from '../internal'
 
 export function renderChildApp(
   component: Component,
@@ -18,7 +19,7 @@ export function renderChildApp(
 
   const app = new Vue({
     name: pascalCase(name),
-    parent: options.parent,
+    parent: options.parent || context.parent,
     provide: options.provide,
     render: h => h(component, { props }),
   })
