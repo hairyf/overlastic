@@ -1,6 +1,6 @@
 {
   "name": "@unoverlays/vue-v2",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "license": "MIT",
   "homepage": "https://github.com/TuiMao233/unoverlays#readme",
   "repository": {
@@ -34,7 +34,7 @@
     "directory": "dist"
   },
   "scripts": {
-    "build": "ptsup -r src index.ts --dts --meta --clean --target es2020",
+    "build": "ptsup -r src index.ts --dts --meta --clean",
     "lint": "eslint .",
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
