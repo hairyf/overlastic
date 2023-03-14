@@ -45,14 +45,15 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
 
   const mixinOptions: ComponentOptions<Vue> = {
     inject: [OverlayMetaKey],
+    props: { [model]: Boolean },
     model: {
       prop: model,
       event: 'change',
     },
-    data() {
-      return {
-        $visible: false,
-      }
+    data(this: any) {
+      if (this.$overlay)
+        return { $runtime_visible: false }
+      return {}
     },
     methods: {
       async $confirm(this: any, value: any) {
@@ -73,6 +74,25 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
     mounted(this: any) {
       if (immediate)
         this.$visible = true
+    },
+    computed: {
+      $isTemplate() {
+        return !this.$overlay
+      },
+      $visible: {
+        set(this: any, value: any) {
+          if (this.$isTemplate)
+            this.$emit('change', value)
+          else
+            this.$runtime_visible = value
+        },
+        get(this: any) {
+          if (this.$isTemplate)
+            return this[model]
+          else
+            return this.$runtime_visible
+        },
+      },
     },
   }
 
