@@ -1,5 +1,4 @@
 import { createImperativePromiser, varName } from '@unoverlays/utils'
-import mitt from 'mitt'
 import { pascalCase } from 'pascal-case'
 import type { FC } from 'react'
 import { useRef, useState } from 'react'
@@ -40,11 +39,9 @@ export function useInjectHolder<Props, Resolved = void>(
 }
 
 export function useRefreshMetadata() {
-  const { current: events } = useRef(mitt())
   const [props, setProps] = useState<any>()
   const [refresh, setRefresh] = useState(false)
   const { current: options } = useRef<VisiblePromiseOptions>({
-    events,
     vanish,
   })
   const scripts = useVisibleScripts(options)
@@ -52,14 +49,14 @@ export function useRefreshMetadata() {
   function vanish() {
     setRefresh(false)
     setProps({})
-    events.off('*')
   }
 
   async function callback(props: any) {
-    setProps(props)
-    setRefresh(true)
     const promiser = createImperativePromiser()
     Object.assign(options, { promiser })
+    setProps(props)
+    setRefresh(true)
+
     return promiser.promise
   }
 
