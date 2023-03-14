@@ -43,7 +43,7 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
   const { animation = 0, immediate = true, model = 'visible', automatic = true } = options
 
   const mixinOptions: Component = {
-    inject: { OverlayMetaKey },
+    inject: [OverlayMetaKey],
 
     model: {
       prop: model,

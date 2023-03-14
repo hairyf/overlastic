@@ -27,9 +27,9 @@ export function createVisibleScripts(options: VisiblePromiseOptions) {
   }
 
   return {
-    $visible: false,
-    $confirm: confirm,
-    $cancel: cancel,
-    $vanish: vanish,
+    visible: false,
+    confirm,
+    cancel,
+    vanish,
   }
 }
