@@ -1,5 +1,5 @@
 {
-  "name": "@unoverlays/vue",
+  "name": "@unoverlays/vue-v2",
   "version": "0.3.3",
   "license": "MIT",
   "homepage": "https://github.com/TuiMao233/unoverlays#readme",
@@ -15,7 +15,7 @@
     "overlay",
     "component",
     "popup",
-    "vue"
+    "vue2"
   ],
   "main": "./src/index.ts",
   "publishConfig": {
@@ -39,10 +39,6 @@
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
   },
-  "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.1",
-    "vue": "^2.0.0 || >=3.0.0"
-  },
   "peerDependenciesMeta": {
     "@vue/composition-api": {
       "optional": true
@@ -50,11 +46,9 @@
   },
   "dependencies": {
     "@unoverlays/utils": "workspace:*",
-    "@vueuse/core": "^9.13.0",
     "pascal-case": "latest"
   },
   "devDependencies": {
-    "vue": "^3.0.0",
-    "vue-demi": "^0.13.11"
+    "vue": "^2.0.0"
   }
 }

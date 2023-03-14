@@ -1,4 +1,3 @@
-import type { Ref } from 'vue-demi'
 import type { ImperativePromiser } from '@unoverlays/utils'
 
 export interface VisiblePromiseOptions {
@@ -6,14 +5,14 @@ export interface VisiblePromiseOptions {
   vanish?: Function
 }
 
-export function useVisibleScripts(visible: Ref<boolean>, options: VisiblePromiseOptions) {
-  function cancel(value?: any) {
+export function createVisibleScripts(options: VisiblePromiseOptions) {
+  function cancel(this: any, value?: any) {
     options.promiser?.reject(value)
-    visible.value = false
+    this.$visible = false
   }
-  function confirm(value?: any) {
+  function confirm(this: any, value?: any) {
     options.promiser?.resolve(value)
-    visible.value = false
+    this.$visible = false
     return options.promiser?.promise
   }
   function vanish() {
@@ -27,5 +26,10 @@ export function useVisibleScripts(visible: Ref<boolean>, options: VisiblePromise
     options.promiser.promise.cancel = cancel
   }
 
-  return { visible, confirm, cancel, vanish }
+  return {
+    $visible: false,
+    $confirm: confirm,
+    $cancel: cancel,
+    $vanish: vanish,
+  }
 }
