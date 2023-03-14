@@ -13,5 +13,6 @@ export type { ImperativeOverlay, RenderOptions } from './transform'
 export { mixinOverlayMeta } from './mixins'
 export type { OverlayOptions } from './mixins'
 export { createOverlay, renderOverlay } from './transform'
+export { FieldRender } from './components'
 
 export default unoverlay

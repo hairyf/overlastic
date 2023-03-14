@@ -2,6 +2,7 @@ import { delay } from '@unoverlays/utils'
 import type { ComponentOptions } from 'vue/types'
 import type Vue from 'vue'
 import { OverlayMetaKey } from '../internal'
+import { DefaultData } from 'vue/types/options'
 
 export interface OverlayOptions {
   /** animation duration to avoid premature destruction of components */
@@ -42,7 +43,8 @@ export interface OverlayOptions {
 
 export function mixinOverlayMeta(options: OverlayOptions = {}) {
   const { animation = 0, immediate = true, model = 'visible', automatic = true, event = {} } = options
-  const { cancel = 'cancel', confirm = 'confirm' } = event
+  event.cancel = event.cancel || 'cancel'
+  event.confirm = event.confirm || 'confirm'
   const mixinOptions: ComponentOptions<Vue> = {
     inject: [OverlayMetaKey],
     props: { [model]: Boolean },
@@ -50,21 +52,28 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
       prop: model,
       event: 'change',
     },
+    data(this: any) {
+      if (this.$overlay)
+        return { runtime_visible: false }
+      return {}
+    },
     methods: {
+      async $runtime_effect(this: any, type: 'cancel' | 'confirm', value: any) {
+        this.$emit(event[type], value)
+        this.$visible = false
+      },
       async $confirm(this: any, value: any) {
         this.$overlay?.confirm(value)
-        this.$emit(confirm, value)
-        this.$visible = false
       },
       async $cancel(this: any, value: any) {
         this.$overlay?.cancel(value)
-        this.$emit(cancel, value)
-        this.$visible = false
       },
     },
     created(this: any) {
       if (immediate)
         this.$visible = true
+      if (this.$overlay)
+        this.$overlay.on('*', this.$runtime_effect)
     },
     computed: {
       $visible: {

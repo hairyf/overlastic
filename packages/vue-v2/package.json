@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@unoverlays/utils": "workspace:*",
+    "mitt": "^3.0.0",
     "pascal-case": "latest"
   },
   "devDependencies": {
