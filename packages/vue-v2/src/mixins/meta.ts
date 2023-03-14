@@ -60,7 +60,7 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
         if (animation > 0)
           await delay(animation)
 
-        ;(this as any).$vanish?.()
+        ;(this as any).$overlay.vanish?.()
       },
     },
   }
