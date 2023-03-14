@@ -52,17 +52,17 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
     },
     data(this: any) {
       if (this.$overlay)
-        return { $runtime_visible: false }
+        return { runtime_visible: false }
       return {}
     },
     methods: {
       async $confirm(this: any, value: any) {
-        const result = this.$overlay.confirm(value)
+        const result = this.$overlay?.confirm(value)
         this.$visible = false
         return result
       },
       async $cancel(this: any, value: any) {
-        const result = this.$overlay.cancel(value)
+        const result = this.$overlay?.cancel(value)
         this.$visible = false
         return result
       },
@@ -73,14 +73,14 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
     },
     computed: {
       $isTemplate() {
-        return !this.$overlay
+        return this.$overlay
       },
       $visible: {
         set(this: any, value: any) {
           if (this.$isTemplate)
             this.$emit('change', value)
           else
-            this.$runtime_visible = value
+            this.runtime_visible = value
           if (value === false && automatic)
             delay(animation).then(this.$overlay.vanish)
         },
@@ -88,7 +88,7 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
           if (this.$isTemplate)
             return this[model]
           else
-            return this.$runtime_visible
+            return this.runtime_visible
         },
       },
     },
