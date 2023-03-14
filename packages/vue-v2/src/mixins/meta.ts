@@ -51,11 +51,11 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
     },
     mounted() {
       if (immediate)
-        (this as any).$visible = true
+        (this as any).$overlay.visible = true
     },
     watch: {
       async visible() {
-        if (this.$visible || !automatic)
+        if ((this as any).$overlay.visible || !automatic)
           return
         if (animation > 0)
           await delay(animation)
