@@ -10,7 +10,8 @@ const install = (_ins: any, parent: any) => {
 const unoverlay: PluginObject<Vue> = { install }
 
 export type { ImperativeOverlay, RenderOptions } from './transform'
-export type { mixinOverlayMeta, OverlayOptions } from './mixins'
+export { mixinOverlayMeta } from './mixins'
+export type { OverlayOptions } from './mixins'
 export { createOverlay, renderOverlay } from './transform'
 
 export default unoverlay
