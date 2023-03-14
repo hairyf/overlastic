@@ -59,15 +59,11 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
       async $confirm(this: any, value: any) {
         const result = this.$overlay.confirm(value)
         this.$visible = false
-        if (automatic)
-          delay(animation).then(this.$overlay.vanish)
         return result
       },
       async $cancel(this: any, value: any) {
         const result = this.$overlay.cancel(value)
         this.$visible = false
-        if (automatic)
-          delay(animation).then(this.$overlay.vanish)
         return result
       },
     },
@@ -85,6 +81,8 @@ export function mixinOverlayMeta(options: OverlayOptions = {}) {
             this.$emit('change', value)
           else
             this.$runtime_visible = value
+          if (value === false && automatic)
+            delay(animation).then(this.$overlay.vanish)
         },
         get(this: any) {
           if (this.$isTemplate)
