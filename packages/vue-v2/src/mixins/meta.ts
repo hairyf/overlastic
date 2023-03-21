@@ -2,7 +2,6 @@ import { delay } from '@unoverlays/utils'
 import type { ComponentOptions } from 'vue/types'
 import type Vue from 'vue'
 import { OverlayMetaKey } from '../internal'
-import { DefaultData } from 'vue/types/options'
 
 export interface OverlayOptions {
   /** animation duration to avoid premature destruction of components */

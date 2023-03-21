@@ -25,7 +25,8 @@ export function createOverlay<Props, Resolved = void>(component: Component): Imp
     function provide() {
       return { [OverlayMetaKey]: createVisibleScripts(Object.assign(caches, { promiser })) }
     }
-    caches.vanish = renderChildApp(component, props, { ...options, provide }).vanish
+    
+    caches.vanish = renderChildApp(component, props, Object.assign(options, {provide})).vanish
   }
 
   function caller(props: any, options?: any) {
