@@ -8,6 +8,7 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: 'What is Unoverlays?', link: '/en/guide/what-is-unoverlays' },
         { text: 'Getting Started', link: '/en/guide/getting-started' },
+        { text: 'External Control', link: '/en/guide/external-control' },
       ],
     },
     {

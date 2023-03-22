@@ -62,7 +62,7 @@ const { visible, confirm, cancel } = useOverlayMeta({
 </template>
 ```
 
-### 步骤.2: Create Overlay
+### Step 2: Create Overlay
 
 You can use the `createOverlay` method to convert the component into a modal dialog in Javascript / Typescript, which allows you to call it.
 

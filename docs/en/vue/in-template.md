@@ -1,6 +1,6 @@
 # Template Support
 
-使用 `@unoverlays/vue` 创建的组件，除了支持使用命令式（Imperative）方法调用外，还支持在 `<template>` 中使用。
+Components created with `@unoverlays/vue` can be used not only with imperative methods, but also in `<template>`.
 
 To use a component created with `@unoverlays/vue`, it can be used not only with imperative methods, but also in `<template>`.
 
