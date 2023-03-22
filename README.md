@@ -1,6 +1,6 @@
 # unoverlays
 
-> [中文](./README_CN.md) | English or see [unoverlays-docs](https://unoverlays.vercel.app/zh/)
+> [中文](./README_CN.md) | English or see [unoverlays-docs](https://unoverlays.vercel.app/en/)
 
 Unoverlays is a unified plugin for building overlayss. It allows for the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
 
