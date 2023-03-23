@@ -32,7 +32,7 @@ Components created by Unified Overlays support Devtools for their corresponding 
 
 ## Why?
 
-In today's increasingly complex business scenarios, we are often troubled by the repetitive work of defining Model classes. This means that once we encounter a Model class component, we need to repeatedly define common fields such as cancel, confirm, and visible. When saving component state, we often need to control the Model process (`open model` -> `edit data` -> `onConfirm` -> `save data`). This greatly increases the workload and produces a lot of redundant code when components are reused(For example, a frequently used image selector)
+In today's increasingly complex business scenarios, we are often troubled by the repetitive work of defining Model classes. This means that once we encounter a Model class component, we need to repeatedly define common fields such as cancel, confirm, and visible. When saving component state, we often need to control the Model process (`clear data` -> `open model` -> `edit data` -> `onConfirm` -> `save data`). This greatly increases the workload and produces a lot of redundant code when components are reused(For example, a frequently used image selector)
 
 Therefore, it is necessary to commandize Modal (using a callback approach). Unified Overlays unifies the redundant processes and state management, and the use of Unified Overlays to create components remains effective when declaratively used (in Vue Template or React Jsx).
 
