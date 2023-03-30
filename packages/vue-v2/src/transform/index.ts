@@ -19,7 +19,7 @@ export interface RenderOptions<Props> extends MountOptions {
  * Create imperative overlay
  * @param component Component
  */
-export function createOverlay<Props, Resolved = void>(component: Component): ImperativeOverlay<Props, Resolved> {
+export function defineOverlay<Props, Resolved = void>(component: Component): ImperativeOverlay<Props, Resolved> {
   function executor(props: any, promiser: any, options?: any) {
     const caches = { vanish: noop }
     function provide() {
@@ -47,5 +47,5 @@ export function renderOverlay<Props = unknown, Resolved = void>(
   component: Component,
   options: RenderOptions<Props> = {},
 ) {
-  return createOverlay<Props, Resolved>(component)(options.props, options)
+  return defineOverlay<Props, Resolved>(component)(options.props, options)
 }

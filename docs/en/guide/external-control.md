@@ -5,7 +5,7 @@ If you give all control to Component, you will be limited in some usage scenario
 The function of the return value of `Model` includes not only `Promise`, but also `confirm` and `cancel` based on this
 
 ```ts
-const Model = createOverlay(MyComponent)
+const Model = defineOverlay(MyComponent)
 const instance = Model({/* you props */})
 
 function close() {

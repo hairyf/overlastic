@@ -62,20 +62,20 @@ const { visible, confirm, cancel } = useOverlayMeta({
 
 ### Step.2-1: Create Overlay
 
-You can convert a component into a modal with the `createOverlay` method, which allows you to call in `Javascript` / `Typescript`
+You can convert a component into a modal with the `defineOverlay` method, which allows you to call in `Javascript` / `Typescript`
 
 ```ts
-import { createOverlay } from '@unoverlays/vue'
+import { defineOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 
 // Convert to imperative overlay
-const callback = createOverlay(OverlayComponent)
+const callback = defineOverlay(OverlayComponent)
 // Call the component and get the value of confirm
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
 
-You can also invoke the component directly via `renderOverlay`, skipping the `createOverlay` method.
+You can also invoke the component directly via `renderOverlay`, skipping the `defineOverlay` method.
 
 ```ts
 import { renderOverlay } from '@unoverlays/vue'

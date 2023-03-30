@@ -36,20 +36,20 @@ export function OverlayComponent(props) {
 
 ### 步骤.2: Create Overlay
 
-你可以通过 `createOverlay` 的方法将组件转换成模态框的方法，它允许你在 `Javascript` / `Typescript` 中调用。
+你可以通过 `defineOverlay` 的方法将组件转换成模态框的方法，它允许你在 `Javascript` / `Typescript` 中调用。
 
 ```ts
-import { createOverlay } from '@unoverlays/react'
+import { defineOverlay } from '@unoverlays/react'
 import { OverlayComponent } from './overlay'
 
 // 转换为命令式回调
-const callback = createOverlay(OverlayComponent)
+const callback = defineOverlay(OverlayComponent)
 // 调用组件并获取 confirm 回调的值
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
 
-你也可以通过 `renderOverlay` 直接调起组件，跳过 `createOverlay` 方法。
+你也可以通过 `renderOverlay` 直接调起组件，跳过 `defineOverlay` 方法。
 
 ```ts
 import { renderOverlay } from '@unoverlays/react'

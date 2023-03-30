@@ -58,10 +58,10 @@ const { visible, confirm, cancel } = useOverlayMeta({
 })
 ```
 
-Use `createOverlay|renderOverlay` to convert to a callback (imperative) method.
+Use `defineOverlay|renderOverlay` to convert to a callback (imperative) method.
 
 ```ts
-const callback = createOverlay(OverlayComponent)
+const callback = defineOverlay(OverlayComponent)
 const result = await callback(props)
 ```
 

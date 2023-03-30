@@ -5,7 +5,7 @@
 `Model` 的返回值的功能不仅仅包括 `Promise` 在此基础还有 `confirm` 和 `cancel`
 
 ```ts
-const Model = createOverlay(MyComponent)
+const Model = defineOverlay(MyComponent)
 const instance = Model({/* you props */})
 
 function close() {

@@ -22,12 +22,12 @@ export function OverlayComponent(props: PropsWithOverlays<Params>) {
 }
 ```
 
-- Step 2: Pass in the types when using createOverlay or renderOverlay
+- Step 2: Pass in the types when using defineOverlay or renderOverlay
 
 ```ts
-import { createOverlay } from '@unoverlays/vue'
+import { defineOverlay } from '@unoverlays/vue'
 import { OverlayComponent, Params, Resolved } from './overlay'
 import type { Params, Resolved } from './define'
 
-const callback = createOverlay<Params, Resolved>(OverlayComponent)
+const callback = defineOverlay<Params, Resolved>(OverlayComponent)
 ```

@@ -12,7 +12,7 @@ const unoverlay: PluginObject<Vue> = { install }
 export type { ImperativeOverlay, RenderOptions } from './transform'
 export { mixinOverlayMeta } from './mixins'
 export type { OverlayOptions } from './mixins'
-export { createOverlay, renderOverlay } from './transform'
+export { defineOverlay, renderOverlay } from './transform'
 export { FieldRender } from './components'
 
 export default unoverlay

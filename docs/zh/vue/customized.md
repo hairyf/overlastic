@@ -25,10 +25,10 @@ const { visible, confirm, cancel } = useOverlayMeta({
 ```
 
 ```ts
-import { createOverlay } from '@unoverlays/vue'
+import { defineOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 
-const callback = createOverlay(OverlayComponent)
+const callback = defineOverlay(OverlayComponent)
 const value = await callback({ title: 'myElDialog' })
 // value === "myElDialog:confirmed"
 ```

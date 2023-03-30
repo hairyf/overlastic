@@ -1,6 +1,6 @@
 # Component devtools
 
-When using createOverlay, a Vue sub-application is created, which is different from the main application and can be viewed and debugged in [Vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN).
+When using defineOverlay, a Vue sub-application is created, which is different from the main application and can be viewed and debugged in [Vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN).
 
 
 You can also use [useInjectHolder](/en/vue/holder) to create pop-ups inside components and inherit the current context of the application.
@@ -16,7 +16,7 @@ The ID of the generated root element is the same as the application name, and th
 You can change the generated ID name through rendering options.
 
 ```ts
-const callback = createOverlay(OverlayComponent)
+const callback = defineOverlay(OverlayComponent)
 callback({}, {
   id: 'custom-overlay',
   // Turn off automatic increment of ID

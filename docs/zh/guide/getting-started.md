@@ -31,10 +31,10 @@ cancel('nook')
 visible
 ```
 
-使用 `createOverlay|renderOverlay` 转换为命令式回调（callback）
+使用 `defineOverlay|renderOverlay` 转换为命令式回调（callback）
 
 ```ts
-const callback = createOverlay(OverlayComponent)
+const callback = defineOverlay(OverlayComponent)
 const result = await callback(props)
 ```
 

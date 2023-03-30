@@ -1,10 +1,10 @@
-import { createOverlay, renderOverlay } from '@unoverlays/vue'
+import { defineOverlay, renderOverlay } from '@unoverlays/vue'
 import { cancel, clear, confirm, isModalExists, queryModalTitle } from '../utils'
 import Overlay from './components/overlay.vue'
 
 describe('@unoverlays/vue:imperative', () => {
   it('mount', () => {
-    const callback = createOverlay<unknown, string>(Overlay)
+    const callback = defineOverlay<unknown, string>(Overlay)
 
     callback()
 
@@ -19,7 +19,7 @@ describe('@unoverlays/vue:imperative', () => {
   })
 
   it('emit:confirm', () => {
-    const callback = createOverlay<unknown, string>(Overlay)
+    const callback = defineOverlay<unknown, string>(Overlay)
 
     expect(callback()).resolves.toBe('confirm')
 
@@ -28,7 +28,7 @@ describe('@unoverlays/vue:imperative', () => {
   })
 
   it('emit:cancel', () => {
-    const callback = createOverlay<unknown, string>(Overlay)
+    const callback = defineOverlay<unknown, string>(Overlay)
 
     expect(callback()).rejects.toBe('cancel')
 
@@ -37,7 +37,7 @@ describe('@unoverlays/vue:imperative', () => {
   })
 
   it('manual:confirm', () => {
-    const callback = createOverlay<unknown, string>(Overlay)
+    const callback = defineOverlay<unknown, string>(Overlay)
     const instance = callback()
 
     expect(instance).resolves.toBe('manual-confirm')
@@ -47,7 +47,7 @@ describe('@unoverlays/vue:imperative', () => {
   })
 
   it('manual:cancel', () => {
-    const callback = createOverlay<unknown, string>(Overlay)
+    const callback = defineOverlay<unknown, string>(Overlay)
     const instance = callback()
 
     expect(instance).rejects.toBe('manual-cancel')
@@ -57,13 +57,13 @@ describe('@unoverlays/vue:imperative', () => {
   })
 
   it('manual:not-allowed', () => {
-    const callback = createOverlay<unknown, string>(Overlay)
+    const callback = defineOverlay<unknown, string>(Overlay)
     expect(callback().confirm('manual:not-allowed')).resolves.toBe('manual:not-allowed')
     clear()
   })
 
   it('transmit:props', () => {
-    const callback = createOverlay<{ title?: string }, string>(Overlay)
+    const callback = defineOverlay<{ title?: string }, string>(Overlay)
     callback({ title: 'transmit-props-title' })
 
     expect(queryModalTitle().textContent).toBe('transmit-props-title')

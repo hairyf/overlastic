@@ -21,4 +21,6 @@ export interface MountOptions {
   root?: HTMLElement | false | null
   /** current app context */
   appContext?: AppContext
+  /** only overlay */
+  only?: boolean
 }

@@ -24,12 +24,12 @@ export function OverlayComponent(props: PropsWithOverlays<Params>) {
 }
 ```
 
-- 步骤.2: 在使用 `createOverlay` 或 `renderOverlay` 时传入类型
+- 步骤.2: 在使用 `defineOverlay` 或 `renderOverlay` 时传入类型
 
 ```ts
-import { createOverlay } from '@unoverlays/vue'
+import { defineOverlay } from '@unoverlays/vue'
 import { OverlayComponent, Params, Resolved } from './overlay'
 import type { Params, Resolved } from './define'
 
-const callback = createOverlay<Params, Resolved>(OverlayComponent)
+const callback = defineOverlay<Params, Resolved>(OverlayComponent)
 ```

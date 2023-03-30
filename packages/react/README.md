@@ -34,19 +34,19 @@ export function OverlayComponent(props) {
 
 ### Step 2: Create Overlay
 
-You can convert the component into a modal dialog box by using the `createOverlay` method, which allows you to call it in Javascript / Typescript.
+You can convert the component into a modal dialog box by using the `defineOverlay` method, which allows you to call it in Javascript / Typescript.
 ```ts
-import { createOverlay } from '@unoverlays/react'
+import { defineOverlay } from '@unoverlays/react'
 import { OverlayComponent } from './overlay'
 
 // Convert to imperative callback
-const callback = createOverlay(OverlayComponent)
+const callback = defineOverlay(OverlayComponent)
 // Call the component and get the confirm callback value
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
 
-You can also directly call the component through `renderOverlay`, bypassing the `createOverlay` method.
+You can also directly call the component through `renderOverlay`, bypassing the `defineOverlay` method.
 
 ```ts
 import { renderOverlay } from '@unoverlays/react'

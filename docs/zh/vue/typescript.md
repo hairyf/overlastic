@@ -26,14 +26,14 @@ const { visible, confirm, cancel } = useOverlayMeta<Resolved>({
 </script>
 ```
 
-- 步骤.3: 在使用 `createOverlay` 或 `renderOverlay` 时传入类型
+- 步骤.3: 在使用 `defineOverlay` 或 `renderOverlay` 时传入类型
 
 ```ts
-import { createOverlay } from '@unoverlays/vue'
+import { defineOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 import type { Params, Resolved } from './define.ts'
 
-const callback = createOverlay<Params, Resolved>(OverlayComponent)
+const callback = defineOverlay<Params, Resolved>(OverlayComponent)
 ```
 
 > 如果您对 vue 的 props 运行时验证有要求，你可以这么做：

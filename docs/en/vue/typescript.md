@@ -26,14 +26,14 @@ const { visible, confirm, cancel } = useOverlayMeta<Resolved>({
 </script>
 ```
 
-- Step 3: Pass in the types when using `createOverlay` or `renderOverlay`.
+- Step 3: Pass in the types when using `defineOverlay` or `renderOverlay`.
 
 ```ts
-import { createOverlay } from '@unoverlays/vue'
+import { defineOverlay } from '@unoverlays/vue'
 import OverlayComponent from './overlay.vue'
 import type { Params, Resolved } from './define.ts'
 
-const callback = createOverlay<Params, Resolved>(OverlayComponent)
+const callback = defineOverlay<Params, Resolved>(OverlayComponent)
 ```
 
 > If you have a runtime validation requirement for vue props, you can do the following:
