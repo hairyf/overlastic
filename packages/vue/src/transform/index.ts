@@ -21,21 +21,30 @@ export interface RenderOptions<Props> extends MountOptions {
  * Create imperative overlay
  * @param component Component
  */
-export function createOverlay<Props, Resolved = void>(component: Component): ImperativeOverlay<Props, Resolved> {
-  function executor(props: any, promiser: any, options?: any) {
+export function defineOverlay<Props, Resolved = void>(component: Component, options?: MountOptions): ImperativeOverlay<Props, Resolved> {
+  function executor(props: any, opts?: MountOptions) {
+    const promiser = createImperativePromiser()
     const caches = { vanish: noop }
     function setup() {
       const visible = ref(false)
       const scripts = useVisibleScripts(visible, Object.assign(caches, { promiser }))
       provide(OverlayMetaKey, scripts)
     }
-    caches.vanish = renderChildApp(component, props, { ...options, setup }).vanish
+    caches.vanish = renderChildApp(component, props, { ...opts, setup }).vanish
+    return promiser.promise as unknown as ImperativePromise<Resolved>
   }
 
-  function caller(props: any, options?: any) {
-    const promiser = createImperativePromiser()
-    executor(props, promiser, options)
-    return promiser.promise as unknown as ImperativePromise<Resolved>
+  let inst: ImperativePromise<Resolved> | undefined
+  function only(props: any, opts?: MountOptions) {
+    if (!inst) {
+      inst = executor(props, opts)
+      inst.finally(() => inst = undefined)
+    }
+    return inst
+  }
+  function caller(props: any, opts?: MountOptions) {
+    opts = { ...options, ...opts }
+    return opts.only ? only(props, opts) : executor(props, opts)
   }
 
   return caller
@@ -50,5 +59,5 @@ export function renderOverlay<Props = unknown, Resolved = void>(
   component: Component,
   options: RenderOptions<Props> = {},
 ) {
-  return createOverlay<Props, Resolved>(component)(options.props, options)
+  return defineOverlay<Props, Resolved>(component)(options.props, options)
 }
