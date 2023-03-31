@@ -1,5 +1,5 @@
-export type { ImperativeOverlay, RenderOptions } from './transform'
+export type { ImperativeOverlay, RenderOptions } from './define'
 export type { OverlayOptions, OverlayMeta, InjectionHolder } from './hooks'
 export type { PropsWidthOverlays, MountOptions } from './types'
 export { useOverlayMeta, useInjectHolder } from './hooks'
-export { defineOverlay, renderOverlay } from './transform'
+export { defineOverlay, renderOverlay } from './define'

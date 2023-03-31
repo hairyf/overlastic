@@ -24,7 +24,7 @@ export function OverlayComponent(props: PropsWithOverlays) {
 }
 ```
 
-如果您想替换为其他的字段与事件名，可以通过 `useOverlayMeta` 的 `field` 配置实现。
+如果您想替换为其他的字段与事件名，可以通过 `useOverlayMeta` 的 `event|modal` 配置实现。
 
 ```tsx
 // 如果使用 Typescript 需要使用 PropsWithOverlays 定义 props 类型
@@ -33,12 +33,9 @@ import { useOverlayMeta } from '@unoverlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
   const { visible, confirm, cancel } = useOverlayMeta({
+    event: { confirm: 'onOk', cancel: 'onNook' },
+    modal: 'open',
     props,
-    field: {
-      visible: 'open',
-      onConfirm: 'onOk',
-      onCancel: 'onNook',
-    }
   })
 
   return <div className={visible && 'is--visible'}>

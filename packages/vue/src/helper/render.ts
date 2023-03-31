@@ -5,8 +5,8 @@ import { createApp, createVNode, defineComponent, h, render } from 'vue-demi'
 
 import { pascalCase } from 'pascal-case'
 import { defineGlobalNode, varName } from '@unoverlays/utils'
-import { context } from '../internal'
 import type { MountOptions } from '../types'
+import { context } from './internal'
 
 export interface RenderChildOptions extends MountOptions {
   setup?: () => void
@@ -26,7 +26,7 @@ export function renderVNode(
     container.remove()
   }
 
-  const Provider = defineComponent({
+  const Provider: any = defineComponent({
     name: pascalCase(name),
     setup: options.setup,
     render: () => h(component, props),

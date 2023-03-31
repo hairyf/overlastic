@@ -3,7 +3,7 @@ import { defineGlobalNode, varName } from '@unoverlays/utils'
 import { createRoot } from 'react-dom/client'
 import { pascalCase } from 'pascal-case'
 import type { MountOptions } from '../types'
-import { OverlayContext } from '../internal'
+import { OverlayContext } from './internal'
 import { defineProviderComponent } from './define'
 
 export interface RenderOptions extends MountOptions {

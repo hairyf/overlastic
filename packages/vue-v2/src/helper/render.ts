@@ -4,10 +4,14 @@ import { pascalCase } from 'pascal-case'
 import { defineGlobalNode, varName } from '@unoverlays/utils'
 import type { MountOptions } from '../types'
 
+export interface RenderChildOptions extends MountOptions {
+  provide?: () => void
+}
+
 export function renderChildApp(
   component: Component,
   props: Record<string, any> = {},
-  options: MountOptions = {},
+  options: RenderChildOptions = {},
 ) {
   const name = varName(options.id, options.autoIncrement)
 

@@ -1,16 +1,16 @@
 import type { App } from 'vue-demi'
-import { context } from './internal'
+import { context } from './helper'
 
 const install = (app: App) => {
   context.appContext = app._context
 }
 const unoverlay = { install }
 
-export type { ImperativeOverlay, RenderOptions } from './transform'
+export type { ImperativeOverlay, RenderOptions } from './define'
 export type { OverlayOptions, OverlayMeta, InjectionHolder } from './hooks'
 export type { MountOptions } from './types'
 export { useOverlayMeta, useInjectHolder } from './hooks'
-export { defineOverlay, renderOverlay } from './transform'
+export { defineOverlay, renderOverlay } from './define'
 export { UnifiedOverlayProvider, FieldRender } from './components'
 export { install }
 

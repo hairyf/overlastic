@@ -8,7 +8,6 @@ export interface VisiblePromiseOptions {
 export function createVisibleScripts(options: VisiblePromiseOptions) {
   const { on, off, emit } = mitt()
 
-
   function cancel(this: any, value?: any) {
     options.promiser?.reject(value)
     emit('cancel', value)

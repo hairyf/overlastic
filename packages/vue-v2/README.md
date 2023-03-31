@@ -20,10 +20,10 @@ You can register Unoverlays globally, which will inherit the application context
 
 ```ts
 // main.js
-import { createApp } from 'vue'
+import Vue from 'vue'
 import unoverlay from '@unoverlays/vue'
 
-const app = createApp({})
+const app = new Vue({})
 app.use(unoverlay)
 ```
 
@@ -37,22 +37,17 @@ Unoverlays is suitable for most components. Using useOverlayMeta can provide fin
 
 ```vue
 <!-- overlay.vue -->
-<script setup>
-import { defineEmits, defineProps } from 'vue'
-import { useOverlayMeta } from '@unoverlays/vue'
-const props = defineProps({
-  title: String,
-})
-
-// Define the events used in the component (optional)
-// There will be event prompts when used in the component
-defineEmits(['cancel', 'confirm'])
-
-// Get Overlay information from useOverlayMeta
-const { visible, confirm, cancel } = useOverlayMeta({
-  // Duration of popup layer animation to avoid premature destruction of the component
-  animation: 1000,
-})
+<script>
+import { useOverlayMeta } from '@unoverlays/vue-v2'
+export default {
+  mixins: [useOverlayMeta({ animation: 1000 })],
+  methods: {
+    onClick() {
+      // use this.$visible
+      // use this.$confirm or this.$cancel
+    }
+  }
+}
 </script>
 
 <template>

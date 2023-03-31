@@ -2,7 +2,7 @@ import { delay as _delay, noop } from '@unoverlays/utils'
 import type { Dispatch, SetStateAction } from 'react'
 import { useContext, useEffect } from 'react'
 
-import { OverlayContext } from '../internal'
+import { OverlayContext } from '../helper'
 import type { PropsWidthOverlays } from '../types'
 
 export interface OverlayOptions {
@@ -14,26 +14,30 @@ export interface OverlayOptions {
    * pass in the required props on jsx
    */
   props?: PropsWidthOverlays
+
+  /**
+   *  fields used by jsx show
+   *
+   * @default 'visible'
+   */
+  model?: string
+
   /**
    * jsx use event name
    */
-  field?: {
-    /**
-     *show overlay field
-     */
-    visible?: string
+  event?: {
     /**
      * cancel event name used by the jsx
      *
      * @default 'cancel'
      */
-    onCancel?: string
+    cancel?: string
     /**
      * confirm event name used by the jsx
      *
      * @default 'confirm'
      */
-    onConfirm?: string
+    confirm?: string
   }
   /**
    * whether to automatically handle components based on visible and animation
@@ -54,8 +58,6 @@ export interface OverlayMeta {
   visible: boolean
   /** visible dispatch change */
   setVisible: Dispatch<SetStateAction<boolean>>
-  /** use in jsx */
-  isJsx?: boolean
 }
 
 export function useOverlayMeta(options: OverlayOptions = {}) {
@@ -74,26 +76,21 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
 }
 
 export function useJSXMeta(options: OverlayOptions = {}) {
-  const { props = {}, field = {} } = options
-  const {
-    onCancel = 'onCancel',
-    onConfirm = 'onConfirm',
-    visible: value = 'visible',
-  } = field
+  const { props = {}, model = 'visible', event = {} } = options
+  const { cancel = 'onCancel', confirm = 'onConfirm' } = event
 
-  const cancel = (value?: any) => {
-    props[onCancel]?.(value)
+  const _cancel = (value?: any) => {
+    props[cancel]?.(value)
   }
-  const confirm = (value?: any) => {
-    props[onConfirm]?.(value)
+  const _confirm = (value?: any) => {
+    props[confirm]?.(value)
   }
 
   return {
-    cancel,
-    confirm,
+    cancel: _cancel,
+    confirm: _confirm,
     vanish: noop,
-    visible: props[value],
-    isTemplate: true,
+    visible: props[model],
   }
 }
 

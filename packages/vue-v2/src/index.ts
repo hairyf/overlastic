@@ -1,6 +1,6 @@
 import type Vue from 'vue'
 import type { PluginObject } from 'vue/types/umd'
-import { context } from './internal'
+import { context } from './helper'
 
 const install = (_ins: any, parent: any) => {
   if (parent)
@@ -9,10 +9,11 @@ const install = (_ins: any, parent: any) => {
 
 const unoverlay: PluginObject<Vue> = { install }
 
-export type { ImperativeOverlay, RenderOptions } from './transform'
-export { mixinOverlayMeta } from './mixins'
-export type { OverlayOptions } from './mixins'
-export { defineOverlay, renderOverlay } from './transform'
+export type { ImperativeOverlay, RenderOptions } from './define'
+export { useOverlayMeta } from './hooks'
+export type { OverlayOptions } from './hooks'
+export { defineOverlay, renderOverlay } from './define'
 export { FieldRender } from './components'
 
 export default unoverlay
+export { install }
