@@ -2,7 +2,7 @@ import type { ImperativePromise } from '@unoverlays/utils'
 import { createImperativePromiser, noop } from '@unoverlays/utils'
 import type { FC } from 'react'
 import { renderReactDOM } from '../helper'
-import { useVisibleScripts } from '../hooks'
+import { useVisibleScripts } from '../hooks/visible'
 import type { MountOptions } from '../types'
 
 export interface ImperativeOverlay<Props, Resolved> {

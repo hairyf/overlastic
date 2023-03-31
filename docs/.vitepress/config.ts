@@ -9,6 +9,8 @@ const sidebar: DefaultTheme.Sidebar = {
         { text: 'What is Unoverlays?', link: '/en/guide/what-is-unoverlays' },
         { text: 'Getting Started', link: '/en/guide/getting-started' },
         { text: 'External Control', link: '/en/guide/external-control' },
+        { text: 'Only Render', link: '/en/guide/support-only' },
+        { text: 'Support Vue2', link: '/en/guide/support-vue2' },
       ],
     },
     {
@@ -43,6 +45,8 @@ const sidebar: DefaultTheme.Sidebar = {
         { text: '什么是 Unoverlays?', link: '/zh/guide/what-is-unoverlays' },
         { text: '开始使用', link: '/zh/guide/getting-started' },
         { text: '外部控制', link: '/zh/guide/external-control' },
+        { text: 'Only 渲染', link: '/zh/guide/support-only' },
+        { text: '支持 Vue2', link: '/zh/guide/support-vue2' },
       ],
     },
     {

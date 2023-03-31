@@ -2,7 +2,7 @@
 import type { Component, PropType, VNode } from 'vue-demi'
 import { defineComponent, getCurrentInstance, h } from 'vue-demi'
 
-import { context } from '../internal'
+import { context } from '../helper'
 
 export const UnifiedOverlayProvider = defineComponent({
   setup(_, { slots }) {
