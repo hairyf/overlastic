@@ -8,7 +8,7 @@ import { OverlayComponent } from './overlay'
 
 export function Main() {
   // 通过 useInjectHolder(Component) 创建支持当前 context 的组件持有者
-  const [overlayApi, holder] = useInjectHolder(OverlayComponent)
+  const [holder, overlayApi] = useInjectHolder(OverlayComponent)
 
   function open() {
   // 打开弹出层

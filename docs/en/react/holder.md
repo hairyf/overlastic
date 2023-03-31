@@ -8,7 +8,7 @@ import { OverlayComponent } from './overlay'
 
 export function Main() {
   // Use useInjectHolder(Component) to create a component holder that supports the current context.
-  const [overlayApi, holder] = useInjectHolder(OverlayComponent)
+  const [holder, overlayApi] = useInjectHolder(OverlayComponent)
 
   function open() {
     // Open the popup component

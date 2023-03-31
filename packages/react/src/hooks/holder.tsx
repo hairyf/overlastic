@@ -10,7 +10,7 @@ import type { MountOptions } from '../types'
 import type { VisiblePromiseOptions } from './visible'
 import { useVisibleScripts } from './visible'
 
-export type InjectionHolder<Props, Resolved> = [ImperativeOverlay<Props, Resolved>, JSX.Element]
+export type InjectionHolder<Props, Resolved> = [JSX.Element, ImperativeOverlay<Props, Resolved>]
 
 export function useInjectHolder<Props, Resolved = void>(
   Component: FC,
@@ -35,7 +35,7 @@ export function useInjectHolder<Props, Resolved = void>(
     />
   )
 
-  return [callback as any, holder]
+  return [holder, callback as any]
 }
 
 export function useRefreshMetadata() {

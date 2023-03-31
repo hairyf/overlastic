@@ -33,12 +33,9 @@ import { useOverlayMeta } from '@unoverlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
   const { visible, confirm, cancel } = useOverlayMeta({
+    event: { confirm: 'onOk', cancel: 'onNook' },
+    modal: 'open',
     props,
-    field: {
-      visible: 'open',
-      onConfirm: 'onOk',
-      onCancel: 'onNook',
-    }
   })
 
   return <div className={visible && 'is--visible'}>

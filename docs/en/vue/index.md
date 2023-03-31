@@ -43,11 +43,6 @@ import { useOverlayMeta } from '@unoverlays/vue'
 const props = defineProps({
   title: String,
 })
-
-// Define the events used in the component (optional)
-// There will be event prompts when used in the component
-defineEmits(['cancel', 'confirm'])
-
 // Get Overlay information from useOverlayMeta
 const { visible, confirm, cancel } = useOverlayMeta({
   // Duration of popup layer animation to avoid premature destruction of the component
