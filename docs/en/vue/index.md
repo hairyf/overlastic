@@ -44,14 +44,14 @@ const props = defineProps({
   title: String,
 })
 // Get Overlay information from useOverlayMeta
-const { visible, confirm, cancel } = useOverlayMeta({
+const { visible, resolve, reject } = useOverlayMeta({
   // Duration of popup layer animation to avoid premature destruction of the component
   animation: 1000,
 })
 </script>
 
 <template>
-  <div v-if="visible" @click="confirm(`${title}:confirmed`)">
+  <div v-if="visible" @click="resolve(`${title}:confirmed`)">
     {{ title }}
   </div>
 </template>
@@ -67,7 +67,7 @@ import OverlayComponent from './overlay.vue'
 
 // Convert to imperative callback
 const callback = defineOverlay(OverlayComponent)
-// Call the component and get the value of the confirm callback
+// Call the component and get the value of the resolve callback
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```

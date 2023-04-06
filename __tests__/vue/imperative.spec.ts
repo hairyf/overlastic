@@ -1,5 +1,5 @@
 import { defineOverlay, renderOverlay } from '@unoverlays/vue'
-import { cancel, clear, confirm, isModalExists, queryModalTitle } from '../utils'
+import { clear, isModalExists, queryModalTitle, reject, resolve } from '../utils'
 import Overlay from './components/overlay.vue'
 
 describe('@unoverlays/vue:imperative', () => {
@@ -18,47 +18,47 @@ describe('@unoverlays/vue:imperative', () => {
     clear()
   })
 
-  it('emit:confirm', () => {
+  it('emit:resolve', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
 
-    expect(callback()).resolves.toBe('confirm')
+    expect(callback()).resolves.toBe('resolve')
 
-    confirm()
+    resolve()
     clear()
   })
 
-  it('emit:cancel', () => {
+  it('emit:reject', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
 
-    expect(callback()).rejects.toBe('cancel')
+    expect(callback()).rejects.toBe('reject')
 
-    cancel()
+    reject()
     clear()
   })
 
-  it('manual:confirm', () => {
+  it('manual:resolve', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
     const instance = callback()
 
     expect(instance).resolves.toBe('manual-confirm')
 
-    instance.confirm('manual-confirm')
+    instance.resolve('manual-confirm')
     clear()
   })
 
-  it('manual:cancel', () => {
+  it('manual:reject', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
     const instance = callback()
 
     expect(instance).rejects.toBe('manual-cancel')
 
-    instance.cancel('manual-cancel')
+    instance.reject('manual-cancel')
     clear()
   })
 
   it('manual:not-allowed', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
-    expect(callback().confirm('manual:not-allowed')).resolves.toBe('manual:not-allowed')
+    expect(callback().resolve('manual:not-allowed')).resolves.toBe('manual:not-allowed')
     clear()
   })
 

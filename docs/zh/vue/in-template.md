@@ -19,10 +19,10 @@ const props = defineProps({
   visible: Boolean
 })
 
-// 定义组件中使用的事件类型（默认：cancel、confirm）
-defineEmits(['cancel', 'confirm'])
+// 定义组件中使用的事件类型（默认：reject、resolve）
+defineEmits(['reject', 'resolve'])
 
-const { visible, confirm, cancel } = useOverlayMeta({
+const { visible, resolve, reject } = useOverlayMeta({
   // 如果使用 template 渲染，animation 则可以不需要定义
   // animation: 1000,
 })
@@ -43,8 +43,8 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, confirm, cancel } = useOverlayMeta({
-  event: { confirm: 'ok', cancel: 'nook' },
+const { visible, resolve, reject } = useOverlayMeta({
+  event: { resolve: 'ok', reject: 'nook' },
   modal: 'modalValue',
 })
 </script>
@@ -64,10 +64,10 @@ const { visible, confirm, cancel } = useOverlayMeta({
 import OverlayComponent from './overlay.vue'
 const visible = ref(false)
 
-const confirm = () => {
+const resolve = () => {
   // ...
 }
-const cancel = () => {
+const reject = () => {
   // ...
 }
 </script>
@@ -75,8 +75,8 @@ const cancel = () => {
 <template>
   <OverlayComponent
     v-model:visible="visible"
-    @confirm="confirm"
-    @cancel="cancel"
+    @resolve="resolve"
+    @reject="reject"
   />
 </template>
 ```

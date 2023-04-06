@@ -6,7 +6,7 @@
 
 ### 步骤.1: Define Component
 
-支持在 JSX 中使用，需要将 props 传入配置当中，props 中需要定义 `visible` 与 `onConfirm|onCancel`。
+支持在 JSX 中使用，需要将 props 传入配置当中，props 中需要定义 `visible` 与 `onResolve|onReject`。
 
 ```tsx
 // 如果使用 Typescript 需要使用 PropsWithOverlays 定义 props 类型
@@ -14,7 +14,7 @@ import type { PropsWithOverlays } from '@unoverlays/react'
 import { useOverlayMeta } from '@unoverlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, confirm, cancel } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlayMeta({
     props
   })
 
@@ -32,8 +32,8 @@ import type { PropsWithOverlays } from '@unoverlays/react'
 import { useOverlayMeta } from '@unoverlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, confirm, cancel } = useOverlayMeta({
-    event: { confirm: 'onOk', cancel: 'onNook' },
+  const { visible, resolve, reject } = useOverlayMeta({
+    event: { resolve: 'onOk', reject: 'onNook' },
     modal: 'open',
     props,
   })
@@ -58,16 +58,16 @@ export function Main() {
     setVisible(true)
   }
 
-  function onConfirm(value) {
+  function onResolve(value) {
     setVisible(false)
   }
 
-  function onCancel(value) {
+  function onReject(value) {
     setVisible(false)
   }
 
   return (
-    <OverlayComponent visible={visible} onConfirm={onConfirm} onCancel={onCancel} />
+    <OverlayComponent visible={visible} onResolve={onResolve} onReject={onReject} />
   )
 }
 ```

@@ -44,14 +44,14 @@ export default {
   methods: {
     onClick() {
       // use this.$visible
-      // use this.$confirm or this.$cancel
+      // use this.$resolve or this.$reject
     }
   }
 }
 </script>
 
 <template>
-  <div v-if="visible" @click="confirm(`${title}:confirmed`)">
+  <div v-if="visible" @click="resolve(`${title}:confirmed`)">
     {{ title }}
   </div>
 </template>
@@ -67,7 +67,7 @@ import OverlayComponent from './overlay.vue'
 
 // Convert to imperative callback
 const callback = defineOverlay(OverlayComponent)
-// Call the component and get the value of the confirm callback
+// Call the component and get the value of the resolve callback
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```

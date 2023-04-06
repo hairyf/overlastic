@@ -7,11 +7,11 @@ export interface VisiblePromiseOptions {
 }
 
 export function useVisibleScripts(visible: Ref<boolean>, options: VisiblePromiseOptions) {
-  function cancel(value?: any) {
+  function reject(value?: any) {
     options.promiser?.reject(value)
     visible.value = false
   }
-  function confirm(value?: any) {
+  function resolve(value?: any) {
     options.promiser?.resolve(value)
     visible.value = false
     return options.promiser?.promise
@@ -23,9 +23,9 @@ export function useVisibleScripts(visible: Ref<boolean>, options: VisiblePromise
   }
 
   if (options.promiser) {
-    options.promiser.promise.confirm = confirm as any
-    options.promiser.promise.cancel = cancel
+    options.promiser.promise.resolve = resolve as any
+    options.promiser.promise.reject = reject
   }
 
-  return { visible, confirm, cancel, vanish }
+  return { visible, resolve, reject, vanish }
 }

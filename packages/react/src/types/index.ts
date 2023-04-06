@@ -6,7 +6,7 @@ export interface MountOptions extends GlobalMountOptions {
 
 export type PropsWidthOverlays<P = unknown> = P & {
   visible?: boolean
-  onCancel?: Function
-  onConfirm?: Function
+  onReject?: Function
+  onResolve?: Function
   [key: string]: any
 }

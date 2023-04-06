@@ -9,7 +9,7 @@ export default {
   methods: {
     onClick() {
       // use this.$visible
-      // use this.$confirm or this.$cancel
+      // use this.$resolve or this.$reject
     }
   }
 }

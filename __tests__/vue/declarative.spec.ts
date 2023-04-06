@@ -37,35 +37,35 @@ describe('@unoverlays/vue:declarative', () => {
     wrapper.unmount()
   })
 
-  it('emit:confirm', async () => {
+  it('emit:resolve', async () => {
     const { promise, resolve } = createImperativePromiser<string>()
 
     const wrapper = mount(Overlay, {
       props: {
         visible: true,
-        onConfirm: resolve,
+        onResolve: resolve,
       },
     })
 
     wrapper.get<HTMLDivElement>('.modal__confirm').element.click()
 
-    expect(promise).resolves.toBe('confirm')
+    expect(promise).resolves.toBe('resolve')
 
     wrapper.unmount()
   })
 
-  it('emit:cancel', async () => {
+  it('emit:reject', async () => {
     const { promise, reject } = createImperativePromiser<string>()
     const wrapper = mount(Overlay, {
       props: {
         visible: true,
-        onCancel: reject,
+        onReject: reject,
 
       },
     })
     wrapper.get<HTMLDivElement>('.modal__cancel').element.click()
 
-    expect(promise).rejects.toThrow('cancel')
+    expect(promise).rejects.toThrow('reject')
 
     wrapper.unmount()
   })

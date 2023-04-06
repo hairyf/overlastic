@@ -21,13 +21,13 @@ Unoverlays is suitable for most components, and using useOverlayMeta allows for 
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
-  const { visible, confirm, cancel } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlayMeta({
     // Duration of overlay animation, helps prevent premature component destruction
     animation: 1000,
   })
 
   return <div className={visible && 'is--visible'}>
-    <span onClick={() => confirm(`${props.title}:confirmed`)}> Confirm </span>
+    <span onClick={() => resolve(`${props.title}:confirmed`)}> Confirm </span>
   </div>
 }
 ```
@@ -41,7 +41,7 @@ import { OverlayComponent } from './overlay'
 
 // Convert to imperative callback
 const callback = defineOverlay(OverlayComponent)
-// Call the component and get the confirm callback value
+// Call the component and get the resolve callback value
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```

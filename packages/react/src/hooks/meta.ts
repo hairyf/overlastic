@@ -27,17 +27,17 @@ export interface OverlayOptions {
    */
   event?: {
     /**
-     * cancel event name used by the jsx
+     * reject event name used by the jsx
      *
-     * @default 'cancel'
+     * @default 'reject'
      */
-    cancel?: string
+    reject?: string
     /**
-     * confirm event name used by the jsx
+     * resolve event name used by the jsx
      *
-     * @default 'confirm'
+     * @default 'resolve'
      */
-    confirm?: string
+    resolve?: string
   }
   /**
    * whether to automatically handle components based on visible and animation
@@ -48,10 +48,10 @@ export interface OverlayOptions {
 }
 
 export interface OverlayMeta {
-  /** the notification cancel, modify visible, and destroy it after the animation ends */
-  cancel: Function
-  /** the notification confirm, modify visible, and destroy it after the animation ends */
-  confirm: Function
+  /** the notification reject, modify visible, and destroy it after the animation ends */
+  reject: Function
+  /** the notification resolve, modify visible, and destroy it after the animation ends */
+  resolve: Function
   /** destroy the current instance (immediately) */
   vanish: Function
   /** visible control popup display and hide */
@@ -77,18 +77,18 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
 
 export function useJSXMeta(options: OverlayOptions = {}) {
   const { props = {}, model = 'visible', event = {} } = options
-  const { cancel = 'onCancel', confirm = 'onConfirm' } = event
+  const { reject = 'onReject', resolve = 'onResolve' } = event
 
   const _cancel = (value?: any) => {
-    props[cancel]?.(value)
+    props[reject]?.(value)
   }
   const _confirm = (value?: any) => {
-    props[confirm]?.(value)
+    props[resolve]?.(value)
   }
 
   return {
-    cancel: _cancel,
-    confirm: _confirm,
+    reject: _cancel,
+    resolve: _confirm,
     vanish: noop,
     visible: props[model],
   }
@@ -107,7 +107,7 @@ export function automatic(meta: OverlayMeta, options: OverlayOptions) {
       await _delay(animation)
     meta.vanish?.()
   }
-  for (const key of ['confirm', 'cancel'] as const) {
+  for (const key of ['resolve', 'reject'] as const) {
     const affirm = meta[key]
     meta[key] = function (value: any) {
       affirm(value)

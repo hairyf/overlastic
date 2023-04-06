@@ -1,12 +1,12 @@
 import type { VueWrapper } from '@vue/test-utils'
 
-export function confirm() {
+export function resolve() {
   const element = document.querySelector('.modal__confirm') as HTMLDivElement
   if (element)
     element.click()
 }
 
-export function cancel() {
+export function reject() {
   const element = document.querySelector('.modal__cancel') as HTMLDivElement
   if (element)
     element.click()

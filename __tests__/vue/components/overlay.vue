@@ -14,12 +14,12 @@ export default defineComponent({
     },
     title: String,
   },
-  emits: ['confirm', 'cancel', 'update:visible'],
+  emits: ['resolve', 'reject', 'update:visible'],
   setup: (props) => {
-    const { confirm, cancel, vanish, visible } = useOverlayMeta({
+    const { resolve, reject, vanish, visible } = useOverlayMeta({
       animation: props.animation,
     })
-    return { confirm, cancel, vanish, visible }
+    return { resolve, reject, vanish, visible }
   },
 })
 </script>
@@ -34,8 +34,8 @@ export default defineComponent({
         </div>
         <slot />
         <div class="base-modal__control">
-          <span class="modal__confirm" @click="confirm('confirm')">confirm</span>
-          <span class="modal__cancel" @click="cancel('cancel')">cancel</span>
+          <span class="modal__confirm" @click="resolve('resolve')">resolve</span>
+          <span class="modal__cancel" @click="reject('reject')">reject</span>
         </div>
       </div>
     </div>

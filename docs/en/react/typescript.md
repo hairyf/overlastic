@@ -15,7 +15,7 @@ export type Resolved = string
 
 export function OverlayComponent(props: PropsWithOverlays<Params>) {
   // props.title // ?string
-  const { visible, confirm, cancel } = useOverlayMeta<Resolved>({
+  const { visible, resolve, reject } = useOverlayMeta<Resolved>({
     props,
     animation: 1000
   })

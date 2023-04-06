@@ -8,31 +8,31 @@ export interface VisiblePromiseOptions {
 export function createVisibleScripts(options: VisiblePromiseOptions) {
   const { on, off, emit } = mitt()
 
-  function cancel(this: any, value?: any) {
+  function reject(this: any, value?: any) {
     options.promiser?.reject(value)
-    emit('cancel', value)
+    emit('reject', value)
     return options.promiser?.promise
   }
-  function confirm(this: any, value?: any) {
+  function resolve(this: any, value?: any) {
     options.promiser?.resolve(value)
-    emit('confirm', value)
+    emit('resolve', value)
     return options.promiser?.promise
   }
   function vanish() {
     options.vanish?.()
-    cancel()
+    reject()
     off('*')
     return options.promiser?.promise
   }
 
   if (options.promiser) {
-    options.promiser.promise.confirm = confirm as any
-    options.promiser.promise.cancel = cancel
+    options.promiser.promise.resolve = resolve as any
+    options.promiser.promise.reject = reject
   }
 
   return {
-    confirm,
-    cancel,
+    resolve,
+    reject,
     vanish,
     on,
   }

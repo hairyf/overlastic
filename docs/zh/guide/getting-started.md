@@ -18,15 +18,15 @@ pnpm add @unoverlays/react
 
 ```ts
 // 在你的 Vue、React 弹出层组件中，使用 useOverlayMeta 获取弹出层元信息
-const { visible, confirm, cancel } = useOverlayMeta({
+const { visible, resolve, reject } = useOverlayMeta({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
   animation: 1000
 })
 
 // 成功并关闭弹出层
-confirm('ok')
+resolve('ok')
 // 失败并关闭弹出层
-cancel('nook')
+reject('nook')
 // 用于控制显示隐藏
 visible
 ```

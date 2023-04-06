@@ -11,15 +11,15 @@ const props = defineProps({
   title: String,
 })
 
-const { visible, confirm, cancel } = useOverlayMeta({
+const { visible, resolve, reject } = useOverlayMeta({
   animation: 1000
 })
 </script>
 
 <template>
-  <el-dialog v-model="visible" :title="title" @close="cancel()">
+  <el-dialog v-model="visible" :title="title" @close="reject()">
     <!-- your content -->
-    <button @click="confirm(`${title}:confirmed`)" />
+    <button @click="resolve(`${title}:confirmed`)" />
   </el-dialog>
 </template>
 ```

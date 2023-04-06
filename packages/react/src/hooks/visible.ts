@@ -9,11 +9,11 @@ export interface VisiblePromiseOptions {
 export function useVisibleScripts(options: VisiblePromiseOptions) {
   const [visible, setVisible] = useState(false)
 
-  function cancel(value?: any) {
+  function reject(value?: any) {
     options.promiser?.reject(value)
     setVisible(false)
   }
-  function confirm(value?: any) {
+  function resolve(value?: any) {
     options.promiser?.resolve(value)
     setVisible(false)
   }
@@ -24,9 +24,9 @@ export function useVisibleScripts(options: VisiblePromiseOptions) {
   }
 
   if (options.promiser) {
-    options.promiser.promise.confirm = confirm as any
-    options.promiser.promise.cancel = cancel
+    options.promiser.promise.resolve = resolve as any
+    options.promiser.promise.reject = reject
   }
 
-  return { setVisible, visible, confirm, cancel, vanish, isJsx: options.isJsx }
+  return { setVisible, visible, resolve, reject, vanish, isJsx: options.isJsx }
 }

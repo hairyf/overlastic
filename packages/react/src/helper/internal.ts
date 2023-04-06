@@ -3,8 +3,8 @@ import { createContext } from 'react'
 import type { OverlayMeta } from '../hooks'
 
 export const OverlayContext = createContext<OverlayMeta>({
-  cancel: noop,
-  confirm: noop,
+  reject: noop,
+  resolve: noop,
   setVisible: noop,
   vanish: noop,
   visible: false,

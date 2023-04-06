@@ -23,13 +23,13 @@ Unoverlays 适用于绝大多数组件，使用 `useOverlayMeta` 能对组件流
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
-  const { visible, confirm, cancel } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlayMeta({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
     animation: 1000,
   })
 
   return <div className={visible && 'is--visible'}>
-    <span onClick={() => confirm(`${props.title}:confirmed`)}> Confirm </span>
+    <span onClick={() => resolve(`${props.title}:confirmed`)}> Confirm </span>
   </div>
 }
 ```
@@ -44,7 +44,7 @@ import { OverlayComponent } from './overlay'
 
 // 转换为命令式回调
 const callback = defineOverlay(OverlayComponent)
-// 调用组件并获取 confirm 回调的值
+// 调用组件并获取 resolve 回调的值
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```

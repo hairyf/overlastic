@@ -21,10 +21,10 @@ const props = defineProps({
   visible: Boolean
 })
 
-// Define event types used in the component (default: cancel, confirm)
-defineEmits(['cancel', 'confirm'])
+// Define event types used in the component (default: reject, resolve)
+defineEmits(['reject', 'resolve'])
 
-const { visible, confirm, cancel } = useOverlayMeta({
+const { visible, resolve, reject } = useOverlayMeta({
   // If using template rendering, animation can be omitted
   // animation: 1000,
 })
@@ -45,8 +45,8 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, confirm, cancel } = useOverlayMeta({
-  event: { confirm: 'ok', cancel: 'nook' },
+const { visible, resolve, reject } = useOverlayMeta({
+  event: { resolve: 'ok', reject: 'nook' },
   modal: 'modalValue',
 })
 </script>
@@ -66,10 +66,10 @@ After defining modal and event, the popup component can be used in the `<templat
 import OverlayComponent from './overlay.vue'
 const visible = ref(false)
 
-const confirm = () => {
+const resolve = () => {
   // ...
 }
-const cancel = () => {
+const reject = () => {
   // ...
 }
 </script>
@@ -77,8 +77,8 @@ const cancel = () => {
 <template>
   <OverlayComponent
     v-model:visible="visible"
-    @confirm="confirm"
-    @cancel="cancel"
+    @resolve="resolve"
+    @reject="reject"
   />
 </template>
 ```

@@ -20,7 +20,7 @@ import { defineEmits, defineProps } from 'vue-demi'
 import { useOverlayMeta } from '@unoverlays/vue'
 import type { Params, Resolved } from './props'
 const props = defineProps<Params>()
-const { visible, confirm, cancel } = useOverlayMeta<Resolved>({
+const { visible, resolve, reject } = useOverlayMeta<Resolved>({
   animation: 1000
 })
 </script>
@@ -59,7 +59,7 @@ import { useOverlayMeta } from '@unoverlays/vue'
 import type { Resolved } from './props'
 import { overlayProps } from './props'
 const props = defineProps(overlayProps)
-const { visible, confirm, cancel } = useOverlayMeta<Resolved>({
+const { visible, resolve, reject } = useOverlayMeta<Resolved>({
   animation: 1000
 })
 </script>

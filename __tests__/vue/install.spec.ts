@@ -1,5 +1,5 @@
 import { UnifiedOverlayProvider, install } from '@unoverlays/vue'
-import { context } from '@unoverlays/vue/src/internal'
+import { context } from '@unoverlays/vue/src/helper'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
 import Basic from './components/basic.vue'

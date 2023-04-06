@@ -1,6 +1,6 @@
 import { delay } from '@unoverlays/utils'
 import { mount } from '@vue/test-utils'
-import { cancel, clear, confirm, isModalExists, openModal, queryModalTitle, queryModalWrapper, queryTransitionParent } from '../utils'
+import { clear, isModalExists, openModal, queryModalTitle, queryModalWrapper, queryTransitionParent, reject, resolve } from '../utils'
 import HolderContainer from './components/holder-container.vue'
 
 describe('@unoverlays/vue:imperative-holder', () => {
@@ -63,7 +63,7 @@ describe('@unoverlays/vue:imperative-holder', () => {
 
     await delay()
 
-    confirm()
+    resolve()
 
     expect(isModalExists()).toBeTruthy()
 
@@ -79,35 +79,35 @@ describe('@unoverlays/vue:imperative-holder', () => {
     clear()
   })
 
-  it('emit:confirm', async () => {
+  it('emit:resolve', async () => {
     const wrapper = mount(HolderContainer)
 
     openModal(wrapper)
 
     await delay()
 
-    confirm()
+    resolve()
 
     await delay()
 
-    expect(wrapper.get('.modal__value').text()).toBe('confirm')
+    expect(wrapper.get('.modal__value').text()).toBe('resolve')
 
     wrapper.unmount()
     clear()
   })
 
-  it('emit:cancel', async () => {
+  it('emit:reject', async () => {
     const wrapper = mount(HolderContainer)
 
     openModal(wrapper)
 
     await delay()
 
-    cancel()
+    reject()
 
     await delay()
 
-    expect(wrapper.get('.modal__value').text()).toBe('cancel')
+    expect(wrapper.get('.modal__value').text()).toBe('reject')
 
     wrapper.unmount()
     clear()

@@ -18,17 +18,17 @@ export interface OverlayOptions {
    */
   event?: {
     /**
-   * cancel event name used by the template
+   * reject event name used by the template
    *
-   * @default 'cancel'
+   * @default 'reject'
    */
-    cancel?: string
+    reject?: string
     /**
-   * confirm event name used by the template
+   * resolve event name used by the template
    *
-   * @default 'confirm'
+   * @default 'resolve'
    */
-    confirm?: string
+    resolve?: string
   }
   /**
    * whether to automatically handle components based on visible and animation
@@ -40,8 +40,8 @@ export interface OverlayOptions {
 
 export function useOverlayMeta(options: OverlayOptions = {}) {
   const { animation = 0, immediate = true, model = 'visible', automatic = true, event = {} } = options
-  event.cancel = event.cancel || 'cancel'
-  event.confirm = event.confirm || 'confirm'
+  event.reject = event.reject || 'reject'
+  event.resolve = event.resolve || 'resolve'
 
   const mixinOptions = Vue.extend({
     inject: [OverlayMetaKey],
@@ -74,15 +74,15 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
         (this.$overlay as any).on('*', this.$runtime_effect)
     },
     methods: {
-      async $runtime_effect(type: 'cancel' | 'confirm', value: any) {
+      async $runtime_effect(type: 'reject' | 'resolve', value: any) {
         this.$emit(event[type]!, value)
         this.$visible = false
       },
-      async $confirm(value: any) {
-        (this.$overlay as any)?.confirm(value)
+      async $resolve(value: any) {
+        (this.$overlay as any)?.resolve(value)
       },
-      async $cancel(value: any) {
-        (this.$overlay as any)?.cancel(value)
+      async $reject(value: any) {
+        (this.$overlay as any)?.reject(value)
       },
     },
   })

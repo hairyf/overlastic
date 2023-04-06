@@ -6,7 +6,7 @@ Components created using `@unoverlays/react` support both imperative and declara
 
 ### Step 1: Define Component
 
-To support use in JSX, props need to be passed into the configuration, and visible and `onConfirm`|`onCancel` need to be defined in props.
+To support use in JSX, props need to be passed into the configuration, and visible and `onResolve`|`onReject` need to be defined in props.
 
 ```tsx
 // If using Typescript, use PropsWithOverlays to define props type
@@ -14,7 +14,7 @@ import type { PropsWithOverlays } from '@unoverlays/react'
 import { useOverlayMeta } from '@unoverlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, confirm, cancel } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlayMeta({
     props
   })
 
@@ -32,8 +32,8 @@ import type { PropsWithOverlays } from '@unoverlays/react'
 import { useOverlayMeta } from '@unoverlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, confirm, cancel } = useOverlayMeta({
-    event: { confirm: 'onOk', cancel: 'onNook' },
+  const { visible, resolve, reject } = useOverlayMeta({
+    event: { resolve: 'onOk', reject: 'onNook' },
     modal: 'open',
     props,
   })
@@ -58,16 +58,16 @@ export function Main() {
     setVisible(true)
   }
 
-  function onConfirm(value) {
+  function onResolve(value) {
     setVisible(false)
   }
 
-  function onCancel(value) {
+  function onReject(value) {
     setVisible(false)
   }
 
   return (
-    <OverlayComponent visible={visible} onConfirm={onConfirm} onCancel={onCancel} />
+    <OverlayComponent visible={visible} onResolve={onResolve} onReject={onReject} />
   )
 }
 ```

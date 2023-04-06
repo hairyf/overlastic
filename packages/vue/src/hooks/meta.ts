@@ -21,17 +21,17 @@ export interface OverlayOptions {
    */
   event?: {
     /**
-   * cancel event name used by the template
+   * reject event name used by the template
    *
-   * @default 'cancel'
+   * @default 'reject'
    */
-    cancel?: string
+    reject?: string
     /**
-   * confirm event name used by the template
+   * resolve event name used by the template
    *
-   * @default 'confirm'
+   * @default 'resolve'
    */
-    confirm?: string
+    resolve?: string
   }
   /**
    * whether to automatically handle components based on visible and animation
@@ -42,10 +42,10 @@ export interface OverlayOptions {
 }
 
 export interface OverlayMeta {
-  /** the notification cancel, modify visible, and destroy it after the animation ends */
-  cancel: Function
-  /** the notification confirm, modify visible, and destroy it after the animation ends */
-  confirm: Function
+  /** the notification reject, modify visible, and destroy it after the animation ends */
+  reject: Function
+  /** the notification resolve, modify visible, and destroy it after the animation ends */
+  resolve: Function
   /** destroy the current instance (immediately) */
   vanish: Function
   /** visible control popup display and hide */
@@ -56,8 +56,8 @@ export interface OverlayMeta {
 
 /**
  * get overlay layer meta information
- * @function cancel  the notification cancel, modify visible, and destroy it after the animation ends
- * @function confirm the notification confirm, modify visible, and destroy it after the animation ends
+ * @function reject  the notification reject, modify visible, and destroy it after the animation ends
+ * @function resolve the notification resolve, modify visible, and destroy it after the animation ends
  * @function vanish destroy the current instance (immediately)
  * @field visible control popup display and hide
  * @returns
@@ -94,17 +94,17 @@ export function useTemplateMeta(model: string, options: OverlayOptions = {}) {
 
   const visible = useVModel(instance.props, model, instance.emit, { passive: true }) as Ref<boolean>
 
-  const cancel = (value?: any) => {
+  const reject = (value?: any) => {
     visible.value = false
-    instance?.emit(events.cancel || 'cancel', value)
+    instance?.emit(events.reject || 'reject', value)
   }
-  const confirm = (value?: any) => {
+  const resolve = (value?: any) => {
     visible.value = false
-    instance?.emit(events.confirm || 'confirm', value)
+    instance?.emit(events.resolve || 'resolve', value)
   }
   return {
-    cancel,
-    confirm,
+    reject,
+    resolve,
     vanish: noop,
     visible,
     isTemplate: true,

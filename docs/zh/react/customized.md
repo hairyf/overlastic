@@ -9,18 +9,18 @@ import { Button, Drawer } from 'antd'
 
 const MyDrawer = (props: PropsWithOverlays<{ title: string }>) => {
 
-  const { visible, confirm, cancel } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlayMeta({
     props
   })
 
-  const onConfirm = () => {
-    confirm(`${props.title}:confirmed`)
+  const onResolve = () => {
+    resolve(`${props.title}:confirmed`)
   }
 
   return (
-    <Drawer title={props.title} onClose={cancel} open={visible}>
+    <Drawer title={props.title} onClose={reject} open={visible}>
       {/* 定制化内容.... */}
-      <Button type="primary" onClick={onConfirm}> Confirm </Button>
+      <Button type="primary" onClick={onResolve}> Confirm </Button>
     </Drawer>
   )
 }
