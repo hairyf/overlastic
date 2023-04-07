@@ -9,7 +9,7 @@ import type { MountOptions } from '../types'
 import { context } from './internal'
 
 export interface RenderChildOptions extends MountOptions {
-  setup?: () => void
+  setup?: () => any
 }
 
 export function renderVNode(
@@ -71,5 +71,5 @@ export function renderChildApp(
 
   app.mount(container)
 
-  return { vanish, instance: app }
+  return vanish
 }
