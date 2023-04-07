@@ -1,6 +1,6 @@
 {
   "name": "@unoverlays/utils",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "license": "MIT",
   "homepage": "https://github.com/TuiMao233/unoverlays#readme",
   "repository": {
@@ -34,7 +34,6 @@
   "scripts": {
     "build": "ptsup -r src index.ts --dts --meta --clean --target es2020",
     "lint": "eslint .",
-    "prepublishOnly": "npm run build",
-    "release": "bumpp && npm publish"
+    "prepublishOnly": "npm run build"
   }
 }

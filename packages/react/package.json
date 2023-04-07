@@ -1,6 +1,6 @@
 {
   "name": "@unoverlays/react",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "license": "MIT",
   "homepage": "https://github.com/TuiMao233/unoverlays#readme",
   "repository": {
@@ -36,8 +36,7 @@
   "scripts": {
     "build": "ptsup -r src index.ts --dts --meta --clean --target es2020",
     "lint": "eslint .",
-    "prepublishOnly": "npm run build",
-    "release": "bumpp && npm publish"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@unoverlays/utils": "workspace:*",
