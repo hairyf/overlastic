@@ -5,7 +5,7 @@ import { defineGlobalNode, varName } from '@unoverlays/utils'
 import type { MountOptions } from '../types'
 
 export interface RenderChildOptions extends MountOptions {
-  provide?: () => void
+  setup?: () => any
 }
 
 export function renderChildApp(
@@ -23,7 +23,7 @@ export function renderChildApp(
   const app = new Vue({
     name: pascalCase(name),
     parent: options.parent,
-    provide: options.provide,
+    provide: options.setup,
     render: h => h(component, { props }),
   })
 
@@ -32,5 +32,5 @@ export function renderChildApp(
   container.appendChild(child)
   app.$mount(child)
 
-  return { vanish, instance: app }
+  return vanish
 }

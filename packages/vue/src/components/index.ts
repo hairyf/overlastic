@@ -1,4 +1,5 @@
 /* eslint-disable vue/one-component-per-file */
+import { isNumber, isString } from '@vueuse/core'
 import type { Component, PropType, VNode } from 'vue-demi'
 import { defineComponent, getCurrentInstance, h } from 'vue-demi'
 
@@ -16,19 +17,15 @@ export const FieldRender = defineComponent({
   name: 'FieldRender',
   props: {
     value: {
-      type: [String, Object] as PropType<string | VNode | Component>,
+      type: [String, Number, Object] as PropType<string | number | VNode | Component>,
       default: '',
     },
   },
   setup(props) {
     return () => {
-      if (isString(props.value))
+      if (isString(props.value) || isNumber(props.value))
         return props.value
-      return h(props.value)
+      return props.value ? h(props.value) : null
     }
   },
 })
-
-function isString(value: any): value is string {
-  return typeof value === 'string'
-}

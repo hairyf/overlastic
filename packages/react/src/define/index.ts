@@ -18,13 +18,13 @@ export interface RenderOptions<Props> extends Omit<MountOptions, 'only'> {
  * @param component Component
  */
 export function defineOverlay<Props, Resolved = void>(component: FC, options?: MountOptions): ImperativeOverlay<Props, Resolved> {
-  function executor(props: any, options?: any) {
+  function executor(props: any, opts?: any) {
     const promiser = createImperativePromiser()
-    const caches = { vanish: noop }
+    const context = { vanish: noop, promiser }
     function setup() {
-      return useVisibleScripts(Object.assign(caches, { promiser }))
+      return useVisibleScripts(context)
     }
-    caches.vanish = renderReactDOM(component, props, { ...options, setup }).vanish
+    context.vanish = renderReactDOM(component, props, { ...opts, setup })
     return promiser.promise as unknown as ImperativePromise<Resolved>
   }
 

@@ -1,5 +1,11 @@
 # @unoverlays/vue
 
+## 0.7.1
+
+### Patch Changes
+
+- feat: add optimization context details
+
 ## 0.7.0
 
 ### Minor Changes

@@ -19,13 +19,13 @@ export interface RenderOptions<Props> extends Omit<MountOptions, 'only'> {
  * @param component Component
  */
 export function defineOverlay<Props, Resolved = void>(component: Component, options?: MountOptions): ImperativeOverlay<Props, Resolved> {
-  function executor(props: any, options?: any) {
+  function executor(props: any, opts?: any) {
     const promiser = createImperativePromiser()
-    const caches = { vanish: noop }
-    function provide() {
-      return { [OverlayMetaKey]: createVisibleScripts(Object.assign(caches, { promiser })) }
+    const context = { vanish: noop, promiser }
+    function setup() {
+      return { [OverlayMetaKey]: createVisibleScripts(context) }
     }
-    caches.vanish = renderChildApp(component, props, Object.assign(options, { provide })).vanish
+    context.vanish = renderChildApp(component, props, { ...opts, setup })
     return promiser.promise as unknown as ImperativePromise<Resolved>
   }
 

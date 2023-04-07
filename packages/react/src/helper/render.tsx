@@ -40,5 +40,5 @@ export function renderReactDOM(
 
   root.render(<UnifiedOverlayProvider />)
 
-  return { vanish }
+  return vanish
 }
