@@ -29,7 +29,7 @@ export function defineOverlay<Props, Resolved = void>(component: Component, opti
       const scripts = useVisibleScripts(visible, context)
       provide(OverlayMetaKey, scripts)
     }
-    context.vanish = renderChildApp(component, props, { ...opts, setup })
+    context.vanish = renderChildApp(component, props, { ...opts, setup }).vanish
     return promiser.promise as unknown as ImperativePromise<Resolved>
   }
 

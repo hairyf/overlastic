@@ -1,5 +1,11 @@
 # @unoverlays/vue
 
+## 0.7.2
+
+### Patch Changes
+
+- fix: vue unit test error instance is not define
+
 ## 0.7.1
 
 ### Patch Changes

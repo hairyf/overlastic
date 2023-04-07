@@ -71,5 +71,5 @@ export function renderChildApp(
 
   app.mount(container)
 
-  return vanish
+  return { vanish, instance: app }
 }
