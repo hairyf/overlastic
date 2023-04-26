@@ -31,20 +31,21 @@
       },
       "./*": "./*"
     },
-    "directory": "dist"
+    "directory": "dist",
+    "linkDirectory": false
   },
   "scripts": {
     "build": "ptsup -r src index.ts --dts --meta --clean --target es2020",
     "lint": "eslint .",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {
-    "@unoverlays/utils": "workspace:*",
-    "pascal-case": "^3.1.2"
-  },
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@unoverlays/utils": "workspace:*",
+    "pascal-case": "^3.1.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

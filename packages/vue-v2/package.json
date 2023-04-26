@@ -31,7 +31,8 @@
       },
       "./*": "./*"
     },
-    "directory": "dist"
+    "directory": "dist",
+    "linkDirectory": false
   },
   "scripts": {
     "build": "ptsup -r src index.ts --dts --meta --clean",
