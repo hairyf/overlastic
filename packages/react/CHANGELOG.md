@@ -1,5 +1,13 @@
 # @unoverlays/react
 
+## 0.7.2
+
+### Patch Changes
+
+- feat: vue/react holder field change
+- Updated dependencies
+  - @unoverlays/utils@0.4.1
+
 ## 0.7.1
 
 ### Patch Changes
