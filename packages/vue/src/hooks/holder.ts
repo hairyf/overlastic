@@ -9,7 +9,7 @@ import { OverlayMetaKey } from '../helper'
 import type { VisiblePromiseOptions } from './visible'
 import { useVisibleScripts } from './visible'
 
-export type InjectionHolder<Props, Resolved> = [ImperativeOverlay<Props, Resolved>, Component]
+export type InjectionHolder<Props, Resolved> = [Component, ImperativeOverlay<Props, Resolved>]
 
 export function useInjectHolder<Props, Resolved = void>(
   component: Component,
@@ -25,7 +25,7 @@ export function useInjectHolder<Props, Resolved = void>(
     )
   }
 
-  const Provider = defineComponent({
+  const Holder = defineComponent({
     name: pascalCase(name),
     setup() {
       provide(OverlayMetaKey, scripts)
@@ -33,7 +33,7 @@ export function useInjectHolder<Props, Resolved = void>(
     },
   })
 
-  return [callback as any, Provider]
+  return [Holder, callback as any]
 }
 
 export function useRefreshMetadata() {

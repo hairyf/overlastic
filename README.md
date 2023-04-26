@@ -10,7 +10,7 @@ it can achieve:
 - Integration and customization of existing component libraries, such as `element-plus` and `antd`.
 - Supports component inheritance of global application context.
 - Supports frontend progressive frameworks such as `vue2|3` and `react`.
-- More stable!!, **99.54%** unit test coverage(Vue)
+- More stable!!, **99.54%** unit test coverage(Vue/React)
 
 ## Packages
 

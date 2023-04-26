@@ -8,6 +8,8 @@ export const OverlayContext = createContext<OverlayMeta>({
   setVisible: noop,
   vanish: noop,
   visible: false,
+  inJsx: true,
+  promise: undefined,
 })
 
 OverlayContext.displayName = 'OverlayContext'

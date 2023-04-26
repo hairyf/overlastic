@@ -19,9 +19,10 @@ export function renderReactDOM(
   const container = defineGlobalNode(name, options.root || document.body)
 
   function vanish() {
-    requestAnimationFrame(() => {
+    const timer = requestAnimationFrame(() => {
       root.unmount()
       container.remove()
+      cancelAnimationFrame(timer)
     })
   }
 
@@ -40,5 +41,5 @@ export function renderReactDOM(
 
   root.render(<UnifiedOverlayProvider />)
 
-  return vanish
+  return { instance: root, vanish }
 }

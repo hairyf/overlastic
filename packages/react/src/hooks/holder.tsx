@@ -42,6 +42,7 @@ export function useRefreshMetadata() {
   const [props, setProps] = useState<any>()
   const [refresh, setRefresh] = useState(false)
   const { current: options } = useRef<VisiblePromiseOptions>({
+    isJsx: false,
     vanish,
   })
   const scripts = useVisibleScripts(options)

@@ -1,12 +1,13 @@
 import { createPromiser } from '@unoverlays/utils'
-import { mount } from '@vue/test-utils'
-import Overlay from './components/overlay.vue'
+import Overlay from './component/overlay'
+import { mount } from './utils'
 
-describe('@unoverlays/vue:declarative', () => {
-  it('mount', () => {
+describe('@unoverlays/react:declarative', () => {
+  it('mount', async () => {
     const wrapper = mount(Overlay, {
       props: { visible: false },
     })
+
     expect(wrapper.get('.base-modal__mask').isVisible()).toBeFalsy()
 
     wrapper.unmount()

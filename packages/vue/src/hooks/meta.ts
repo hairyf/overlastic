@@ -51,7 +51,7 @@ export interface OverlayMeta {
   /** visible control popup display and hide */
   visible: Ref<boolean>
   /** use in template */
-  isTemplate?: boolean
+  inTemplate?: boolean
 }
 
 /**
@@ -68,7 +68,7 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
-  if (!meta.isTemplate && automatic) {
+  if (!meta.inTemplate && automatic) {
     watch(meta.visible, async () => {
       if (meta.visible.value)
         return
@@ -78,7 +78,7 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
     })
   }
 
-  if (!meta.isTemplate && immediate)
+  if (!meta.inTemplate && immediate)
     onMounted(() => meta.visible.value = true)
 
   provide(OverlayMetaKey, null)
@@ -107,6 +107,6 @@ export function useTemplateMeta(model: string, options: OverlayOptions = {}) {
     resolve,
     vanish: noop,
     visible,
-    isTemplate: true,
+    inTemplate: true,
   }
 }

@@ -12,10 +12,12 @@ export function useVisibleScripts(options: VisiblePromiseOptions) {
   function reject(value?: any) {
     options.promiser?.reject(value)
     setVisible(false)
+    return options.promiser?.promise
   }
   function resolve(value?: any) {
     options.promiser?.resolve(value)
     setVisible(false)
+    return options.promiser?.promise
   }
 
   function vanish() {
@@ -28,5 +30,12 @@ export function useVisibleScripts(options: VisiblePromiseOptions) {
     options.promiser.promise.reject = reject
   }
 
-  return { setVisible, visible, resolve, reject, vanish, isJsx: options.isJsx }
+  return {
+    setVisible,
+    visible,
+    resolve,
+    reject,
+    vanish,
+    isJsx: options.isJsx,
+  }
 }

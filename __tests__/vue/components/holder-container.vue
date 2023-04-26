@@ -8,7 +8,9 @@ const props = withDefaults(defineProps<{
   animation?: number
 }>(), { root: undefined })
 
-const [callback, holder] = useInjectHolder<{ title?: string; animation?: number }, string>(Overlay, props)
+const [holder, callback] = useInjectHolder<{ title?: string; animation?: number }, string>(Overlay, props)
+
+const result = ref<string>()
 
 async function getModalValue() {
   try {
@@ -18,8 +20,6 @@ async function getModalValue() {
     result.value = error
   }
 }
-
-const result = ref<string>()
 </script>
 
 <template>

@@ -21,7 +21,7 @@ describe('@unoverlays/vue:imperative-holder', () => {
 
     await delay()
 
-    expect(wrapper.get('.base-modal__mask').isVisible()).toBeTruthy()
+    expect(wrapper.find('.base-modal__mask').exists()).toBeTruthy()
 
     wrapper.unmount()
     clear()

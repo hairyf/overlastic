@@ -58,11 +58,14 @@ export interface OverlayMeta {
   visible: boolean
   /** visible dispatch change */
   setVisible: Dispatch<SetStateAction<boolean>>
+  /** use in jsx */
+  inJsx?: boolean
 }
 
 export function useOverlayMeta(options: OverlayOptions = {}) {
   const { immediate = true } = options
-  const meta = useContext(OverlayContext)
+  const context = useContext(OverlayContext)
+  const meta = context.inJsx ? useJSXMeta(options) : context
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
@@ -79,18 +82,19 @@ export function useJSXMeta(options: OverlayOptions = {}) {
   const { props = {}, model = 'visible', event = {} } = options
   const { reject = 'onReject', resolve = 'onResolve' } = event
 
-  const _cancel = (value?: any) => {
+  const _reject = (value?: any) => {
     props[reject]?.(value)
   }
-  const _confirm = (value?: any) => {
+  const _resolve = (value?: any) => {
     props[resolve]?.(value)
   }
 
   return {
-    reject: _cancel,
-    resolve: _confirm,
+    reject: _reject,
+    resolve: _resolve,
     vanish: noop,
     visible: props[model],
+    setVisible: noop,
   }
 }
 
@@ -107,6 +111,7 @@ export function automatic(meta: OverlayMeta, options: OverlayOptions) {
       await _delay(animation)
     meta.vanish?.()
   }
+
   for (const key of ['resolve', 'reject'] as const) {
     const affirm = meta[key]
     meta[key] = function (value: any) {

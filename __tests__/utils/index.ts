@@ -1,5 +1,3 @@
-import type { VueWrapper } from '@vue/test-utils'
-
 export function resolve() {
   const element = document.querySelector('.modal__confirm') as HTMLDivElement
   if (element)
@@ -28,13 +26,16 @@ export function isBasicExists() {
 }
 
 export function clear() {
-  queryModalWrapper()?.remove()
+  document.querySelectorAll('.base-modal__mask')
+    ?.forEach((item) => {
+      item.remove()
+    })
 }
 
 export function queryTransitionParent(element: Element) {
   return element.parentElement?.parentElement?.parentElement
 }
 
-export function openModal(wrapper: VueWrapper<any>) {
-  wrapper.get<HTMLDivElement>('.modal__open').element.click()
+export function openModal(wrapper: any) {
+  wrapper.get('.modal__open').element.click()
 }

@@ -26,7 +26,7 @@ export default defineComponent({
 
 <template>
   <!-- after-leave call vanish -->
-  <transition name="fade" @after-leave="vanish">
+  <transition name="fade" @after-leave="vanish()">
     <div v-show="visible" class="base-modal__mask">
       <div class="base-modal__content">
         <div class="base-modal__title">
