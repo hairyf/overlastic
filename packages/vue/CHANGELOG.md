@@ -1,5 +1,13 @@
 # @unoverlays/vue
 
+## 0.7.5
+
+### Patch Changes
+
+- fix: types error
+- Updated dependencies
+  - @unoverlays/utils@0.4.3
+
 ## 0.7.3
 
 ### Patch Changes
