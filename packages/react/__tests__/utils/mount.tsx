@@ -1,8 +1,7 @@
 import { act } from '@testing-library/react'
+import type { FC } from 'react'
 import { useState } from 'react'
 import { render } from './render'
-
-export type FC<T = unknown> = (props: T) => JSX.Element | null
 
 export interface MountingOptions<Props> {
   props?: Props
@@ -18,7 +17,8 @@ export function mount<P = unknown>(Component: FC<P>, options?: MountingOptions<P
   const MountContainer = () => {
     const [props, setProps] = useState(defaultProps)
     Object.assign(context, { props, setProps })
-    return <Component {...props} />
+    const C = Component as any
+    return <C {...props} />
   }
 
   const root = render(<MountContainer />)

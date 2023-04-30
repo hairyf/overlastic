@@ -1,4 +1,5 @@
-import { isModalExists, openModal, queryModalTitle, reject, resolve } from '../utils'
+import { isModalExists, openModal, queryModalTitle, reject, resolve } from '@unoverlays/utils/__tests__'
+import { describe, expect, it } from 'vitest'
 import HolderContainer from './component/holder-container'
 import { act, mount } from './utils'
 

@@ -1,19 +1,20 @@
-import { defineOverlay, renderOverlay } from '@unoverlays/react'
-import { delay } from '@unoverlays/utils'
-import { clear, isModalExists, queryModalTitle, reject, resolve } from '../utils'
-import Overlay from './component/overlay'
+import { defineOverlay, renderOverlay } from '@unoverlays/vue'
+import { clear, isModalExists, queryModalTitle, reject, resolve } from '@unoverlays/utils/__tests__'
+import Overlay from './components/overlay.vue'
 
-describe('@unoverlays/react:imperative', () => {
-  async function toModalExists(bool: boolean) {
-    await delay(20)
-    const ex = expect(isModalExists())
-    bool ? ex.toBeTruthy() : ex.toBeFalsy()
-  }
-
-  it('mount', async () => {
+describe('@unoverlays/vue:imperative', () => {
+  it('mount', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
+
     callback()
-    await toModalExists(true)
+
+    expect(isModalExists()).toBeTruthy()
+    clear()
+  })
+
+  it('mount:render', () => {
+    renderOverlay(Overlay)
+    expect(isModalExists()).toBeTruthy()
     clear()
   })
 
@@ -24,8 +25,6 @@ describe('@unoverlays/react:imperative', () => {
     callback()
     callback()
     callback()
-
-    await delay(20)
 
     const elements = document.querySelectorAll('.base-modal__mask')
     expect(elements.length).toBe(4)
@@ -41,93 +40,61 @@ describe('@unoverlays/react:imperative', () => {
     callback()
     callback()
 
-    await delay(20)
-
     const elements = document.querySelectorAll('.base-modal__mask')
     expect(elements.length).toBe(1)
 
     clear()
   })
 
-  it('mount:render', async () => {
-    renderOverlay(Overlay)
-    await toModalExists(true)
-    clear()
-  })
-
-  it('emit:resolve', async () => {
+  it('emit:resolve', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
 
     expect(callback()).resolves.toBe('resolve')
 
-    await toModalExists(true)
-
     resolve()
-
-    await toModalExists(false)
+    clear()
   })
 
-  it.skip('emit:reject', async () => {
+  it('emit:reject', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
 
-    callback()
-
-    await toModalExists(true)
+    expect(callback()).rejects.toBe('reject')
 
     reject()
-
-    await toModalExists(false)
+    clear()
   })
 
-  it('manual:resolve', async () => {
+  it('manual:resolve', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
     const instance = callback()
 
     expect(instance).resolves.toBe('manual-confirm')
 
-    await toModalExists(true)
-
     instance.resolve('manual-confirm')
-
-    await toModalExists(false)
+    clear()
   })
 
-  it('manual:reject', async () => {
+  it('manual:reject', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
     const instance = callback()
-
-    await toModalExists(true)
 
     expect(instance).rejects.toBe('manual-cancel')
 
     instance.reject('manual-cancel')
-
-    await toModalExists(false)
+    clear()
   })
 
-  it('manual:not-allowed', async () => {
+  it('manual:not-allowed', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
-
-    const instance = callback()
-
-    await toModalExists(true)
-
-    await instance.resolve('manual:not-allowed')
-
-    await toModalExists(false)
+    expect(callback().resolve('manual:not-allowed')).resolves.toBe('manual:not-allowed')
+    clear()
   })
 
-  it('transmit:props', async () => {
+  it('transmit:props', () => {
     const callback = defineOverlay<{ title?: string }, string>(Overlay)
-
     callback({ title: 'transmit-props-title' })
 
-    await toModalExists(true)
-
     expect(queryModalTitle().textContent).toBe('transmit-props-title')
-
-    resolve()
-
-    await toModalExists(false)
+    clear()
   })
 })

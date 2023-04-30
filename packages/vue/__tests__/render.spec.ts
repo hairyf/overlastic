@@ -1,7 +1,7 @@
 import { renderChildApp, renderVNode } from '@unoverlays/vue/src/helper'
 import { install } from '@unoverlays/vue'
 import { createApp } from 'vue'
-import { isBasicExists } from '../utils'
+import { isBasicExists } from '@unoverlays/utils/__tests__'
 import Basic from './components/basic.vue'
 describe('@unoverlays/vue:render', () => {
   it('render:vnode', () => {

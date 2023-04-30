@@ -1,5 +1,5 @@
 packages:
-  - "packages/**"
-  - "!**/test/**"
-  - "!**/dist/**"
-  - "!**dist"
+  - 'packages/**'
+  - '!**/test/**'
+  - '!**/dist/**'
+  - '!**dist'

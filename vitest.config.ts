@@ -7,6 +7,7 @@ export default defineConfig({
     React() as any,
   ],
   test: {
+    include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     globals: true,
     environment: 'jsdom',
     setupFiles: './__tests__/test/setup.ts',

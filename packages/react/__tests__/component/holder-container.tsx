@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Overlay from './overlay'
 function HolderContainer(props?: { animation?: number; root?: any }) {
   const [holder, callback] = useInjectHolder<{ title?: string; animation?: number }, string>(Overlay, { root: props?.root })
-  const [result, setResult] = useState()
+  const [result, setResult] = useState<any>()
 
   async function getModalValue() {
     try {

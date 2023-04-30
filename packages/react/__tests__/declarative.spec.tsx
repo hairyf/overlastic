@@ -1,4 +1,5 @@
 import { createPromiser } from '@unoverlays/utils'
+import { describe, expect, it } from 'vitest'
 import Overlay from './component/overlay'
 import { mount } from './utils'
 
