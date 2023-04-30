@@ -27,7 +27,6 @@
     "main": "./dist/index.cjs",
     "types": "./dist/index.d.ts",
     "jsdelivr": "./dist/index.global.js",
-    "directory": "dist",
     "linkDirectory": false
   },
   "files": [
