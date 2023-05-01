@@ -3,7 +3,7 @@ import { pascalCase } from 'pascal-case'
 import type { App, AppContext, Component } from 'vue'
 import { createApp, defineComponent, h, provide } from 'vue'
 
-import { OverlayMetaKey, context } from '../helper'
+import { OverlayMetaKey, context } from '../internal'
 import { useVisibleScripts } from '../composable'
 
 export interface VMountOptions {

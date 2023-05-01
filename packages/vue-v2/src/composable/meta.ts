@@ -1,6 +1,6 @@
 import { delay } from '@overlays/core'
 import Vue from 'vue'
-import { OverlayMetaKey } from '../helper'
+import { OverlayMetaKey } from '../internal'
 
 export interface OverlayOptions {
   /** animation duration to avoid premature destruction of components */

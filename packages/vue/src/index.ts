@@ -1,5 +1,5 @@
 import type { App } from 'vue-demi'
-import { context } from './helper'
+import { context } from './internal'
 
 const install = (app: App) => {
   context.appContext = app._context

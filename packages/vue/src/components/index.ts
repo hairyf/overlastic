@@ -3,7 +3,7 @@ import { isNumber, isString } from '@vueuse/core'
 import type { Component, PropType, VNode } from 'vue-demi'
 import { defineComponent, getCurrentInstance, h } from 'vue-demi'
 
-import { context } from '../helper'
+import { context } from '../internal'
 
 export const UnifiedOverlayProvider = defineComponent({
   setup(_, { slots }) {

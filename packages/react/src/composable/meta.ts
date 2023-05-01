@@ -2,7 +2,7 @@ import { delay as _delay, noop } from '@overlays/core'
 import type { Dispatch, SetStateAction } from 'react'
 import { useContext, useEffect } from 'react'
 
-import { OverlayContext } from '../helper'
+import { OverlayContext } from '../internal'
 import type { PropsWidthOverlays } from '../types'
 
 export interface OverlayOptions {

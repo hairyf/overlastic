@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
 import { UnifiedOverlayProvider, install } from '../src'
-import { context } from '../src/helper'
+import { context } from '../src/internal'
 import Basic from './components/basic.vue'
 
 describe('@overlays/vue:install', () => {

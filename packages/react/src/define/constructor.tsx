@@ -3,8 +3,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { pascalCase } from 'pascal-case'
 import { useVisibleScripts } from '../composable'
-import { defineProviderComponent } from './define'
-import { OverlayContext } from './internal'
+import { OverlayContext, defineProviderComponent } from '../internal'
 
 export const constructor = createOverlaysConstructor<React.FC<any>>((Inst, props, options) => {
   const { container, id, promiser } = options

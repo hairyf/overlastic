@@ -4,7 +4,7 @@ import { Teleport, defineComponent, h, nextTick, provide, reactive, ref } from '
 import { createImperativePromiser, varName } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
 import type { GlobalMountOptions, ImperativeOverlay } from '@overlays/core'
-import { OverlayMetaKey } from '../helper'
+import { OverlayMetaKey } from '../internal'
 import type { VisiblePromiseOptions } from './visible'
 import { useVisibleScripts } from './visible'
 

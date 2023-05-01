@@ -4,7 +4,7 @@ import type { FC } from 'react'
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { ImperativeOverlay, MountOptions } from '@overlays/core'
-import { OverlayContext } from '../helper'
+import { OverlayContext } from '../internal'
 
 import type { VisiblePromiseOptions } from './visible'
 import { useVisibleScripts } from './visible'

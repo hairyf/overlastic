@@ -1,6 +1,6 @@
 import type Vue from 'vue'
 import type { PluginObject } from 'vue/types/umd'
-import { context } from './helper'
+import { context } from './internal'
 
 const install = (_ins: any, parent: any) => {
   if (parent)

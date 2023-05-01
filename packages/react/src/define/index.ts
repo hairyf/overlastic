@@ -1,4 +1,4 @@
-import { constructor } from '../helper'
+import { constructor } from '../internal'
 
 export const defineOverlay = constructor.define
 
