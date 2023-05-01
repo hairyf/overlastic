@@ -1,15 +1,30 @@
-# overlays
+<p align="center">
+<img src="docs/public/circle.svg" style="width:100px;" />
+</p>
+
+<h1 align="center">Unified Overlays</h1>
+
+<p align="center">
+A create model/dialog/popup library
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.org/package/@overlays/core">
+    <img src="https://img.shields.io/npm/v/@overlays/core.svg">
+  </a>
+</p>
 
 > [English](./README.md) | 中文 or see [overlays-docs](https://overlays.vercel.app/zh/)
 
-overlays 用于创建回调弹出层（命令式）方法、并支持在 Vue 或 React 中（声明式）使用。
+Unified Overlays 是构建弹出层的插件，创建回调（命令式）方法、以及在 Vue Template 或 React Jsx 中（声明式）使用。
 
-- 制作类似于 `element-plus/antd`... 的 Message 或 Dialog
+###### Features
+
+- 简化创建消息或对话框，并支持回调（命令式）和 Template/JSX（声明式）方法。
 - 同时支持回调（命令式）与Template/JSX（声明式）
-- 使用现有组件库（如 element-plus、antd）集成和定制化功能
-- 支持组件继承全局应用上下文
-- 支持 `vue2|3`、`react` 等前端渐进式框架。
-- 更稳定！单元测试覆盖率 **99.54%**（Vue）
+- 集成和自定义现有组件库，例如 `element-plus` 和 `antd`。
+- 支持全局应用程序上下文的组件继承。
+- 支持流行前端渐进式框架（Vue2 & 3，React）。
 
 ## packages
 
@@ -31,11 +46,9 @@ overlays 用于创建回调弹出层（命令式）方法、并支持在 Vue 或
 
 ## Why?
 
-在如今日益繁琐的业务场景中，我们经常被重复的 Model 类定义工作所困扰，这意味着一旦遇到了 Model 类组件，我们需要不断重复定义 `reject`、`resolve`、`visible` 等通用字段，
-在当保存组件状态时，经常的需要对 Model 流程进行控制（`open model` -> `edit data` -> `@resolve` -> `save data`）
-这极大的加剧了工作量，并在组件重复使用时产生大量的冗余代码。
+创建模态类组件重复且耗时。当重用使用这类的组件时，需要重复定义 reject、resolve 和 visible 等公共字段。此外，控制 Model 过程（`clear data`->`open Model`->`edit data`->`onConfirm`->`save data`）会导致大量冗余代码，尤其是对于图像选择器等常用组件。
 
-这个时候，则需要对 Modal 进行命令化（回调的方式），Unified Overlays 将多余的流程与状态统一管理，而当我们需要声明式使用时（即在 Vue Template 或 React Jsx）中，使用 Unified Overlays 创建组件依旧有效。
+Unified Overlays 通过统一冗余流程和状态管理简化了模式创建。它可以有效地创建命令式组件，并且仍然可以声明式使用。
 
 ## Install
 
@@ -71,8 +84,6 @@ const result = renderOverlay(OverlayComponent, {
   props
 })
 ```
-
-更多功能的使用，请查看 overlays 的[详细文档](https://overlays.vercel.app/zh/)。
 
 # License
 

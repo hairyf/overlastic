@@ -16,18 +16,19 @@ A create model/dialog/popup library
 
 > [中文](./README_CN.md) | English or see [overlays-docs](https://overlays.vercel.app)
 
-overlays is a unified plugin for building overlays. It allows for the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
+overlays is a unified plugin for building overlays that allows the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
 
 ###### Features
 
-- Create Message or Dialog similar to `element-plus/antd...` Supports both callback (imperative) and Template/JSX (declarative) methods.
+- Simplify the Create Message or Dialog and Supports both callback (imperative) and Template/JSX (declarative) methods.
 - Integration and customization of existing component libraries, such as `element-plus` and `antd`.
 - Supports component inheritance of global application context.
 - Supports frontend progressive frameworks such as `vue2|3` and `react`.
-- More stable, **99.54%** unit test coverage(vue/react/utils)
+- Highly stable with **99.54%** unit test coverage(vue/react/core).
 
 ## Packages
 
+- [@overlays/core](https://unoverlays.vercel.app/en/core/functions/globals.html) - Quick adaptation and creation of applications
 - [@overlays/vue](https://unoverlays.vercel.app/en/vue/) - Use Unified Overlays to create overlays in Vue app.
 - [@overlays/react](https://unoverlays.vercel.app/en/react/) - Use Unified Overlays to create overlays in React app.
 
@@ -46,9 +47,9 @@ Components created by Unified Overlays support Devtools for their corresponding 
 
 ## Why?
 
-In today's increasingly complex business scenarios, we are often troubled by the repetitive work of defining Model classes. This means that once we encounter a Model class component, we need to repeatedly define common fields such as reject, resolve, and visible. When saving component state, we often need to control the Model process (`clear data` -> `open model` -> `edit data` -> `onConfirm` -> `save data`). This greatly increases the workload and produces a lot of redundant code when components are reused(For example, a frequently used image selector)
+Creating Model classes repetitive and time-consuming. When reusing a component that uses a Model class, common fields such as reject, resolve, and visible need to be defined repeatedly. Additionally, controlling the Model process (`clear data` -> `open model` -> `edit data` -> `onConfirm` -> `save data`) can lead to a lot of redundant code, especially for frequently used components like an image selector.
 
-Therefore, it is necessary to commandize Modal (using a callback approach). Unified Overlays unifies the redundant processes and state management, and the use of Unified Overlays to create components remains effective when declaratively used (in Vue Template or React Jsx).
+overlays simplifies Modal creation by unifying the redundant processes and state management. It can effectively create imperative components, and can still be used declaratively.
 
 ## Install
 
@@ -60,7 +61,7 @@ pnpm add @overlays/react
 
 ## Usage
 
-Use the `useOverlayMeta` Hook provided by overlays to create overlays components (Vue, React).
+Use the `useOverlayMeta` Hook provided by overlays to obtain overlays metadata and create overlays components (Vue, React).
 
 ```ts
 // In your Vue, React overlays component,
