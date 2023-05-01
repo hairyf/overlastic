@@ -16,7 +16,7 @@ A create model/dialog/popup library
 
 > [中文](./README_CN.md) | English or see [overlays-docs](https://overlays.vercel.app)
 
-overlays is a unified plugin for building overlays that allows the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
+Unified Overlays is a unified plugin for building overlays that allows the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
 
 ###### Features
 
