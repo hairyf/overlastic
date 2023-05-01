@@ -1,7 +1,7 @@
 import type { Component } from 'vue-demi'
 import { Teleport, defineComponent, h, nextTick, provide, reactive, ref } from 'vue-demi'
 
-import { createImperativePromiser, varName } from '@overlays/core'
+import { createImperativePromiser, defineName } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
 import type { GlobalMountOptions, ImperativeOverlay } from '@overlays/core'
 import { OverlayMetaKey } from '../internal'
@@ -15,7 +15,7 @@ export function useInjectHolder<Props, Resolved = void>(
   options: Omit<GlobalMountOptions, 'appContext'> = {},
 ): InjectionHolder<Props, Resolved> {
   const { callback, scripts, props, refresh } = useRefreshMetadata()
-  const name = varName(options.id, options.autoIncrement)
+  const name = defineName(options.id, options.autoIncrement)
 
   function render() {
     return h(Teleport,

@@ -1,4 +1,4 @@
-import { createOverlaysConstructor } from '@overlays/core'
+import { createConstructor } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
 import type { App, AppContext, Component } from 'vue'
 import { createApp, defineComponent, h, provide } from 'vue'
@@ -11,7 +11,7 @@ export interface VMountOptions {
   appContext?: AppContext
 }
 
-export const constructor = createOverlaysConstructor<Component, VMountOptions>((Inst, props, options) => {
+export const constructor = createConstructor<Component, VMountOptions>((Inst, props, options) => {
   const { container, id, promiser } = options
   function vanish() {
     app.unmount()

@@ -1,4 +1,4 @@
-import { allowed } from './utils'
+import { allowed } from './utils/util'
 
 export type ImperativePromiser<T = void> = Promiser<{ resolve: (value: T) => ImperativePromise<T>; reject: Function }, T>
 export type ImperativePromise<T = void> = ImperativePromiser<T>['promise']

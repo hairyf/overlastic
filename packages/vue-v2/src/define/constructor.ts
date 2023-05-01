@@ -1,4 +1,4 @@
-import { createOverlaysConstructor } from '@overlays/core'
+import { createConstructor } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
 
 import type { Component } from 'vue'
@@ -10,7 +10,7 @@ export interface VMountOptions {
   parent?: Vue
 }
 
-export const constructor = createOverlaysConstructor<Component, VMountOptions>((Inst, props, options) => {
+export const constructor = createConstructor<Component, VMountOptions>((Inst, props, options) => {
   const { container, id, promiser } = options
   function vanish() {
     childApp.$destroy()

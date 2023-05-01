@@ -1,40 +1,71 @@
-import { defineGlobalNode } from './global'
+import { defineGlobalNode, defineIndex, defineName } from './define'
 import type { ImperativePromise, ImperativePromiser } from './promiser'
 import { createImperativePromiser } from './promiser'
-import type { GlobalMountOptions } from './types'
-import { varIndex, varName } from './utils'
+import { watchClickPosition } from './events'
+import type { ClickPosition, ImperativeOverlay, MountOptions } from './types'
+import { context } from './internal'
 
 export type MountConstructorOptions<Opts> = Opts & {
+  /**
+   * The ID of the mounted element
+   */
   id: string
+  /**
+   * The current element level defaults to 0 if autoIncrement is not started
+   */
   index: number
+  /**
+   * mount elements, do not mount when root is false
+   */
   container: HTMLDivElement
+  /**
+   * Promisor, used to mark the completion and end of an instance
+   */
   promiser: ImperativePromiser
+  /**
+   * Mouse position during triggering
+   */
+  position?: ClickPosition
 }
 
-export type MountOptions<Opts = {}> = GlobalMountOptions & Opts
-
-export interface MountConstructor<Instance, Opts> {
-  (instance: Instance, props: any, options: MountConstructorOptions<Opts>): void
+export interface MountConstructor<Inst, Opts> {
+  (instance: Inst, props: any, options: MountConstructorOptions<Opts>): void
 }
 
-export interface ImperativeOverlay<Props, Resolved, Opts = {}> {
-  (props?: Props, options?: MountOptions<Opts>): ImperativePromise<Resolved>
+export interface OverlaysConstructor<Inst, Opts> {
+  define: <Props, Resolved = void>(instance: Inst, options?: MountOptions<Opts>) => ImperativeOverlay<Props, Resolved, Opts>
+  render: <Props, Resolved = void>(instance: Inst, props?: Props, options?: MountOptions<Opts>) => Promise<Resolved>
 }
 
-export interface OverlaysConstructor<Instance, Opts> {
-  define: <Props, Resolved = void>(instance: Instance, options?: MountOptions<Opts>) => ImperativeOverlay<Props, Resolved, Opts>
-  render: <Props, Resolved = void>(instance: Instance, props?: Props, options?: MountOptions<Opts>) => Promise<Resolved>
-}
+/**
+ * Create a overlays constructor
+ * @param mount Trigger Mount
+ * @example
+ * const constructor = createConstructor<HTMLDivElement, { class: any }>((inst, props, options) => {
+ *  const { promiser, container } = options
+ *  inst.querySelector('button.confirm').onclick = function () {
+ *    promiser.resolve('ok')
+ *    container.remove()
+ *  }
+ *  inst.querySelector('button.close').onclick = function () {
+ *    promiser.reject('close')
+ *    container.remove()
+ *  }
+ *  inst.dataset['props'] = JSON.stringify(props)
+ *  container.append(inst)
+ * })
+ */
 
-export function createOverlaysConstructor<Inst, Opts = {}>(mount: MountConstructor<Inst, Opts>): OverlaysConstructor<Inst, Opts> {
+export function createConstructor<Inst, Opts = {}>(mount: MountConstructor<Inst, Opts>): OverlaysConstructor<Inst, Opts> {
   function define(instance: Inst, options?: any) {
     function executor(props: any, options?: any) {
       const promiser = createImperativePromiser()
-      const id = varName(options.id, options.autoIncrement)
-      const index = varIndex(options.id)
-      const container = defineGlobalNode(id, options.root || document.body)
+      const name = defineName(options.id, options.autoIncrement)
+      const index = defineIndex(options.id)
+      const container = defineGlobalNode(name, options.root)
       mount(instance, props, Object.assign(options, {
-        id,
+        position: context.position,
+        id: name,
         promiser,
         index,
         container,
@@ -56,7 +87,6 @@ export function createOverlaysConstructor<Inst, Opts = {}>(mount: MountConstruct
         ? only(props, opts)
         : executor(props, opts)
     }
-
     return caller
   }
 
@@ -65,3 +95,5 @@ export function createOverlaysConstructor<Inst, Opts = {}>(mount: MountConstruct
   }
   return { define, render }
 }
+
+watchClickPosition()

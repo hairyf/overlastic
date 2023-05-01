@@ -1,11 +1,11 @@
-import { createOverlaysConstructor } from '@overlays/core'
+import { createConstructor } from '@overlays/core'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { pascalCase } from 'pascal-case'
 import { useVisibleScripts } from '../composable'
 import { OverlayContext, defineProviderComponent } from '../internal'
 
-export const constructor = createOverlaysConstructor<React.FC<any>>((Inst, props, options) => {
+export const constructor = createConstructor<React.FC<any>>((Inst, props, options) => {
   const { container, id, promiser } = options
 
   function vanish() {

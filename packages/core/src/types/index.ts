@@ -1,3 +1,5 @@
+import type { ImperativePromise } from '../utils'
+
 export interface GlobalMountOptions {
   /**
    * mount container element id
@@ -20,4 +22,15 @@ export interface GlobalMountOptions {
 
   /** only overlay */
   only?: boolean
+}
+
+export interface ImperativeOverlay<Props, Resolved, Opts = {}> {
+  (props?: Props, options?: MountOptions<Opts>): ImperativePromise<Resolved>
+}
+
+export type MountOptions<Opts = {}> = GlobalMountOptions & Opts
+
+export interface ClickPosition {
+  x: number
+  y: number
 }
