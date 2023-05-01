@@ -1,6 +1,6 @@
-# Support Vue2
+# Vue2 Support
 
-If you are using Vue2, you can install the "package" and use mixins to pass properties to components. Here's an example:
+如果您使用的是 Vue2，您可以安装 `@overlays/vue2` 并使用 `mixin` 将属性传递给组件。下面是一个例子：
 
 ```ts
 import { useOverlayMeta } from '@overlays/vue2'

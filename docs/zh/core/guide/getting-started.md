@@ -16,7 +16,7 @@ overlays 是构建弹出层的统一插件，创建回调（命令式）方法�
 
 ## Devtools
 
-由 Unified Overlays 创建的组件，均支持对应框架的 Devtools（React、Vue）
+Unified Overlays 支持不同框架的 Devtools（React、Vue）
 
 ###### Supported
 

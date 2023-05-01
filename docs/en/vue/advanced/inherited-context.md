@@ -1,4 +1,4 @@
-# 👆 Inherited context 
+# Inherited context 
 
 If you register overlays globally, it will automatically inherit your application context, and you can also pass in the context with finer control.
 

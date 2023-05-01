@@ -1,4 +1,4 @@
-# 🤏 Controlled Externally
+# Controlled Externally
 
 If you give all control to Component, you will be limited in some usage scenarios. The components converted by overlays allow users to control the flow of components externally.
 

@@ -1,6 +1,14 @@
 # Getting Started
 
-> overlays 仅支持 Vue3 | Vue2 Composition-api
+@overlays/vue 用于在 Vue3 中定义 Overlays 组件，并支持命令式与声明式的使用！
+
+## Installation
+
+通过 `vue-demi` 从而支持 Vue2 & 3 中 composition-api 用法！
+
+> 如果您使用 Vue2.7 版本以下，请安装 [@vue/composition-api](https://github.com/vuejs/composition-api#readme)
+> 
+> 如果您因为某些原因无法使用 composition-api，请使用 [@overlays/vue2](/zh/vue/vue2)
 
 ## Install
 

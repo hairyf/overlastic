@@ -1,6 +1,14 @@
 # Getting Started
 
-> overlays only supports Vue3 | Vue2 Composition-api
+@overlays/vue is used to define Overlay components in Vue3 and supports both imperative and declarative usage!
+
+## Installation
+
+Use [vue-demi](https://github.com/vueuse/vue-demi) to support the composition-api usage in Vue2 & 3!
+
+> If you are using Vue version 2.7 or below, please install [@vue/composition-api](https://github.com/vuejs/composition-api#readme).
+> 
+> If you cannot use composition-api for some reason, use [@overlays/vue2](/zh/vue/vue2).
 
 ## Install
 
