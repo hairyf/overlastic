@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as p}from"./app.2cfadc10.js";const A=JSON.parse('{"title":"Support Vue2","description":"","frontmatter":{},"headers":[],"relativePath":"en/guide/support-vue2.md","lastUpdated":null}'),l={name:"en/guide/support-vue2.md"},o=p("",3),e=[o];function t(c,r,D,y,i,F){return n(),a("div",null,e)}var u=s(l,[["render",t]]);export{A as __pageData,u as default};
