@@ -1,2 +1,2 @@
-export * from './render'
 export * from './internal'
+export * from './constructor'

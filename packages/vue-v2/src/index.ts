@@ -9,11 +9,9 @@ const install = (_ins: any, parent: any) => {
 
 const unoverlay: PluginObject<Vue> = { install }
 
-export type { ImperativeOverlay, RenderOptions } from './define'
-export { useOverlayMeta } from './hooks'
-export type { OverlayOptions } from './hooks'
+export { install }
+export { useOverlayMeta } from './composable'
+export type { OverlayOptions } from './composable'
 export { defineOverlay, renderOverlay } from './define'
 export { FieldRender } from './components'
-
 export default unoverlay
-export { install }
