@@ -1,4 +1,4 @@
-import { defineGlobalNode, varName } from '../src'
+import { defineGlobalNode, defineName } from '../src'
 
 describe('@overlays/core:define', () => {
   it('global', () => {
@@ -11,12 +11,12 @@ describe('@overlays/core:define', () => {
     expect(childElement.parentElement === globalElement).toBeTruthy()
     childElement.remove()
   })
-  it('varName', () => {
-    expect(varName('a-name')).toBe('a-name--1')
-    expect(varName('a-name')).toBe('a-name--2')
-    expect(varName('a-name')).toBe('a-name--3')
-    expect(varName('b-name')).toBe('b-name--1')
-    expect(varName('b-name')).toBe('b-name--2')
-    expect(varName('b-name')).toBe('b-name--3')
+  it('defineName', () => {
+    expect(defineName('a-name')).toBe('a-name--1')
+    expect(defineName('a-name')).toBe('a-name--2')
+    expect(defineName('a-name')).toBe('a-name--3')
+    expect(defineName('b-name')).toBe('b-name--1')
+    expect(defineName('b-name')).toBe('b-name--2')
+    expect(defineName('b-name')).toBe('b-name--3')
   })
 })

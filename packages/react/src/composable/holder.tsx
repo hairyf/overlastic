@@ -1,4 +1,4 @@
-import { createImperativePromiser, varName } from '@overlays/core'
+import { createImperativePromiser, defineName } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
 import type { FC } from 'react'
 import { useRef, useState } from 'react'
@@ -17,7 +17,7 @@ export function useInjectHolder<Props, Resolved = void>(
 ): InjectionHolder<Props, Resolved> {
   const { callback, scripts, props, refresh } = useRefreshMetadata()
 
-  const name = varName(options.id, options.autoIncrement)
+  const name = defineName(options.id, options.autoIncrement)
   const root = options.root || document.body
   const isTeleport = options.root !== false
 

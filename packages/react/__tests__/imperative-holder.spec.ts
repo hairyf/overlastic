@@ -6,7 +6,7 @@ import { act, mount } from './utils'
 describe('@overlays/react:imperative-holder', () => {
   it('mount', () => {
     const wrapper = mount(HolderContainer, {
-      props: { root: false },
+      props: { },
     })
 
     expect(wrapper.get('.base-modal__mask').exists()).toBeFalsy()
@@ -15,7 +15,7 @@ describe('@overlays/react:imperative-holder', () => {
 
   it('mount:open', async () => {
     const wrapper = mount(HolderContainer, {
-      props: { root: false },
+      props: { },
     })
 
     expect(wrapper.get('.base-modal__mask').exists()).toBeFalsy()
