@@ -38,7 +38,7 @@ Unoverlays is suitable for most components. Using useOverlayMeta can provide fin
 ```vue
 <!-- overlay.vue -->
 <script>
-import { useOverlayMeta } from '@overlays/vue-v2'
+import { useOverlayMeta } from '@overlays/vue2'
 export default {
   mixins: [useOverlayMeta({ animation: 1000 })],
   methods: {

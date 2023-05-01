@@ -1,7 +1,7 @@
 {
   "name": "@overlays/react",
   "type": "module",
-  "version": "0.7.4",
+  "version": "0.0.1",
   "license": "MIT",
   "homepage": "https://github.com/TuiMao233/overlays#readme",
   "repository": {

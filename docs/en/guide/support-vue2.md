@@ -3,7 +3,7 @@
 If you are using Vue2, you can install the "package" and use mixins to pass properties to components. Here's an example:
 
 ```ts
-import { useOverlayMeta } from '@overlays/vue-v2'
+import { useOverlayMeta } from '@overlays/vue2'
 export default {
   mixins: [useOverlayMeta({ animation: 1000 })],
   methods: {
