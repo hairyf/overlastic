@@ -1,8 +1,23 @@
 import type { Ref } from 'vue-demi'
 import { getCurrentInstance, inject, onMounted, provide, watch } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
-import { delay, noop } from '@unoverlays/utils'
+import { delay, noop } from '@unoverlays/core'
 import { OverlayMetaKey } from '../helper'
+
+export interface OverlayEvents {
+  /**
+   * reject event name used by the template
+   *
+   * @default 'reject'
+   */
+  reject?: string
+  /**
+   * resolve event name used by the template
+   *
+   * @default 'resolve'
+   */
+  resolve?: string
+}
 
 export interface OverlayOptions {
   /** animation duration to avoid premature destruction of components */
@@ -19,20 +34,7 @@ export interface OverlayOptions {
   /**
    * template use event name
    */
-  event?: {
-    /**
-   * reject event name used by the template
-   *
-   * @default 'reject'
-   */
-    reject?: string
-    /**
-   * resolve event name used by the template
-   *
-   * @default 'resolve'
-   */
-    resolve?: string
-  }
+  event?: OverlayEvents
   /**
    * whether to automatically handle components based on visible and animation
    *
@@ -51,7 +53,7 @@ export interface OverlayMeta {
   /** visible control popup display and hide */
   visible: Ref<boolean>
   /** use in template */
-  inTemplate?: boolean
+  inDec?: boolean
 }
 
 /**
@@ -64,11 +66,11 @@ export interface OverlayMeta {
  */
 export function useOverlayMeta(options: OverlayOptions = {}) {
   const { animation = 0, immediate = true, model = 'visible', automatic = true } = options
-  const meta = inject(OverlayMetaKey, useTemplateMeta(model, options))
+  const meta = inject(OverlayMetaKey, useDeclarativeMeta(model, options))
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
-  if (!meta.inTemplate && automatic) {
+  if (!meta.inDec && automatic) {
     watch(meta.visible, async () => {
       if (meta.visible.value)
         return
@@ -78,14 +80,14 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
     })
   }
 
-  if (!meta.inTemplate && immediate)
+  if (!meta.inDec && immediate)
     onMounted(() => meta.visible.value = true)
 
   provide(OverlayMetaKey, null)
   return meta
 }
 
-export function useTemplateMeta(model: string, options: OverlayOptions = {}) {
+export function useDeclarativeMeta(model: string, options: OverlayOptions = {}) {
   const instance = getCurrentInstance()
   const events = options.event || {}
 
@@ -107,6 +109,6 @@ export function useTemplateMeta(model: string, options: OverlayOptions = {}) {
     resolve,
     vanish: noop,
     visible,
-    inTemplate: true,
+    inDec: true,
   }
 }

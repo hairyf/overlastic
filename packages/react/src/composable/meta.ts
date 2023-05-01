@@ -1,4 +1,4 @@
-import { delay as _delay, noop } from '@unoverlays/utils'
+import { delay as _delay, noop } from '@unoverlays/core'
 import type { Dispatch, SetStateAction } from 'react'
 import { useContext, useEffect } from 'react'
 
@@ -29,13 +29,13 @@ export interface OverlayOptions {
     /**
      * reject event name used by the jsx
      *
-     * @default 'reject'
+     * @default 'onReject'
      */
     reject?: string
     /**
      * resolve event name used by the jsx
      *
-     * @default 'resolve'
+     * @default 'onResolve'
      */
     resolve?: string
   }
@@ -59,13 +59,13 @@ export interface OverlayMeta {
   /** visible dispatch change */
   setVisible: Dispatch<SetStateAction<boolean>>
   /** use in jsx */
-  inJsx?: boolean
+  inDec?: boolean
 }
 
 export function useOverlayMeta(options: OverlayOptions = {}) {
   const { immediate = true } = options
   const context = useContext(OverlayContext)
-  const meta = context.inJsx ? useJSXMeta(options) : context
+  const meta = context.inDec ? useDeclarativeMeta(options) : context
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
@@ -78,7 +78,7 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
   return meta
 }
 
-export function useJSXMeta(options: OverlayOptions = {}) {
+export function useDeclarativeMeta(options: OverlayOptions = {}) {
   const { props = {}, model = 'visible', event = {} } = options
   const { reject = 'onReject', resolve = 'onResolve' } = event
 

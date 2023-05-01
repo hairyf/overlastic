@@ -1,5 +1,5 @@
-import { useInjectHolder } from '@unoverlays/react'
 import { useState } from 'react'
+import { useInjectHolder } from '../../src'
 import Overlay from './overlay'
 function HolderContainer(props?: { animation?: number; root?: any }) {
   const [holder, callback] = useInjectHolder<{ title?: string; animation?: number }, string>(Overlay, { root: props?.root })

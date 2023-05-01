@@ -1,7 +1,7 @@
-import { defineOverlay, renderOverlay } from '@unoverlays/react'
-import { delay } from '@unoverlays/utils'
-import { clear, isModalExists, queryModalTitle, reject, resolve } from '@unoverlays/utils/__tests__'
+import { delay } from '@unoverlays/core'
 import { describe, expect, it } from 'vitest'
+import { defineOverlay, renderOverlay } from '../src'
+import { clear, isModalExists, queryModalTitle, reject, resolve } from '../../__tests__'
 import Overlay from './component/overlay'
 
 describe('@unoverlays/react:imperative', () => {

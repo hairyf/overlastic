@@ -1,6 +1,6 @@
-import type { PropsWidthOverlays } from '@unoverlays/react'
-import { useOverlayMeta } from '@unoverlays/react'
 import type { PropsWithChildren } from 'react'
+import type { PropsWidthOverlays } from '../../src'
+import { useOverlayMeta } from '../../src'
 
 export type OverlayProps = PropsWidthOverlays<PropsWithChildren<{ animation?: number; title?: string }>>
 

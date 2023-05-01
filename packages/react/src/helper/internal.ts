@@ -1,6 +1,6 @@
-import { noop } from '@unoverlays/utils'
+import { noop } from '@unoverlays/core'
 import { createContext } from 'react'
-import type { OverlayMeta } from '../hooks'
+import type { OverlayMeta } from '../composable'
 
 export const OverlayContext = createContext<OverlayMeta>({
   reject: noop,
@@ -8,8 +8,7 @@ export const OverlayContext = createContext<OverlayMeta>({
   setVisible: noop,
   vanish: noop,
   visible: false,
-  inJsx: true,
-  promise: undefined,
+  inDec: true,
 })
 
 OverlayContext.displayName = 'OverlayContext'

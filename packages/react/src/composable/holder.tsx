@@ -1,12 +1,11 @@
-import { createImperativePromiser, varName } from '@unoverlays/utils'
+import { createImperativePromiser, varName } from '@unoverlays/core'
 import { pascalCase } from 'pascal-case'
 import type { FC } from 'react'
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import type { ImperativeOverlay, MountOptions } from '@unoverlays/core'
 import { OverlayContext } from '../helper'
 
-import type { ImperativeOverlay } from '../define'
-import type { MountOptions } from '../types'
 import type { VisiblePromiseOptions } from './visible'
 import { useVisibleScripts } from './visible'
 

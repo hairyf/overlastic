@@ -1,4 +1,4 @@
-import type { ImperativePromiser } from '@unoverlays/utils'
+import type { ImperativePromiser } from '@unoverlays/core'
 import { useState } from 'react'
 
 export interface VisiblePromiseOptions {

@@ -26,7 +26,7 @@ export interface OverlaysConstructor<Instance, Opts> {
   render: <Props, Resolved = void>(instance: Instance, props?: Props, options?: MountOptions<Opts>) => Promise<Resolved>
 }
 
-export function createOverlaysConstructor<Inst, Opts>(mount: MountConstructor<Inst, Opts>): OverlaysConstructor<Inst, Opts> {
+export function createOverlaysConstructor<Inst, Opts = {}>(mount: MountConstructor<Inst, Opts>): OverlaysConstructor<Inst, Opts> {
   function define(instance: Inst, options?: any) {
     function executor(props: any, options?: any) {
       const promiser = createImperativePromiser()
