@@ -1,10 +1,24 @@
-# overlays
+<p align="center">
+<img src="docs/public/circle.svg" style="width:100px;" />
+</p>
+
+<h1 align="center">Unified Overlays</h1>
+
+<p align="center">
+A create model/dialog/popup library
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.org/package/@overlays/core">
+    <img src="https://img.shields.io/npm/v/@overlays/core.svg">
+  </a>
+</p>
 
 > [中文](./README_CN.md) | English or see [overlays-docs](https://overlays.vercel.app)
 
 overlays is a unified plugin for building overlays. It allows for the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
 
-it can achieve: 
+###### Features
 
 - Create Message or Dialog similar to `element-plus/antd...` Supports both callback (imperative) and Template/JSX (declarative) methods.
 - Integration and customization of existing component libraries, such as `element-plus` and `antd`.

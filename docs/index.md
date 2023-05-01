@@ -1,7 +1,7 @@
 ---
 layout: home
 
-title: overlays
+title: Unified Overlays
 titleTemplate: Unified Overlays
 
 hero:

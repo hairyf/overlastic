@@ -176,6 +176,7 @@ const nav: DefaultTheme.NavItem[] = [
 
 const config = defineConfig({
   lang: 'zh',
+  head: [['link', { rel: 'icon', href: '/circle.svg', type: 'image/svg+xml' }]],
   locales: {
     '/': {
       lang: 'en-US',
@@ -188,6 +189,7 @@ const config = defineConfig({
   },
   lastUpdated: true,
   themeConfig: {
+    logo: '/circle.svg',
     sidebar,
     nav,
     footer: {
