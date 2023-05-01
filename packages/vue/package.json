@@ -1,7 +1,7 @@
 {
   "name": "@overlays/vue",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "homepage": "https://github.com/TuiMao233/overlays#readme",
   "repository": {
