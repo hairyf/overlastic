@@ -1,8 +1,9 @@
-import { UnifiedOverlayProvider, install } from '@unoverlays/vue'
-import { context } from '@unoverlays/vue/src/helper'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
+import { UnifiedOverlayProvider, install } from '../src'
+import { context } from '../src/helper'
 import Basic from './components/basic.vue'
+
 describe('@unoverlays/vue:install', () => {
   it('install:provider', () => {
     const wrapper = mount(UnifiedOverlayProvider)

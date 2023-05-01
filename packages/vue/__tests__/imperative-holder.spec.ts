@@ -1,6 +1,6 @@
-import { delay } from '@unoverlays/utils'
+import { delay } from '@unoverlays/core'
 import { mount } from '@vue/test-utils'
-import { clear, isModalExists, openModal, queryModalTitle, queryModalWrapper, queryTransitionParent, reject, resolve } from '@unoverlays/utils/__tests__'
+import { clear, isModalExists, openModal, queryModalTitle, queryModalWrapper, queryTransitionParent, reject, resolve } from '../../__tests__'
 import HolderContainer from './components/holder-container.vue'
 
 describe('@unoverlays/vue:imperative-holder', () => {

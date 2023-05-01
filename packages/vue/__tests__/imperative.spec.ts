@@ -1,5 +1,5 @@
-import { defineOverlay, renderOverlay } from '@unoverlays/vue'
-import { clear, isModalExists, queryModalTitle, reject, resolve } from '@unoverlays/utils/__tests__'
+import { defineOverlay, renderOverlay } from '../src'
+import { clear, isModalExists, queryModalTitle, reject, resolve } from '../../__tests__'
 import Overlay from './components/overlay.vue'
 
 describe('@unoverlays/vue:imperative', () => {

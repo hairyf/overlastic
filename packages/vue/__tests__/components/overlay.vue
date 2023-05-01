@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <script lang="ts">
 import { defineComponent } from 'vue-demi'
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from '../../src'
 export default defineComponent({
   props: {
     visible: {

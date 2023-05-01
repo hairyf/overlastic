@@ -6,10 +6,8 @@ const install = (app: App) => {
 }
 const unoverlay = { install }
 
-export type { ImperativeOverlay, RenderOptions } from './define'
-export type { OverlayOptions, OverlayMeta, InjectionHolder } from './hooks'
-export type { MountOptions } from './types'
-export { useOverlayMeta, useInjectHolder } from './hooks'
+export type { OverlayOptions, OverlayMeta, InjectionHolder } from './composable'
+export { useOverlayMeta, useInjectHolder } from './composable'
 export { defineOverlay, renderOverlay } from './define'
 export { UnifiedOverlayProvider, FieldRender } from './components'
 export { install }

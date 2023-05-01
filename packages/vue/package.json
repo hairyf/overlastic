@@ -47,6 +47,7 @@
     }
   },
   "dependencies": {
+    "@unoverlays/core": "workspace:^",
     "@unoverlays/utils": "workspace:*",
     "@vueuse/core": "^9.13.0",
     "pascal-case": "latest"

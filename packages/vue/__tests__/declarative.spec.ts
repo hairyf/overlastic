@@ -1,4 +1,4 @@
-import { createPromiser } from '@unoverlays/utils'
+import { createPromiser } from '@unoverlays/core'
 import { mount } from '@vue/test-utils'
 import Overlay from './components/overlay.vue'
 

@@ -1,7 +1,7 @@
 /* eslint-disable vue/one-component-per-file */
-import { FieldRender } from '@unoverlays/vue/src/components'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
+import { FieldRender } from '../src/components'
 describe('@unoverlays/vue:component', () => {
   it('component:FieldRender:text', () => {
     const Text = defineComponent({

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useInjectHolder } from '@unoverlays/vue'
 import { ref } from 'vue'
+import { useInjectHolder } from '../../src'
 import Overlay from './overlay.vue'
 
 const props = withDefaults(defineProps<{
