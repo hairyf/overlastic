@@ -14,11 +14,11 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Core Functions',
       items: [
-        { text: 'Globals', link: '/' },
-        { text: 'Constructor', link: '/' },
-        { text: 'Promiser', link: '/' },
-        { text: 'Utils', link: '/' },
-        { text: 'Examples', link: '/' },
+        { text: 'Globals', link: '/en/core/functions/globals' },
+        { text: 'Constructor', link: '/en/core/functions/constructor' },
+        { text: 'Promiser', link: '/en/core/functions/promiser' },
+        { text: 'Utils', link: '/en/core/functions/utils' },
+        { text: 'Examples', link: '/en/core/functions/examples' },
       ],
     },
     {
@@ -28,30 +28,6 @@ const sidebar: DefaultTheme.Sidebar = {
         { text: '@overlays/react', link: '/en/react/' },
       ],
     },
-    // {
-    //   text: 'Vue.js',
-    //   items: [
-    //     { text: 'Basic Usage', link: '/en/vue/' },
-    //     { text: 'Template Support', link: '/en/vue/in-template' },
-    //     { text: 'Component Devtools', link: '/en/vue/devtools' },
-    //     { text: 'Context Inherited', link: '/en/vue/context-inherited' },
-    //     { text: 'Custom Components', link: '/en/vue/customized' },
-    //     { text: 'Holder', link: '/en/vue/holder' },
-    //     { text: 'Slot | VNode', link: '/en/vue/slots-vnode' },
-    //     { text: 'Typescript', link: '/en/vue/typescript' },
-    //   ],
-    // },
-    // {
-    //   text: 'React.js',
-    //   items: [
-    //     { text: 'Basic Usage', link: '/en/react/' },
-    //     { text: 'JSX Support', link: '/en/react/in-jsx' },
-    //     { text: 'Context Inherited', link: '/en/react/context-inherited' },
-    //     { text: 'Custom Components', link: '/en/react/customized' },
-    //     { text: 'Holder', link: '/en/react/holder' },
-    //     { text: 'Typescript', link: '/en/react/typescript' },
-    //   ],
-    // },
   ],
   '/en/vue/': [
     {
@@ -114,11 +90,11 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Core Functions',
       items: [
-        { text: 'Globals', link: '/' },
-        { text: 'Constructor', link: '/' },
-        { text: 'Promiser', link: '/' },
-        { text: 'Utils', link: '/' },
-        { text: 'Examples', link: '/' },
+        { text: 'Globals', link: '/zh/core/functions/globals' },
+        { text: 'Constructor', link: '/zh/core/functions/constructor' },
+        { text: 'Promiser', link: '/zh/core/functions/promiser' },
+        { text: 'Utils', link: '/zh/core/functions/utils' },
+        { text: 'Examples', link: '/zh/core/functions/examples' },
       ],
     },
     {
@@ -128,30 +104,6 @@ const sidebar: DefaultTheme.Sidebar = {
         { text: '@overlays/react', link: '/zh/react/' },
       ],
     },
-    // {
-    //   text: 'Vue.js',
-    //   items: [
-    //     { text: '基础使用', link: '/zh/vue/' },
-    //     { text: '模板支持', link: '/zh/vue/in-template' },
-    //     { text: '组件调试', link: '/zh/vue/devtools' },
-    //     { text: '上下文继承', link: '/zh/vue/context-inherited' },
-    //     { text: '定制化', link: '/zh/vue/customized' },
-    //     { text: '持有者', link: '/zh/vue/holder' },
-    //     { text: '插槽 | VNode', link: '/zh/vue/slots-vnode' },
-    //     { text: 'Typescript', link: '/zh/vue/typescript' },
-    //   ],
-    // },
-    // {
-    //   text: 'React.js',
-    //   items: [
-    //     { text: '基础使用', link: '/zh/react/' },
-    //     { text: 'JSX 支持', link: '/zh/react/in-jsx' },
-    //     { text: '上下文继承', link: '/zh/react/context-inherited' },
-    //     { text: '定制化', link: '/zh/react/customized' },
-    //     { text: '持有者', link: '/zh/react/holder' },
-    //     { text: 'Typescript', link: '/zh/react/typescript' },
-    //   ],
-    // },
   ],
   '/zh/vue/': [
     {
