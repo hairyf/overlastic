@@ -1,7 +1,5 @@
 # Getting Started
 
-> Unoverlays 支持 Vue3 | Vue2 | React 应用
-
 你可以通过命令行工具进行安装 overlays
 
 ## Install

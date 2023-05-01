@@ -1,11 +1,11 @@
 ---
 layout: home
 
-title: Unoverlays
+title: overlays
 titleTemplate: Unified Overlays
 
 hero:
-  name: Unoverlays
+  name: overlays
   text: Unified Overlays
   tagline: Simple, lightweight tool library for any scene you have in overlay.
   actions:
@@ -17,7 +17,7 @@ hero:
       link: https://github.com/TuiMao233/overlays
   # image:
   #   src: /logo.png
-  #   alt: Unoverlays
+  #   alt: overlays
 features:
   - title: Based on Hooks
     details: It has good expansibility, allowing you to use it without any constraints.

@@ -16,7 +16,7 @@ yarn add @overlays/react
 
 ### Step 1: Define Component
 
-Unoverlays is suitable for most components, and using useOverlayMeta allows for finer control over the component process.
+overlays is suitable for most components, and using useOverlayMeta allows for finer control over the component process.
 
 ```tsx
 // overlay.tsx

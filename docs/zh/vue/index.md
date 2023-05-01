@@ -1,6 +1,6 @@
 # Getting Started
 
-> Unoverlays 仅支持 Vue3 | Vue2 Composition-api
+> overlays 仅支持 Vue3 | Vue2 Composition-api
 
 ## Install
 
@@ -16,7 +16,7 @@ yarn add @overlays/vue
 
 ## Global
 
-您可以全局注册 Unoverlays, 这将为所有的弹出层继承应用上下文。
+您可以全局注册 overlays, 这将为所有的弹出层继承应用上下文。
 
 ```ts
 // main.js
@@ -33,7 +33,7 @@ app.use(unoverlay)
 
 ### 步骤.1: Define Component
 
-Unoverlays 适用于绝大多数组件，使用 `useOverlayMeta` 能对组件流程有更细致的控制。
+overlays 适用于绝大多数组件，使用 `useOverlayMeta` 能对组件流程有更细致的控制。
 
 ```vue
 <!-- overlay.vue -->

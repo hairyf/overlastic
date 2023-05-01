@@ -2,7 +2,7 @@
 
 > [English](./README.md) | 中文 or see [overlays-docs](https://overlays.vercel.app/zh/)
 
-Unoverlays 是构建弹出层的统一插件，创建回调（命令式）方法、以及在 Vue Template 或 React Jsx 中（声明式）使用。
+overlays 用于创建回调弹出层（命令式）方法、并支持在 Vue 或 React 中（声明式）使用。
 
 - 制作类似于 `element-plus/antd`... 的 Message 或 Dialog
 - 同时支持回调（命令式）与Template/JSX（声明式）

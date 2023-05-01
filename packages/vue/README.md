@@ -1,6 +1,6 @@
 # Getting Started
 
-> Unoverlays only supports Vue3 | Vue2 Composition-api
+> overlays only supports Vue3 | Vue2 Composition-api
 
 ## Install
 
@@ -16,7 +16,7 @@ yarn add @overlays/vue
 
 ## Global
 
-You can register Unoverlays globally, which will inherit the application context for all popups.
+You can register overlays globally, which will inherit the application context for all popups.
 
 ```ts
 // main.js
@@ -33,7 +33,7 @@ app.use(unoverlay)
 
 ### Step 1: Define Component
 
-Unoverlays is suitable for most components. Using useOverlayMeta can provide finer control over the component process.
+overlays is suitable for most components. Using useOverlayMeta can provide finer control over the component process.
 
 ```vue
 <!-- overlay.vue -->

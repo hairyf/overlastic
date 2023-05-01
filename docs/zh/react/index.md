@@ -1,6 +1,6 @@
 # Getting Started
 
-> Unoverlays 仅支持 Vue3 | Vue2 Composition-api
+> overlays 仅支持 Vue3 | Vue2 Composition-api
 
 ## Install
 
@@ -18,7 +18,7 @@ yarn add @overlays/react
 
 ### 步骤.1: Define Component
 
-Unoverlays 适用于绝大多数组件，使用 `useOverlayMeta` 能对组件流程有更细致的控制。
+overlays 适用于绝大多数组件，使用 `useOverlayMeta` 能对组件流程有更细致的控制。
 
 ```tsx
 // overlay.tsx

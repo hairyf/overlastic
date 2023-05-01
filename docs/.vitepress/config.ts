@@ -6,7 +6,7 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Introduction',
       items: [
-        { text: 'What is Unoverlays?', link: '/en/guide/what-is-overlays' },
+        { text: 'What is overlays?', link: '/en/guide/what-is-overlays' },
         { text: 'Getting Started', link: '/en/guide/getting-started' },
         { text: 'External Control', link: '/en/guide/external-control' },
         { text: 'Only Render', link: '/en/guide/support-only' },
@@ -42,7 +42,7 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: '介绍',
       items: [
-        { text: '什么是 Unoverlays?', link: '/zh/guide/what-is-overlays' },
+        { text: '什么是 overlays?', link: '/zh/guide/what-is-overlays' },
         { text: '开始使用', link: '/zh/guide/getting-started' },
         { text: '外部控制', link: '/zh/guide/external-control' },
         { text: 'Only 渲染', link: '/zh/guide/support-only' },

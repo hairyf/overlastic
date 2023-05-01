@@ -2,7 +2,7 @@
 
 > [中文](./README_CN.md) | English or see [overlays-docs](https://overlays.vercel.app)
 
-Unoverlays is a unified plugin for building overlayss. It allows for the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
+overlays is a unified plugin for building overlays. It allows for the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
 
 it can achieve: 
 

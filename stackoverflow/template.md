@@ -38,7 +38,7 @@ const value = await callback({ content: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
 
-You can register Unoverlays globally, which will inherit the application context for all popups.
+You can register overlays globally, which will inherit the application context for all popups.
 
 ```ts
 // main.js
