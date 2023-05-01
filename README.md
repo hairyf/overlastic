@@ -14,8 +14,8 @@ it can achieve:
 
 ## Packages
 
-- [@overlays/vue](https://overlays.vercel.app/en/vue/) - Use Unified Overlays to create overlays in Vue app.
-- [@overlays/react](https://overlays.vercel.app/en/react/) - Use Unified Overlays to create overlays in React app.
+- [@overlays/vue](https://unoverlays.vercel.app/en/vue/) - Use Unified Overlays to create overlays in Vue app.
+- [@overlays/react](https://unoverlays.vercel.app/en/react/) - Use Unified Overlays to create overlays in React app.
 
 ## Devtools
 
