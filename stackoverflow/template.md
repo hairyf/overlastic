@@ -1,10 +1,10 @@
-You can use [@unoverlays/vue](https://unoverlays.vercel.app/en/vue/) to create components, reduce component DTL syntax through customization, and use function calls.
+You can use [@overlays/vue](https://overlays.vercel.app/en/vue/) to create components, reduce component DTL syntax through customization, and use function calls.
 
 ```html
 <!-- overlay.vue -->
 <script setup>
 import { defineProps } from 'vue'
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from '@overlays/vue'
 const props = defineProps({
   content: String,
 })
@@ -28,7 +28,7 @@ const { visible, resolve, reject } = useOverlayMeta({
 You can use the `defineOverlay` method to convert the component into a modal dialog in Javascript / Typescript, which allows you to call it.
 
 ```ts
-import { defineOverlay } from '@unoverlays/vue'
+import { defineOverlay } from '@overlays/vue'
 import OverlayComponent from './overlay.vue'
 
 // Convert to imperative callback
@@ -43,7 +43,7 @@ You can register Unoverlays globally, which will inherit the application context
 ```ts
 // main.js
 import { createApp } from 'vue'
-import unoverlay from '@unoverlays/vue'
+import unoverlay from '@overlays/vue'
 
 const app = createApp({})
 app.use(unoverlay)
@@ -52,7 +52,7 @@ app.use(unoverlay)
 or you can also pass in the context with finer control.
 
 ```ts
-import { renderOverlay } from '@unoverlays/vue'
+import { renderOverlay } from '@overlays/vue'
 import { getCurrentInstance } from 'vue-demi'
 import Component from './overlay.vue'
 

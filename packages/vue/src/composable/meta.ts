@@ -1,7 +1,7 @@
 import type { Ref } from 'vue-demi'
 import { getCurrentInstance, inject, onMounted, provide, watch } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
-import { delay, noop } from '@unoverlays/core'
+import { delay, noop } from '@overlays/core'
 import { OverlayMetaKey } from '../helper'
 
 export interface OverlayEvents {

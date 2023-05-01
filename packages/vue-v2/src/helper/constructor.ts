@@ -1,4 +1,4 @@
-import { createOverlaysConstructor } from '@unoverlays/core'
+import { createOverlaysConstructor } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
 
 import type { Component } from 'vue'

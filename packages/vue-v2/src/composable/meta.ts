@@ -1,4 +1,4 @@
-import { delay } from '@unoverlays/core'
+import { delay } from '@overlays/core'
 import Vue from 'vue'
 import { OverlayMetaKey } from '../helper'
 

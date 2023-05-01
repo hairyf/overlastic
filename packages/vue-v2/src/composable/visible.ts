@@ -1,4 +1,4 @@
-import type { ImperativePromiser } from '@unoverlays/core'
+import type { ImperativePromiser } from '@overlays/core'
 import mitt from 'mitt'
 export interface VisiblePromiseOptions {
   promiser?: ImperativePromiser

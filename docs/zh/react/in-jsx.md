@@ -1,6 +1,6 @@
 # Template Support
 
-使用 `@unoverlays/react` 创建的组件，除了支持使用命令式（Imperative）方法调用外，还支持在 JSX 中使用。
+使用 `@overlays/react` 创建的组件，除了支持使用命令式（Imperative）方法调用外，还支持在 JSX 中使用。
 
 > 支持了 JSX 中使用的组件，同样也支持使用 callback 调用，并不会影响彼此功能，这是一项可选项。
 
@@ -10,8 +10,8 @@
 
 ```tsx
 // 如果使用 Typescript 需要使用 PropsWithOverlays 定义 props 类型
-import type { PropsWithOverlays } from '@unoverlays/react'
-import { useOverlayMeta } from '@unoverlays/react'
+import type { PropsWithOverlays } from '@overlays/react'
+import { useOverlayMeta } from '@overlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
   const { visible, resolve, reject } = useOverlayMeta({
@@ -28,8 +28,8 @@ export function OverlayComponent(props: PropsWithOverlays) {
 
 ```tsx
 // 如果使用 Typescript 需要使用 PropsWithOverlays 定义 props 类型
-import type { PropsWithOverlays } from '@unoverlays/react'
-import { useOverlayMeta } from '@unoverlays/react'
+import type { PropsWithOverlays } from '@overlays/react'
+import { useOverlayMeta } from '@overlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
   const { visible, resolve, reject } = useOverlayMeta({

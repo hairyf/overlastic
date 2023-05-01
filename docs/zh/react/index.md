@@ -6,12 +6,12 @@
 
 With pnpm: 
 ```sh
-pnpm add @unoverlays/react
+pnpm add @overlays/react
 ```
 
 With yarn:
 ```sh
-yarn add @unoverlays/react
+yarn add @overlays/react
 ```
 
 ## Usage
@@ -39,7 +39,7 @@ export function OverlayComponent(props) {
 你可以通过 `defineOverlay` 的方法将组件转换成模态框的方法，它允许你在 `Javascript` / `Typescript` 中调用。
 
 ```ts
-import { defineOverlay } from '@unoverlays/react'
+import { defineOverlay } from '@overlays/react'
 import { OverlayComponent } from './overlay'
 
 // 转换为命令式回调
@@ -52,7 +52,7 @@ const value = await callback({ title: 'callbackOverlay' })
 你也可以通过 `renderOverlay` 直接调起组件，跳过 `defineOverlay` 方法。
 
 ```ts
-import { renderOverlay } from '@unoverlays/react'
+import { renderOverlay } from '@overlays/react'
 import { OverlayComponent } from './overlay'
 
 const value = await renderOverlay(OverlayComponent, {

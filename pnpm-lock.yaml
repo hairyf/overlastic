@@ -85,7 +85,7 @@ importers:
 
   packages/react:
     dependencies:
-      '@unoverlays/core':
+      '@overlays/core':
         specifier: workspace:^
         version: link:../core
       pascal-case:
@@ -107,7 +107,7 @@ importers:
 
   packages/vue:
     dependencies:
-      '@unoverlays/core':
+      '@overlays/core':
         specifier: workspace:^
         version: link:../core
       '@vue/composition-api':
@@ -129,7 +129,7 @@ importers:
 
   packages/vue-v2:
     dependencies:
-      '@unoverlays/core':
+      '@overlays/core':
         specifier: workspace:^
         version: link:../core
       '@vue/composition-api':

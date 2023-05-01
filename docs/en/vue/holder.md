@@ -5,7 +5,7 @@ In addition to using defineOverlay and renderOverlay to create pop-up components
 ```vue
 <!-- App.vue -->
 <script setup>
-import { useInjectHolder } from '@unoverlays/vue'
+import { useInjectHolder } from '@overlays/vue'
 import OverlayComponent from './overlay.vue'
 // Use useInjectHolder(Component) to create a component holder that supports the current context.
 const [holder, overlayApi] = useInjectHolder(OverlayComponent)

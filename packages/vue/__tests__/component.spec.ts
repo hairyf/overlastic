@@ -2,7 +2,7 @@
 import { mount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
 import { FieldRender } from '../src/components'
-describe('@unoverlays/vue:component', () => {
+describe('@overlays/vue:component', () => {
   it('component:FieldRender:text', () => {
     const Text = defineComponent({
       render() {

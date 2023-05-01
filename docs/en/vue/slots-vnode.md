@@ -4,7 +4,7 @@ If you want to support rendering slots and a certain field passed in props in te
 
 ```vue
 <script setup>
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from '@overlays/vue'
 defineProps({ title: String })
 
 const { visible, /* ... */ } = useOverlayMeta()
@@ -29,7 +29,7 @@ Here is a complete example that supports rendering Slots, String, VNode, and Com
 ```vue
 <script lang="ts" setup>
 import { Component, VNode } from 'vue'
-import { FieldRender, useOverlayMeta } from '@unoverlays/vue'
+import { FieldRender, useOverlayMeta } from '@overlays/vue'
 defineProps<{
   title?: String | VNode | Component
 }>()

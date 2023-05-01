@@ -3,7 +3,7 @@
 除了使用 `defineOverlay` 与 `renderOverlay` 创建使用弹出层组件外，还支持使用 `useInjectHolder` 创建在组件内部的弹出层组件，并继承应用的当前上下文。
 
 ```tsx
-import { useInjectHolder } from '@unoverlays/react'
+import { useInjectHolder } from '@overlays/react'
 import { OverlayComponent } from './overlay'
 
 export function Main() {

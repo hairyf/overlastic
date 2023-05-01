@@ -1,10 +1,10 @@
-import { delay } from '@unoverlays/core'
+import { delay } from '@overlays/core'
 import { describe, expect, it } from 'vitest'
 import { defineOverlay, renderOverlay } from '../src'
 import { clear, isModalExists, queryModalTitle, reject, resolve } from '../../__tests__'
 import Overlay from './component/overlay'
 
-describe('@unoverlays/react:imperative', () => {
+describe('@overlays/react:imperative', () => {
   async function toModalExists(bool: boolean) {
     await delay(20)
     const ex = expect(isModalExists())

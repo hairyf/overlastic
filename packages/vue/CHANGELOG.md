@@ -1,4 +1,4 @@
-# @unoverlays/vue
+# @overlays/vue
 
 ## 0.7.5
 
@@ -6,7 +6,7 @@
 
 - fix: types error
 - Updated dependencies
-  - @unoverlays/utils@0.4.3
+  - @overlays/utils@0.4.3
 
 ## 0.7.3
 
@@ -14,7 +14,7 @@
 
 - feat: vue/react holder field change
 - Updated dependencies
-  - @unoverlays/utils@0.4.1
+  - @overlays/utils@0.4.1
 
 ## 0.7.2
 
@@ -37,4 +37,4 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @unoverlays/utils@0.4.0
+  - @overlays/utils@0.4.0

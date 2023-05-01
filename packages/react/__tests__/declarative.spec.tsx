@@ -1,9 +1,9 @@
-import { createPromiser } from '@unoverlays/core'
+import { createPromiser } from '@overlays/core'
 import { describe, expect, it } from 'vitest'
 import Overlay from './component/overlay'
 import { mount } from './utils'
 
-describe('@unoverlays/react:declarative', () => {
+describe('@overlays/react:declarative', () => {
   it('mount', async () => {
     const wrapper = mount(Overlay, {
       props: { visible: false },

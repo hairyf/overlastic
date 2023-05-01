@@ -7,8 +7,8 @@
 - 步骤.1: 组件使用参数类型
 
 ```tsx
-import type { PropsWithOverlays } from '@unoverlays/react'
-import { useOverlayMeta } from '@unoverlays/react'
+import type { PropsWithOverlays } from '@overlays/react'
+import { useOverlayMeta } from '@overlays/react'
 
 export interface Params {
   title?: string
@@ -27,7 +27,7 @@ export function OverlayComponent(props: PropsWithOverlays<Params>) {
 - 步骤.2: 在使用 `defineOverlay` 或 `renderOverlay` 时传入类型
 
 ```ts
-import { defineOverlay } from '@unoverlays/vue'
+import { defineOverlay } from '@overlays/vue'
 import { OverlayComponent, Params, Resolved } from './overlay'
 import type { Params, Resolved } from './define'
 

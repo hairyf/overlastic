@@ -4,12 +4,12 @@
 
 With pnpm: 
 ```sh
-pnpm add @unoverlays/react
+pnpm add @overlays/react
 ```
 
 With yarn:
 ```sh
-yarn add @unoverlays/react
+yarn add @overlays/react
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ export function OverlayComponent(props) {
 
 You can convert the component into a modal dialog box by using the `defineOverlay` method, which allows you to call it in Javascript / Typescript.
 ```ts
-import { defineOverlay } from '@unoverlays/react'
+import { defineOverlay } from '@overlays/react'
 import { OverlayComponent } from './overlay'
 
 // Convert to imperative callback
@@ -49,7 +49,7 @@ const value = await callback({ title: 'callbackOverlay' })
 You can also directly call the component through `renderOverlay`, bypassing the `defineOverlay` method.
 
 ```ts
-import { renderOverlay } from '@unoverlays/react'
+import { renderOverlay } from '@overlays/react'
 import { OverlayComponent } from './overlay'
 
 const value = await renderOverlay(OverlayComponent, {

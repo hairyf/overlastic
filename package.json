@@ -1,5 +1,5 @@
 {
-  "name": "unoverlays",
+  "name": "@overlays/monorepo",
   "version": "0.3.0",
   "private": true,
   "keywords": [

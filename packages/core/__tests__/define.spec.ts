@@ -1,6 +1,6 @@
 import { defineGlobalNode, varName } from '../src'
 
-describe('@unoverlays/utils:define', () => {
+describe('@overlays/utils:define', () => {
   it('global', () => {
     const globalElement = defineGlobalNode('global-element')
 

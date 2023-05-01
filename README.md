@@ -1,6 +1,6 @@
-# unoverlays
+# overlays
 
-> [中文](./README_CN.md) | English or see [unoverlays-docs](https://unoverlays.vercel.app)
+> [中文](./README_CN.md) | English or see [overlays-docs](https://overlays.vercel.app)
 
 Unoverlays is a unified plugin for building overlayss. It allows for the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
 
@@ -14,8 +14,8 @@ it can achieve:
 
 ## Packages
 
-- [@unoverlays/vue](https://unoverlays.vercel.app/en/vue/) - Use Unified Overlays to create overlays in Vue app.
-- [@unoverlays/react](https://unoverlays.vercel.app/en/react/) - Use Unified Overlays to create overlays in React app.
+- [@overlays/vue](https://overlays.vercel.app/en/vue/) - Use Unified Overlays to create overlays in Vue app.
+- [@overlays/react](https://overlays.vercel.app/en/react/) - Use Unified Overlays to create overlays in React app.
 
 ## Devtools
 
@@ -39,14 +39,14 @@ Therefore, it is necessary to commandize Modal (using a callback approach). Unif
 ## Install
 
 ```
-pnpm add @unoverlays/vue
+pnpm add @overlays/vue
 # Or React
-pnpm add @unoverlays/react
+pnpm add @overlays/react
 ```
 
 ## Usage
 
-Use the `useOverlayMeta` Hook provided by unoverlays to create overlays components (Vue, React).
+Use the `useOverlayMeta` Hook provided by overlays to create overlays components (Vue, React).
 
 ```ts
 // In your Vue, React overlays component,

@@ -1,8 +1,8 @@
 # Template Support
 
-Components created with `@unoverlays/vue` can be used not only with imperative methods, but also in `<template>`.
+Components created with `@overlays/vue` can be used not only with imperative methods, but also in `<template>`.
 
-To use a component created with `@unoverlays/vue`, it can be used not only with imperative methods, but also in `<template>`.
+To use a component created with `@overlays/vue`, it can be used not only with imperative methods, but also in `<template>`.
 
 > Components that support `<template>` usage also support callback invocation without affecting each other's functionality. This is an optional feature.
 
@@ -14,7 +14,7 @@ To use it in `<template>`, `modal` and `event` must be explicitly defined.
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from '@overlays/vue'
 const props = defineProps({
   title: String,
   // To use in Template, you need to define the field used by v-model (default corresponds to visible)
@@ -37,7 +37,7 @@ If you want to replace them with other fields and event names, you can pass in t
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from '@overlays/vue'
 const props = defineProps({
   title: String,
   modalValue: Boolean

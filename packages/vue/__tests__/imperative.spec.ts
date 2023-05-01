@@ -2,7 +2,7 @@ import { defineOverlay, renderOverlay } from '../src'
 import { clear, isModalExists, queryModalTitle, reject, resolve } from '../../__tests__'
 import Overlay from './components/overlay.vue'
 
-describe('@unoverlays/vue:imperative', () => {
+describe('@overlays/vue:imperative', () => {
   it('mount', () => {
     const callback = defineOverlay<unknown, string>(Overlay)
 

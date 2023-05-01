@@ -1,6 +1,6 @@
 # Template Support
 
-Components created using `@unoverlays/react` support both imperative and declarative methods of calling. In addition to imperative methods, these components can also be used in JSX.
+Components created using `@overlays/react` support both imperative and declarative methods of calling. In addition to imperative methods, these components can also be used in JSX.
 
 > Components that support use in JSX also support callback invocation without affecting each other's functionality. This is an optional feature.
 
@@ -10,8 +10,8 @@ To support use in JSX, props need to be passed into the configuration, and visib
 
 ```tsx
 // If using Typescript, use PropsWithOverlays to define props type
-import type { PropsWithOverlays } from '@unoverlays/react'
-import { useOverlayMeta } from '@unoverlays/react'
+import type { PropsWithOverlays } from '@overlays/react'
+import { useOverlayMeta } from '@overlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
   const { visible, resolve, reject } = useOverlayMeta({
@@ -28,8 +28,8 @@ If you want to replace other `fields` and event names, you can do so using the f
 
 ```tsx
 // If using Typescript, use PropsWithOverlays to define props type
-import type { PropsWithOverlays } from '@unoverlays/react'
-import { useOverlayMeta } from '@unoverlays/react'
+import type { PropsWithOverlays } from '@overlays/react'
+import { useOverlayMeta } from '@overlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
   const { visible, resolve, reject } = useOverlayMeta({

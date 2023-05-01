@@ -5,7 +5,7 @@
 ```vue
 <!-- App.vue -->
 <script setup>
-import { useInjectHolder } from '@unoverlays/vue'
+import { useInjectHolder } from '@overlays/vue'
 import OverlayComponent from './overlay.vue'
 // 通过 useInjectHolder(Component) 创建支持当前 context 的组件持有者
 const [holder, overlayApi] = useInjectHolder(OverlayComponent)

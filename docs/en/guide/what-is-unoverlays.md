@@ -11,8 +11,8 @@ it can achieve:
 
 ## Packages
 
-- @unoverlays/vue - Use Unified Overlays to create overlays in Vue app.
-- @unoverlays/react - Use Unified Overlays to create overlays in React app.
+- @overlays/vue - Use Unified Overlays to create overlays in Vue app.
+- @overlays/react - Use Unified Overlays to create overlays in React app.
 
 ## Devtools
 

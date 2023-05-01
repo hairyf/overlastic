@@ -4,13 +4,13 @@ import fs from 'fs-extra'
 
 const defaultGlobalPackage = {
   license: 'MIT',
-  homepage: 'https://github.com/TuiMao233/unoverlays#readme',
+  homepage: 'https://github.com/TuiMao233/overlays#readme',
   repository: {
     type: 'git',
-    url: 'git+https://github.com/TuiMao233/unoverlays.git',
+    url: 'git+https://github.com/TuiMao233/overlays.git',
   },
   bugs: {
-    url: 'https://github.com/TuiMao233/unoverlays/issues',
+    url: 'https://github.com/TuiMao233/overlays/issues',
   },
   keywords: [
     'unified',

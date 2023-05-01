@@ -6,7 +6,7 @@
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from '@overlays/vue'
 const props = defineProps({
   title: String,
 })
@@ -25,7 +25,7 @@ const { visible, resolve, reject } = useOverlayMeta({
 ```
 
 ```ts
-import { defineOverlay } from '@unoverlays/vue'
+import { defineOverlay } from '@overlays/vue'
 import OverlayComponent from './overlay.vue'
 
 const callback = defineOverlay(OverlayComponent)

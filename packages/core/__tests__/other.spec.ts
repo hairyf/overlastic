@@ -1,6 +1,6 @@
 import { allowed, createPromiser, defineGlobalNode, varName } from '../src'
 
-describe('@unoverlays/utils:define', () => {
+describe('@overlays/utils:define', () => {
   it('global', () => {
     const globalElement = defineGlobalNode('global-element')
     expect(globalElement.id).toBe('global-element')

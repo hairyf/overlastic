@@ -3,7 +3,7 @@
 In addition to using defineOverlay and renderOverlay to create popup components, you can also use useInjectHolder to create popup components within a component and inherit the current context of the application.
 
 ```tsx
-import { useInjectHolder } from '@unoverlays/react'
+import { useInjectHolder } from '@overlays/react'
 import { OverlayComponent } from './overlay'
 
 export function Main() {

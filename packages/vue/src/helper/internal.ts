@@ -1,5 +1,5 @@
 import type { AppContext, InjectionKey } from 'vue-demi'
-import { createContext } from '@unoverlays/core'
+import { createContext } from '@overlays/core'
 import type { OverlayMeta } from '../composable'
 
 export const context = createContext({

@@ -1,4 +1,4 @@
-import { noop } from '@unoverlays/core'
+import { noop } from '@overlays/core'
 import { createContext } from 'react'
 import type { OverlayMeta } from '../composable'
 

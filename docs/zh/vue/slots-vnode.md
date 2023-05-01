@@ -4,7 +4,7 @@
 
 ```vue
 <script setup>
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from '@overlays/vue'
 defineProps({ title: String })
 
 const { visible, /* ... */ } = useOverlayMeta()
@@ -29,7 +29,7 @@ const { visible, /* ... */ } = useOverlayMeta()
 ```vue
 <script lang="ts" setup>
 import { Component, VNode } from 'vue'
-import { FieldRender, useOverlayMeta } from '@unoverlays/vue'
+import { FieldRender, useOverlayMeta } from '@overlays/vue'
 defineProps<{
   title?: String | VNode | Component
 }>()

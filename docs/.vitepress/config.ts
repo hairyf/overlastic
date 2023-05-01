@@ -6,7 +6,7 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Introduction',
       items: [
-        { text: 'What is Unoverlays?', link: '/en/guide/what-is-unoverlays' },
+        { text: 'What is Unoverlays?', link: '/en/guide/what-is-overlays' },
         { text: 'Getting Started', link: '/en/guide/getting-started' },
         { text: 'External Control', link: '/en/guide/external-control' },
         { text: 'Only Render', link: '/en/guide/support-only' },
@@ -42,7 +42,7 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: '介绍',
       items: [
-        { text: '什么是 Unoverlays?', link: '/zh/guide/what-is-unoverlays' },
+        { text: '什么是 Unoverlays?', link: '/zh/guide/what-is-overlays' },
         { text: '开始使用', link: '/zh/guide/getting-started' },
         { text: '外部控制', link: '/zh/guide/external-control' },
         { text: 'Only 渲染', link: '/zh/guide/support-only' },
@@ -79,11 +79,11 @@ const sidebar: DefaultTheme.Sidebar = {
 const nav: DefaultTheme.NavItem[] = [
   {
     text: 'Guide',
-    link: '/en/guide/what-is-unoverlays',
+    link: '/en/guide/what-is-overlays',
   },
   {
     text: 'Github',
-    link: 'https://github.com/TuiMao233/unoverlays',
+    link: 'https://github.com/TuiMao233/overlays',
   },
 ]
 

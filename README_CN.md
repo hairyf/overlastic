@@ -1,6 +1,6 @@
-# unoverlays
+# overlays
 
-> [English](./README.md) | 中文 or see [unoverlays-docs](https://unoverlays.vercel.app/zh/)
+> [English](./README.md) | 中文 or see [overlays-docs](https://overlays.vercel.app/zh/)
 
 Unoverlays 是构建弹出层的统一插件，创建回调（命令式）方法、以及在 Vue Template 或 React Jsx 中（声明式）使用。
 
@@ -13,8 +13,8 @@ Unoverlays 是构建弹出层的统一插件，创建回调（命令式）方法
 
 ## packages
 
-- @unoverlays/vue - 在 Vue 应用中使用 Unified Overlays 创建弹出层
-- @unoverlays/react - 在 React 应用中使用 Unified Overlays 创建弹出层
+- @overlays/vue - 在 Vue 应用中使用 Unified Overlays 创建弹出层
+- @overlays/react - 在 React 应用中使用 Unified Overlays 创建弹出层
 
 ## Devtools
 
@@ -40,14 +40,14 @@ Unoverlays 是构建弹出层的统一插件，创建回调（命令式）方法
 ## Install
 
 ```
-pnpm add @unoverlays/vue
+pnpm add @overlays/vue
 # Or React
-pnpm add @unoverlays/react
+pnpm add @overlays/react
 ```
 
 ## Usage
 
-使用 `unoverlays` 提供的 `useOverlayMeta` Hook 创建弹出层组件（Vue、React）
+使用 `overlays` 提供的 `useOverlayMeta` Hook 创建弹出层组件（Vue、React）
 
 ```ts
 // 在你的 Vue、React 弹出层组件中，使用 useOverlayMeta 获取弹出层元信息
@@ -72,7 +72,7 @@ const result = renderOverlay(OverlayComponent, {
 })
 ```
 
-更多功能的使用，请查看 unoverlays 的[详细文档](https://unoverlays.vercel.app/zh/)。
+更多功能的使用，请查看 overlays 的[详细文档](https://overlays.vercel.app/zh/)。
 
 # License
 

@@ -1,5 +1,5 @@
 import { ref } from 'vue-demi'
-import type { ImperativePromiser } from '@unoverlays/core'
+import type { ImperativePromiser } from '@overlays/core'
 
 export interface VisiblePromiseOptions {
   promiser?: ImperativePromiser

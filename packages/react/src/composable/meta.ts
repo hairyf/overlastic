@@ -1,4 +1,4 @@
-import { delay as _delay, noop } from '@unoverlays/core'
+import { delay as _delay, noop } from '@overlays/core'
 import type { Dispatch, SetStateAction } from 'react'
 import { useContext, useEffect } from 'react'
 

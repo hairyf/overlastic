@@ -11,8 +11,8 @@ Unoverlays 是构建弹出层的统一插件，创建回调（命令式）方法
 
 ## packages
 
-- [@unoverlays/vue](/zh/vue/) - 在 Vue 应用中使用 Unified Overlays 创建弹出层
-- [@unoverlays/react](/zh/react/) - 在 React 应用中使用 Unified Overlays 创建弹出层
+- [@overlays/vue](/zh/vue/) - 在 Vue 应用中使用 Unified Overlays 创建弹出层
+- [@overlays/react](/zh/react/) - 在 React 应用中使用 Unified Overlays 创建弹出层
 
 ## Devtools
 

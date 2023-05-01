@@ -1,4 +1,4 @@
-import { createOverlaysConstructor } from '@unoverlays/core'
+import { createOverlaysConstructor } from '@overlays/core'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { pascalCase } from 'pascal-case'

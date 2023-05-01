@@ -2,19 +2,19 @@
 
 > Unoverlays 支持 Vue3 | Vue2 | React 应用
 
-你可以通过命令行工具进行安装 unoverlays
+你可以通过命令行工具进行安装 overlays
 
 ## Install
 
 ```sh
-pnpm add @unoverlays/vue
+pnpm add @overlays/vue
 # or react
-pnpm add @unoverlays/react
+pnpm add @overlays/react
 ```
 
 ## Usage
 
-使用 `unoverlays` 提供的 `useOverlayMeta` Hook 创建弹出层组件（Vue、React）
+使用 `overlays` 提供的 `useOverlayMeta` Hook 创建弹出层组件（Vue、React）
 
 ```ts
 // 在你的 Vue、React 弹出层组件中，使用 useOverlayMeta 获取弹出层元信息
@@ -48,5 +48,5 @@ const result = renderOverlay(OverlayComponent, {
 
 如果你想看更详细的使用，浏览所使用框架的对应文档：
 
-- [@unoverlays/vue](/)
-- [@unoverlays/react](/)
+- [@overlays/vue](/)
+- [@overlays/react](/)

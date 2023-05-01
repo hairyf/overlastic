@@ -3,7 +3,7 @@ import { isModalExists, openModal, queryModalTitle, reject, resolve } from '../.
 import HolderContainer from './component/holder-container'
 import { act, mount } from './utils'
 
-describe('@unoverlays/react:imperative-holder', () => {
+describe('@overlays/react:imperative-holder', () => {
   it('mount', () => {
     const wrapper = mount(HolderContainer, {
       props: { root: false },

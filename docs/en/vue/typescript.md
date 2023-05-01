@@ -17,7 +17,7 @@ export type Resolved = string
 <!-- index.vue -->
 <script setup lang="ts">
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from '@overlays/vue'
 import type { Params, Resolved } from './props'
 const props = defineProps<Params>()
 const { visible, resolve, reject } = useOverlayMeta<Resolved>({
@@ -29,7 +29,7 @@ const { visible, resolve, reject } = useOverlayMeta<Resolved>({
 - Step 3: Pass in the types when using `defineOverlay` or `renderOverlay`.
 
 ```ts
-import { defineOverlay } from '@unoverlays/vue'
+import { defineOverlay } from '@overlays/vue'
 import OverlayComponent from './overlay.vue'
 import type { Params, Resolved } from './define.ts'
 
@@ -55,7 +55,7 @@ export type Resolved = string
 ```vue
 <script setup lang="ts">
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from '@overlays/vue'
 import type { Resolved } from './props'
 import { overlayProps } from './props'
 const props = defineProps(overlayProps)

@@ -14,7 +14,7 @@ hero:
       link: /en/guide/getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/TuiMao233/unoverlays
+      link: https://github.com/TuiMao233/overlays
   # image:
   #   src: /logo.png
   #   alt: Unoverlays

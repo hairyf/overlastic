@@ -6,12 +6,12 @@
 
 With pnpm: 
 ```sh
-pnpm add @unoverlays/vue
+pnpm add @overlays/vue
 ```
 
 With yarn:
 ```sh
-yarn add @unoverlays/vue
+yarn add @overlays/vue
 ```
 
 ## Global
@@ -21,7 +21,7 @@ yarn add @unoverlays/vue
 ```ts
 // main.js
 import { createApp } from 'vue'
-import unoverlay from '@unoverlays/vue'
+import unoverlay from '@overlays/vue'
 
 const app = createApp({})
 app.use(unoverlay)
@@ -39,7 +39,7 @@ Unoverlays 适用于绝大多数组件，使用 `useOverlayMeta` 能对组件流
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue'
-import { useOverlayMeta } from '@unoverlays/vue'
+import { useOverlayMeta } from '@overlays/vue'
 const props = defineProps({
   title: String,
 })
@@ -67,7 +67,7 @@ const { visible, resolve, reject } = useOverlayMeta({
 你可以通过 `defineOverlay` 的方法将组件转换成模态框的方法，它允许你在 `Javascript` / `Typescript` 中调用。
 
 ```ts
-import { defineOverlay } from '@unoverlays/vue'
+import { defineOverlay } from '@overlays/vue'
 import OverlayComponent from './overlay.vue'
 
 // 转换为命令式回调
@@ -80,7 +80,7 @@ const value = await callback({ title: 'callbackOverlay' })
 你也可以通过 `renderOverlay` 直接调起组件，跳过 `defineOverlay` 方法。
 
 ```ts
-import { renderOverlay } from '@unoverlays/vue'
+import { renderOverlay } from '@overlays/vue'
 import OverlayComponent from './overlay.vue'
 
 const value = await renderOverlay(OverlayComponent, {

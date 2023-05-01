@@ -1,8 +1,8 @@
-import { createPromiser } from '@unoverlays/core'
+import { createPromiser } from '@overlays/core'
 import { mount } from '@vue/test-utils'
 import Overlay from './components/overlay.vue'
 
-describe('@unoverlays/vue:declarative', () => {
+describe('@overlays/vue:declarative', () => {
   it('mount', () => {
     const wrapper = mount(Overlay, {
       props: { visible: false },

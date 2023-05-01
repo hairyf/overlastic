@@ -1,15 +1,15 @@
 {
-  "name": "@unoverlays/vue-v2",
+  "name": "@overlays/vue-v2",
   "type": "module",
   "version": "0.7.4",
   "license": "MIT",
-  "homepage": "https://github.com/TuiMao233/unoverlays#readme",
+  "homepage": "https://github.com/TuiMao233/overlays#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TuiMao233/unoverlays.git"
+    "url": "git+https://github.com/TuiMao233/overlays.git"
   },
   "bugs": {
-    "url": "https://github.com/TuiMao233/unoverlays/issues"
+    "url": "https://github.com/TuiMao233/overlays/issues"
   },
   "keywords": [
     "unified",
@@ -47,7 +47,7 @@
     }
   },
   "dependencies": {
-    "@unoverlays/core": "workspace:^",
+    "@overlays/core": "workspace:^",
     "mitt": "^3.0.0",
     "pascal-case": "latest"
   },
