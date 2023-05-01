@@ -5,8 +5,8 @@ title: overlays
 titleTemplate: 通用弹出层
 
 hero:
-  name: overlays
-  text: 通用弹出层
+  name: Unified
+  text: Overlays
   tagline: 简单、轻量级的工具库，适用于弹出层中任何场景。
   actions:
     - theme: brand
@@ -14,7 +14,7 @@ hero:
       link: /zh/core/guide/getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/TuiMao233/@overlays/vue
+      link: https://github.com/hairyf/unoverlays
   # image:
   #   src: /logo.png
   #   alt: overlays

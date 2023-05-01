@@ -192,7 +192,7 @@ const config = defineConfig({
     nav,
     footer: {
       message: 'MIT Licensed',
-      copyright: 'Copyright © 2019-present TuiMao233',
+      copyright: 'Copyright © 2019-present hairyf',
     },
     localeLinks: {
       text: '',

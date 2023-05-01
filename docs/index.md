@@ -5,8 +5,8 @@ title: overlays
 titleTemplate: Unified Overlays
 
 hero:
-  name: overlays
-  text: Unified Overlays
+  name: Unified
+  text: Overlays
   tagline: Simple, lightweight tool library for any scene you have in overlay.
   actions:
     - theme: brand
@@ -14,7 +14,7 @@ hero:
       link: /en/core/guide/getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/TuiMao233/overlays
+      link: https://github.com/hairyf/overlays
   # image:
   #   src: /logo.png
   #   alt: overlays

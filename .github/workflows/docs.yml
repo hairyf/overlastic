@@ -18,7 +18,7 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           # 你要操作的目标仓库
-          TARGET_REPO: TuiMao233/overlays
+          TARGET_REPO: hairyf/overlays
           # 构建结果存储的分支
           TARGET_BRANCH: gh_pages
           # 要使用的构建命令
