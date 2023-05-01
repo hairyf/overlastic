@@ -1,6 +1,6 @@
-# 🏔️ 定制化弹出层
+#  Custom Components
 
-以 [antd(drawer)](https://ant.design/components/drawer-cn) 为例（其他组件库同理）
+Take [antd(drawer)](https://ant.design/components/drawer-cn) as an example (of course, you can use other component libraries)
 
 ```tsx
 import type { PropsWithOverlays } from '@overlays/react'
@@ -19,7 +19,7 @@ const MyDrawer = (props: PropsWithOverlays<{ title: string }>) => {
 
   return (
     <Drawer title={props.title} onClose={reject} open={visible}>
-      {/* 定制化内容.... */}
+      {/* Custom contents.... */}
       <Button type="primary" onClick={onResolve}> Confirm </Button>
     </Drawer>
   )

@@ -1,6 +1,6 @@
 # Getting Started
 
-> overlays 仅支持 Vue3 | Vue2 Composition-api
+@overlays/react 用于在 React 中定义 Overlays 组件，并支持命令式与声明式的使用！
 
 ## Install
 

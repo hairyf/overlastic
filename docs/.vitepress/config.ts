@@ -25,7 +25,7 @@ const sidebar: DefaultTheme.Sidebar = {
       text: 'Packages',
       items: [
         { text: '@overlays/vue', link: '/en/vue/' },
-        { text: '@overlays/react', link: '/' },
+        { text: '@overlays/react', link: '/en/react/' },
       ],
     },
     // {
@@ -74,8 +74,31 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Other',
       items: [
-        { text: 'Template', link: '/en/vue/other/template' },
         { text: 'Typescript', link: '/en/vue/other/typescript' },
+        { text: 'Template', link: '/en/vue/other/template' },
+      ],
+    },
+  ],
+  '/en/react/': [
+    {
+      text: 'Guide',
+      items: [
+        { text: 'Get Started', link: '/en/react/' },
+      ],
+    },
+    {
+      text: 'Advanced',
+      items: [
+        { text: 'Inherited Context', link: '/en/react/advanced/inherited-context' },
+        { text: 'Holder', link: '/en/react/advanced/holder' },
+        { text: 'Customized', link: '/en/react/advanced/customized' },
+      ],
+    },
+    {
+      text: 'Other',
+      items: [
+        { text: 'Typescript', link: '/en/react/other/typescript' },
+        { text: 'JSX', link: '/en/react/other/jsx' },
       ],
     },
   ],
@@ -102,7 +125,7 @@ const sidebar: DefaultTheme.Sidebar = {
       text: 'Packages',
       items: [
         { text: '@overlays/vue', link: '/zh/vue/' },
-        { text: '@overlays/react', link: '/' },
+        { text: '@overlays/react', link: '/zh/react/' },
       ],
     },
     // {
@@ -151,8 +174,31 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Other',
       items: [
-        { text: 'Template', link: '/zh/vue/other/template' },
         { text: 'Typescript', link: '/zh/vue/other/typescript' },
+        { text: 'Template', link: '/zh/vue/other/template' },
+      ],
+    },
+  ],
+  '/zh/react/': [
+    {
+      text: 'Guide',
+      items: [
+        { text: 'Get Started', link: '/zh/react/' },
+      ],
+    },
+    {
+      text: 'Advanced',
+      items: [
+        { text: 'Inherited Context', link: '/zh/react/advanced/inherited-context' },
+        { text: 'Holder', link: '/zh/react/advanced/holder' },
+        { text: 'Customized', link: '/zh/react/advanced/customized' },
+      ],
+    },
+    {
+      text: 'Other',
+      items: [
+        { text: 'Typescript', link: '/zh/react/other/typescript' },
+        { text: 'JSX', link: '/zh/react/other/jsx' },
       ],
     },
   ],
@@ -161,18 +207,18 @@ const sidebar: DefaultTheme.Sidebar = {
 const nav: DefaultTheme.NavItem[] = [
   {
     text: 'Guide',
-    link: '/en/guide/what-is-overlays',
+    link: '/en/core/guide/getting-started',
   },
   {
     text: 'Packages',
     items: [
-      { text: '@overlays/vue', link: '/' },
-      { text: '@overlays/react', link: '/' },
+      { text: '@overlays/vue', link: '/en/vue/' },
+      { text: '@overlays/react', link: '/en/react/' },
     ],
   },
   {
     text: 'Github',
-    link: 'https://github.com/TuiMao233/overlays',
+    link: 'https://github.com/hairyf/unoverlays',
   },
 ]
 

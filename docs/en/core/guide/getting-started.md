@@ -2,7 +2,7 @@
 
 overlays is a unified plugin for building overlays. It allows for the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
 
-it can achieve: 
+###### Features
 
 - Create Message or Dialog similar to `element-plus/antd...` Supports both callback (imperative) and Template/JSX (declarative) methods.
 - Integration and customization of existing component libraries, such as `element-plus` and `antd`.
@@ -11,8 +11,8 @@ it can achieve:
 
 ## Packages
 
-- @overlays/vue - Use Unified Overlays to create overlays in Vue app.
-- @overlays/react - Use Unified Overlays to create overlays in React app.
+- [@overlays/vue](/en/vue/) - Use Unified Overlays to create overlays in Vue app.
+- [@overlays/react](/en/react/) - Use Unified Overlays to create overlays in React app.
 
 ## Devtools
 

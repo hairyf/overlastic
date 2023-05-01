@@ -1,4 +1,4 @@
-# 🏔️ Custom Components
+#  Custom Components
 
 Take [element-plus(dialog)](https://element.eleme.cn/#/en-US/component/dialog) as an example (of course, you can use other component libraries)
 
