@@ -1,5 +1,6 @@
 {
   "name": "@unoverlays/core",
+  "type": "module",
   "version": "0.0.1",
   "license": "MIT",
   "homepage": "https://github.com/TuiMao233/unoverlays#readme",
@@ -15,7 +16,6 @@
     "overlay",
     "component"
   ],
-  "type": "module",
   "main": "./src/index.ts",
   "publishConfig": {
     "exports": {
@@ -29,15 +29,13 @@
     "jsdelivr": "./dist/index.global.js",
     "linkDirectory": false
   },
-  "scripts": {
-    "build": "unbuild --dts",
-    "lint": "eslint .",
-    "prepublishOnly": "npm run build"
-  },
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@unoverlays/utils": "workspace:*"
-  }
+  "scripts": {
+    "build": "tsup src/index.ts",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {}
 }
