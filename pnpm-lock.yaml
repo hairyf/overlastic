@@ -137,8 +137,8 @@ importers:
         version: 3.1.2
     devDependencies:
       vue:
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.6
+        version: 2.6.0
 
   playgrounds/vue:
     dependencies:
@@ -6286,8 +6286,8 @@ packages:
       typescript: 5.0.2
     dev: true
 
-  /vue@2.0.0:
-    resolution: {integrity: sha512-R3ofC6v51hVoSJ7t/lVg6RURSLZAcrf8pabotpFZVqaVEB6s7D+GFFobm/6HXQJU9P7/pNq43ZVFEQdt7PK6YQ==}
+  /vue@2.6.0:
+    resolution: {integrity: sha512-QSKHpmV17wqDmS5jVCc8X9LyTcCCQP4M1RTRpLBO+hRveePduJaGz1FGjVpRVcE6cKYbhsooz6RW7GWLGNjKGg==}
     dev: true
 
   /vue@3.2.47:

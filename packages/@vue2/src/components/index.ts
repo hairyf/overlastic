@@ -6,7 +6,7 @@ export const FieldRender: Component = {
     value: [String, Object] as PropType<string | VNode | Component>,
   },
   render(this: any, h: Function) {
-    h(this.value)
+    return h(this.value)
   },
 }
 
