@@ -45,7 +45,7 @@ overlays is suitable for most components. Using useOverlay can provide finer con
 </script>
 
 {#if visible}
-  <div transition:fly={{ opacity: 0, duration: 200 }} on:click={resolve(`${title}:confirmed`)}>
+  <div transition:fly={{ opacity: 0, duration: 200 }} on:click={() => resolve(`${title}:confirmed`)}>
     { title }
   </div>
 {/if}
