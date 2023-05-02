@@ -1,4 +1,4 @@
-You can use [@overlays/vue](https://overlays.vercel.app/en/vue/) to create components, reduce component DTL syntax through customization, and use function calls.
+You can use [@overlays/vue](https://unoverlays.vercel.app/en/vue/) to create components, reduce component DTL syntax through customization, and use function calls.
 
 ```html
 <!-- overlay.vue -->

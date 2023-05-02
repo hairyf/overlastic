@@ -15,7 +15,7 @@ A create model/dialog/popup library
 </p>
 
 <p align="center">
-  <a href="https://github.com/hairyf/unoverlays">English</a> | Chinese | <a href="https://overlays.vercel.app/zh/">docs</a>
+  <a href="https://github.com/hairyf/unoverlays">English</a> | Chinese | <a href="https://unoverlays.vercel.app/zh/">docs</a>
 </p>
 
     Unified Overlays 用于创建组件的回调（命令式）方法、并同时支持 Vue、React 等组件的声明式使用。
