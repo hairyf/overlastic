@@ -8,8 +8,7 @@ import Component from './overlay.vue'
 
 // 在你的 setup 中
 const { appContext } = getCurrentInstance()!
-renderOverlay(Component, {
-  props: {},
+renderOverlay(Component, props, {
   appContext
 })
 ```

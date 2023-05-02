@@ -12,18 +12,19 @@ const sidebar: DefaultTheme.Sidebar = {
       ],
     },
     {
+      text: 'Packages',
+      items: [
+        { text: '@overlays/svelte', link: '/en/core/svelte/' },
+        { text: '@overlays/vue', link: '/en/vue/' },
+        { text: '@overlays/react', link: '/en/react/' },
+      ],
+    },
+    {
       text: 'Core Functions',
       items: [
         { text: 'Constructor', link: '/en/core/functions/constructor' },
         { text: 'Promiser', link: '/en/core/functions/promiser' },
         { text: 'Globals', link: '/en/core/functions/defines' },
-      ],
-    },
-    {
-      text: 'Packages',
-      items: [
-        { text: '@overlays/vue', link: '/en/vue/' },
-        { text: '@overlays/react', link: '/en/react/' },
       ],
     },
   ],
@@ -86,18 +87,19 @@ const sidebar: DefaultTheme.Sidebar = {
       ],
     },
     {
+      text: 'Packages',
+      items: [
+        { text: '@overlays/svelte', link: '/en/core/svelte/' },
+        { text: '@overlays/vue', link: '/zh/vue/' },
+        { text: '@overlays/react', link: '/zh/react/' },
+      ],
+    },
+    {
       text: 'Core Functions',
       items: [
         { text: 'Constructor', link: '/zh/core/functions/constructor' },
         { text: 'Promiser', link: '/zh/core/functions/promiser' },
         { text: 'Defines', link: '/zh/core/functions/defines' },
-      ],
-    },
-    {
-      text: 'Packages',
-      items: [
-        { text: '@overlays/vue', link: '/zh/vue/' },
-        { text: '@overlays/react', link: '/zh/react/' },
       ],
     },
   ],

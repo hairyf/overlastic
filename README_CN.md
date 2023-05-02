@@ -81,9 +81,7 @@ const result = await callback(props)
 ---
 
 ```ts
-const result = renderOverlay(OverlayComponent, {
-  props
-})
+const result = renderOverlay(OverlayComponent, props)
 ```
 
 # License

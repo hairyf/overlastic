@@ -4,13 +4,13 @@ import fs from 'fs-extra'
 
 const defaultGlobalPackage = {
   license: 'MIT',
-  homepage: 'https://github.com/hairyf/overlays#readme',
+  homepage: 'https://github.com/hairyf/unoverlays#readme',
   repository: {
     type: 'git',
     url: 'git+https://github.com/hairyf/unoverlays.git',
   },
   bugs: {
-    url: 'https://github.com/hairyf/overlays/issues',
+    url: 'https://github.com/hairyf/unoverlays/issues',
   },
   keywords: [
     'unified',
