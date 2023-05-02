@@ -38,13 +38,7 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.1",
-    "vue": "^0.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
-    }
+    "vue": "^2.0.0 || >=^3"
   },
   "dependencies": {
     "@overlays/core": "workspace:^",
@@ -52,7 +46,7 @@
     "pascal-case": "latest"
   },
   "devDependencies": {
-    "vue": "^0.0.0",
+    "vue": "^3",
     "vue-demi": "^0.13.11"
   }
 }
