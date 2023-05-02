@@ -14,27 +14,28 @@ A create model/dialog/popup library
   </a>
 </p>
 
-> [English](./README.md) | 中文 or see [overlays-docs](https://overlays.vercel.app/zh/)
+> [English](./README.md) | 中文 or see [docs](https://overlays.vercel.app/zh/)
 
 Unified Overlays 是构建弹出层的插件，创建回调（命令式）方法、以及在 Vue Template 或 React Jsx 中（声明式）使用。
 
 ###### Features
 
-- 简化创建消息或对话框，并支持回调（命令式）和 Template/JSX（声明式）方法。
-- 同时支持回调（命令式）与Template/JSX（声明式）
-- 集成和自定义现有组件库，例如 `element-plus` 和 `antd`。
-- 支持全局应用程序上下文的组件继承。
-- 支持流行前端渐进式框架（Vue2 & 3，React）。
+- 💫 简化创建消息或对话框，并将你的 UI 定义为 promise
+- 🧩 集成定制与自定义现有组件库
+- 🦾 为每个 constructor 提供安全的类型提示
+- 🌟 稳定！ **99.54%** 单元测试覆盖率
+- ➿ 支持全局应用程序上下文的组件继承
 
 ## packages
 
-- [@overlays/vue](/zh/vue/) - 在 Vue 应用中使用 Unified Overlays 创建弹出层
-- [@overlays/react](/zh/react/) - 在 React 应用中使用 Unified Overlays 创建弹出层
-- [@overlays/core](https://unoverlays.vercel.app/zh/core/functions/constructor.html) - 快速适应与创建应用程序
+- [@overlays/svelte](https://unoverlays.vercel.app/zh/core/svelte/)
+- [@overlays/vue](https://unoverlays.vercel.app/zh/vue/)
+- [@overlays/react](https://unoverlays.vercel.app/zh/react/)
+- [@overlays/core](https://unoverlays.vercel.app/zh/core/functions/constructor.html)
 
 ## Devtools
 
-由 Unified Overlays 创建的组件，均支持对应框架的 Devtools（React、Vue）
+由 Unified overlays 创建的组件，支持对应框架的 Devtools（React、Vue）
 
 ###### Supported
 

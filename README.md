@@ -14,24 +14,26 @@ A create model/dialog/popup library
   </a>
 </p>
 
-> [中文](./README_CN.md) | English or see [overlays-docs](https://overlays.vercel.app)
+> [中文](./README_CN.md) | English or see [docs](https://overlays.vercel.app)
 
 Unified Overlays is a unified plugin for building overlays that allows the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
 
+functionality Simplify the create message or dialog andcall your UI as a promise
+
 ###### Features
 
-- Simplify the Create Message or Dialog and Supports both callback (imperative) and Template/JSX (declarative) methods.
-- Integration and customization of existing component libraries, such as `element-plus` and `antd`.
-- Supports component inheritance of global application context.
-- Supports frontend progressive frameworks such as `vue2|3` and `react`.
-- Highly stable with **99.54%** unit test coverage(vue/react/core).
+- 💫 Simplify the create message or dialog and call your UI as a promise
+- 🧩 Integration and customization of existing component libraries
+- 🦾 provide secure type prompts for each constructor
+- 🌟 Highly stable with **99.54%** unit test coverage
+- ➿ Supports component inheritance of global application context
 
 ## Packages
 
-- [@overlays/vue](https://unoverlays.vercel.app/en/vue/) - Use @overlays to create overlays in Vue app.
-- [@overlays/react](https://unoverlays.vercel.app/en/react/) - Use @overlays to create overlays in React app.
-- [@overlays/svelte](https://unoverlays.vercel.app/en/svelte/) - Use @overlays to create overlays in Svelte app.
-- [@overlays/core](https://unoverlays.vercel.app/en/core/functions/constructor.html) - Quick adaptation and creation of applications
+- [@overlays/svelte](https://unoverlays.vercel.app/en/core/svelte/)
+- [@overlays/vue](https://unoverlays.vercel.app/en/vue/)
+- [@overlays/react](https://unoverlays.vercel.app/en/react/)
+- [@overlays/core](https://unoverlays.vercel.app/en/core/functions/constructor.html)
 
 ## Devtools
 

@@ -4,18 +4,18 @@ overlays is a unified plugin for building overlays that allows the creation of c
 
 ###### Features
 
-- Simplify the Create Message or Dialog and Supports both callback (imperative) and Template/JSX (declarative) methods.
-- Integration and customization of existing component libraries, such as `element-plus` and `antd`.
-- Supports component inheritance of global application context.
-- Supports frontend progressive frameworks such as `vue2|3` and `react`.
-- Highly stable with **99.54%** unit test coverage(vue/react/core).
+- 💫 Simplify the create message or dialog and call your UI as a promise
+- 🧩 Integration and customization of existing component libraries
+- 🦾 provide secure type prompts for each constructor
+- 🌟 Highly stable with **99.54%** unit test coverage
+- ➿ Supports component inheritance of global application context
 
 ## Packages
 
-- [@overlays/vue](/en/vue/) - Use @overlays to create overlays in Vue app.
-- [@overlays/react](/en/react/) - Use @overlays to create overlays in React app.
-- [@overlays/svelte](/en/core/svelte/) - Use @overlays to create overlays in Svelte app.
-- [@overlays/core](/en/core/functions/constructor.html) - Quick adaptation and creation of applications
+- [@overlays/svelte](/en/core/svelte/)
+- [@overlays/vue](/en/vue/)
+- [@overlays/react](/en/react/)
+- [@overlays/core](/en/core/functions/constructor.html)
 
 ## Devtools
 

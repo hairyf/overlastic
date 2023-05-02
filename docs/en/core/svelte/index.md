@@ -1,4 +1,4 @@
-# Getting Started
+# @overlays/svelte
 
 create imperative overlays in the svelte application, supporting context inheritance!
 
