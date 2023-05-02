@@ -16,7 +16,7 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "bump": "changeset && changeset version",
-    "publish:ci": "pnpm -r publish --no-git-checks",
+    "publish:ci": "pnpm -r publish --no-git-checks --access public",
     "test": "vitest",
     "test:coverage": "vitest run --coverage"
   },
