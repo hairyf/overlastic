@@ -44,10 +44,6 @@ const props = defineProps({
   title: String,
 })
 
-// Define the events used in the component (optional)
-// There will be event prompts when used in the component
-defineEmits(['reject', 'resolve'])
-
 // Get Overlay information from useOverlay
 const { visible, resolve, reject } = useOverlay({
   // Duration of popup layer duration to avoid premature destruction of the component
