@@ -1,4 +1,4 @@
-import { defineGlobalNode, defineIndex, defineName } from './define'
+import { defineGlobalElement, defineName, getIndex } from './define'
 import type { Promiser } from './promiser'
 import { createPromiser } from './promiser'
 
@@ -62,8 +62,8 @@ export function createConstructor<Inst, Opts = {}>(mount: MountConstructor<Inst,
     function executor(props: any, options?: any) {
       const promiser = createPromiser()
       const name = defineName(options.id, options.autoIncrement)
-      const index = defineIndex(options.id)
-      const container = defineGlobalNode(name, options.root)
+      const index = getIndex(options.id)
+      const container = defineGlobalElement(name, options.root)
       mount(instance, props, Object.assign(options, {
         position: context.position,
         id: name,

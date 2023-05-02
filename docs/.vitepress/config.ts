@@ -14,11 +14,9 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Core Functions',
       items: [
-        { text: 'Globals', link: '/en/core/functions/globals' },
         { text: 'Constructor', link: '/en/core/functions/constructor' },
         { text: 'Promiser', link: '/en/core/functions/promiser' },
-        { text: 'Utils', link: '/en/core/functions/utils' },
-        { text: 'Examples', link: '/en/core/functions/examples' },
+        { text: 'Globals', link: '/en/core/functions/globals' },
       ],
     },
     {
@@ -90,11 +88,9 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Core Functions',
       items: [
-        { text: 'Globals', link: '/zh/core/functions/globals' },
         { text: 'Constructor', link: '/zh/core/functions/constructor' },
         { text: 'Promiser', link: '/zh/core/functions/promiser' },
-        { text: 'Utils', link: '/zh/core/functions/utils' },
-        { text: 'Examples', link: '/zh/core/functions/examples' },
+        { text: 'Defines', link: '/zh/core/functions/defines' },
       ],
     },
     {
@@ -189,7 +185,6 @@ const config = defineConfig({
   },
   lastUpdated: true,
   themeConfig: {
-    logo: '/circle.svg',
     sidebar,
     nav,
     footer: {

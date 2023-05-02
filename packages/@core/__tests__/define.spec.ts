@@ -1,13 +1,13 @@
-import { defineGlobalNode, defineName } from '../src'
+import { defineGlobalElement, defineName } from '../src'
 
 describe('@overlays/core:define', () => {
   it('global', () => {
-    const globalElement = defineGlobalNode('global-element')
+    const globalElement = defineGlobalElement('global-element')
 
     expect(globalElement.id).toBe('global-element')
     expect(globalElement.parentElement === document.body).toBeTruthy()
     globalElement.remove()
-    const childElement = defineGlobalNode('child-element', globalElement)
+    const childElement = defineGlobalElement('child-element', globalElement)
     expect(childElement.parentElement === globalElement).toBeTruthy()
     childElement.remove()
   })
