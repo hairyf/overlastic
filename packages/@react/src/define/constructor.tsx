@@ -8,13 +8,7 @@ import { Context, defineProviderComponent } from '../internal'
 export const constructor = createConstructor<React.FC<any>>((Inst, props, options) => {
   const { container, id, promiser } = options
 
-  function vanish() {
-    const handle = requestAnimationFrame(() => {
-      root.unmount()
-      container.remove()
-      cancelAnimationFrame(handle)
-    })
-  }
+  const root = createRoot(container)
 
   const UnifiedOverlayProvider = defineProviderComponent(() => {
     const scripts = useVisibleScripts({ promiser, vanish })
@@ -27,7 +21,13 @@ export const constructor = createConstructor<React.FC<any>>((Inst, props, option
     )
   })
 
-  const root = createRoot(container)
+  function vanish() {
+    const handle = requestAnimationFrame(() => {
+      root.unmount()
+      container.remove()
+      cancelAnimationFrame(handle)
+    })
+  }
 
   root.render(<UnifiedOverlayProvider />)
 })

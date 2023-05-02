@@ -32,6 +32,4 @@ export const constructor = createConstructor<Component, VMountOptions>((Inst, pr
   const child = document.createElement('div')
   container.appendChild(child)
   childApp.$mount(child)
-
-  return vanish
 })
