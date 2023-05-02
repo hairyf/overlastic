@@ -6,7 +6,7 @@ If you want your component to have correct type declarations when called in a ca
 
 ```tsx
 import type { PropsWithOverlays } from '@overlays/react'
-import { useOverlayMeta } from '@overlays/react'
+import { useOverlay } from '@overlays/react'
 
 export interface Params {
   title?: string
@@ -15,7 +15,7 @@ export type Resolved = string
 
 export function OverlayComponent(props: PropsWithOverlays<Params>) {
   // props.title // ?string
-  const { visible, resolve, reject } = useOverlayMeta<Resolved>({
+  const { visible, resolve, reject } = useOverlay<Resolved>({
     props,
     duration: 1000
   })

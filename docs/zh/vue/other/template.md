@@ -12,7 +12,7 @@
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@overlays/vue'
+import { useOverlay } from '@overlays/vue'
 const props = defineProps({
   title: String,
   // 在 Template 中使用，需要定义 v-modal 所使用的字段（默认对应 visible）
@@ -22,20 +22,20 @@ const props = defineProps({
 // 定义组件中使用的事件类型（默认：reject、resolve）
 defineEmits(['reject', 'resolve'])
 
-const { visible, resolve, reject } = useOverlayMeta({
+const { visible, resolve, reject } = useOverlay({
   // 如果使用 template 渲染，duration 则可以不需要定义
   // duration: 1000,
 })
 </script>
 ```
 
-如果您想替换为其他的字段与事件名，可以通过 `useOverlayMeta` 传入对应的配置实现。
+如果您想替换为其他的字段与事件名，可以通过 `useOverlay` 传入对应的配置实现。
 
 ```vue
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@overlays/vue'
+import { useOverlay } from '@overlays/vue'
 const props = defineProps({
   title: String,
   modalValue: Boolean
@@ -43,7 +43,7 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, resolve, reject } = useOverlayMeta({
+const { visible, resolve, reject } = useOverlay({
   events: { resolve: 'ok', reject: 'nook' },
   modal: 'modalValue',
 })

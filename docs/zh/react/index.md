@@ -18,12 +18,12 @@ yarn add @overlays/react
 
 ### 步骤.1: Define Component
 
-overlays 适用于绝大多数组件，使用 `useOverlayMeta` 能对组件流程有更细致的控制。
+overlays 适用于绝大多数组件，使用 `useOverlay` 能对组件流程有更细致的控制。
 
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
-  const { visible, resolve, reject } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlay({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
     duration: 1000,
   })

@@ -11,10 +11,10 @@
 ```tsx
 // 如果使用 Typescript 需要使用 PropsWithOverlays 定义 props 类型
 import type { PropsWithOverlays } from '@overlays/react'
-import { useOverlayMeta } from '@overlays/react'
+import { useOverlay } from '@overlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, resolve, reject } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlay({
     props
   })
 
@@ -24,15 +24,15 @@ export function OverlayComponent(props: PropsWithOverlays) {
 }
 ```
 
-如果您想替换为其他的字段与事件名，可以通过 `useOverlayMeta` 的 `event|modal` 配置实现。
+如果您想替换为其他的字段与事件名，可以通过 `useOverlay` 的 `event|modal` 配置实现。
 
 ```tsx
 // 如果使用 Typescript 需要使用 PropsWithOverlays 定义 props 类型
 import type { PropsWithOverlays } from '@overlays/react'
-import { useOverlayMeta } from '@overlays/react'
+import { useOverlay } from '@overlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, resolve, reject } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlay({
     events: { resolve: 'onOk', reject: 'onNook' },
     modal: 'open',
     props,

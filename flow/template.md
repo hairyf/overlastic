@@ -4,12 +4,12 @@ You can use [@overlays/vue](https://overlays.vercel.app/en/vue/) to create compo
 <!-- overlay.vue -->
 <script setup>
 import { defineProps } from 'vue'
-import { useOverlayMeta } from '@overlays/vue'
+import { useOverlay } from '@overlays/vue'
 const props = defineProps({
   content: String,
 })
-// Get overlay information from useOverlayMeta
-const { visible, resolve, reject } = useOverlayMeta({
+// Get overlay information from useOverlay
+const { visible, resolve, reject } = useOverlay({
   // Duration of the overlay duration to avoid premature component destruction
   duration: 1000,
 })

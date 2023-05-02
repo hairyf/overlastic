@@ -11,10 +11,10 @@ To support use in JSX, props need to be passed into the configuration, and visib
 ```tsx
 // If using Typescript, use PropsWithOverlays to define props type
 import type { PropsWithOverlays } from '@overlays/react'
-import { useOverlayMeta } from '@overlays/react'
+import { useOverlay } from '@overlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, resolve, reject } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlay({
     props
   })
 
@@ -24,15 +24,15 @@ export function OverlayComponent(props: PropsWithOverlays) {
 }
 ```
 
-If you want to replace other `fields` and event names, you can do so using the field configuration of useOverlayMeta.
+If you want to replace other `fields` and event names, you can do so using the field configuration of useOverlay.
 
 ```tsx
 // If using Typescript, use PropsWithOverlays to define props type
 import type { PropsWithOverlays } from '@overlays/react'
-import { useOverlayMeta } from '@overlays/react'
+import { useOverlay } from '@overlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, resolve, reject } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlay({
     events: { resolve: 'onOk', reject: 'onNook' },
     modal: 'open',
     props,

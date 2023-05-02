@@ -4,12 +4,12 @@ Take [antd(drawer)](https://ant.design/components/drawer-cn) as an example (of c
 
 ```tsx
 import type { PropsWithOverlays } from '@overlays/react'
-import { useOverlayMeta } from '@overlays/react'
+import { useOverlay } from '@overlays/react'
 import { Button, Drawer } from 'antd'
 
 const MyDrawer = (props: PropsWithOverlays<{ title: string }>) => {
 
-  const { visible, resolve, reject } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlay({
     props
   })
 

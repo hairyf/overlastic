@@ -40,7 +40,7 @@ export interface OverlayOptions {
   automatic?: boolean
 }
 
-export function useOverlayMeta(options: OverlayOptions = {}) {
+export function useOverlay(options: OverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true, events = {} } = options
   events.reject = events.reject || 'reject'
   events.resolve = events.resolve || 'resolve'

@@ -17,10 +17,10 @@ export type Resolved = string
 <!-- index.vue -->
 <script setup lang="ts">
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@overlays/vue'
+import { useOverlay } from '@overlays/vue'
 import type { Params, Resolved } from './props'
 const props = defineProps<Params>()
-const { visible, resolve, reject } = useOverlayMeta<Resolved>({
+const { visible, resolve, reject } = useOverlay<Resolved>({
   duration: 1000
 })
 </script>
@@ -55,11 +55,11 @@ export type Resolved = string
 ```vue
 <script setup lang="ts">
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@overlays/vue'
+import { useOverlay } from '@overlays/vue'
 import type { Resolved } from './props'
 import { overlayProps } from './props'
 const props = defineProps(overlayProps)
-const { visible, resolve, reject } = useOverlayMeta<Resolved>({
+const { visible, resolve, reject } = useOverlay<Resolved>({
   duration: 1000
 })
 </script>

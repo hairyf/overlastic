@@ -33,14 +33,14 @@ app.use(unoverlay)
 
 ### Step 1: Define Component
 
-overlays is suitable for most components. Using useOverlayMeta can provide finer control over the component process.
+overlays is suitable for most components. Using useOverlay can provide finer control over the component process.
 
 ```vue
 <!-- overlay.vue -->
 <script>
-import { useOverlayMeta } from '@overlays/vue2'
+import { useOverlay } from '@overlays/vue2'
 export default {
-  mixins: [useOverlayMeta({ duration: 1000 })],
+  mixins: [useOverlay({ duration: 1000 })],
   methods: {
     onClick() {
       // use this.$visible

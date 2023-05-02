@@ -14,7 +14,7 @@ To use it in `<template>`, `modal` and `event` must be explicitly defined.
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@overlays/vue'
+import { useOverlay } from '@overlays/vue'
 const props = defineProps({
   title: String,
   // To use in Template, you need to define the field used by v-model (default corresponds to visible)
@@ -24,20 +24,20 @@ const props = defineProps({
 // Define event types used in the component (default: reject, resolve)
 defineEmits(['reject', 'resolve'])
 
-const { visible, resolve, reject } = useOverlayMeta({
+const { visible, resolve, reject } = useOverlay({
   // If using template rendering, duration can be omitted
   // duration: 1000,
 })
 </script>
 ```
 
-If you want to replace them with other fields and event names, you can pass in the corresponding configuration through `useOverlayMeta`.
+If you want to replace them with other fields and event names, you can pass in the corresponding configuration through `useOverlay`.
 
 ```vue
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayMeta } from '@overlays/vue'
+import { useOverlay } from '@overlays/vue'
 const props = defineProps({
   title: String,
   modalValue: Boolean
@@ -45,7 +45,7 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, resolve, reject } = useOverlayMeta({
+const { visible, resolve, reject } = useOverlay({
   events: { resolve: 'ok', reject: 'nook' },
   modal: 'modalValue',
 })

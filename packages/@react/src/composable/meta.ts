@@ -64,7 +64,7 @@ export interface OverlayMeta {
   promiser?: Promise<any>
 }
 
-export function useOverlayMeta(options: OverlayOptions = {}) {
+export function useOverlay(options: OverlayOptions = {}) {
   const { immediate = true, duration = 0, automatic = true } = options
   const context = useContext(Context)
   const dec = Reflect.get(context, 'in_dec')
