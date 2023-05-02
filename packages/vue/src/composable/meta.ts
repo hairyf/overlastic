@@ -21,7 +21,7 @@ export interface OverlayEvents {
 
 export interface OverlayOptions {
   /** animation duration to avoid premature destruction of components */
-  animation?: number
+  duration?: number
   /** whether to set visible to true immediately */
   immediate?: boolean
   /**
@@ -34,9 +34,9 @@ export interface OverlayOptions {
   /**
    * template use event name
    */
-  event?: OverlayEvents
+  events?: OverlayEvents
   /**
-   * whether to automatically handle components based on visible and animation
+   * whether to automatically handle components based on visible and duration
    *
    * @default true
    */
@@ -44,43 +44,43 @@ export interface OverlayOptions {
 }
 
 export interface OverlayMeta {
-  /** the notification reject, modify visible, and destroy it after the animation ends */
+  /** the notification reject, modify visible, and destroy it after the duration ends */
   reject: Function
-  /** the notification resolve, modify visible, and destroy it after the animation ends */
+  /** the notification resolve, modify visible, and destroy it after the duration ends */
   resolve: Function
   /** destroy the current instance (immediately) */
   vanish: Function
   /** visible control popup display and hide */
   visible: Ref<boolean>
-  /** use in template */
-  inDec?: boolean
+  promise?: Promise<any>
 }
 
 /**
  * get overlay layer meta information
- * @function reject  the notification reject, modify visible, and destroy it after the animation ends
- * @function resolve the notification resolve, modify visible, and destroy it after the animation ends
+ * @function reject  the notification reject, modify visible, and destroy it after the duration ends
+ * @function resolve the notification resolve, modify visible, and destroy it after the duration ends
  * @function vanish destroy the current instance (immediately)
  * @field visible control popup display and hide
  * @returns
  */
 export function useOverlayMeta(options: OverlayOptions = {}) {
-  const { animation = 0, immediate = true, model = 'visible', automatic = true } = options
+  const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
   const meta = inject(OverlayMetaKey, useDeclarativeMeta(model, options))
+  const dec = Reflect.get(meta, '__in_dec')
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
-  if (!meta.inDec && automatic) {
+  if (!dec && automatic) {
     watch(meta.visible, async () => {
       if (meta.visible.value)
         return
-      if (animation > 0)
-        await delay(animation)
+      if (duration > 0)
+        await delay(duration)
       meta.vanish?.()
     })
   }
 
-  if (!meta.inDec && immediate)
+  if (!dec && immediate)
     onMounted(() => meta.visible.value = true)
 
   provide(OverlayMetaKey, null)
@@ -89,7 +89,7 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
 
 export function useDeclarativeMeta(model: string, options: OverlayOptions = {}) {
   const instance = getCurrentInstance()
-  const events = options.event || {}
+  const events = options.events || {}
 
   if (!instance)
     throw new Error('Please use useOverlayMeta in component setup')
@@ -109,6 +109,6 @@ export function useDeclarativeMeta(model: string, options: OverlayOptions = {}) 
     resolve,
     vanish: noop,
     visible,
-    inDec: true,
+    __in_dec: true,
   }
 }

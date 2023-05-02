@@ -19,7 +19,7 @@ export function OverlayComponent(props: PropsWithOverlays<Params>) {
   // props.title // ?string
   const { visible, resolve, reject } = useOverlayMeta<Resolved>({
     props,
-    animation: 1000
+    duration: 1000
   })
 }
 ```

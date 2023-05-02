@@ -2,12 +2,12 @@ import type { PropsWithChildren } from 'react'
 import type { PropsWidthOverlays } from '../../src'
 import { useOverlayMeta } from '../../src'
 
-export type OverlayProps = PropsWidthOverlays<PropsWithChildren<{ animation?: number; title?: string }>>
+export type OverlayProps = PropsWidthOverlays<PropsWithChildren<{ duration?: number; title?: string }>>
 
 function Overlay(props: OverlayProps) {
   const { resolve, reject, visible } = useOverlayMeta({
     props,
-    animation: props.animation,
+    duration: props.duration,
   })
 
   return visible

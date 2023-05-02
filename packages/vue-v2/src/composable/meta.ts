@@ -3,8 +3,8 @@ import Vue from 'vue'
 import { OverlayMetaKey } from '../internal'
 
 export interface OverlayOptions {
-  /** animation duration to avoid premature destruction of components */
-  animation?: number
+  /** duration duration to avoid premature destruction of components */
+  duration?: number
   /** whether to set visible to true immediately */
   immediate?: boolean
   /**
@@ -16,7 +16,7 @@ export interface OverlayOptions {
   /**
    * template use event name
    */
-  event?: {
+  events?: {
     /**
    * reject event name used by the template
    *
@@ -31,7 +31,7 @@ export interface OverlayOptions {
     resolve?: string
   }
   /**
-   * whether to automatically handle components based on visible and animation
+   * whether to automatically handle components based on visible and duration
    *
    * @default true
    */
@@ -39,9 +39,9 @@ export interface OverlayOptions {
 }
 
 export function useOverlayMeta(options: OverlayOptions = {}) {
-  const { animation = 0, immediate = true, model = 'visible', automatic = true, event = {} } = options
-  event.reject = event.reject || 'reject'
-  event.resolve = event.resolve || 'resolve'
+  const { duration = 0, immediate = true, model = 'visible', automatic = true, events = {} } = options
+  events.reject = events.reject || 'reject'
+  events.resolve = events.resolve || 'resolve'
 
   const mixinOptions = Vue.extend({
     inject: [OverlayMetaKey],
@@ -60,7 +60,7 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
         set(value: any) {
           this.$overlay ? (this.runtime_visible = value) : this.$emit('change', value)
           if (value === false && automatic)
-            delay(animation).then((this.$overlay as any).vanish)
+            delay(duration).then((this.$overlay as any).vanish)
         },
         get() {
           return this.$overlay ? this.runtime_visible : this[model]
@@ -75,7 +75,7 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
     },
     methods: {
       async $runtime_effect(type: 'reject' | 'resolve', value: any) {
-        this.$emit(event[type]!, value)
+        this.$emit(events[type]!, value)
         this.$visible = false
       },
       async $resolve(value: any) {

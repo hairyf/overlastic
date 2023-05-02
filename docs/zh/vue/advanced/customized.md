@@ -12,7 +12,7 @@ const props = defineProps({
 })
 
 const { visible, resolve, reject } = useOverlayMeta({
-  animation: 1000
+  duration: 1000
 })
 </script>
 

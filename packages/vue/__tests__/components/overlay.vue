@@ -8,7 +8,7 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    animation: {
+    duration: {
       type: Number,
       default: 0,
     },
@@ -17,7 +17,7 @@ export default defineComponent({
   emits: ['resolve', 'reject', 'update:visible'],
   setup: (props) => {
     const { resolve, reject, vanish, visible } = useOverlayMeta({
-      animation: props.animation,
+      duration: props.duration,
     })
     return { resolve, reject, vanish, visible }
   },

@@ -67,9 +67,9 @@ Use the `useOverlayMeta` Hook provided by overlays to obtain overlays metadata a
 // In your Vue, React overlays component,
 // use useOverlayMeta to obtain overlays metadata.
 const { visible, resolve, reject } = useOverlayMeta({
-  // The duration of the overlays animation prevents
+  // The duration of the overlays duration prevents
   // the component from being destroyed too early.
-  animation: 1000
+  duration: 1000
 })
 ```
 

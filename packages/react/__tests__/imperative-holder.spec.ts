@@ -42,9 +42,9 @@ describe('@overlays/react:imperative-holder', () => {
     wrapper.unmount()
   })
 
-  it.skip('mount:animation', async () => {
+  it.skip('mount:duration', async () => {
     const wrapper = mount(HolderContainer, {
-      props: { animation: 1000 },
+      props: { duration: 1000 },
     })
 
     expect(isModalExists()).toBeFalsy()

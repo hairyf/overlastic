@@ -5,7 +5,7 @@
 ```ts
 import { useOverlayMeta } from '@overlays/vue2'
 export default {
-  mixins: [useOverlayMeta({ animation: 1000 })],
+  mixins: [useOverlayMeta({ duration: 1000 })],
   methods: {
     onClick() {
       // use this.$visible

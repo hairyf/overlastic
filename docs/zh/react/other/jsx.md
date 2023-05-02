@@ -33,7 +33,7 @@ import { useOverlayMeta } from '@overlays/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
   const { visible, resolve, reject } = useOverlayMeta({
-    event: { resolve: 'onOk', reject: 'onNook' },
+    events: { resolve: 'onOk', reject: 'onNook' },
     modal: 'open',
     props,
   })

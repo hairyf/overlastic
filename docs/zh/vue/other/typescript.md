@@ -21,7 +21,7 @@ import { useOverlayMeta } from '@overlays/vue'
 import type { Params, Resolved } from './props'
 const props = defineProps<Params>()
 const { visible, resolve, reject } = useOverlayMeta<Resolved>({
-  animation: 1000
+  duration: 1000
 })
 </script>
 ```
@@ -60,7 +60,7 @@ import type { Resolved } from './props'
 import { overlayProps } from './props'
 const props = defineProps(overlayProps)
 const { visible, resolve, reject } = useOverlayMeta<Resolved>({
-  animation: 1000
+  duration: 1000
 })
 </script>
 ```

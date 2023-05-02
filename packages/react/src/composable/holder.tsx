@@ -4,7 +4,7 @@ import type { FC } from 'react'
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { ImperativeOverlay, MountOptions } from '@overlays/core'
-import { OverlayContext } from '../internal'
+import { Context } from '../internal'
 
 import type { VisiblePromiseOptions } from './visible'
 import { useVisibleScripts } from './visible'
@@ -27,7 +27,7 @@ export function useInjectHolder<Props, Resolved = void>(
   }
 
   const holder = (
-    <OverlayContext.Provider
+    <Context.Provider
       value={scripts}
       children={refresh ? render() : null}
       {...{ id: pascalCase(name) }}
@@ -41,7 +41,6 @@ export function useRefreshMetadata() {
   const [props, setProps] = useState<any>()
   const [refresh, setRefresh] = useState(false)
   const { current: options } = useRef<VisiblePromiseOptions>({
-    isJsx: false,
     vanish,
   })
   const scripts = useVisibleScripts(options)

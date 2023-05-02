@@ -25,7 +25,7 @@ overlays 适用于绝大多数组件，使用 `useOverlayMeta` 能对组件流�
 export function OverlayComponent(props) {
   const { visible, resolve, reject } = useOverlayMeta({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
-    animation: 1000,
+    duration: 1000,
   })
 
   return <div className={visible && 'is--visible'}>

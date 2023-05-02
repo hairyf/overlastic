@@ -4,7 +4,6 @@ import { useState } from 'react'
 export interface VisiblePromiseOptions {
   promiser?: ImperativePromiser
   vanish?: Function
-  isJsx?: boolean
 }
 export function useVisibleScripts(options: VisiblePromiseOptions) {
   const [visible, setVisible] = useState(false)
@@ -36,6 +35,5 @@ export function useVisibleScripts(options: VisiblePromiseOptions) {
     resolve,
     reject,
     vanish,
-    isJsx: options.isJsx,
   }
 }

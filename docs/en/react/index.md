@@ -22,8 +22,8 @@ overlays is suitable for most components, and using useOverlayMeta allows for fi
 // overlay.tsx
 export function OverlayComponent(props) {
   const { visible, resolve, reject } = useOverlayMeta({
-    // Duration of overlay animation, helps prevent premature component destruction
-    animation: 1000,
+    // Duration of overlay duration, helps prevent premature component destruction
+    duration: 1000,
   })
 
   return <div className={visible && 'is--visible'}>

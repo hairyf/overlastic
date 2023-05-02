@@ -50,10 +50,10 @@ describe('@overlays/vue:imperative-holder', () => {
     clear()
   })
 
-  it('mount:animation', async () => {
+  it('mount:duration', async () => {
     const wrapper = mount(HolderContainer, {
       props: {
-        animation: 200,
+        duration: 200,
       },
     })
 

@@ -10,8 +10,8 @@ const props = defineProps({
 })
 // Get overlay information from useOverlayMeta
 const { visible, resolve, reject } = useOverlayMeta({
-  // Duration of the overlay animation to avoid premature component destruction
-  animation: 1000,
+  // Duration of the overlay duration to avoid premature component destruction
+  duration: 1000,
 })
 </script>
 

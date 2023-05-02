@@ -50,8 +50,8 @@ defineEmits(['reject', 'resolve'])
 
 // Get Overlay information from useOverlayMeta
 const { visible, resolve, reject } = useOverlayMeta({
-  // Duration of popup layer animation to avoid premature destruction of the component
-  animation: 1000,
+  // Duration of popup layer duration to avoid premature destruction of the component
+  duration: 1000,
 })
 </script>
 

@@ -28,5 +28,10 @@ export function useVisibleScripts(options: VisiblePromiseOptions) {
     options.promiser.promise.reject = reject
   }
 
-  return { visible, resolve, reject, vanish }
+  return {
+    visible,
+    resolve,
+    reject,
+    vanish,
+  }
 }

@@ -8,13 +8,13 @@ export const defineProviderComponent = (component: FC) => {
   return ({ '--': component })['--']
 }
 
-export const OverlayContext = createContext<OverlayMeta>({
+export const Context = createContext<OverlayMeta>({
   reject: noop,
   resolve: noop,
   setVisible: noop,
   vanish: noop,
   visible: false,
-  inDec: true,
-})
+  __in_dec: true,
+} as any)
 
-OverlayContext.displayName = 'OverlayContext'
+Context.displayName = 'OverlayContext'

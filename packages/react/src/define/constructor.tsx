@@ -3,7 +3,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { pascalCase } from 'pascal-case'
 import { useVisibleScripts } from '../composable'
-import { OverlayContext, defineProviderComponent } from '../internal'
+import { Context, defineProviderComponent } from '../internal'
 
 export const constructor = createConstructor<React.FC<any>>((Inst, props, options) => {
   const { container, id, promiser } = options
@@ -19,7 +19,7 @@ export const constructor = createConstructor<React.FC<any>>((Inst, props, option
   const UnifiedOverlayProvider = defineProviderComponent(() => {
     const scripts = useVisibleScripts({ promiser, vanish })
     return (
-      <OverlayContext.Provider
+      <Context.Provider
         value={scripts}
         children={<Inst {...props} />}
         {...{ id: pascalCase(id) }}

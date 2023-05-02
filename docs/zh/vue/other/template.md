@@ -23,8 +23,8 @@ const props = defineProps({
 defineEmits(['reject', 'resolve'])
 
 const { visible, resolve, reject } = useOverlayMeta({
-  // 如果使用 template 渲染，animation 则可以不需要定义
-  // animation: 1000,
+  // 如果使用 template 渲染，duration 则可以不需要定义
+  // duration: 1000,
 })
 </script>
 ```
@@ -44,7 +44,7 @@ const props = defineProps({
 defineEmits(['nook', 'ok'])
 
 const { visible, resolve, reject } = useOverlayMeta({
-  event: { resolve: 'ok', reject: 'nook' },
+  events: { resolve: 'ok', reject: 'nook' },
   modal: 'modalValue',
 })
 </script>

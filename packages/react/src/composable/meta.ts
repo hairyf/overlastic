@@ -2,12 +2,27 @@ import { delay as _delay, noop } from '@overlays/core'
 import type { Dispatch, SetStateAction } from 'react'
 import { useContext, useEffect } from 'react'
 
-import { OverlayContext } from '../internal'
+import { Context } from '../internal'
 import type { PropsWidthOverlays } from '../types'
+
+export interface OverlayEvents {
+  /**
+   * reject event name used by the template
+   *
+   * @default 'onReject'
+   */
+  reject?: string
+  /**
+   * resolve event name used by the template
+   *
+   * @default 'onResolve'
+   */
+  resolve?: string
+}
 
 export interface OverlayOptions {
   /** animation duration to avoid premature destruction of components */
-  animation?: number
+  duration?: number
   /** whether to set visible to true immediately */
   immediate?: boolean
   /**
@@ -23,24 +38,11 @@ export interface OverlayOptions {
   model?: string
 
   /**
-   * jsx use event name
+   * props use event name
    */
-  event?: {
-    /**
-     * reject event name used by the jsx
-     *
-     * @default 'onReject'
-     */
-    reject?: string
-    /**
-     * resolve event name used by the jsx
-     *
-     * @default 'onResolve'
-     */
-    resolve?: string
-  }
+  events?: OverlayEvents
   /**
-   * whether to automatically handle components based on visible and animation
+   * whether to automatically handle components based on visible and duration
    *
    * @default true
    */
@@ -48,9 +50,9 @@ export interface OverlayOptions {
 }
 
 export interface OverlayMeta {
-  /** the notification reject, modify visible, and destroy it after the animation ends */
+  /** the notification reject, modify visible, and destroy it after the duration ends */
   reject: Function
-  /** the notification resolve, modify visible, and destroy it after the animation ends */
+  /** the notification resolve, modify visible, and destroy it after the duration ends */
   resolve: Function
   /** destroy the current instance (immediately) */
   vanish: Function
@@ -58,14 +60,13 @@ export interface OverlayMeta {
   visible: boolean
   /** visible dispatch change */
   setVisible: Dispatch<SetStateAction<boolean>>
-  /** use in jsx */
-  inDec?: boolean
+  promise?: Promise<any>
 }
 
 export function useOverlayMeta(options: OverlayOptions = {}) {
   const { immediate = true } = options
-  const context = useContext(OverlayContext)
-  const meta = context.inDec ? useDeclarativeMeta(options) : context
+  const context = useContext(Context)
+  const meta = Reflect.get(context, '__in_dec') ? useDeclarativeMeta(options) : context
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
@@ -79,8 +80,8 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
 }
 
 export function useDeclarativeMeta(options: OverlayOptions = {}) {
-  const { props = {}, model = 'visible', event = {} } = options
-  const { reject = 'onReject', resolve = 'onResolve' } = event
+  const { props = {}, model = 'visible', events = {} } = options
+  const { reject = 'onReject', resolve = 'onResolve' } = events
 
   const _reject = (value?: any) => {
     props[reject]?.(value)
@@ -103,12 +104,12 @@ export function useMount(callback: Function = noop) {
 }
 
 export function automatic(meta: OverlayMeta, options: OverlayOptions) {
-  const { animation = 0, automatic = true } = options
+  const { duration = 0, automatic = true } = options
   async function delay() {
     if (!automatic)
       return
-    if (animation > 0)
-      await _delay(animation)
+    if (duration > 0)
+      await _delay(duration)
     meta.vanish?.()
   }
 

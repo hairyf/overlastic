@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { useInjectHolder } from '../../src'
 import Overlay from './overlay'
-function HolderContainer(props?: { animation?: number; root?: any }) {
-  const [holder, callback] = useInjectHolder<{ title?: string; animation?: number }, string>(Overlay, { root: props?.root })
+function HolderContainer(props?: { duration?: number; root?: any }) {
+  const [holder, callback] = useInjectHolder<{ title?: string; duration?: number }, string>(Overlay, { root: props?.root })
   const [result, setResult] = useState<any>()
 
   async function getModalValue() {
     try {
-      setResult(await callback({ title: 'holder-modal-title', animation: props?.animation }))
+      setResult(await callback({ title: 'holder-modal-title', duration: props?.duration }))
     }
     catch (error: any) {
       setResult(error)

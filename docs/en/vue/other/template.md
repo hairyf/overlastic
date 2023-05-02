@@ -25,8 +25,8 @@ const props = defineProps({
 defineEmits(['reject', 'resolve'])
 
 const { visible, resolve, reject } = useOverlayMeta({
-  // If using template rendering, animation can be omitted
-  // animation: 1000,
+  // If using template rendering, duration can be omitted
+  // duration: 1000,
 })
 </script>
 ```
@@ -46,7 +46,7 @@ const props = defineProps({
 defineEmits(['nook', 'ok'])
 
 const { visible, resolve, reject } = useOverlayMeta({
-  event: { resolve: 'ok', reject: 'nook' },
+  events: { resolve: 'ok', reject: 'nook' },
   modal: 'modalValue',
 })
 </script>
