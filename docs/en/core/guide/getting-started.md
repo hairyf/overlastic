@@ -14,7 +14,7 @@ overlays is a unified plugin for building overlays that allows the creation of c
 
 - [@overlays/vue](/en/vue/) - Use Unified Overlays to create overlays in Vue app.
 - [@overlays/react](/en/react/) - Use Unified Overlays to create overlays in React app.
-- [@overlays/core](/en/core/functions/defines.html) - Quick adaptation and creation of applications
+- [@overlays/core](/en/core/functions/constructor.html) - Quick adaptation and creation of applications
 
 ## Devtools
 

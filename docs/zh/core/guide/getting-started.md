@@ -14,7 +14,7 @@ Unified Overlays 是构建弹出层的插件，创建回调（命令式）方法
 
 - [@overlays/vue](/zh/vue/) - 在 Vue 应用中使用 Unified Overlays 创建弹出层
 - [@overlays/react](/zh/react/) - 在 React 应用中使用 Unified Overlays 创建弹出层
-- [@overlays/core](/zh/core/functions/defines.html) - 快速适应与创建应用程序
+- [@overlays/core](/zh/core/functions/constructor.html) - 快速适应与创建应用程序
 
 ## Devtools
 
