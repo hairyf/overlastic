@@ -18,7 +18,8 @@ A create model/dialog/popup library
   English | <a href="https://github.com/hairyf/unoverlays/blob/master/README_CN.md">Chinese</a> | <a href="https://overlays.vercel.app/zh/">docs</a>
 </p>
 
-    Unified Overlays are used to create callback (imperative) methods for components and also support declarative use of Vue, React, and other components.
+    Unified Overlays are used to create callback (imperative) methods for 
+    components and also support declarative use of Vue, React, and other components.
 
 ###### Features
 
