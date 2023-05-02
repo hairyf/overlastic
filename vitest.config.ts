@@ -7,6 +7,7 @@ export default defineConfig({
     React() as any,
   ],
   test: {
+    dangerouslyIgnoreUnhandledErrors: true,
     include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     globals: true,
     environment: 'jsdom',

@@ -1,10 +1,11 @@
 import { createConstructor } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
-import type { App, AppContext, Component } from 'vue'
+import type { AppContext, Component } from 'vue'
 import { createApp, defineComponent, h, provide } from 'vue'
 
-import { OverlayMetaKey, context } from '../internal'
+import { OverlayMetaKey } from '../internal'
 import { useVisibleScripts } from '../composable'
+import { inheritParent } from '../utils'
 
 export interface VMountOptions {
   /** current app context */
@@ -12,7 +13,8 @@ export interface VMountOptions {
 }
 
 export const constructor = createConstructor<Component, VMountOptions>((Inst, props, options) => {
-  const { container, id, promiser } = options
+  const { container, id, promiser, appContext } = options
+
   function vanish() {
     app.unmount()
     container.remove()
@@ -32,17 +34,9 @@ export const constructor = createConstructor<Component, VMountOptions>((Inst, pr
 
   const app = createApp(ChildApp)
 
-  extendsParent(app, options.appContext)
+  inheritParent(app, appContext)
 
   app.mount(container)
 
   return vanish
 })
-
-function extendsParent(app: App<Element>, appContext?: AppContext) {
-  const parent = appContext?.app || context.appContext?.app
-  if (parent) {
-    app.config.globalProperties = parent.config.globalProperties
-    Object.assign(app._context, parent._context)
-  }
-}

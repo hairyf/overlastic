@@ -14,7 +14,7 @@ export const Context = createContext<OverlayMeta>({
   setVisible: noop,
   vanish: noop,
   visible: false,
-  __in_dec: true,
+  in_dec: true,
 } as any)
 
 Context.displayName = 'OverlayContext'

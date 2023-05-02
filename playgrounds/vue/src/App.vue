@@ -4,7 +4,7 @@ import HolderContainer from './components/holder-container.vue'
 import Overlay from './components/overlay.vue'
 const callback = defineOverlay<unknown, string>(Overlay)
 
-callback()
+const inst = callback()
 </script>
 
 <template>

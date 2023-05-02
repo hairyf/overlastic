@@ -1,5 +1,5 @@
 import type { Component } from 'vue-demi'
-import { Teleport, defineComponent, h, nextTick, provide, ref } from 'vue-demi'
+import { Teleport, defineComponent, h, provide, ref } from 'vue-demi'
 
 import { createPromiser, defineName } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
@@ -37,39 +37,24 @@ export function useRefreshMetadata() {
   const visible = ref(false)
   const refresh = ref(false)
   const props = ref<any>()
-  let promiser: any
 
-  const scripts = {
-    vanish,
-    resolve,
-    reject,
-    visible,
-  }
-
-  function resolve(value?: any) {
-    promiser.resolve(value)
-    visible.value = false
-  }
-  function reject(value?: any) {
-    promiser.reject(value)
-    visible.value = false
-  }
+  const scripts: any = { vanish, visible }
 
   function vanish() {
     refresh.value = false
     props.value = {}
-    reject()
+    scripts.reject()
   }
 
-  async function callback(_props: any) {
-    promiser = createPromiser()
+  function callback(_props: any) {
+    scripts.promiser = createPromiser()
+    scripts.resolve = scripts.promiser.resolve
+    scripts.reject = scripts.promiser.reject
 
     props.value = _props
     refresh.value = true
-    await nextTick()
-    visible.value = true
 
-    return promiser
+    return scripts.promiser
   }
 
   return { callback, scripts, props, refresh }

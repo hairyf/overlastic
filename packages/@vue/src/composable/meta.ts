@@ -1,5 +1,5 @@
 import type { Ref } from 'vue-demi'
-import { getCurrentInstance, inject, onMounted, provide, watch } from 'vue-demi'
+import { getCurrentInstance, inject, onMounted, provide } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
 import type { Promiser } from '@overlays/core'
 import { delay, noop } from '@overlays/core'
@@ -53,7 +53,7 @@ export interface OverlayMeta {
   vanish: Function
   /** visible control popup display and hide */
   visible: Ref<boolean>
-
+  /** current promiser */
   promiser?: Promiser<any>
 }
 
@@ -62,22 +62,20 @@ export interface OverlayMeta {
  * @function reject  the notification reject, modify visible, and destroy it after the duration ends
  * @function resolve the notification resolve, modify visible, and destroy it after the duration ends
  * @function vanish destroy the current instance (immediately)
- * @field visible control popup display and hide
+ * @field visible control overlay display and hide
  * @returns
  */
 export function useOverlayMeta(options: OverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
-  const meta = inject(OverlayMetaKey, useDeclarativeMeta(model, options))
-  const dec = Reflect.get(meta, '__in_dec')
+  const meta = inject(OverlayMetaKey, useDeclarative(model, options))
+  const dec = Reflect.get(meta, 'in_dec')
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
   if (!dec && automatic) {
-    watch(meta.visible, async () => {
-      if (meta.visible.value)
-        return
-      if (duration > 0)
-        await delay(duration)
+    meta.promiser?.finally(async () => {
+      meta.visible.value = false
+      await delay(duration)
       meta.vanish?.()
     })
   }
@@ -86,31 +84,34 @@ export function useOverlayMeta(options: OverlayOptions = {}) {
     onMounted(() => meta.visible.value = true)
 
   provide(OverlayMetaKey, null)
+
   return meta
 }
 
-export function useDeclarativeMeta(model: string, options: OverlayOptions = {}) {
+export function useDeclarative(model: string, options: OverlayOptions = {}) {
+  const { reject = 'reject', resolve = 'resolve' } = options.events || {}
+
   const instance = getCurrentInstance()
-  const events = options.events || {}
 
   if (!instance)
     throw new Error('Please use useOverlayMeta in component setup')
 
   const visible = useVModel(instance.props, model, instance.emit, { passive: true }) as Ref<boolean>
 
-  const reject = (value?: any) => {
+  const _reject = (value?: any) => {
+    instance?.emit(reject, value)
     visible.value = false
-    instance?.emit(events.reject || 'reject', value)
   }
-  const resolve = (value?: any) => {
+  const _resolve = (value?: any) => {
+    instance?.emit(resolve, value)
     visible.value = false
-    instance?.emit(events.resolve || 'resolve', value)
   }
+
   return {
-    reject,
-    resolve,
+    reject: _reject,
+    resolve: _resolve,
     vanish: noop,
     visible,
-    __in_dec: true,
+    in_dec: true,
   }
 }

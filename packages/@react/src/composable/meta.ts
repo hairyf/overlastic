@@ -60,26 +60,33 @@ export interface OverlayMeta {
   visible: boolean
   /** visible dispatch change */
   setVisible: Dispatch<SetStateAction<boolean>>
-  promise?: Promise<any>
+  /** current promiser */
+  promiser?: Promise<any>
 }
 
 export function useOverlayMeta(options: OverlayOptions = {}) {
-  const { immediate = true } = options
+  const { immediate = true, duration = 0, automatic = true } = options
   const context = useContext(Context)
-  const meta = Reflect.get(context, '__in_dec') ? useDeclarativeMeta(options) : context
+  const dec = Reflect.get(context, 'in_dec')
+  const meta = dec ? useDeclarative(options) : context
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
-  automatic(meta, options)
-
   useMount(() => {
-    if (immediate)
-      meta.setVisible?.(true)
+    immediate && meta.setVisible?.(true)
+    if (!dec && automatic) {
+      meta.promiser?.finally(async () => {
+        meta.setVisible(false)
+        await _delay(duration)
+        meta.vanish?.()
+      })
+    }
   })
+
   return meta
 }
 
-export function useDeclarativeMeta(options: OverlayOptions = {}) {
+export function useDeclarative(options: OverlayOptions = {}) {
   const { props = {}, model = 'visible', events = {} } = options
   const { reject = 'onReject', resolve = 'onResolve' } = events
 
@@ -93,31 +100,13 @@ export function useDeclarativeMeta(options: OverlayOptions = {}) {
   return {
     reject: _reject,
     resolve: _resolve,
-    vanish: noop,
     visible: props[model],
+    vanish: noop,
     setVisible: noop,
+    promiser: undefined,
   }
 }
 
 export function useMount(callback: Function = noop) {
   useEffect(() => callback(), [])
-}
-
-export function automatic(meta: OverlayMeta, options: OverlayOptions) {
-  const { duration = 0, automatic = true } = options
-  async function delay() {
-    if (!automatic)
-      return
-    if (duration > 0)
-      await _delay(duration)
-    meta.vanish?.()
-  }
-
-  for (const key of ['resolve', 'reject'] as const) {
-    const affirm = meta[key]
-    meta[key] = function (value: any) {
-      affirm(value)
-      delay()
-    }
-  }
 }

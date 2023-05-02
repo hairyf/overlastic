@@ -39,32 +39,30 @@ export function useRefreshMetadata() {
   const [refresh, setRefresh] = useState(false)
   const [visible, setVisible] = useState(false)
 
-  const promiserRef = useRef<Promiser>()
+  const promiser = useRef<Promiser>({} as any)
 
-  const scripts = { resolve, reject, vanish, visible, setVisible }
-
-  function resolve(value?: any) {
-    promiserRef.current?.resolve(value)
-    setVisible(false)
-  }
-  function reject(value?: any) {
-    promiserRef.current?.reject(value)
-    setVisible(false)
+  const scripts = {
+    promiser: promiser.current,
+    resolve: promiser.current.resolve,
+    reject: promiser.current.reject,
+    vanish,
+    visible,
+    setVisible,
   }
 
   function vanish() {
     setRefresh(false)
     setProps({})
-    reject()
+    scripts.reject?.()
   }
 
   async function callback(props: any) {
-    promiserRef.current = createPromiser()
+    promiser.current = createPromiser()
 
     setProps(props)
     setRefresh(true)
 
-    return promiserRef.current
+    return promiser.current
   }
 
   return { callback, scripts, props, refresh }
