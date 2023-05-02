@@ -1,12 +1,10 @@
 import type { Component } from 'vue-demi'
-import { Teleport, defineComponent, h, nextTick, provide, reactive, ref } from 'vue-demi'
+import { Teleport, defineComponent, h, nextTick, provide, ref } from 'vue-demi'
 
-import { createImperativePromiser, defineName } from '@overlays/core'
+import { createPromiser, defineName } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
 import type { GlobalMountOptions, ImperativeOverlay } from '@overlays/core'
 import { OverlayMetaKey } from '../internal'
-import type { VisiblePromiseOptions } from './visible'
-import { useVisibleScripts } from './visible'
 
 export type InjectionHolder<Props, Resolved> = [Component, ImperativeOverlay<Props, Resolved>]
 
@@ -39,26 +37,39 @@ export function useRefreshMetadata() {
   const visible = ref(false)
   const refresh = ref(false)
   const props = ref<any>()
-  const options = reactive<VisiblePromiseOptions>({
+  let promiser: any
+
+  const scripts = {
     vanish,
-  })
-  const scripts = useVisibleScripts(options)
+    resolve,
+    reject,
+    visible,
+  }
+
+  function resolve(value?: any) {
+    promiser.resolve(value)
+    visible.value = false
+  }
+  function reject(value?: any) {
+    promiser.reject(value)
+    visible.value = false
+  }
 
   function vanish() {
     refresh.value = false
     props.value = {}
+    reject()
   }
 
   async function callback(_props: any) {
-    const promiser = createImperativePromiser()
-    options.promiser = promiser
+    promiser = createPromiser()
 
     props.value = _props
     refresh.value = true
     await nextTick()
     visible.value = true
 
-    return promiser.promise
+    return promiser
   }
 
   return { callback, scripts, props, refresh }

@@ -1,22 +1,23 @@
-import type { ImperativePromiser } from '@overlays/core'
+import type { Promiser } from '@overlays/core'
 import { useState } from 'react'
 
 export interface VisiblePromiseOptions {
-  promiser?: ImperativePromiser
+  promiser?: Promiser
   vanish?: Function
 }
 export function useVisibleScripts(options: VisiblePromiseOptions) {
+  const { reject: _reject, resolve: _resolve } = options.promiser || {}
+  const { vanish: _vanish } = options
+
   const [visible, setVisible] = useState(false)
 
   function reject(value?: any) {
-    options.promiser?.reject(value)
     setVisible(false)
-    return options.promiser?.promise
+    _reject?.(value)
   }
   function resolve(value?: any) {
-    options.promiser?.resolve(value)
     setVisible(false)
-    return options.promiser?.promise
+    return _resolve?.(value)
   }
 
   function vanish() {
@@ -25,8 +26,8 @@ export function useVisibleScripts(options: VisiblePromiseOptions) {
   }
 
   if (options.promiser) {
-    options.promiser.promise.resolve = resolve as any
-    options.promiser.promise.reject = reject
+    options.promiser.resolve = resolve as any
+    options.promiser.reject = reject
   }
 
   return {

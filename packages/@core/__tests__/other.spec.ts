@@ -24,15 +24,15 @@ describe('@overlays/core:define', () => {
     expect(() => allowed()).toThrowError()
   })
   it('promise:resolve', () => {
-    const { promise, resolve } = createPromiser<unknown, string>()
+    const promiser = createPromiser<string>()
 
-    resolve('resolve')
-    expect(promise).resolves.toBe('resolve')
+    promiser.resolve('resolve')
+    expect(promiser).resolves.toBe('resolve')
   })
   it('promise:reject', () => {
-    const { promise, reject } = createPromiser<unknown, string>()
+    const promiser = createPromiser<string>()
 
-    reject('reject')
-    expect(promise).rejects.toBe('reject')
+    promiser.reject('reject')
+    expect(promiser).rejects.toBe('reject')
   })
 })

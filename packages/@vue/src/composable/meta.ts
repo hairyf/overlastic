@@ -1,6 +1,7 @@
 import type { Ref } from 'vue-demi'
 import { getCurrentInstance, inject, onMounted, provide, watch } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
+import type { Promiser } from '@overlays/core'
 import { delay, noop } from '@overlays/core'
 import { OverlayMetaKey } from '../internal'
 
@@ -52,7 +53,8 @@ export interface OverlayMeta {
   vanish: Function
   /** visible control popup display and hide */
   visible: Ref<boolean>
-  promise?: Promise<any>
+
+  promiser?: Promiser<any>
 }
 
 /**

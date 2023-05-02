@@ -1,6 +1,7 @@
 import { defineGlobalNode, defineIndex, defineName } from './define'
-import type { ImperativePromise, ImperativePromiser } from './promiser'
-import { createImperativePromiser } from './promiser'
+import type { Promiser } from './promiser'
+import { createPromiser } from './promiser'
+
 import { watchClickPosition } from './events'
 import type { ClickPosition, ImperativeOverlay, MountOptions } from './types'
 import { context } from './internal'
@@ -21,7 +22,7 @@ export type MountConstructorOptions<Opts> = Opts & {
   /**
    * Promisor, used to mark the completion and end of an instance
    */
-  promiser: ImperativePromiser
+  promiser: Promiser
   /**
    * Mouse position during triggering
    */
@@ -59,7 +60,7 @@ export interface OverlaysConstructor<Inst, Opts> {
 export function createConstructor<Inst, Opts = {}>(mount: MountConstructor<Inst, Opts>): OverlaysConstructor<Inst, Opts> {
   function define(instance: Inst, options?: any) {
     function executor(props: any, options?: any) {
-      const promiser = createImperativePromiser()
+      const promiser = createPromiser()
       const name = defineName(options.id, options.autoIncrement)
       const index = defineIndex(options.id)
       const container = defineGlobalNode(name, options.root)
@@ -70,9 +71,9 @@ export function createConstructor<Inst, Opts = {}>(mount: MountConstructor<Inst,
         index,
         container,
       }))
-      return promiser.promise as ImperativePromise<any>
+      return promiser as Promiser<any>
     }
-    let inst: ImperativePromise<any> | undefined
+    let inst: Promiser<any> | undefined
     function only(props: any, options?: any) {
       if (!inst) {
         inst = executor(props, options)

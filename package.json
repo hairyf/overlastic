@@ -9,6 +9,7 @@
     "popup"
   ],
   "scripts": {
+    "play:vue": "npm -C playgrounds/vue run dev",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",

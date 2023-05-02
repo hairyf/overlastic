@@ -96,7 +96,7 @@ describe('@overlays/vue:imperative-holder', () => {
     clear()
   })
 
-  it.only('emit:reject', async () => {
+  it('emit:reject', async () => {
     const wrapper = mount(HolderContainer)
 
     openModal(wrapper)
@@ -107,7 +107,7 @@ describe('@overlays/vue:imperative-holder', () => {
 
     await delay()
 
-    // expect(wrapper.get('.modal__value').text()).toBe('reject')
+    expect(wrapper.get('.modal__value').text()).toBe('reject')
 
     wrapper.unmount()
     clear()

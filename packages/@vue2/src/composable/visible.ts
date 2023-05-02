@@ -1,33 +1,34 @@
-import type { ImperativePromiser } from '@overlays/core'
+import type { Promiser } from '@overlays/core'
 import mitt from 'mitt'
 export interface VisiblePromiseOptions {
-  promiser?: ImperativePromiser
+  promiser?: Promiser
   vanish?: Function
 }
 
 export function createVisibleScripts(options: VisiblePromiseOptions) {
+  const { reject: _reject, resolve: _resolve } = options.promiser || {}
+  const { vanish: _vanish } = options
+
   const { on, off, emit } = mitt()
 
   function reject(this: any, value?: any) {
-    options.promiser?.reject(value)
     emit('reject', value)
-    return options.promiser?.promise
+    _reject?.(value)
   }
   function resolve(this: any, value?: any) {
     options.promiser?.resolve(value)
     emit('resolve', value)
-    return options.promiser?.promise
+    return _resolve?.(value)
   }
   function vanish() {
-    options.vanish?.()
+    _vanish?.()
     reject()
     off('*')
-    return options.promiser?.promise
   }
 
   if (options.promiser) {
-    options.promiser.promise.resolve = resolve as any
-    options.promiser.promise.reject = reject
+    options.promiser.resolve = resolve as any
+    options.promiser.reject = reject
   }
 
   return {

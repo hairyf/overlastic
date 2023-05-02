@@ -1,31 +1,33 @@
 import { ref } from 'vue-demi'
-import type { ImperativePromiser } from '@overlays/core'
+import type { Promiser } from '@overlays/core'
 
 export interface VisiblePromiseOptions {
-  promiser?: ImperativePromiser
+  promiser?: Promiser
   vanish?: Function
 }
 
 export function useVisibleScripts(options: VisiblePromiseOptions) {
+  const { reject: _reject, resolve: _resolve } = options.promiser || {}
+  const { vanish: _vanish } = options
+
   const visible = ref(false)
+
   function reject(value?: any) {
-    options.promiser?.reject(value)
     visible.value = false
+    _reject?.(value)
   }
   function resolve(value?: any) {
-    options.promiser?.resolve(value)
     visible.value = false
-    return options.promiser?.promise
+    return _resolve?.(value)
   }
   function vanish() {
-    options.vanish?.()
-    options.promiser?.reject()
-    return options.promiser?.promise
+    _vanish?.()
+    reject()
   }
 
   if (options.promiser) {
-    options.promiser.promise.resolve = resolve as any
-    options.promiser.promise.reject = reject
+    options.promiser.resolve = resolve as any
+    options.promiser.reject = reject
   }
 
   return {

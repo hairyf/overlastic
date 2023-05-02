@@ -1,4 +1,4 @@
-import type { ImperativePromise } from '../utils'
+import type { Promiser } from '../utils'
 
 export interface GlobalMountOptions {
   /**
@@ -25,7 +25,7 @@ export interface GlobalMountOptions {
 }
 
 export interface ImperativeOverlay<Props, Resolved, Opts = {}> {
-  (props?: Props, options?: MountOptions<Opts>): ImperativePromise<Resolved>
+  (props?: Props, options?: MountOptions<Opts>): Promiser<Resolved>
 }
 
 export type MountOptions<Opts = {}> = GlobalMountOptions & Opts

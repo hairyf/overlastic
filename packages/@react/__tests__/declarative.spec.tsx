@@ -33,33 +33,33 @@ describe('@overlays/react:declarative', () => {
   })
 
   it('emit:resolve', async () => {
-    const { promise, resolve } = createPromiser<string>()
+    const promiser = createPromiser<string>()
 
     const wrapper = mount(Overlay, {
       props: {
+        onResolve: promiser.resolve,
         visible: true,
-        onResolve: resolve,
       },
     })
 
     wrapper.get<HTMLDivElement>('.modal__confirm').element.click()
 
-    expect(promise).resolves.toBe('resolve')
+    expect(promiser).resolves.toBe('resolve')
 
     wrapper.unmount()
   })
 
   it('emit:reject', async () => {
-    const { promise, reject } = createPromiser<string>()
+    const promiser = createPromiser<string>()
     const wrapper = mount(Overlay, {
       props: {
+        onReject: promiser.reject,
         visible: true,
-        onReject: reject,
       },
     })
     wrapper.get<HTMLDivElement>('.modal__cancel').element.click()
 
-    expect(promise).rejects.toThrow('reject')
+    expect(promiser).rejects.toThrow('reject')
 
     wrapper.unmount()
   })

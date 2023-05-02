@@ -2,6 +2,21 @@ import { delay } from '@overlays/core'
 import Vue from 'vue'
 import { OverlayMetaKey } from '../internal'
 
+export interface OverlayEvents {
+  /**
+   * reject event name used by the template
+   *
+   * @default 'reject'
+   */
+  reject?: string
+  /**
+   * resolve event name used by the template
+   *
+   * @default 'resolve'
+   */
+  resolve?: string
+}
+
 export interface OverlayOptions {
   /** duration duration to avoid premature destruction of components */
   duration?: number
@@ -16,20 +31,7 @@ export interface OverlayOptions {
   /**
    * template use event name
    */
-  events?: {
-    /**
-   * reject event name used by the template
-   *
-   * @default 'reject'
-   */
-    reject?: string
-    /**
-   * resolve event name used by the template
-   *
-   * @default 'resolve'
-   */
-    resolve?: string
-  }
+  events?: OverlayEvents
   /**
    * whether to automatically handle components based on visible and duration
    *

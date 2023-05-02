@@ -1,13 +1,10 @@
-import { createImperativePromiser, defineName } from '@overlays/core'
+import { createPromiser, defineName } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
 import type { FC } from 'react'
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import type { ImperativeOverlay, MountOptions } from '@overlays/core'
+import type { ImperativeOverlay, MountOptions, Promiser } from '@overlays/core'
 import { Context } from '../internal'
-
-import type { VisiblePromiseOptions } from './visible'
-import { useVisibleScripts } from './visible'
 
 export type InjectionHolder<Props, Resolved> = [JSX.Element, ImperativeOverlay<Props, Resolved>]
 
@@ -40,23 +37,34 @@ export function useInjectHolder<Props, Resolved = void>(
 export function useRefreshMetadata() {
   const [props, setProps] = useState<any>()
   const [refresh, setRefresh] = useState(false)
-  const { current: options } = useRef<VisiblePromiseOptions>({
-    vanish,
-  })
-  const scripts = useVisibleScripts(options)
+  const [visible, setVisible] = useState(false)
+
+  const promiserRef = useRef<Promiser>()
+
+  const scripts = { resolve, reject, vanish, visible, setVisible }
+
+  function resolve(value?: any) {
+    promiserRef.current?.resolve(value)
+    setVisible(false)
+  }
+  function reject(value?: any) {
+    promiserRef.current?.reject(value)
+    setVisible(false)
+  }
 
   function vanish() {
     setRefresh(false)
     setProps({})
+    reject()
   }
 
   async function callback(props: any) {
-    const promiser = createImperativePromiser()
-    Object.assign(options, { promiser })
+    promiserRef.current = createPromiser()
+
     setProps(props)
     setRefresh(true)
 
-    return promiser.promise
+    return promiserRef.current
   }
 
   return { callback, scripts, props, refresh }

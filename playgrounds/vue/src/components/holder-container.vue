@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { useInjectHolder } from '../../src'
+import { useInjectHolder } from '@overlays/vue'
 import Overlay from './overlay.vue'
 
 const props = withDefaults(defineProps<{
@@ -8,9 +8,11 @@ const props = withDefaults(defineProps<{
   duration?: number
 }>(), { root: undefined })
 
-const [holder, callback] = useInjectHolder<{ title?: string; duration?: number }, string>(Overlay, props)
+const [Holder, callback] = useInjectHolder(Overlay, {
+  root: props.root,
+})
 
-const result = ref<string>()
+const result = ref<any>()
 
 async function getModalValue() {
   try {
@@ -24,10 +26,11 @@ async function getModalValue() {
 
 <template>
   <div class="container">
-    <div class="modal__open" @click="getModalValue()">
+    <button class="modal__open" @click="getModalValue()">
       Open Modal
-    </div>
-    <component :is="holder" />
+    </button>
+    -
+    <component :is="Holder" />
     <span class="modal__value">
       {{ result }}
     </span>
