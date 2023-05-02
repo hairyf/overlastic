@@ -17,6 +17,7 @@ async function getModalValue() {
     result.value = await callback({ title: 'holder-modal-title', duration: props.duration })
   }
   catch (error: any) {
+    console.log(error)
     result.value = error
   }
 }

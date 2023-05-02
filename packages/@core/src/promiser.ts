@@ -26,3 +26,22 @@ export function createImperativePromiser<T = void>() {
   promiser.promise.reject = allowed
   return promiser as ImperativePromiser<T>
 }
+
+export function createPromiserV2<T = void>(): Promise<T> & { resolve: (value: T) => void; reject: Function } {
+  let resolve: any, reject: any
+
+  const promise = new Promise<any>((_resolve, _reject) => {
+    resolve = _resolve
+    reject = _reject
+  }) as unknown as any
+
+  promise.resolve = (v: any) => {
+    resolve(v)
+    return promise
+  }
+  promise.reject = (v: any) => {
+    reject(v)
+    return promise
+  }
+  return promise
+}
