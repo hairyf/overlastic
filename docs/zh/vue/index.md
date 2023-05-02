@@ -1,4 +1,4 @@
-# Getting Started
+# @overlays/vue
 
 @overlays/vue 用于在 Vue3 中定义 Overlays 组件，并支持命令式与声明式的使用！
 

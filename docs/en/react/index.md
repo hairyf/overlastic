@@ -1,4 +1,4 @@
-# Getting Started
+# @overlays/react
 
 ## Install
 

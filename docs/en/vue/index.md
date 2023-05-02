@@ -1,4 +1,4 @@
-# Getting Started
+# @overlays/vue
 
 @overlays/vue is used to define Overlay components in Vue3 and supports both imperative and declarative usage!
 
