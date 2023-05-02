@@ -16,7 +16,7 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: 'Constructor', link: '/en/core/functions/constructor' },
         { text: 'Promiser', link: '/en/core/functions/promiser' },
-        { text: 'Globals', link: '/en/core/functions/globals' },
+        { text: 'Globals', link: '/en/core/functions/defines' },
       ],
     },
     {
