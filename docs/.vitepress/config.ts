@@ -14,9 +14,10 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Packages',
       items: [
-        { text: '@overlays/svelte', link: '/en/core/svelte/' },
+        { text: '@overlays/element', link: '/en/core/element/' },
         { text: '@overlays/vue', link: '/en/vue/' },
         { text: '@overlays/react', link: '/en/react/' },
+        { text: '@overlays/svelte', link: '/en/core/svelte/' },
       ],
     },
     {
@@ -30,11 +31,11 @@ const sidebar: DefaultTheme.Sidebar = {
   ],
   '/en/vue/': [
     {
-      text: 'Guide',
+      text: '@overlays/vue',
       items: [
         { text: 'Get Started', link: '/en/vue/' },
         { text: 'Devtools', link: '/en/vue/devtools' },
-        { text: 'Vue2 Support', link: '/en/vue/vue2' },
+        { text: 'Vue2', link: '/en/vue/vue2' },
       ],
     },
     {
@@ -56,7 +57,7 @@ const sidebar: DefaultTheme.Sidebar = {
   ],
   '/en/react/': [
     {
-      text: 'Guide',
+      text: '@overlays/react',
       items: [
         { text: 'Get Started', link: '/en/react/' },
       ],
@@ -89,9 +90,10 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Packages',
       items: [
-        { text: '@overlays/svelte', link: '/en/core/svelte/' },
+        { text: '@overlays/element', link: '/en/core/element/' },
         { text: '@overlays/vue', link: '/zh/vue/' },
         { text: '@overlays/react', link: '/zh/react/' },
+        { text: '@overlays/svelte', link: '/en/core/svelte/' },
       ],
     },
     {
@@ -105,11 +107,11 @@ const sidebar: DefaultTheme.Sidebar = {
   ],
   '/zh/vue/': [
     {
-      text: 'Guide',
+      text: '@overlays/vue',
       items: [
         { text: 'Get Started', link: '/zh/vue/' },
         { text: 'Devtools', link: '/zh/vue/devtools' },
-        { text: 'Vue2 Support', link: '/zh/vue/vue2' },
+        { text: 'Vue2', link: '/zh/vue/vue2' },
       ],
     },
     {
@@ -131,7 +133,7 @@ const sidebar: DefaultTheme.Sidebar = {
   ],
   '/zh/react/': [
     {
-      text: 'Guide',
+      text: '@overlays/react',
       items: [
         { text: 'Get Started', link: '/zh/react/' },
       ],

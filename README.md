@@ -31,9 +31,10 @@ A create model/dialog/popup library
 
 ## Packages
 
-- [@overlays/svelte](https://unoverlays.vercel.app/en/core/svelte/)
+- [@overlays/element](https://unoverlays.vercel.app/en/core/element/)
 - [@overlays/vue](https://unoverlays.vercel.app/en/vue/)
 - [@overlays/react](https://unoverlays.vercel.app/en/react/)
+- [@overlays/svelte](https://unoverlays.vercel.app/en/core/svelte/)
 - [@overlays/core](https://unoverlays.vercel.app/en/core/functions/constructor.html)
 
 ## Devtools

@@ -19,7 +19,6 @@ yarn add @overlays/svelte
 
 ### Step 1: Define Component
 
-overlays is suitable for most components. Using useOverlay can provide finer control over the component process.
 
 ```svelte
 <script lang="ts">

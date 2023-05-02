@@ -83,6 +83,12 @@ importers:
 
   packages/@core: {}
 
+  packages/@element:
+    dependencies:
+      '@overlays/core':
+        specifier: workspace:^
+        version: link:../@core
+
   packages/@react:
     dependencies:
       '@overlays/core':

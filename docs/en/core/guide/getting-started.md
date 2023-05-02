@@ -12,9 +12,10 @@ overlays is a unified plugin for building overlays that allows the creation of c
 
 ## Packages
 
-- [@overlays/svelte](/en/core/svelte/)
+- [@overlays/element](/en/core/element/)
 - [@overlays/vue](/en/vue/)
 - [@overlays/react](/en/react/)
+- [@overlays/svelte](/en/core/svelte/)
 - [@overlays/core](/en/core/functions/constructor.html)
 
 ## Devtools
