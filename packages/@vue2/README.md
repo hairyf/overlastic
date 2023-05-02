@@ -79,7 +79,7 @@ import { renderOverlay } from '@overlays/vue'
 import OverlayComponent from './overlay.vue'
 
 const value = await renderOverlay(OverlayComponent, {
-  props: { title: 'useOverlay' }
+  title: 'useOverlay'
 })
 // value === "useOverlay:confirmed"
 ```

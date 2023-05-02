@@ -56,7 +56,7 @@ import { renderOverlay } from '@overlays/react'
 import { OverlayComponent } from './overlay'
 
 const value = await renderOverlay(OverlayComponent, {
-  props: { title: 'useOverlay' }
+  title: 'useOverlay'
 })
 // value === "useOverlay:confirmed"
 ```

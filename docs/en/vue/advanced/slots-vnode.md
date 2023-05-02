@@ -49,8 +49,6 @@ const { visible, /* ... */ } = useOverlay()
 
 ```ts
 const result = await renderOverlay(Component, {
-  props: {
-    title: h('div', 'You Content')
-  }
+  title: h('div', 'You Content')
 })
 ```

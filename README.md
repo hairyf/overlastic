@@ -28,8 +28,9 @@ Unified Overlays is a unified plugin for building overlays that allows the creat
 
 ## Packages
 
-- [@overlays/vue](https://unoverlays.vercel.app/en/vue/) - Use Unified Overlays to create overlays in Vue app.
-- [@overlays/react](https://unoverlays.vercel.app/en/react/) - Use Unified Overlays to create overlays in React app.
+- [@overlays/vue](https://unoverlays.vercel.app/en/vue/) - Use @overlays to create overlays in Vue app.
+- [@overlays/react](https://unoverlays.vercel.app/en/react/) - Use @overlays to create overlays in React app.
+- [@overlays/svelte](https://unoverlays.vercel.app/en/svelte/) - Use @overlays to create overlays in Svelte app.
 - [@overlays/core](https://unoverlays.vercel.app/en/core/functions/constructor.html) - Quick adaptation and creation of applications
 
 ## Devtools
@@ -83,9 +84,7 @@ const result = await callback(props)
 ---
 
 ```ts
-const result = renderOverlay(OverlayComponent, {
-  props
-})
+const result = renderOverlay(OverlayComponent, props)
 ```
 
 # License
