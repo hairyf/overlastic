@@ -3,9 +3,9 @@
 If you are using Vue2, you can install the `@overlays/vue2` and use mixins to pass properties to components. Here's an example:
 
 ```ts
-import { useOverlayMeta } from '@overlays/vue2'
+import { useOverlay } from '@overlays/vue2'
 export default {
-  mixins: [useOverlayMeta({ duration: 1000 })],
+  mixins: [useOverlay({ duration: 1000 })],
   methods: {
     onClick() {
       // use this.$visible

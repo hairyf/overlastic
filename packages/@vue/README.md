@@ -33,13 +33,13 @@ app.use(unoverlay)
 
 ### Step 1: Define Component
 
-overlays is suitable for most components. Using useOverlayMeta can provide finer control over the component process.
+overlays is suitable for most components. Using useOverlay can provide finer control over the component process.
 
 ```vue
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue'
-import { useOverlayMeta } from '@overlays/vue'
+import { useOverlay } from '@overlays/vue'
 const props = defineProps({
   title: String,
 })
@@ -48,8 +48,8 @@ const props = defineProps({
 // There will be event prompts when used in the component
 defineEmits(['reject', 'resolve'])
 
-// Get Overlay information from useOverlayMeta
-const { visible, resolve, reject } = useOverlayMeta({
+// Get Overlay information from useOverlay
+const { visible, resolve, reject } = useOverlay({
   // Duration of popup layer duration to avoid premature destruction of the component
   duration: 1000,
 })

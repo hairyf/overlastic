@@ -4,10 +4,10 @@
 
 ```vue
 <script setup>
-import { useOverlayMeta } from '@overlays/vue'
+import { useOverlay } from '@overlays/vue'
 defineProps({ title: String })
 
-const { visible, /* ... */ } = useOverlayMeta()
+const { visible, /* ... */ } = useOverlay()
 </script>
 
 <template>
@@ -29,12 +29,12 @@ const { visible, /* ... */ } = useOverlayMeta()
 ```vue
 <script lang="ts" setup>
 import { Component, VNode } from 'vue'
-import { FieldRender, useOverlayMeta } from '@overlays/vue'
+import { FieldRender, useOverlay } from '@overlays/vue'
 defineProps<{
   title?: String | VNode | Component
 }>()
 
-const { visible, /* ... */ } = useOverlayMeta()
+const { visible, /* ... */ } = useOverlay()
 </script>
 
 <template>

@@ -16,12 +16,12 @@ yarn add @overlays/react
 
 ### Step 1: Define Component
 
-overlays is suitable for most components, and using useOverlayMeta allows for finer control over the component process.
+overlays is suitable for most components, and using useOverlay allows for finer control over the component process.
 
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
-  const { visible, resolve, reject } = useOverlayMeta({
+  const { visible, resolve, reject } = useOverlay({
     // Duration of overlay duration, helps prevent premature component destruction
     duration: 1000,
   })

@@ -1,7 +1,7 @@
-import { useOverlayMeta } from '../src'
+import { useOverlay } from '../src'
 
 describe('@overlays/utils:composable', () => {
   it('use hooks in not setup', () => {
-    expect(() => useOverlayMeta()).toThrowError()
+    expect(() => useOverlay()).toThrowError()
   })
 })

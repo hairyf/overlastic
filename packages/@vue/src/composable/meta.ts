@@ -65,7 +65,7 @@ export interface OverlayMeta {
  * @field visible control overlay display and hide
  * @returns
  */
-export function useOverlayMeta(options: OverlayOptions = {}) {
+export function useOverlay(options: OverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
   const meta = inject(OverlayMetaKey, useDeclarative(model, options))
   const dec = Reflect.get(meta, 'in_dec')
@@ -94,7 +94,7 @@ export function useDeclarative(model: string, options: OverlayOptions = {}) {
   const instance = getCurrentInstance()
 
   if (!instance)
-    throw new Error('Please use useOverlayMeta in component setup')
+    throw new Error('Please use useOverlay in component setup')
 
   const visible = useVModel(instance.props, model, instance.emit, { passive: true }) as Ref<boolean>
 
