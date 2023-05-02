@@ -14,11 +14,11 @@ A create model/dialog/popup library
   </a>
 </p>
 
-> [中文](./README_CN.md) | English or see [docs](https://overlays.vercel.app)
+<p align="center">
+  English | <a href="https://github.com/hairyf/unoverlays/blob/master/README_CN.md">Chinese</a> | <a href="https://overlays.vercel.app/zh/">docs</a>
+</p>
 
-Unified Overlays is a unified plugin for building overlays that allows the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
-
-functionality Simplify the create message or dialog andcall your UI as a promise
+    Unified Overlays are used to create callback (imperative) methods for components and also support declarative use of Vue, React, and other components.
 
 ###### Features
 

@@ -14,9 +14,11 @@ A create model/dialog/popup library
   </a>
 </p>
 
-> [English](./README.md) | 中文 or see [docs](https://overlays.vercel.app/zh/)
+<p align="center">
+  <a href="https://github.com/hairyf/unoverlays">English</a> | Chinese | <a href="https://overlays.vercel.app/zh/">docs</a>
+</p>
 
-Unified Overlays 是构建弹出层的插件，创建回调（命令式）方法、以及在 Vue Template 或 React Jsx 中（声明式）使用。
+    Unified Overlays 用于创建组件的回调（命令式）方法、并同时支持 Vue、React 等组件的声明式使用。
 
 ###### Features
 
