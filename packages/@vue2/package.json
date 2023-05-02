@@ -1,7 +1,7 @@
 {
   "name": "@overlays/vue2",
   "type": "module",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "homepage": "https://github.com/hairyf/overlays#readme",
   "repository": {
@@ -39,7 +39,7 @@
   },
   "peerDependencies": {
     "@vue/composition-api": "^1.0.0-rc.1",
-    "vue": "^2.0.0 || >=3"
+    "vue": "^0.0.0"
   },
   "peerDependenciesMeta": {
     "@vue/composition-api": {
@@ -52,6 +52,6 @@
     "pascal-case": "latest"
   },
   "devDependencies": {
-    "vue": "^2.0.0"
+    "vue": "^0.0.0"
   }
 }

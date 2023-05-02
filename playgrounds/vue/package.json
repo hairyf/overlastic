@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^0.0.0"
   },
   "devDependencies": {
     "@overlays/vue": "workspace:^",

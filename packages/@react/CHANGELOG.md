@@ -1,5 +1,13 @@
 # @overlays/react
 
+## 0.1.2
+
+### Patch Changes
+
+- release v0.1.2 versions
+- Updated dependencies
+  - @overlays/core@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes
