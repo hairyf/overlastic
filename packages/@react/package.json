@@ -1,7 +1,7 @@
 {
   "name": "@overlays/react",
   "type": "module",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "license": "MIT",
   "homepage": "https://github.com/hairyf/unoverlays#readme",
   "repository": {
