@@ -11,6 +11,6 @@ export function defineName(id = UnifiedOverlayProviderID, auto = true) {
   return id
 }
 
-export function defineIndex(id = UnifiedOverlayProviderID) {
+export function getIndex(id = UnifiedOverlayProviderID) {
   return context.spaces[id] || 0
 }

@@ -14,10 +14,10 @@ hero:
       link: /en/core/guide/getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/hairyf/overlays
-  # image:
-  #   src: /logo.png
-  #   alt: overlays
+      link: https://github.com/hairyf/unoverlays
+  image:
+    src: /circle.svg
+    alt: Overlays
 features:
   - title: Based on Hooks
     details: It has good expansibility, allowing you to use it without any constraints.

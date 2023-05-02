@@ -1,6 +1,6 @@
 export const UnifiedOverlayProviderID = 'unified-overlay'
 
-export function defineGlobalNode(id = '', root: HTMLElement | false = document.body) {
+export function defineGlobalElement(id = '', root: HTMLElement | false = document.body) {
   const el = document.createElement('div')
 
   if (id)

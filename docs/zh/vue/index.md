@@ -52,10 +52,6 @@ const props = defineProps({
   title: String,
 })
 
-// 定义组件中使用的事件（可选）
-// 在组件中使用会有事件提示
-defineEmits(['reject', 'resolve'])
-
 // 从 useOverlayMeta 获取 Overlay 信息
 const { visible, resolve, reject } = useOverlayMeta({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁

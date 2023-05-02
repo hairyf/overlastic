@@ -42,7 +42,7 @@ describe('@overlays/react:imperative-holder', () => {
     wrapper.unmount()
   })
 
-  it.skip('mount:duration', async () => {
+  it('mount:duration', async () => {
     const wrapper = mount(HolderContainer, {
       props: { duration: 1000 },
     })

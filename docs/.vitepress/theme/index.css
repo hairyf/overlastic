@@ -1,5 +1,8 @@
 @media (min-width: 960px) {
-  .image-src {
-    max-width: 500px !important;
+  .container .image {
+    overflow: hidden;
+  }
+  .image-container {
+    transform: translate(80px, 10px) !important;
   }
 }

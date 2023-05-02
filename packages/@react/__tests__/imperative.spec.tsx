@@ -68,7 +68,7 @@ describe('@overlays/react:imperative', () => {
     await toModalExists(false)
   })
 
-  it.skip('emit:reject', async () => {
+  it('emit:reject', async () => {
     const callback = defineOverlay<unknown, string>(Overlay)
 
     callback()
