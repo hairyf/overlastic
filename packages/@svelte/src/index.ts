@@ -1,5 +1,4 @@
 export * from './define'
 export * from './types'
-export * from './internal'
 export * from './composable'
 export * from './components'
