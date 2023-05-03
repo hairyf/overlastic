@@ -23,9 +23,14 @@ Create custom elements in the form of functions and return them.
 
 ```js
 // overlay.ts
-function Component(props, { resolve }) {
+function Component(props) {
   const element = document.createElement('div')
   element.innerHTML = props.title
+
+  const { resolve, reject } = useOverlay({
+    // Duration of overlays duration to avoid premature destruction of the component
+    duration: 1000,
+  })
 
   // Add events that cause the overlays to end
   element.onclick = function () {
@@ -76,8 +81,13 @@ const callback1 = defineOverlay('my-custom-element')
 
 callback1({/* props(attrs) */})
 
-const CustomComponent = (props, { resolve, promiser }) => {
+const CustomComponent = (props) => {
   const customElement = document.createElement('my-custom-element')
+
+  const { resolve, reject } = useOverlay({
+    duration: 1000,
+  })
+
   // ...
   return customElement
 }

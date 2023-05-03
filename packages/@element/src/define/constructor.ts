@@ -1,8 +1,8 @@
-import { createConstructor } from '@overlays/core'
-import type { Context } from '../types'
+import { createConstructor, delay } from '@overlays/core'
+import { clearOptions, clearTrigger, setupTrigger, useOptions } from '../internal'
 
 export interface EFComponent<T = any> {
-  (props: T, context: Context): HTMLElement
+  (props: T): HTMLElement
 }
 
 export type ElementComponent = HTMLElement | EFComponent | string
@@ -14,19 +14,29 @@ export const constructor = createConstructor<ElementComponent>((Inst, props, opt
     container.remove()
   }
 
-  const inst = parseElement(Inst, props, {
+  setupTrigger({
     resolve: promiser.resolve,
     reject: promiser.reject,
     promiser,
     vanish,
   })
 
+  const inst = parseElement(Inst, props)
+  const { duration = 0 } = useOptions()
+
+  clearTrigger()
+  clearOptions()
+
+  promiser.finally(() => {
+    delay(duration).then(vanish)
+  })
+
   container.append(inst)
 })
 
-function parseElement(component: ElementComponent, props: Record<string, any>, context: Context) {
+function parseElement(component: ElementComponent, props: Record<string, any>) {
   if (typeof component === 'function')
-    return component(props, context)
+    return component(props)
 
   const element: HTMLElement
    = typeof component === 'string'
