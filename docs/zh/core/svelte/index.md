@@ -1,4 +1,4 @@
-# @overlays/svelte
+# Getting Started
 
 create imperative overlays in the svelte application, supporting context inheritance!
 
@@ -19,36 +19,30 @@ yarn add @overlays/svelte
 
 ### Step 1: Define Component
 
-overlays is suitable for most components. Using useOverlay can provide finer control over the component process.
 
 ```svelte
 <script lang="ts">
-  import { delay } from "@overlays/core";
-  import { injectKey, Context } from "@overlays/core";
-  import { getContext, onMount } from "svelte";
+  import { useOverlay, Overlay } from "@overlays/svelte";
   import { fly } from "svelte/transition";
   
   export let title: number
+  export let duration = 200
 
-  // obtain controller for overlays
-  let { visible, promiser, vanish, resolve, reject } = getContext<Context>(injectKey);
+  // duration of overlay duration, helps prevent premature component destroy
+  const { resolve, reject } = useOverlay({ duration })
 
-  // modify variables and wait for destruction when promise ends
-  promiser.finally(async () => {
-    visible = false;
-    await delay(200);
-    vanish();
-  });
-
-  // initialize display overlays
-  onMount(() => (visible = true));
+  function onClick() {
+    resolve(`${title}:confirmed`)
+  }
 </script>
 
-{#if visible}
-  <div transition:fly={{ opacity: 0, duration: 200 }} on:click={() => resolve(`${title}:confirmed`)}>
-    { title }
+<Overlay>
+  <div transition:fly={{ opacity: 0, duration }} on:click={onClick}>
+    <slot name="title">
+      { title }
+    </slot>
   </div>
-{/if}
+</Overlay>
 ```
 
 ### Step 2: Create Overlay
@@ -76,4 +70,33 @@ const value = await renderOverlay(OverlayComponent, {
   title: 'useOverlay'
 })
 // value === "useOverlay:confirmed"
+```
+
+## Controlled manner
+
+By default, you do not need to control the display and hiding of the `visible` variable. The value is controlled by the component `Overlay`, and you can pass in `visible` to control the display
+
+
+```svelte
+<script lang="ts">
+  import { useOverlay, Overlay } from "@overlays/svelte";
+
+  let visible = false
+
+  const { resolve, reject, promiser, vanish } = useOverlay({
+    // close the transition duration, at this point you need to manually destroy it
+    duration: false,
+    // cancel setting visible to true immediately
+    immediate: false
+  })
+
+  // Manually set vanish (when promise ends)
+  promiser.finally(() => vanish())
+</script>
+
+<Overlay bind:visible={visible}>
+  <div on:click={() => resolve(`${title}:confirmed`)}>
+    ...
+  </div>
+</Overlay>
 ```
