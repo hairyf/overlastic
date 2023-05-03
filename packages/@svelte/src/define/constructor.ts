@@ -1,5 +1,5 @@
 import { createConstructor } from '@overlays/core'
-import { injectKey } from './inject'
+import { injectOverlayKey } from '../internal'
 
 export interface SMountOptions {
   /** current app context */
@@ -16,7 +16,7 @@ export const constructor = createConstructor<any, SMountOptions>((Inst, props, o
 
   const context = new Map([..._context.entries()])
 
-  context.set(injectKey, {
+  context.set(injectOverlayKey, {
     resolve: promiser.resolve,
     reject: promiser.reject,
     promiser,

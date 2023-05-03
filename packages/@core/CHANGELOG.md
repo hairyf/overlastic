@@ -1,5 +1,11 @@
 # @overlays/core
 
+## 0.3.0
+
+### Minor Changes
+
+- chore(release): release v0.3.0 versions
+
 ## 0.2.2
 
 ### Patch Changes

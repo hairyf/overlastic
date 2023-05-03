@@ -1,26 +1,22 @@
 <script lang="ts">
-  import { delay } from "@overlays/core";
-  import { injectKey, type Context } from "@overlays/svelte";
-  import { getContext, onMount } from "svelte";
+  import { useOverlay, Overlay } from "@overlays/svelte";
   import { fly } from "svelte/transition";
   
   export let title = 'Title'
+  export let duration = 200
 
-  let { visible, promiser, vanish, resolve, reject } = getContext<Context>(injectKey);
+  // duration of overlay duration, helps prevent premature component destroy
+  const { resolve, reject } = useOverlay({ duration })
 
-  promiser.finally(async () => {
-    visible = false;
-    await delay(200);
-    vanish();
-  });
-
-  onMount(() => (visible = true));
 </script>
-
-{#if visible}
-  <div transition:fly={{ opacity: 0, duration: 200 }} class="base-modal__mask">
+<Overlay>
+  <div transition:fly={{ opacity: 0, duration }} class="base-modal__mask">
     <div class="base-modal__content">
-      <div class="base-modal__title">{title}</div>
+      <div class="base-modal__title">
+        <slot name="title">
+          {title}
+        </slot>
+      </div>
       <slot />
       <div class="base-modal__control">
         <button class="modal__confirm" on:click={() => resolve()}>resolve</button>
@@ -28,7 +24,7 @@
       </div>
     </div>
   </div>
-{/if}
+</Overlay>
 
 <style scoped>
   .base-modal__mask {
