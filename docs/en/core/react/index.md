@@ -1,5 +1,7 @@
 # @overlays/react
 
+@overlays/react is used to define Overlay components in react and supports both imperative and declarative usage!
+
 ## Install
 
 With pnpm: 
