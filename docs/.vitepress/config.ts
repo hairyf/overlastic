@@ -1,12 +1,15 @@
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 
-const packages = [
-  { text: '@overlays/element', link: '/en/core/element/' },
-  { text: '@overlays/react', link: '/en/core/react/' },
-  { text: '@overlays/vue', link: '/en/vue/' },
-  { text: '@overlays/svelte', link: '/en/core/svelte/' },
-]
+function getPackageLinks(lang: string) {
+  const packages = [
+    { text: '@overlays/element', link: `/${lang}/core/element/` },
+    { text: '@overlays/react', link: `/${lang}/core/react/` },
+    { text: '@overlays/vue', link: `/${lang}/vue/` },
+    { text: '@overlays/svelte', link: `/${lang}/core/svelte/` },
+  ]
+  return packages
+}
 
 const sidebar: DefaultTheme.Sidebar = {
   '/en/core/': [
@@ -20,12 +23,7 @@ const sidebar: DefaultTheme.Sidebar = {
     },
     {
       text: 'Packages',
-      items: [
-        { text: '@overlays/element', link: '/en/core/element/' },
-        { text: '@overlays/react', link: '/en/core/react/' },
-        { text: '@overlays/vue', link: '/en/vue/' },
-        { text: '@overlays/svelte', link: '/en/core/svelte/' },
-      ],
+      items: getPackageLinks('en'),
     },
     {
       text: 'Core Functions',
@@ -66,7 +64,7 @@ const sidebar: DefaultTheme.Sidebar = {
     },
     {
       text: 'Packages',
-      items: packages,
+      items: getPackageLinks('zh'),
     },
     {
       text: 'Core Functions',
@@ -105,7 +103,7 @@ const nav: DefaultTheme.NavItem[] = [
   },
   {
     text: 'Packages',
-    items: packages,
+    items: getPackageLinks('en'),
   },
   {
     text: 'Github',
