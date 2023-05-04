@@ -1,4 +1,4 @@
-# Component devtools
+# Devtools
 
 When using defineOverlay, a Vue sub-application is created, which is different from the main application and can be viewed and debugged in [Vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN).
 

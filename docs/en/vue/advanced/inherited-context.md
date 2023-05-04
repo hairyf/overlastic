@@ -1,6 +1,17 @@
 # Inherited context 
 
-If you register overlays globally, it will automatically inherit your application context, and you can also pass in the context with finer control.
+You can register overlays globally, which will inherit the application context for all popups.
+
+```ts
+// main.js
+import { createApp } from 'vue'
+import unoverlay from '@overlays/vue'
+
+const app = createApp({})
+app.use(unoverlay)
+```
+
+and you can also pass in the context with finer control.
 
 ```ts
 import { getCurrentInstance } from 'vue-demi'

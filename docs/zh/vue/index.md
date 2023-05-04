@@ -22,22 +22,7 @@ With yarn:
 yarn add @overlays/vue
 ```
 
-## Global
-
-您可以全局注册 overlays, 这将为所有的弹出层继承应用上下文。
-
-```ts
-// main.js
-import { createApp } from 'vue'
-import unoverlay from '@overlays/vue'
-
-const app = createApp({})
-app.use(unoverlay)
-```
-
 ## Usage
-
-
 
 ### 步骤.1: Define Component
 
@@ -72,10 +57,10 @@ const { visible, resolve, reject } = useOverlay({
 
 ```ts
 import { defineOverlay } from '@overlays/vue'
-import OverlayComponent from './overlay.vue'
+import Overlay from './overlay.vue'
 
 // 转换为命令式回调
-const callback = defineOverlay(OverlayComponent)
+const callback = defineOverlay(Overlay)
 // 调用组件并获取 resolve 回调的值
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
@@ -85,10 +70,70 @@ const value = await callback({ title: 'callbackOverlay' })
 
 ```ts
 import { renderOverlay } from '@overlays/vue'
-import OverlayComponent from './overlay.vue'
+import Overlay from './overlay.vue'
 
-const value = await renderOverlay(OverlayComponent, {
+const value = await renderOverlay(Overlay, {
   title: 'useOverlay'
 })
 // value === "useOverlay:confirmed"
+```
+
+## Define Component
+
+使用 `@overlays/vue` 创建的组件，除了支持使用命令式（Imperative）方法调用外，还支持在 `<template>` 中使用，这是一个可选项，在迁移旧组件时非常有用。
+
+在 `<template>` 中使用，需要显式定义 `modal` 与 `event`
+
+```vue
+<!-- overlay.vue -->
+<script setup>
+import { defineEmits, defineProps } from 'vue-demi'
+import { useOverlay } from '@overlays/vue'
+const props = defineProps({
+  title: String,
+  // 在 Template 中使用，需要定义 v-modal 所使用的字段（默认对应 visible）
+  visible: Boolean
+})
+
+// 定义组件中使用的事件类型（默认：reject、resolve）
+defineEmits(['reject', 'resolve'])
+
+const { visible, resolve, reject } = useOverlay()
+</script>
+```
+
+参数定义后，即可在 template 中使用弹出层组件。
+
+```vue
+<script setup>
+import Overlay from './overlay.vue'
+const visible = ref(false)
+
+function resolve(value) {
+  // ...
+}
+function reject(value) {
+  // ...
+}
+</script>
+
+<template>
+  <Overlay v-model:visible="visible" title="Hairyf" @resolve="resolve" @reject="reject" />
+</template>
+```
+
+如果您想替换为其他的字段与事件名，可以更改 `events` 与 `model` 配置。
+
+```ts
+const props = defineProps({
+  title: String,
+  modalValue: Boolean
+})
+
+defineEmits(['nook', 'ok'])
+
+const { visible, resolve, reject } = useOverlay({
+  events: { resolve: 'ok', reject: 'nook' },
+  model: 'modalValue',
+})
 ```

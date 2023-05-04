@@ -1,4 +1,4 @@
-# Component devtools
+# Devtools
 
 在使用 `defineOverlay` 时会创建一个 Vue 子应用，这个应用区别与主应用，可在 [Vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN) 中查看与调试组件。 
 
