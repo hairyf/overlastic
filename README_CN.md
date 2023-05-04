@@ -31,8 +31,8 @@ A create model | dialog | popup library
 ## packages
 
 - [@overlays/element](https://unoverlays.vercel.app/zh/core/element/)
+- [@overlays/react](https://unoverlays.vercel.app/zh/core/react/)
 - [@overlays/vue](https://unoverlays.vercel.app/zh/vue/)
-- [@overlays/react](https://unoverlays.vercel.app/zh/react/)
 - [@overlays/svelte](https://unoverlays.vercel.app/zh/core/svelte/)
 - [@overlays/core](https://unoverlays.vercel.app/zh/core/functions/constructor.html)
 
