@@ -33,7 +33,7 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: '@overlays/vue',
       items: [
-        { text: 'Getting Started', link: '/en/vue/' },
+        { text: 'Started', link: '/en/vue/' },
         { text: 'Devtools', link: '/en/vue/devtools' },
         { text: 'Vue 2', link: '/en/vue/vue2' },
       ],
@@ -79,7 +79,7 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: '@overlays/vue',
       items: [
-        { text: '开始使用', link: '/zh/vue/' },
+        { text: '快速开始', link: '/zh/vue/' },
         { text: '开发调试', link: '/zh/vue/devtools' },
         { text: 'Vue 2', link: '/zh/vue/vue2' },
       ],

@@ -5,7 +5,7 @@
 <h1 align="center">Unified Overlays</h1>
 
 <p align="center">
-A create model/dialog/popup library
+A create model | dialog | popup library
 </p>
 
 <p align="center">
@@ -54,7 +54,7 @@ Components created by Unified Overlays support Devtools for their corresponding 
 
 Creating Model classes repetitive and time-consuming. When reusing a component that uses a Model class, common fields such as reject, resolve, and visible need to be defined repeatedly. Additionally, controlling the Model process (`clear data` -> `open model` -> `edit data` -> `onConfirm` -> `save data`) can lead to a lot of redundant code, especially for frequently used components like an image selector.
 
-overlays simplifies Modal creation by unifying the redundant processes and state management. It can effectively create imperative components, and can still be used declaratively.
+Unified Overlays simplifies modal creation by unifying the redundant processes and state management. It can effectively create imperative components, and can still be used declaratively.
 
 ## Install
 
@@ -81,14 +81,14 @@ const { visible, resolve, reject } = useOverlay({
 Use `defineOverlay|renderOverlay` to convert to a callback (imperative) method.
 
 ```ts
-const callback = defineOverlay(OverlayComponent)
+const callback = defineOverlay(Component)
 const result = await callback(props)
 ```
 
 ---
 
 ```ts
-const result = renderOverlay(OverlayComponent, props)
+const result = renderOverlay(Component, props)
 ```
 
 # License

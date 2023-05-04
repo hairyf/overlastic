@@ -5,7 +5,7 @@
 <h1 align="center">Unified Overlays</h1>
 
 <p align="center">
-A create model/dialog/popup library
+A create model | dialog | popup library
 </p>
 
 <p align="center">
@@ -78,14 +78,14 @@ const { visible, resolve, reject } = useOverlay({
 使用 `defineOverlay|renderOverlay` 转换为命令式回调（callback）
 
 ```ts
-const callback = defineOverlay(OverlayComponent)
+const callback = defineOverlay(Component)
 const result = await callback(props)
 ```
 
 ---
 
 ```ts
-const result = renderOverlay(OverlayComponent, props)
+const result = renderOverlay(Component, props)
 ```
 
 # License
