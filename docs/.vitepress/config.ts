@@ -3,8 +3,8 @@ import { defineConfig } from 'vitepress'
 
 const packages = [
   { text: '@overlays/element', link: '/en/core/element/' },
-  { text: '@overlays/react', link: '/zh/core/react/' },
-  { text: '@overlays/vue', link: '/zh/vue/' },
+  { text: '@overlays/react', link: '/en/core/react/' },
+  { text: '@overlays/vue', link: '/en/vue/' },
   { text: '@overlays/svelte', link: '/en/core/svelte/' },
 ]
 
