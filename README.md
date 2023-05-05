@@ -5,7 +5,7 @@
 <h1 align="center">Unified Overlays</h1>
 
 <p align="center">
-A create model | dialog | popup library
+A create model | dialog | popup promise deferred library
 </p>
 
 <p align="center">

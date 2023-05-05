@@ -20,7 +20,7 @@ export type MountConstructorOptions<Opts> = Opts & {
    */
   container: HTMLDivElement
   /**
-   * Promisor, used to mark the completion and end of an instance
+   * Promise, used to mark the completion and end of an instance
    */
   deferred: Deferred
   /**

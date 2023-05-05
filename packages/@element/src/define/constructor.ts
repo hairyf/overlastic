@@ -27,9 +27,7 @@ export const constructor = createConstructor<ElementComponent>((Inst, props, opt
   clearTrigger()
   clearOptions()
 
-  deferred.finally(() => {
-    delay(duration).then(vanish)
-  })
+  deferred.finally(() => delay(duration).then(vanish))
 
   container.append(inst)
 })

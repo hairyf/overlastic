@@ -1,4 +1,4 @@
-import type { Deferred } from '../utils'
+import type { Deferred } from '../deferred'
 
 export interface GlobalMountOptions {
   /**
