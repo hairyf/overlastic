@@ -1,12 +1,12 @@
-import type { Promiser } from '@overlays/core'
+import type { Deferred } from '@overlays/core'
 import mitt from 'mitt'
 export interface VisiblePromiseOptions {
-  promiser?: Promiser
+  deferred?: Deferred
   vanish?: Function
 }
 
 export function createVisibleScripts(options: VisiblePromiseOptions) {
-  const { reject: _reject, resolve: _resolve } = options.promiser || {}
+  const { reject: _reject, resolve: _resolve } = options.deferred || {}
   const { vanish: _vanish } = options
 
   const { on, off, emit } = mitt()
@@ -16,7 +16,7 @@ export function createVisibleScripts(options: VisiblePromiseOptions) {
     _reject?.(value)
   }
   function resolve(this: any, value?: any) {
-    options.promiser?.resolve(value)
+    options.deferred?.resolve(value)
     emit('resolve', value)
     return _resolve?.(value)
   }
@@ -26,9 +26,9 @@ export function createVisibleScripts(options: VisiblePromiseOptions) {
     off('*')
   }
 
-  if (options.promiser) {
-    options.promiser.resolve = resolve as any
-    options.promiser.reject = reject
+  if (options.deferred) {
+    options.deferred.resolve = resolve as any
+    options.deferred.reject = reject
   }
 
   return {

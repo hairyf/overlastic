@@ -1,6 +1,6 @@
 import { defineGlobalElement, defineName, getIndex } from './define'
-import type { Promiser } from './promiser'
-import { createPromiser } from './promiser'
+import type { Deferred } from './deferred'
+import { createDeferred } from './deferred'
 
 import { watchClickPosition } from './events'
 import type { ClickPosition, ImperativeOverlay, MountOptions } from './types'
@@ -22,7 +22,7 @@ export type MountConstructorOptions<Opts> = Opts & {
   /**
    * Promisor, used to mark the completion and end of an instance
    */
-  promiser: Promiser
+  deferred: Deferred
   /**
    * Mouse position during triggering
    */
@@ -43,13 +43,13 @@ export interface OverlaysConstructor<Inst, Opts> {
  * @param mount Trigger Mount
  * @example
  * const constructor = createConstructor<HTMLDivElement, { class: any }>((inst, props, options) => {
- *  const { promiser, container } = options
+ *  const { deferred, container } = options
  *  inst.querySelector('button.confirm').onclick = function () {
- *    promiser.resolve('ok')
+ *    deferred.resolve('ok')
  *    container.remove()
  *  }
  *  inst.querySelector('button.close').onclick = function () {
- *    promiser.reject('close')
+ *    deferred.reject('close')
  *    container.remove()
  *  }
  *  inst.dataset['props'] = JSON.stringify(props)
@@ -60,20 +60,20 @@ export interface OverlaysConstructor<Inst, Opts> {
 export function createConstructor<Inst, Opts = {}>(mount: MountConstructor<Inst, Opts>): OverlaysConstructor<Inst, Opts> {
   function define(instance: Inst, options?: any) {
     function executor(props: any, options?: any) {
-      const promiser = createPromiser()
+      const deferred = createDeferred()
       const name = defineName(options.id, options.autoIncrement)
       const index = getIndex(options.id)
       const container = defineGlobalElement(name, options.root)
       mount(instance, props, Object.assign(options, {
         position: context.position,
         id: name,
-        promiser,
+        deferred,
         index,
         container,
       }))
-      return promiser as Promiser<any>
+      return deferred as Deferred<any>
     }
-    let inst: Promiser<any> | undefined
+    let inst: Deferred<any> | undefined
     function only(props: any, options?: any) {
       if (!inst) {
         inst = executor(props, options)

@@ -8,16 +8,16 @@ export interface EFComponent<T = any> {
 export type ElementComponent = HTMLElement | EFComponent | string
 
 export const constructor = createConstructor<ElementComponent>((Inst, props, options) => {
-  const { container, promiser } = options
+  const { container, deferred } = options
 
   function vanish() {
     container.remove()
   }
 
   setupTrigger({
-    resolve: promiser.resolve,
-    reject: promiser.reject,
-    promiser,
+    resolve: deferred.resolve,
+    reject: deferred.reject,
+    deferred,
     vanish,
   })
 
@@ -27,7 +27,7 @@ export const constructor = createConstructor<ElementComponent>((Inst, props, opt
   clearTrigger()
   clearOptions()
 
-  promiser.finally(() => {
+  deferred.finally(() => {
     delay(duration).then(vanish)
   })
 

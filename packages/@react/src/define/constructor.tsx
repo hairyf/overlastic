@@ -6,12 +6,12 @@ import { useVisibleScripts } from '../composable'
 import { Context, defineProviderComponent } from '../internal'
 
 export const constructor = createConstructor<React.FC<any>>((Inst, props, options) => {
-  const { container, id, promiser } = options
+  const { container, id, deferred } = options
 
   const root = createRoot(container)
 
   const UnifiedOverlayProvider = defineProviderComponent(() => {
-    const scripts = useVisibleScripts({ promiser, vanish })
+    const scripts = useVisibleScripts({ deferred, vanish })
     return (
       <Context.Provider
         value={scripts}

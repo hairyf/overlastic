@@ -83,7 +83,7 @@ By default, you do not need to control the display and hiding of the `visible` v
 
   let visible = false
 
-  const { resolve, reject, promiser, vanish } = useOverlay({
+  const { resolve, reject, deferred, vanish } = useOverlay({
     // close the transition duration, at this point you need to manually destroy it
     duration: false,
     // cancel setting visible to true immediately
@@ -91,7 +91,7 @@ By default, you do not need to control the display and hiding of the `visible` v
   })
 
   // Manually set vanish (when promise ends)
-  promiser.finally(() => vanish())
+  deferred.finally(() => vanish())
 </script>
 
 <Overlay bind:visible={visible}>

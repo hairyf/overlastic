@@ -7,7 +7,7 @@ export interface SMountOptions {
 }
 
 export const constructor = createConstructor<any, SMountOptions>((Inst, props, options) => {
-  const { container, promiser, context: _context = new Map() } = options
+  const { container, deferred, context: _context = new Map() } = options
 
   function vanish() {
     childApp.$destroy()
@@ -17,9 +17,9 @@ export const constructor = createConstructor<any, SMountOptions>((Inst, props, o
   const context = new Map([..._context.entries()])
 
   context.set(injectOverlayKey, {
-    resolve: promiser.resolve,
-    reject: promiser.reject,
-    promiser,
+    resolve: deferred.resolve,
+    reject: deferred.reject,
+    deferred,
     visible: false,
     vanish,
   })

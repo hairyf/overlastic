@@ -1,19 +1,21 @@
 <script lang="ts">
   import { delay } from "@overlays/core";
   import {
-    injectOptionsKey,
-    injectOverlayKey,
     type OverlayOptions,
     type OverlayMeta,
   } from "@overlays/svelte";
+  import {
+    injectOptionsKey,
+    injectOverlayKey,
+  } from '@overlays/svelte/src/internal'
   import { getContext, onMount } from "svelte";
 
   export let visible = false;
 
   const { duration = 0 } = getContext<OverlayOptions>(injectOptionsKey) || {};
-  const { promiser, vanish } = getContext<OverlayMeta>(injectOverlayKey);
+  const { deferred, vanish } = getContext<OverlayMeta>(injectOverlayKey);
 
-  promiser.finally(async () => {
+  deferred.finally(async () => {
     visible = false;
     await delay(duration);
     vanish();

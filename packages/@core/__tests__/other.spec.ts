@@ -1,4 +1,4 @@
-import { allowed, createPromiser, defineGlobalElement, defineName } from '../src'
+import { allowed, createDeferred, defineGlobalElement, defineName } from '../src'
 
 describe('@overlays/core:define', () => {
   it('global', () => {
@@ -24,15 +24,15 @@ describe('@overlays/core:define', () => {
     expect(() => allowed()).toThrowError()
   })
   it('promise:resolve', () => {
-    const promiser = createPromiser<string>()
+    const deferred = createDeferred<string>()
 
-    promiser.resolve('resolve')
-    expect(promiser).resolves.toBe('resolve')
+    deferred.resolve('resolve')
+    expect(deferred).resolves.toBe('resolve')
   })
   it('promise:reject', () => {
-    const promiser = createPromiser<string>()
+    const deferred = createDeferred<string>()
 
-    promiser.reject('reject')
-    expect(promiser).rejects.toBe('reject')
+    deferred.reject('reject')
+    expect(deferred).rejects.toBe('reject')
   })
 })

@@ -1,13 +1,13 @@
 import { ref } from 'vue-demi'
-import type { Promiser } from '@overlays/core'
+import type { Deferred } from '@overlays/core'
 
 export interface VisiblePromiseOptions {
-  promiser: Promiser
+  deferred: Deferred
   vanish?: Function
 }
 
 export function useVisibleScripts(options: VisiblePromiseOptions) {
-  const { reject: _reject } = options.promiser || {}
+  const { reject: _reject } = options.deferred || {}
   const { vanish: _vanish } = options
 
   const visible = ref(false)
@@ -18,9 +18,9 @@ export function useVisibleScripts(options: VisiblePromiseOptions) {
   }
 
   return {
-    resolve: options.promiser.resolve,
-    reject: options.promiser.reject,
-    promiser: options.promiser,
+    resolve: options.deferred.resolve,
+    reject: options.deferred.reject,
+    deferred: options.deferred,
     visible,
     vanish,
   }

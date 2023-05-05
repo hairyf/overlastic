@@ -60,8 +60,8 @@ export interface OverlayMeta {
   visible: boolean
   /** visible dispatch change */
   setVisible: Dispatch<SetStateAction<boolean>>
-  /** current promiser */
-  promiser?: Promise<any>
+  /** current deferred */
+  deferred?: Promise<any>
 }
 
 export function useOverlay(options: OverlayOptions = {}) {
@@ -75,7 +75,7 @@ export function useOverlay(options: OverlayOptions = {}) {
   useMount(() => {
     immediate && meta.setVisible?.(true)
     if (!dec && automatic) {
-      meta.promiser?.finally(async () => {
+      meta.deferred?.finally(async () => {
         meta.setVisible(false)
         await _delay(duration)
         meta.vanish?.()
@@ -103,7 +103,7 @@ export function useDeclarative(options: OverlayOptions = {}) {
     visible: props[model],
     vanish: noop,
     setVisible: noop,
-    promiser: undefined,
+    deferred: undefined,
   }
 }
 

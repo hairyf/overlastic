@@ -21,7 +21,7 @@ export interface CustomOptions {
 const constructor = createConstructor<CustomComponent, CustomOptions>(
   (component, props, options) => {
     // Options contain the passed-in custom configuration
-    const { container, id, index, promiser, className } = options
+    const { container, id, index, deferred, className } = options
 
     function vanish() {
       container.remove()
@@ -29,8 +29,8 @@ const constructor = createConstructor<CustomComponent, CustomOptions>(
 
     const inst = component({
       ...props,
-      // Pass the promiser to the component
-      promiser,
+      // Pass the deferred to the component
+      deferred,
       // Pass the destruction method to the component
       vanish
     })
@@ -66,16 +66,16 @@ function Component(props) {
 
   // Add events that cause the pop-up layer to end
   element.querySelector('button.confirm').onclick = function () {
-    props.promiser.resolve('ok')
+    props.deferred.resolve('ok')
   }
 
   // Add events that cause the pop-up layer to pop up
   element.querySelector('button.close').onclick = function () {
-    props.promiser.reject('close')
+    props.deferred.reject('close')
   }
 
-  // When the promiser is triggered by the outside or the component, the component should be destroyed.
-  props.promiser.finally(() => props.vanish())
+  // When the deferred is triggered by the outside or the component, the component should be destroyed.
+  props.deferred.finally(() => props.vanish())
 
   return element
 }

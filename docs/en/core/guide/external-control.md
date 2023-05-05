@@ -24,4 +24,4 @@ function yes() {
 }
 ```
 
-> Since rendering needs to wait, `reject / resolve` in promiser cannot be called immediately, and it is generally recommended to use it inside the callback function.
+> Since rendering needs to wait, `reject / resolve` in deferred cannot be called immediately, and it is generally recommended to use it inside the callback function.

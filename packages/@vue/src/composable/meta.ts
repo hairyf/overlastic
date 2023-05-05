@@ -1,7 +1,7 @@
 import type { Ref } from 'vue-demi'
 import { getCurrentInstance, inject, onMounted, provide } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
-import type { Promiser } from '@overlays/core'
+import type { Deferred } from '@overlays/core'
 import { delay, noop } from '@overlays/core'
 import { OverlayMetaKey } from '../internal'
 
@@ -53,8 +53,8 @@ export interface OverlayMeta {
   vanish: Function
   /** visible control popup display and hide */
   visible: Ref<boolean>
-  /** current promiser */
-  promiser?: Promiser<any>
+  /** current deferred */
+  deferred?: Deferred<any>
 }
 
 /**
@@ -73,7 +73,7 @@ export function useOverlay(options: OverlayOptions = {}) {
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
   if (!dec && automatic) {
-    meta.promiser?.finally(async () => {
+    meta.deferred?.finally(async () => {
       meta.visible.value = false
       await delay(duration)
       meta.vanish?.()

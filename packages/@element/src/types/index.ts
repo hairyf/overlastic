@@ -1,8 +1,8 @@
-import type { Promiser } from '@overlays/core'
+import type { Deferred } from '@overlays/core'
 
 export interface Context<T = void> {
-  resolve: Promiser<T>['resolve']
-  reject: Promiser<T>['reject']
-  promiser: Promiser<T>
+  resolve: Deferred<T>['resolve']
+  reject: Deferred<T>['reject']
+  deferred: Deferred<T>
   vanish: Function
 }

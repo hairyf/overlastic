@@ -156,8 +156,8 @@ function instance($$self: any, $$props: any, $$invalidate: any) {
   let { $$slots: slots = {}, $$scope } = $$props
   let { visible = false } = $$props
   const { duration = 0, immediate = true } = getContext<OverlayOptions>(injectOptionsKey) || {}
-  const { promiser, vanish } = getContext<OverlayMeta>(injectOverlayKey)
-  promiser?.finally(async () => {
+  const { deferred, vanish } = getContext<OverlayMeta>(injectOverlayKey)
+  deferred?.finally(async () => {
     $$invalidate(0, visible = false)
     await delay(duration)
     vanish()

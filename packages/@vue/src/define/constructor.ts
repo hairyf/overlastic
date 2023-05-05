@@ -13,7 +13,7 @@ export interface VMountOptions {
 }
 
 export const constructor = createConstructor<Component, VMountOptions>((Inst, props, options) => {
-  const { container, id, promiser, appContext } = options
+  const { container, id, deferred, appContext } = options
 
   function vanish() {
     app.unmount()
@@ -25,7 +25,7 @@ export const constructor = createConstructor<Component, VMountOptions>((Inst, pr
     setup: () => {
       const scripts = useVisibleScripts({
         vanish,
-        promiser,
+        deferred,
       })
       provide(OverlayMetaKey, scripts)
     },

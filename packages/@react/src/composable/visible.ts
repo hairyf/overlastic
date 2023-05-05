@@ -1,12 +1,12 @@
-import type { Promiser } from '@overlays/core'
+import type { Deferred } from '@overlays/core'
 import { useState } from 'react'
 
 export interface VisiblePromiseOptions {
-  promiser: Promiser
+  deferred: Deferred
   vanish?: Function
 }
 export function useVisibleScripts(options: VisiblePromiseOptions) {
-  const { reject: _reject, resolve: _resolve } = options.promiser || {}
+  const { reject: _reject, resolve: _resolve } = options.deferred || {}
   const { vanish: _vanish } = options
 
   const [visible, setVisible] = useState(false)
@@ -17,9 +17,9 @@ export function useVisibleScripts(options: VisiblePromiseOptions) {
   }
 
   return {
-    resolve: options.promiser.resolve,
-    reject: options.promiser.reject,
-    promiser: options.promiser,
+    resolve: options.deferred.resolve,
+    reject: options.deferred.reject,
+    deferred: options.deferred,
     setVisible,
     visible,
     vanish,

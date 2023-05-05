@@ -11,14 +11,14 @@ export interface VMountOptions {
 }
 
 export const constructor = createConstructor<Component, VMountOptions>((Inst, props, options) => {
-  const { container, id, promiser } = options
+  const { container, id, deferred } = options
   function vanish() {
     childApp.$destroy()
     container.remove()
   }
 
   const $overlay = createVisibleScripts({
-    promiser,
+    deferred,
     vanish,
   })
 

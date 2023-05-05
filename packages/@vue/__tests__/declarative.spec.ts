@@ -1,4 +1,4 @@
-import { createPromiser } from '@overlays/core'
+import { createDeferred } from '@overlays/core'
 import { mount } from '@vue/test-utils'
 import Overlay from './components/overlay.vue'
 
@@ -31,33 +31,33 @@ describe('@overlays/vue:declarative', () => {
   })
 
   it('emit:resolve', async () => {
-    const promiser = createPromiser<string>()
+    const deferred = createDeferred<string>()
 
     const wrapper = mount(Overlay, {
       props: {
         visible: true,
-        onResolve: promiser.resolve,
+        onResolve: deferred.resolve,
       },
     })
 
     wrapper.get<HTMLDivElement>('.modal__confirm').element.click()
 
-    expect(promiser).resolves.toBe('resolve')
+    expect(deferred).resolves.toBe('resolve')
 
     wrapper.unmount()
   })
 
   it('emit:reject', async () => {
-    const promiser = createPromiser<string>()
+    const deferred = createDeferred<string>()
     const wrapper = mount(Overlay, {
       props: {
         visible: true,
-        onReject: promiser.reject,
+        onReject: deferred.reject,
       },
     })
     wrapper.get<HTMLDivElement>('.modal__cancel').element.click()
 
-    expect(promiser).rejects.toThrow('reject')
+    expect(deferred).rejects.toThrow('reject')
 
     wrapper.unmount()
   })

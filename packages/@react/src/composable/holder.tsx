@@ -1,9 +1,9 @@
-import { createPromiser, defineName } from '@overlays/core'
+import { createDeferred, defineName } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
 import type { FC } from 'react'
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import type { ImperativeOverlay, MountOptions, Promiser } from '@overlays/core'
+import type { ImperativeOverlay, MountOptions, Deferred } from '@overlays/core'
 import { Context } from '../internal'
 
 export type InjectionHolder<Props, Resolved> = [JSX.Element, ImperativeOverlay<Props, Resolved>]
@@ -39,12 +39,12 @@ export function useRefreshMetadata() {
   const [refresh, setRefresh] = useState(false)
   const [visible, setVisible] = useState(false)
 
-  const promiser = useRef<Promiser>({} as any)
+  const deferred = useRef<Deferred>({} as any)
 
   const scripts = {
-    promiser: promiser.current,
-    resolve: promiser.current.resolve,
-    reject: promiser.current.reject,
+    deferred: deferred.current,
+    resolve: deferred.current.resolve,
+    reject: deferred.current.reject,
     vanish,
     visible,
     setVisible,
@@ -57,12 +57,12 @@ export function useRefreshMetadata() {
   }
 
   async function callback(props: any) {
-    promiser.current = createPromiser()
+    deferred.current = createDeferred()
 
     setProps(props)
     setRefresh(true)
 
-    return promiser.current
+    return deferred.current
   }
 
   return { callback, scripts, props, refresh }

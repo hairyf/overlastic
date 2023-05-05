@@ -21,7 +21,7 @@ export interface CustomOptions {
 const constructor = createConstructor<CustomComponent, CustomOptions>(
   (component, props, options) => {
     // options 包含传入的自定义配置
-    const { container, id, index, promiser, className } = options
+    const { container, id, index, deferred, className } = options
 
     function vanish() {
       container.remove()
@@ -30,7 +30,7 @@ const constructor = createConstructor<CustomComponent, CustomOptions>(
     const inst = component({
       ...props,
       // 将承诺者传递给组件
-      promiser,
+      deferred,
       // 将销毁的方法传递给组件
       vanish
     })
@@ -66,16 +66,16 @@ function Component(props) {
 
   // 添加导致弹出层结束的事件
   element.querySelector('button.confirm').onclick = function () {
-    props.promiser.resolve('ok')
+    props.deferred.resolve('ok')
   }
 
   // 添加导致弹出层弹出的事件
   element.querySelector('button.close').onclick = function () {
-    props.promiser.reject('close')
+    props.deferred.reject('close')
   }
 
-  // 当外部或组件触发了 promiser，进行销毁组件
-  props.promiser.finally(() => props.vanish())
+  // 当外部或组件触发了 deferred，进行销毁组件
+  props.deferred.finally(() => props.vanish())
 
   return element
 }

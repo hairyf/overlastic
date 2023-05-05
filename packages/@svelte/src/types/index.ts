@@ -1,4 +1,4 @@
-import type { Promiser } from '@overlays/core'
+import type { Deferred } from '@overlays/core'
 
 export interface OverlayMeta {
   /** the notification reject, modify visible, and destroy it after the duration ends */
@@ -8,6 +8,6 @@ export interface OverlayMeta {
   /** destroy the current instance (immediately) */
   vanish: Function
   /** visible control popup display and hide */
-  /** current promiser */
-  promiser?: Promiser<any>
+  /** current deferred */
+  deferred?: Deferred<any>
 }

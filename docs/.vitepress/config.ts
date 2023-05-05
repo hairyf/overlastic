@@ -29,7 +29,7 @@ const sidebar: DefaultTheme.Sidebar = {
       text: 'Core Functions',
       items: [
         { text: 'Constructor', link: '/en/core/functions/constructor' },
-        { text: 'Promiser', link: '/en/core/functions/promiser' },
+        { text: 'Deferred', link: '/en/core/functions/deferred' },
         { text: 'Globals', link: '/en/core/functions/defines' },
       ],
     },
@@ -70,7 +70,7 @@ const sidebar: DefaultTheme.Sidebar = {
       text: 'Core Functions',
       items: [
         { text: '构造器', link: '/zh/core/functions/constructor' },
-        { text: '承诺者', link: '/zh/core/functions/promiser' },
+        { text: '承诺者', link: '/zh/core/functions/deferred' },
         { text: '定义', link: '/zh/core/functions/defines' },
       ],
     },
