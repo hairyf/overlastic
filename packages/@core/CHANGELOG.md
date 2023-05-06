@@ -1,5 +1,11 @@
 # @overlays/core
 
+## 0.4.1
+
+### Patch Changes
+
+- chore(release): v0.4.1 all packages
+
 ## 0.4.0
 
 ### Minor Changes
