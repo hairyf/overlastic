@@ -32,7 +32,7 @@
     "vue-demi": "^0.13.11"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.36.0",
+    "@antfu/eslint-config": "^0.38.0",
     "@changesets/cli": "^2.26.1",
     "@manypkg/get-packages": "^2.1.0",
     "@types/fs-extra": "^11.0.1",
