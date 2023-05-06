@@ -1,7 +1,7 @@
 import { createConstructor } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
-import type { AppContext, Component } from 'vue'
-import { createApp, defineComponent, h, provide } from 'vue'
+import type { AppContext, Component } from 'vue-demi'
+import { createApp, defineComponent, h, provide } from 'vue-demi'
 
 import { OverlayMetaKey } from '../internal'
 import { useVisibleScripts } from '../composable'

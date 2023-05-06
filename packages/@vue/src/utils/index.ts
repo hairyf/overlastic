@@ -1,4 +1,4 @@
-import type { App, AppContext } from 'vue'
+import type { App, AppContext } from 'vue-demi'
 import { context } from '../internal'
 
 export function inheritParent(app: App<Element>, appContext?: AppContext) {
