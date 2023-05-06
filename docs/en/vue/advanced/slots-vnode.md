@@ -20,16 +20,16 @@ const { visible, /* ... */ } = useOverlay()
 </template>
 ```
 
-If you want to support rendering a certain field as a [VNode](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) in callback (imperative) mode, we recommend using the built-in FieldRender component.
+If you want to support rendering a certain field as a [VNode](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) in callback (imperative) mode, we recommend using the built-in Field component.
 
-FieldRender will help you handle the rendering of VNode|Component|string, and it can be used in both callback and template mode.
+Field will help you handle the rendering of VNode|Component|string, and it can be used in both callback and template mode.
 
 Here is a complete example that supports rendering Slots, String, VNode, and Component:
 
 ```vue
 <script lang="ts" setup>
 import { Component, VNode } from 'vue'
-import { FieldRender, useOverlay } from '@overlays/vue'
+import { Field, useOverlay } from '@overlays/vue'
 defineProps<{
   title?: String | VNode | Component
 }>()
@@ -41,7 +41,7 @@ const { visible, /* ... */ } = useOverlay()
   <div v-if="visible">
     <slot name="title">
       <!-- string, VNode, or Component -->
-      <FieldRender :value="title" />
+      <Field :is="title" />
     </slot>
   </div>
 </template>

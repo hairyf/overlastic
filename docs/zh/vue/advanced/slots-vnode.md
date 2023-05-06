@@ -20,16 +20,16 @@ const { visible, /* ... */ } = useOverlay()
 </template>
 ```
 
-如果您想在回调（命令式）下，支持某个字段渲染 [VNode](https://cn.vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom)，建议您使用内置组件 `FieldRender`。
+如果您想在回调（命令式）下，支持某个字段渲染 [VNode](https://cn.vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom)，建议您使用内置组件 `Field`。
 
-`FieldRender` 会帮您处理 VNode、Component、String 的渲染，它可以在回调和 `template` 下同时使用。
+`Field` 会帮您处理 VNode、Component、String 的渲染，它可以在回调和 `template` 下同时使用。
 
 以下是同时支持 Slots、String、VNode、Component 的完整例子：
 
 ```vue
 <script lang="ts" setup>
 import { Component, VNode } from 'vue'
-import { FieldRender, useOverlay } from '@overlays/vue'
+import { Field, useOverlay } from '@overlays/vue'
 defineProps<{
   title?: String | VNode | Component
 }>()
@@ -41,7 +41,7 @@ const { visible, /* ... */ } = useOverlay()
   <div v-if="visible">
     <slot name="title">
       <!-- 传入字符串、虚拟节点或组件 -->
-      <FieldRender :value="title" />
+      <Field :is="title" />
     </slot>
   </div>
 </template>

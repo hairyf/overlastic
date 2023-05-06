@@ -1,12 +1,12 @@
 /* eslint-disable vue/one-component-per-file */
 import { mount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
-import { FieldRender } from '../src/components'
+import { Field } from '../src/components'
 describe('@overlays/vue:component', () => {
-  it('component:FieldRender:text', () => {
+  it('component:Field:text', () => {
     const Text = defineComponent({
       render() {
-        return h(FieldRender, { value: 'test:text' })
+        return h(Field, { is: 'test:text' })
       },
     })
     const wrapper = mount(Text)
@@ -16,10 +16,10 @@ describe('@overlays/vue:component', () => {
     wrapper.unmount()
   })
 
-  it('component:FieldRender:vnode', () => {
+  it('component:Field:vnode', () => {
     const Text = defineComponent({
       render() {
-        return h(FieldRender, { value: h('div', 'test:vnode') })
+        return h(Field, { is: h('div', 'test:vnode') })
       },
     })
     const wrapper = mount(Text)
@@ -29,10 +29,10 @@ describe('@overlays/vue:component', () => {
     wrapper.unmount()
   })
 
-  it('component:FieldRender:component', () => {
+  it('component:Field:component', () => {
     const Component = defineComponent({
       render() {
-        return h(FieldRender, { value: defineComponent({ render: () => 'test:component' }) })
+        return h(Field, { is: defineComponent({ render: () => 'test:component' }) })
       },
     })
     const wrapper = mount(Component)
