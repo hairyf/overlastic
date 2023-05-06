@@ -21,7 +21,7 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org/
           cache: pnpm
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile
       - run: npx changelogithub
         continue-on-error: true
         env:

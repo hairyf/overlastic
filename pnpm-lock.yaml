@@ -131,6 +131,9 @@ importers:
       pascal-case:
         specifier: latest
         version: 3.1.2
+      vue:
+        specifier: ^3
+        version: 3.2.47
       vue-demi:
         specifier: '>=0.14.0'
         version: 0.14.0(vue@3.2.47)
