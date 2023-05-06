@@ -1,5 +1,13 @@
 # @overlays/react
 
+## 0.4.2
+
+### Patch Changes
+
+- chore(release): v0.4.2 all packages
+- Updated dependencies
+  - @overlays/core@0.4.2
+
 ## 0.4.1
 
 ### Patch Changes
