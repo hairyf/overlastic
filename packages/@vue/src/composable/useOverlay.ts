@@ -5,7 +5,7 @@ import type { Deferred } from '@overlays/core'
 import { delay, noop } from '@overlays/core'
 import { OverlayMetaKey } from '../internal'
 
-export interface OverlayEvents {
+export interface UseOverlayEvents {
   /**
    * reject event name used by the template
    *
@@ -20,7 +20,7 @@ export interface OverlayEvents {
   resolve?: string
 }
 
-export interface OverlayOptions {
+export interface UseOverlayOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -35,7 +35,7 @@ export interface OverlayOptions {
   /**
    * template use event name
    */
-  events?: OverlayEvents
+  events?: UseOverlayEvents
   /**
    * whether to automatically handle components based on visible and duration
    *
@@ -44,7 +44,7 @@ export interface OverlayOptions {
   automatic?: boolean
 }
 
-export interface OverlayMeta {
+export interface UseOverlayReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
   reject: Function
   /** the notification resolve, modify visible, and destroy it after the duration ends */
@@ -65,7 +65,7 @@ export interface OverlayMeta {
  * @field visible control overlay display and hide
  * @returns
  */
-export function useOverlay(options: OverlayOptions = {}) {
+export function useOverlay(options: UseOverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
   const meta = inject(OverlayMetaKey, useDeclarative(model, options))
   const dec = Reflect.get(meta, 'in_dec')
@@ -88,7 +88,7 @@ export function useOverlay(options: OverlayOptions = {}) {
   return meta
 }
 
-export function useDeclarative(model: string, options: OverlayOptions = {}) {
+export function useDeclarative(model: string, options: UseOverlayOptions = {}) {
   const { reject = 'reject', resolve = 'resolve' } = options.events || {}
 
   const instance = getCurrentInstance()

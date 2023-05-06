@@ -1,6 +1,6 @@
 import type { Deferred } from '@overlays/core'
 
-export interface OverlayMeta {
+export interface UseOverlayReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
   reject: Function
   /** the notification resolve, modify visible, and destroy it after the duration ends */

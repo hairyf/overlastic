@@ -1,15 +1,15 @@
 import { getContext, setContext } from 'svelte'
-import type { OverlayMeta } from '../types'
+import type { UseOverlayReturn } from '../types'
 import { injectOptionsKey, injectOverlayKey } from '../internal'
 
-export interface OverlayOptions {
+export interface UseOverlayOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
   immediate?: boolean
 }
 
-export function useOverlay(options: OverlayOptions = {}) {
+export function useOverlay(options: UseOverlayOptions = {}) {
   setContext(injectOptionsKey, options)
-  return getContext<OverlayMeta>(injectOverlayKey)
+  return getContext<UseOverlayReturn>(injectOverlayKey)
 }

@@ -1,9 +1,9 @@
-import type { OverlayOptions } from '../composable'
+import type { UseOverlayOptions } from '../composable'
 import type { Context } from '../types'
 
 export const context = {
   trigger: undefined as Context | undefined,
-  options: undefined as OverlayOptions | undefined,
+  options: undefined as UseOverlayOptions | undefined,
 }
 
 export function setupTrigger(c: Context) {
@@ -14,7 +14,7 @@ export function clearTrigger() {
   context.trigger = undefined
 }
 
-export function setupOptions(o: OverlayOptions = {}) {
+export function setupOptions(o: UseOverlayOptions = {}) {
   context.options = o
 }
 

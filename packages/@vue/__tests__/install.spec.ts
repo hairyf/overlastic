@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
-import { UnifiedOverlayProvider, install } from '../src'
+import { Provider, install } from '../src'
 import { context } from '../src/internal'
 import Basic from './components/basic.vue'
 
 describe('@overlays/vue:install', () => {
   it('install:provider', () => {
-    const wrapper = mount(UnifiedOverlayProvider)
+    const wrapper = mount(Provider)
 
     expect(context.appContext).not.toBeUndefined()
 
@@ -16,7 +16,7 @@ describe('@overlays/vue:install', () => {
   it('install:provider:content', () => {
     const Main = defineComponent({
       render() {
-        return h(UnifiedOverlayProvider, {}, {
+        return h(Provider, {}, {
           default: () => 'content',
         })
       },

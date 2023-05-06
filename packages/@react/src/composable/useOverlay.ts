@@ -5,7 +5,7 @@ import { useContext, useEffect } from 'react'
 import { Context } from '../internal'
 import type { PropsWidthOverlays } from '../types'
 
-export interface OverlayEvents {
+export interface UseOverlayEvents {
   /**
    * reject event name used by the template
    *
@@ -20,7 +20,7 @@ export interface OverlayEvents {
   resolve?: string
 }
 
-export interface OverlayOptions {
+export interface UseOverlayOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -40,7 +40,7 @@ export interface OverlayOptions {
   /**
    * props use event name
    */
-  events?: OverlayEvents
+  events?: UseOverlayEvents
   /**
    * whether to automatically handle components based on visible and duration
    *
@@ -49,7 +49,7 @@ export interface OverlayOptions {
   automatic?: boolean
 }
 
-export interface OverlayMeta {
+export interface UseOverlayReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
   reject: Function
   /** the notification resolve, modify visible, and destroy it after the duration ends */
@@ -64,7 +64,7 @@ export interface OverlayMeta {
   deferred?: Promise<any>
 }
 
-export function useOverlay(options: OverlayOptions = {}) {
+export function useOverlay(options: UseOverlayOptions = {}) {
   const { immediate = true, duration = 0, automatic = true } = options
   const context = useContext(Context)
   const dec = Reflect.get(context, 'in_dec')
@@ -83,10 +83,10 @@ export function useOverlay(options: OverlayOptions = {}) {
     }
   })
 
-  return meta
+  return meta as UseOverlayReturn
 }
 
-export function useDeclarative(options: OverlayOptions = {}) {
+export function useDeclarative(options: UseOverlayOptions = {}) {
   const { props = {}, model = 'visible', events = {} } = options
   const { reject = 'onReject', resolve = 'onResolve' } = events
 

@@ -2,13 +2,13 @@ import type { FC } from 'react'
 
 import { noop } from '@overlays/core'
 import { createContext } from 'react'
-import type { OverlayMeta } from '../composable'
+import type { UseOverlayReturn } from '../composable'
 
 export const defineProviderComponent = (component: FC) => {
   return ({ '--': component })['--']
 }
 
-export const Context = createContext<OverlayMeta>({
+export const Context = createContext<UseOverlayReturn>({
   reject: noop,
   resolve: noop,
   setVisible: noop,

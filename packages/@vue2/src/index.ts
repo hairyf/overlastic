@@ -11,7 +11,7 @@ const unoverlay: PluginObject<Vue> = { install }
 
 export { install }
 export { useOverlay } from './composable'
-export type { OverlayOptions } from './composable'
+export type { UseOverlayOptions } from './composable'
 export { defineOverlay, renderOverlay } from './define'
-export { FieldRender } from './components'
+export { Field } from './components'
 export default unoverlay

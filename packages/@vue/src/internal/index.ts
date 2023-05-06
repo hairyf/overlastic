@@ -1,8 +1,8 @@
 import type { AppContext, InjectionKey } from 'vue-demi'
-import type { OverlayMeta } from '../composable'
+import type { UseOverlayReturn } from '../composable'
 
 export const context = {
   appContext: null as null | AppContext,
 }
 
-export const OverlayMetaKey: InjectionKey<OverlayMeta> = Symbol('__imperative_overlay_key')
+export const OverlayMetaKey: InjectionKey<UseOverlayReturn> = Symbol('__imperative_overlay_key')

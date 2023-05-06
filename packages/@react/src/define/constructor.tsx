@@ -10,7 +10,7 @@ export const constructor = createConstructor<React.FC<any>>((Inst, props, option
 
   const root = createRoot(container)
 
-  const UnifiedOverlayProvider = defineProviderComponent(() => {
+  const Provider = defineProviderComponent(() => {
     const scripts = useVisibleScripts({ deferred, vanish })
     return (
       <Context.Provider
@@ -29,5 +29,5 @@ export const constructor = createConstructor<React.FC<any>>((Inst, props, option
     })
   }
 
-  root.render(<UnifiedOverlayProvider />)
+  root.render(<Provider />)
 })

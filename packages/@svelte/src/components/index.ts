@@ -21,8 +21,8 @@ import {
   update_slot_base,
 } from 'svelte/internal'
 import { injectOptionsKey, injectOverlayKey } from '../internal'
-import type { OverlayMeta } from '../types'
-import type { OverlayOptions } from '../composable'
+import type { UseOverlayReturn } from '../types'
+import type { UseOverlayOptions } from '../composable'
 
 function create_if_block(ctx: any[]) {
   let current: boolean
@@ -155,8 +155,8 @@ function create_fragment(ctx: any[]) {
 function instance($$self: any, $$props: any, $$invalidate: any) {
   let { $$slots: slots = {}, $$scope } = $$props
   let { visible = false } = $$props
-  const { duration = 0, immediate = true } = getContext<OverlayOptions>(injectOptionsKey) || {}
-  const { deferred, vanish } = getContext<OverlayMeta>(injectOverlayKey)
+  const { duration = 0, immediate = true } = getContext<UseOverlayOptions>(injectOptionsKey) || {}
+  const { deferred, vanish } = getContext<UseOverlayReturn>(injectOverlayKey)
   deferred?.finally(async () => {
     $$invalidate(0, visible = false)
     await delay(duration)

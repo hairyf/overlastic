@@ -1,7 +1,7 @@
 import type { Component, PropType, VNode } from 'vue'
 
-export const FieldRender: Component = {
-  name: 'FieldRender',
+export const Field: Component = {
+  name: 'Field',
   props: {
     value: [String, Object] as PropType<string | VNode | Component>,
   },
@@ -10,4 +10,4 @@ export const FieldRender: Component = {
   },
 }
 
-export default FieldRender
+export default Field
