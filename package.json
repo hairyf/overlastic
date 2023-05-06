@@ -39,7 +39,7 @@
     "@vitejs/plugin-react": "^4.0.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitest/coverage-c8": "^0.29.2",
-    "@vueuse/core": "^9.13.0",
+    "@vueuse/core": "^10.0.0",
     "eslint": "^8.28.0",
     "fs-extra": "^11.1.1",
     "jsdom": "^20.0.0",
