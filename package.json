@@ -29,7 +29,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "vue": "^3.0.0",
-    "vue-demi": "^0.13.11"
+    "vue-demi": "^0.14.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.36.0",
