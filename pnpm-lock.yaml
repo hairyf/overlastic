@@ -54,8 +54,8 @@ importers:
         specifier: ^0.29.2
         version: 0.29.2(vitest@0.31.0)
       '@vueuse/core':
-        specifier: ^9.13.0
-        version: 9.13.0(vue@3.2.47)
+        specifier: ^10.0.0
+        version: 10.0.0(vue@3.2.47)
       eslint:
         specifier: ^8.28.0
         version: 8.36.0
@@ -126,8 +126,8 @@ importers:
         specifier: workspace:^
         version: link:../@core
       '@vueuse/core':
-        specifier: ^9.13.0
-        version: 9.13.0(vue@3.2.47)
+        specifier: ^10.0.0
+        version: 10.0.0(vue@3.2.47)
       pascal-case:
         specifier: latest
         version: 3.1.2
@@ -1965,6 +1965,17 @@ packages:
       vue: 3.2.47
     dev: false
 
+  /@vueuse/core@10.0.0(vue@3.2.47):
+    resolution: {integrity: sha512-Q/p2xaGVFVrJ0E4ID1SM35WIa0Eo4AeKPSLKuLpYG09zgUWuwEaY4lBoNzLzkdLjzq5goIJ3DfYFI0wt8W4MkA==}
+    dependencies:
+      '@types/web-bluetooth': 0.0.16
+      '@vueuse/metadata': 10.0.0
+      '@vueuse/shared': 10.0.0(vue@3.2.47)
+      vue-demi: 0.14.0(vue@3.2.47)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
   /@vueuse/core@8.9.4(vue@3.2.47):
     resolution: {integrity: sha512-B/Mdj9TK1peFyWaPof+Zf/mP9XuGAngaJZBwPaXBvU3aCTZlx3ltlrFFFyMV4iGBwsjSCeUCgZrtkEj9dS2Y3Q==}
     peerDependencies:
@@ -1983,23 +1994,20 @@ packages:
       vue-demi: 0.14.0(vue@3.2.47)
     dev: true
 
-  /@vueuse/core@9.13.0(vue@3.2.47):
-    resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}
-    dependencies:
-      '@types/web-bluetooth': 0.0.16
-      '@vueuse/metadata': 9.13.0
-      '@vueuse/shared': 9.13.0(vue@3.2.47)
-      vue-demi: 0.13.11(vue@3.2.47)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
+  /@vueuse/metadata@10.0.0:
+    resolution: {integrity: sha512-7Rh6tcs6aYLRLSdDHF+74wWP0Y1zLwpNJszKAIqlNBrmqdbkz8yh6NtjCYvXrrW6g+FU3ZWvR7F5ASNls+bHmw==}
 
   /@vueuse/metadata@8.9.4:
     resolution: {integrity: sha512-IwSfzH80bnJMzqhaapqJl9JRIiyQU0zsRGEgnxN6jhq7992cPUJIRfV+JHRIZXjYqbwt07E1gTEp0R0zPJ1aqw==}
     dev: true
 
-  /@vueuse/metadata@9.13.0:
-    resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
+  /@vueuse/shared@10.0.0(vue@3.2.47):
+    resolution: {integrity: sha512-Zh3LgJqvUBWVY3SiMvXanTcfAneGbt63QPczBRDNgQ6jd/ehodO9a1lCFzaA6SWJJoI+ugVTjHFYJdoR656DVQ==}
+    dependencies:
+      vue-demi: 0.14.0(vue@3.2.47)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
 
   /@vueuse/shared@8.9.4(vue@3.2.47):
     resolution: {integrity: sha512-wt+T30c4K6dGRMVqPddexEVLa28YwxW5OFIPmzUHICjphfAuBFTTdDoyqREZNDOFJZ44ARH1WWQNCUK8koJ+Ag==}
@@ -2015,14 +2023,6 @@ packages:
       vue: 3.2.47
       vue-demi: 0.14.0(vue@3.2.47)
     dev: true
-
-  /@vueuse/shared@9.13.0(vue@3.2.47):
-    resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
-    dependencies:
-      vue-demi: 0.14.0(vue@3.2.47)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
 
   /abab@2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==, tarball: https://registry.yarnpkg.com/abab/-/abab-2.0.6.tgz}
@@ -6156,6 +6156,7 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.47
+    dev: false
 
   /vue-demi@0.14.0(vue@3.2.47):
     resolution: {integrity: sha512-gt58r2ogsNQeVoQ3EhoUAvUsH9xviydl0dWJj7dabBC/2L4uBId7ujtCwDRD0JhkGsV1i0CtfLAeyYKBht9oWg==}

@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@overlays/core": "workspace:^",
-    "@vueuse/core": "^9.13.0",
+    "@vueuse/core": "^10.0.0",
     "pascal-case": "latest",
     "vue": "^3",
     "vue-demi": ">=0.14.0"
