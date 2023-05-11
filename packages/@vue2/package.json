@@ -46,6 +46,6 @@
     "pascal-case": "latest"
   },
   "devDependencies": {
-    "vue": "^2.6"
+    "vue": "^3.3.1"
   }
 }
