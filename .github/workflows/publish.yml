@@ -26,8 +26,3 @@ jobs:
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{secrets.ACCESS_TOKEN}}
-      - run: pnpm -r publish --no-git-checks --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-          NODE_OPTIONS: --max-old-space-size=6144
