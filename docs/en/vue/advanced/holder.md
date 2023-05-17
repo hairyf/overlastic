@@ -8,7 +8,7 @@ In addition to using defineOverlay and renderOverlay to create pop-up components
 import { useInjectHolder } from '@overlays/vue'
 import OverlayComponent from './overlay.vue'
 // Use useInjectHolder(Component) to create a component holder that supports the current context.
-const [holder, overlayApi] = useInjectHolder(OverlayComponent)
+const [overlayApi, holder] = useInjectHolder(ConfigProvider);
 
 function open() {
   // Open the pop-up component.
@@ -18,7 +18,7 @@ function open() {
 </script>
 
 <template>
-  <div @click="overlayApi">
+  <div @click="open">
     open
   </div>
   <!-- Use <component :is="holder" /> to mount the component holder. -->

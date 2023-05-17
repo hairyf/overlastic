@@ -8,7 +8,7 @@
 import { useInjectHolder } from '@overlays/vue'
 import OverlayComponent from './overlay.vue'
 // 通过 useInjectHolder(Component) 创建支持当前 context 的组件持有者
-const [holder, overlayApi] = useInjectHolder(OverlayComponent)
+const [overlayApi, holder] = useInjectHolder(ConfigProvider);
 
 function open() {
   // 打开弹出层
@@ -18,7 +18,7 @@ function open() {
 </script>
 
 <template>
-  <div @click="overlayApi">
+  <div @click="open">
     open
   </div>
   <!-- 使用 <component :is="holder" /> 挂载 -->
