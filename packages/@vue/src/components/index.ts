@@ -1,5 +1,4 @@
 /* eslint-disable vue/one-component-per-file */
-import { isNumber, isString } from '@vueuse/core'
 import type { Component, PropType, VNode } from 'vue-demi'
 import { defineComponent, getCurrentInstance, h } from 'vue-demi'
 
@@ -23,7 +22,7 @@ export const Field = defineComponent({
   },
   setup(props) {
     return () => {
-      if (isString(props.is) || isNumber(props.is))
+      if (typeof props.is === 'string' || typeof props.is === 'number')
         return props.is
       return props.is ? h(props.is) : null
     }
