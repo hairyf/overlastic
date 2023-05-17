@@ -1,5 +1,11 @@
 # @overlays/vue
 
+## 0.4.3
+
+### Patch Changes
+
+- fix: vueuse reference base judgment error
+
 ## 0.4.2
 
 ### Patch Changes
