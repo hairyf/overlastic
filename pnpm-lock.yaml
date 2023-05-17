@@ -125,6 +125,9 @@ importers:
       '@overlays/core':
         specifier: workspace:^
         version: link:../@core
+      '@vueuse/core':
+        specifier: ^10.0.0
+        version: 10.0.0(vue@3.3.2)
       pascal-case:
         specifier: latest
         version: 3.1.2
