@@ -1,6 +1,5 @@
 import type { Ref } from 'vue-demi'
-import { getCurrentInstance, inject, onMounted, provide } from 'vue-demi'
-import { useVModel } from '@vueuse/core'
+import { getCurrentInstance, inject, onMounted, provide, useModel } from 'vue-demi'
 import type { Deferred } from '@overlays/core'
 import { delay, noop } from '@overlays/core'
 import { OverlayMetaKey } from '../internal'
@@ -67,7 +66,7 @@ export interface UseOverlayReturn {
  */
 export function useOverlay(options: UseOverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
-  const meta = inject(OverlayMetaKey, useDeclarative(model, options))
+  const meta = inject(OverlayMetaKey, useDeclarative(model, options)) as UseOverlayReturn
   const dec = Reflect.get(meta, 'in_dec')
 
   // The component directly obtains the default value
@@ -83,7 +82,7 @@ export function useOverlay(options: UseOverlayOptions = {}) {
   if (!dec && immediate)
     onMounted(() => meta.visible.value = true)
 
-  provide(OverlayMetaKey, null)
+  provide(OverlayMetaKey, null as any)
 
   return meta
 }
@@ -96,7 +95,7 @@ export function useDeclarative(model: string, options: UseOverlayOptions = {}) {
   if (!instance)
     throw new Error('Please use useOverlay in component setup')
 
-  const visible = useVModel(instance.props, model, instance.emit, { passive: true }) as Ref<boolean>
+  const visible = useModel(instance.props, model, { local: true }) as Ref<boolean>
 
   const _reject = (value?: any) => {
     instance?.emit(reject, value)
