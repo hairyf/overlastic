@@ -1,5 +1,13 @@
 # @overlays/vue
 
+## 0.4.6
+
+### Patch Changes
+
+- chore(release): v0.4.3 packages
+- Updated dependencies
+  - @overlays/core@0.4.3
+
 ## 0.4.5
 
 ### Patch Changes
