@@ -1,5 +1,23 @@
 # @overlays/vue
 
+## 0.4.5
+
+### Patch Changes
+
+- chore(release): v0.4.5 @overlays/vue
+
+## 0.4.4
+
+### Patch Changes
+
+- chore(release): v0.4.4 @overlays/vue
+
+## 0.4.3
+
+### Patch Changes
+
+- fix: vueuse reference base judgment error
+
 ## 0.4.2
 
 ### Patch Changes

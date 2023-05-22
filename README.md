@@ -15,7 +15,7 @@ A create model | dialog | popup promise deferred library
 </p>
 
 <p align="center">
-  English | <a href="https://github.com/hairyf/unoverlays/blob/master/README_CN.md">Chinese</a> | <a href="https://unoverlays.vercel.app/zh/">docs</a>
+  English | <a href="https://github.com/hairyf/unoverlays/blob/master/README_CN.md">Chinese</a> | <a href="https://unoverlays.vercel.app">docs</a>
 </p>
 
     Unified Overlays are used to create callback (imperative) methods for 

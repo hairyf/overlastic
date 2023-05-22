@@ -85,7 +85,7 @@ export function useOverlay(options: UseOverlayOptions = {}) {
   if (!dec && immediate)
     onMounted(() => visible.value = true)
 
-  provide(OverlayMetaKey, null)
+  provide(OverlayMetaKey, null as any)
   return overlay
 }
 

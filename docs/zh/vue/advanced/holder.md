@@ -18,7 +18,7 @@ function open() {
 </script>
 
 <template>
-  <div @click="overlayApi">
+  <div @click="open">
     open
   </div>
   <!-- 使用 <component :is="holder" /> 挂载 -->
