@@ -157,12 +157,18 @@ function instance($$self: any, $$props: any, $$invalidate: any) {
   let { visible = false } = $$props
   const { duration = 0, immediate = true } = getContext<UseOverlayOptions>(injectOptionsKey) || {}
   const { deferred, vanish } = getContext<UseOverlayReturn>(injectOverlayKey)
-  deferred?.finally(async () => {
+
+  // The component directly obtains the default value
+  // vanish will have no effect, and no watch will be performed.
+  async function destroy() {
     $$invalidate(0, visible = false)
     await delay(duration)
-    vanish()
-  })
+    vanish?.()
+    return Promise.resolve()
+  }
   onMount(() => immediate && $$invalidate(0, visible = true))
+  deferred?.then(destroy).catch(destroy)
+
   $$self.$$set = ($$props2: any) => {
     if ('visible' in $$props2)
       $$invalidate(0, visible = $$props2.visible)

@@ -67,25 +67,26 @@ export interface UseOverlayReturn {
  */
 export function useOverlay(options: UseOverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
-  const meta = inject(OverlayMetaKey, useDeclarative(model, options))
-  const dec = Reflect.get(meta, 'in_dec')
+  const overlay = inject(OverlayMetaKey, useDeclarative(model, options))
+  const dec = Reflect.get(overlay, 'in_dec')
+  const { visible, deferred, vanish } = overlay
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
-  if (!dec && automatic) {
-    meta.deferred?.finally(async () => {
-      meta.visible.value = false
-      await delay(duration)
-      meta.vanish?.()
-    })
+  async function destroy() {
+    visible.value = false
+    await delay(duration)
+    vanish?.()
+    return Promise.resolve()
   }
 
+  if (!dec && automatic)
+    deferred?.then(destroy).catch(destroy)
   if (!dec && immediate)
-    onMounted(() => meta.visible.value = true)
+    onMounted(() => visible.value = true)
 
   provide(OverlayMetaKey, null)
-
-  return meta
+  return overlay
 }
 
 export function useDeclarative(model: string, options: UseOverlayOptions = {}) {

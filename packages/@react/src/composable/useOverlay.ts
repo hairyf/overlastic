@@ -1,4 +1,4 @@
-import { delay as _delay, noop } from '@overlays/core'
+import { delay, noop } from '@overlays/core'
 import type { Dispatch, SetStateAction } from 'react'
 import { useContext, useEffect } from 'react'
 
@@ -68,22 +68,24 @@ export function useOverlay(options: UseOverlayOptions = {}) {
   const { immediate = true, duration = 0, automatic = true } = options
   const context = useContext(Context)
   const dec = Reflect.get(context, 'in_dec')
-  const meta = dec ? useDeclarative(options) : context
+  const overlay = dec ? useDeclarative(options) : context
+  const { setVisible, vanish, deferred } = overlay
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
+  async function destroy() {
+    setVisible(false)
+    await delay(duration)
+    vanish?.()
+    return Promise.resolve()
+  }
+  useMount(() => immediate && setVisible(true))
   useMount(() => {
-    immediate && meta.setVisible?.(true)
-    if (!dec && automatic) {
-      meta.deferred?.finally(async () => {
-        meta.setVisible(false)
-        await _delay(duration)
-        meta.vanish?.()
-      })
-    }
+    if (!dec && automatic)
+      deferred?.then(destroy).catch(destroy)
   })
 
-  return meta as UseOverlayReturn
+  return overlay as UseOverlayReturn
 }
 
 export function useDeclarative(options: UseOverlayOptions = {}) {
