@@ -1,8 +1,10 @@
 import type { App } from 'vue-demi'
 import { context } from './internal'
+import type { Options } from './internal'
 
-const install = (app: App) => {
+const install = (app: App, options: Options = {}) => {
   context.appContext = app._context
+  context.options = options
 }
 const unoverlay = { install }
 
