@@ -9,7 +9,7 @@ import { Context } from '../internal'
 export type InjectionHolder<Props, Resolved> = [JSX.Element, ImperativeOverlay<Props, Resolved>]
 
 export function useInjectHolder<Props, Resolved = void>(
-  Component: FC,
+  Component: FC<Props>,
   options: MountOptions = {},
 ): InjectionHolder<Props, Resolved> {
   const { callback, scripts, props, refresh } = useRefreshMetadata()

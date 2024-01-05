@@ -1,5 +1,11 @@
 # @overlays/react
 
+## 0.4.4
+
+### Patch Changes
+
+- react inject holder type not input
+
 ## 0.4.3
 
 ### Patch Changes
