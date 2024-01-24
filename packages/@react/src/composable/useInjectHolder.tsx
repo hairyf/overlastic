@@ -15,12 +15,11 @@ export function useInjectHolder<Props, Resolved = void>(
   const { callback, scripts, props, refresh } = useRefreshMetadata()
 
   const name = defineName(options.id, options.autoIncrement)
-  const root = options.root || document.body
-  const isTeleport = options.root !== false
 
   function render() {
+    const root = options.root || (typeof document !== 'undefined' ? document.body : undefined)
     const content = <div id={name}> <Component {...props} /> </div>
-    return isTeleport ? createPortal(content, root) : content
+    return root ? createPortal(content, root) : content
   }
 
   const holder = (

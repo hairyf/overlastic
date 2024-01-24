@@ -1,5 +1,11 @@
 # @overlays/react
 
+## 0.4.5
+
+### Patch Changes
+
+- inject holder document is undefined
+
 ## 0.4.4
 
 ### Patch Changes
