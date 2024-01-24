@@ -15,9 +15,9 @@ export function useInjectHolder<Props, Resolved = void>(
   const { callback, scripts, props, refresh } = useRefreshMetadata()
 
   const name = defineName(options.id, options.autoIncrement)
-  const root = options.root || (typeof document !== 'undefined' ? document.body : undefined)
 
   function render() {
+    const root = options.root || (typeof document !== 'undefined' ? document.body : undefined)
     const content = <div id={name}> <Component {...props} /> </div>
     return (options.root !== false && root)
       ? createPortal(content, root)
