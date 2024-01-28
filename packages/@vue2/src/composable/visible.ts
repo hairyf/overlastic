@@ -1,11 +1,12 @@
 import type { Deferred } from '@overlays/core'
 import mitt from 'mitt'
-export interface VisiblePromiseOptions {
+
+export interface ScriptsOptions {
   deferred?: Deferred
   vanish?: Function
 }
 
-export function createVisibleScripts(options: VisiblePromiseOptions) {
+export function createVisibleScripts(options: ScriptsOptions) {
   const { reject: _reject, resolve: _resolve } = options.deferred || {}
   const { vanish: _vanish } = options
 

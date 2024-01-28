@@ -1,8 +1,12 @@
-import type { AppContext, InjectionKey } from 'vue-demi'
+import type { AppContext, Component, InjectionKey } from 'vue-demi'
 import type { UseOverlayReturn } from '../composable'
 
 export const context = {
   appContext: null as null | AppContext,
 }
 
-export const OverlayMetaKey: InjectionKey<UseOverlayReturn> = Symbol('__imperative_overlay_key')
+export const ScriptsInjectionKey: InjectionKey<UseOverlayReturn> = Symbol('OverlayScripts')
+export const InstancesInjectionKey: InjectionKey<{
+  render: (instance: Component, props: any) => void
+  vanish: (instance: Component) => void
+}> = Symbol('OverlayInstances')

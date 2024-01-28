@@ -4,7 +4,7 @@ import { Teleport, defineComponent, h, provide, ref } from 'vue-demi'
 import { createDeferred, defineName } from '@overlays/core'
 import { pascalCase } from 'pascal-case'
 import type { GlobalMountOptions, ImperativeOverlay } from '@overlays/core'
-import { OverlayMetaKey } from '../internal'
+import { ScriptsInjectionKey } from '../internal'
 
 export type InjectionHolder<Props, Resolved> = [Component, ImperativeOverlay<Props, Resolved>]
 
@@ -25,7 +25,7 @@ export function useInjectHolder<Props, Resolved = void>(
   const Holder = defineComponent({
     name: pascalCase(name),
     setup() {
-      provide(OverlayMetaKey, scripts)
+      provide(ScriptsInjectionKey, scripts)
       return () => refresh.value ? render() : null
     },
   })

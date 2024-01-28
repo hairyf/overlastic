@@ -1,12 +1,12 @@
 import { ref } from 'vue-demi'
 import type { Deferred } from '@overlays/core'
 
-export interface VisiblePromiseOptions {
+export interface ScriptsOptions {
   deferred: Deferred
   vanish?: Function
 }
 
-export function useVisibleScripts(options: VisiblePromiseOptions) {
+export function useScripts(options: ScriptsOptions) {
   const { reject: _reject } = options.deferred || {}
   const { vanish: _vanish } = options
 

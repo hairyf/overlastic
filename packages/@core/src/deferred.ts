@@ -1,6 +1,9 @@
-export type Deferred<T = void> = Promise<T> & { resolve: (value: T) => void; reject: Function }
+export type Deferred<T = void> = Promise<T> & {
+  resolve: (value: T) => void
+  reject: (value?: any) => void
+}
 
-export function createDeferred<T = void>(): Promise<T> & { resolve: (value: T) => void; reject: Function } {
+export function createDeferred<T = void>(): Deferred<T> {
   let resolve: any, reject: any
 
   const promise = new Promise<any>((_resolve, _reject) => {

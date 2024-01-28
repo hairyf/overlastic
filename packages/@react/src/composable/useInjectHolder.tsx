@@ -4,7 +4,7 @@ import type { FC } from 'react'
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { Deferred, ImperativeOverlay, MountOptions } from '@overlays/core'
-import { Context } from '../internal'
+import { ScriptsContext } from '../internal'
 
 export type InjectionHolder<Props, Resolved> = [JSX.Element, ImperativeOverlay<Props, Resolved>]
 
@@ -25,11 +25,12 @@ export function useInjectHolder<Props, Resolved = void>(
   }
 
   const holder = (
-    <Context.Provider
+    <ScriptsContext.Provider
       value={scripts}
-      children={refresh ? render() : null}
       {...{ id: pascalCase(name) }}
-    />
+    >
+      {refresh ? render() : null}
+    </ScriptsContext.Provider>
   )
 
   return [holder, callback as any]

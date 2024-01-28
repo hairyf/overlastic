@@ -113,15 +113,17 @@ const nav: DefaultTheme.NavItem[] = [
 
 const config = defineConfig({
   lang: 'zh',
+  title: 'Unified Overlays',
   head: [['link', { rel: 'icon', href: '/circle.svg', type: 'image/svg+xml' }]],
   locales: {
-    '/': {
+    'root': {
+      label: 'Unified Overlays',
       lang: 'en-US',
-      title: 'Unified Overlays',
     },
     '/zh/': {
+      label: 'Unified Overlays',
       lang: 'zh-CN',
-      title: 'Unified Overlays',
+      link: '/zh/',
     },
   },
   lastUpdated: true,
@@ -132,13 +134,7 @@ const config = defineConfig({
       message: 'MIT Licensed',
       copyright: 'Copyright © 2019-present hairyf',
     },
-    localeLinks: {
-      text: '',
-      items: [
-        { text: 'English', link: '/' },
-        { text: '简体中文', link: '/zh/' },
-      ],
-    },
+
   },
 })
 
