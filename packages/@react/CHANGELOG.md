@@ -1,5 +1,11 @@
 # @overlays/react
 
+## 0.4.8
+
+### Patch Changes
+
+- support vue, react overlays provider
+
 ## 0.4.7
 
 ### Patch Changes
