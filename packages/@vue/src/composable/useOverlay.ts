@@ -3,7 +3,7 @@ import { getCurrentInstance, inject, onMounted, provide } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
 import type { Deferred } from '@overlays/core'
 import { delay, noop } from '@overlays/core'
-import { OverlayMetaKey } from '../internal'
+import { ScriptsInjectionKey } from '../internal'
 
 export interface UseOverlayEvents {
   /**
@@ -67,7 +67,7 @@ export interface UseOverlayReturn {
  */
 export function useOverlay(options: UseOverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
-  const overlay = inject(OverlayMetaKey, useDeclarative(model, options))
+  const overlay = inject(ScriptsInjectionKey, useDeclarative(model, options))
   const dec = Reflect.get(overlay, 'in_dec')
   const { visible, deferred, vanish } = overlay
 
@@ -85,7 +85,7 @@ export function useOverlay(options: UseOverlayOptions = {}) {
   if (!dec && immediate)
     onMounted(() => visible.value = true)
 
-  provide(OverlayMetaKey, null as any)
+  provide(ScriptsInjectionKey, null as any)
   return overlay
 }
 

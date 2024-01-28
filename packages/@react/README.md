@@ -111,6 +111,7 @@ Once the Overlay component has received props, the popup layer component can be 
 ```tsx
 import { useState } from 'react'
 import { Component } from './overlay'
+
 export function Main() {
   const [visible, setVisible] = useState(false)
 
@@ -135,7 +136,7 @@ export function Main() {
 If you want to replace other fields and event names, you can do so using the `model` and `events` config of useOverlay.
 
 ```jsx
-function Component(props: { onOn?: Function, onNook?: Function, open: boolean }) {
+function Component(props: { onOn?: Function; onNook?: Function; open: boolean }) {
   const { visible, resolve, reject } = useOverlay({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',

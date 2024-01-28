@@ -58,6 +58,38 @@ const value = await renderOverlay(Component, {
 // value === "useOverlay:confirmed"
 ```
 
+## Injection Provider ✨ (v0.4.8)
+
+In the case of using Provider, the overlays mode does not simply access the content injected into the current context. By supporting the following APIs, it allows the use of injected components to inherit the context: 
+
+```tsx
+import { OverlaysProvider } from '@overlays/react'
+
+function Main() {
+  return (
+    <OverlaysProvider>
+      <App />
+    </OverlaysProvider>
+  )
+}
+```
+
+Using in a page:
+
+```tsx
+import { useInjectProvider } from '@overlays/react'
+import CustomDialog from './Dialog.tsx'
+
+function Page() {
+  const openDialog = useInjectProvider(CustomDialog)
+  return (
+    <button onClick={() => openDialog({ ... })}>
+      Open Modal
+    </button>
+  )
+}
+```
+
 ## Injection Holder
 
 In addition to using `defineOverlay` and `renderOverlay` to create popup components, you can also use useInjectHolder to create popup components within a component and inherit the current context of the application.
@@ -111,6 +143,7 @@ Once the Overlay component has received props, the popup layer component can be 
 ```tsx
 import { useState } from 'react'
 import { Component } from './overlay'
+
 export function Main() {
   const [visible, setVisible] = useState(false)
 
@@ -135,7 +168,7 @@ export function Main() {
 If you want to replace other fields and event names, you can do so using the `model` and `events` config of useOverlay.
 
 ```jsx
-function Component(props: { onOn?: Function, onNook?: Function, open: boolean }) {
+function Component(props: { onOn?: Function; onNook?: Function; open: boolean }) {
   const { visible, resolve, reject } = useOverlay({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',

@@ -6,7 +6,7 @@ import { watchClickPosition } from './events'
 import type { ClickPosition, ImperativeOverlay, MountOptions } from './types'
 import { context } from './internal'
 
-export type MountConstructorOptions<Opts> = Opts & {
+export type MountConstructorOptions<Options> = Options & {
   /**
    * The ID of the mounted element
    */
@@ -29,13 +29,13 @@ export type MountConstructorOptions<Opts> = Opts & {
   position?: ClickPosition
 }
 
-export interface MountConstructor<Inst, Opts> {
-  (instance: Inst, props: any, options: MountConstructorOptions<Opts>): void
+export interface MountConstructor<Instance, Options> {
+  (instance: Instance, props: any, options: MountConstructorOptions<Options>): void
 }
 
-export interface OverlaysConstructor<Inst, Opts> {
-  define: <Props, Resolved = void>(instance: Inst, options?: MountOptions<Opts>) => ImperativeOverlay<Props, Resolved, Opts>
-  render: <Props, Resolved = void>(instance: Inst, props?: Props, options?: MountOptions<Opts>) => Promise<Resolved>
+export interface OverlaysConstructor<Instance, Options> {
+  define: <Props, Resolved = void>(instance: Instance, options?: MountOptions<Options>) => ImperativeOverlay<Props, Resolved, Options>
+  render: <Props, Resolved = void>(instance: Instance, props?: Props, options?: MountOptions<Options>) => Promise<Resolved>
 }
 
 /**

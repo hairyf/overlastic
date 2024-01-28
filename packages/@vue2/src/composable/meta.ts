@@ -1,6 +1,6 @@
 import { delay } from '@overlays/core'
 import Vue from 'vue'
-import { OverlayMetaKey } from '../internal'
+import { ScriptsInjectionKey } from '../internal'
 
 export interface UseOverlayEvents {
   /**
@@ -46,7 +46,7 @@ export function useOverlay(options: UseOverlayOptions = {}) {
   events.resolve = events.resolve || 'resolve'
 
   const mixinOptions = Vue.extend({
-    inject: [OverlayMetaKey],
+    inject: [ScriptsInjectionKey],
     model: {
       prop: model,
       event: 'change',

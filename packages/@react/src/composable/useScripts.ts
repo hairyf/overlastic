@@ -1,12 +1,12 @@
 import type { Deferred } from '@overlays/core'
 import { useState } from 'react'
 
-export interface VisiblePromiseOptions {
+export interface ScriptsOptions {
   deferred: Deferred
   vanish?: Function
 }
-export function useVisibleScripts(options: VisiblePromiseOptions) {
-  const { reject: _reject, resolve: _resolve } = options.deferred || {}
+export function useScripts(options: ScriptsOptions) {
+  const { reject: _reject } = options.deferred || {}
   const { vanish: _vanish } = options
 
   const [visible, setVisible] = useState(false)

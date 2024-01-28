@@ -2,7 +2,7 @@ import { delay, noop } from '@overlays/core'
 import type { Dispatch, SetStateAction } from 'react'
 import { useContext, useEffect } from 'react'
 
-import { Context } from '../internal'
+import { ScriptsContext } from '../internal'
 import type { PropsWidthOverlays } from '../types'
 
 export interface UseOverlayEvents {
@@ -66,7 +66,7 @@ export interface UseOverlayReturn {
 
 export function useOverlay(options: UseOverlayOptions = {}) {
   const { immediate = true, duration = 0, automatic = true } = options
-  const context = useContext(Context)
+  const context = useContext(ScriptsContext)
   const dec = Reflect.get(context, 'in_dec')
   const overlay = dec ? useDeclarative(options) : context
   const { setVisible, vanish, deferred } = overlay
@@ -93,16 +93,16 @@ export function useDeclarative(options: UseOverlayOptions = {}) {
   const { reject = 'onReject', resolve = 'onResolve' } = events
 
   const _reject = (value?: any) => {
-    props[reject]?.(value)
+    (props as any)[reject]?.(value)
   }
   const _resolve = (value?: any) => {
-    props[resolve]?.(value)
+    (props as any)[resolve]?.(value)
   }
 
   return {
     reject: _reject,
     resolve: _resolve,
-    visible: props[model],
+    visible: (props as any)[model],
     vanish: noop,
     setVisible: noop,
     deferred: undefined,

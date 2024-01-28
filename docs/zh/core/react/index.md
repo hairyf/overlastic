@@ -59,6 +59,43 @@ const value = await renderOverlay(OverlayComponent, {
 // value === "useOverlay:confirmed"
 ```
 
+## Injection Provider ✨ (v0.4.8)
+
+如果有 Context、Provider 的情况下，使用 overlays 获取当前上下文都变得非常麻烦，而使用 useInjectHolder 还需要将 holder 放到某个地方，而通过全局的 Provider 批量渲染所有弹窗，可以减少这部分的工作，我们提供了以下的组件与 Hooks 支持：
+
+```tsx
+import { OverlaysProvider } from '@overlays/react'
+
+function Main() {
+  return (
+    <OverlaysProvider>
+      <App />
+    </OverlaysProvider>
+  )
+}
+```
+
+在页面中使用 Overlay Component:
+
+
+```tsx
+import { useInjectProvider } from '@overlays/react'
+import CustomDialog from './Dialog.tsx'
+
+function Page() {
+  const openDialog = useInjectProvider(CustomDialog)
+  async function onClick() {
+    const resolved = await openDialog({ title: 'My Title' })
+    console.log(resolved)
+  }
+  return (
+    <button onClick={onClick}>
+      Open Modal
+    </button>
+  )
+}
+```
+
 ## Injection Holder
 
 除了使用 `defineOverlay` 与 `renderOverlay` 创建使用弹出层组件外，还支持使用 `useInjectHolder` 创建在组件内部的弹出层组件，并继承应用的当前上下文。
@@ -112,6 +149,7 @@ export function OverlayComponent(props: PropsWithOverlays) {
 ```tsx
 import { useState } from 'react'
 import { Component } from './overlay'
+
 export function Main() {
   const [visible, setVisible] = useState(false)
 
@@ -136,7 +174,7 @@ export function Main() {
 如果您想替换为其他的字段与事件名，可以更改 `events` 与 `model` 配置。
 
 ```jsx
-function Component(props: { onOn?: Function, onNook?: Function, open: boolean }) {
+function Component(props: { onOn?: Function; onNook?: Function; open: boolean }) {
   const { visible, resolve, reject } = useOverlay({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',

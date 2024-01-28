@@ -3,8 +3,8 @@ import { pascalCase } from 'pascal-case'
 import type { AppContext, Component } from 'vue-demi'
 import { createApp, defineComponent, h, provide } from 'vue-demi'
 
-import { OverlayMetaKey } from '../internal'
-import { useVisibleScripts } from '../composable'
+import { ScriptsInjectionKey } from '../internal'
+import { useScripts } from '../composable'
 import { inheritParent } from '../utils'
 
 export interface VMountOptions {
@@ -12,7 +12,7 @@ export interface VMountOptions {
   appContext?: AppContext
 }
 
-export const constructor = createConstructor<Component, VMountOptions>((Inst, props, options) => {
+export const constructor = createConstructor<Component, VMountOptions>((Instance, props, options) => {
   const { container, id, deferred, appContext } = options
 
   function vanish() {
@@ -20,19 +20,19 @@ export const constructor = createConstructor<Component, VMountOptions>((Inst, pr
     container.remove()
   }
 
-  const ChildApp = defineComponent({
+  const InstanceWithProvider = defineComponent({
     name: pascalCase(id),
     setup: () => {
-      const scripts = useVisibleScripts({
+      const scripts = useScripts({
         vanish,
         deferred,
       })
-      provide(OverlayMetaKey, scripts)
+      provide(ScriptsInjectionKey, scripts)
     },
-    render: () => h(Inst, props),
+    render: () => h(Instance, props),
   })
 
-  const app = createApp(ChildApp)
+  const app = createApp(InstanceWithProvider)
 
   inheritParent(app, appContext)
 
