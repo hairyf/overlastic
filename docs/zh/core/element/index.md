@@ -26,8 +26,9 @@ Create custom elements in the form of functions and return them.
 function Component(props) {
   const element = document.createElement('div')
   element.innerHTML = props.title
+  element.classList.add('dialog')
 
-  const { resolve, reject } = useOverlay({
+  const { resolve, reject, deferred } = useOverlay({
     // Duration of overlays duration to avoid premature destruction of the component
     duration: 1000,
   })
@@ -36,6 +37,11 @@ function Component(props) {
   element.onclick = function () {
     resolve('ok')
   }
+
+    // Use setTimeout to wait for the element to be appended, then add a class name with animation
+  setTimeout(() => element.classList.add('show'))
+  // When the deferred is triggered, remove the displayed class name
+  deferred.finally(() => element.classList.remove('show'))
 
   return element
 }
