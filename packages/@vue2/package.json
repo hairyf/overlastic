@@ -42,8 +42,8 @@
   },
   "dependencies": {
     "@overlays/core": "workspace:^",
-    "mitt": "^3.0.0",
-    "pascal-case": "^3.1.2"
+    "mitt": "^3.0.1",
+    "pascal-case": "^4.0.0"
   },
   "devDependencies": {
     "vue": "^2.6"

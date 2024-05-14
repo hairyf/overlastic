@@ -12,12 +12,12 @@
   "devDependencies": {
     "@overlays/core": "workspace:^",
     "@overlays/svelte": "workspace:^",
-    "@sveltejs/vite-plugin-svelte": "^2.0.3",
-    "@tsconfig/svelte": "^4.0.1",
+    "@sveltejs/vite-plugin-svelte": "^3.1.0",
+    "@tsconfig/svelte": "^5.0.4",
     "svelte": "^3.57.0",
-    "svelte-check": "^3.0.0",
-    "tslib": "^2.5.0",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.2"
+    "svelte-check": "^3.7.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
   }
 }
