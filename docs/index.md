@@ -14,7 +14,7 @@ hero:
       link: /en/core/guide/getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/hairyf/unoverlays
+      link: https://github.com/hairyf/overlastic
   image:
     src: /circle.svg
     alt: Overlays

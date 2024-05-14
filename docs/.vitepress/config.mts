@@ -107,7 +107,7 @@ const nav: DefaultTheme.NavItem[] = [
   },
   {
     text: 'Github',
-    link: 'https://github.com/hairyf/unoverlays',
+    link: 'https://github.com/hairyf/overlastic',
   },
 ]
 

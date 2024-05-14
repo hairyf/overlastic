@@ -15,7 +15,7 @@ A create model | dialog | popup library
 </p>
 
 <p align="center">
-  <a href="https://github.com/hairyf/unoverlays">English</a> | Chinese | <a href="https://unoverlays.vercel.app/zh/">docs</a>
+  <a href="https://github.com/hairyf/overlastic">English</a> | Chinese | <a href="https://overlastic.vercel.app/zh/">docs</a>
 </p>
 
     Unified Overlays 用于创建组件的回调（命令式）方法、并同时支持 Vue、React 等组件的声明式使用。
@@ -30,11 +30,11 @@ A create model | dialog | popup library
 
 ## packages
 
-- [@overlastic/vanilla](https://unoverlays.vercel.app/zh/core/element/)
-- [@overlastic/react](https://unoverlays.vercel.app/zh/core/react/)
-- [@overlastic/vue](https://unoverlays.vercel.app/zh/vue/)
-- [@overlastic/svelte](https://unoverlays.vercel.app/zh/core/svelte/)
-- [@overlastic/core](https://unoverlays.vercel.app/zh/core/functions/constructor.html)
+- [@overlastic/vanilla](https://overlastic.vercel.app/zh/core/element/)
+- [@overlastic/react](https://overlastic.vercel.app/zh/core/react/)
+- [@overlastic/vue](https://overlastic.vercel.app/zh/vue/)
+- [@overlastic/svelte](https://overlastic.vercel.app/zh/core/svelte/)
+- [@overlastic/core](https://overlastic.vercel.app/zh/core/functions/constructor.html)
 
 ## Devtools
 

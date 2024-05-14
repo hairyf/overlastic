@@ -15,7 +15,7 @@ A create model | dialog | popup promise deferred library
 </p>
 
 <p align="center">
-  English | <a href="https://github.com/hairyf/unoverlays/blob/master/README_CN.md">Chinese</a> | <a href="https://unoverlays.vercel.app">docs</a>
+  English | <a href="https://github.com/hairyf/overlastic/blob/master/README_CN.md">Chinese</a> | <a href="https://overlastic.vercel.app">docs</a>
 </p>
 
     Unified Overlays are used to create callback (imperative) methods for 
@@ -31,11 +31,11 @@ A create model | dialog | popup promise deferred library
 
 ## Packages
 
-- [@overlastic/vanilla](https://unoverlays.vercel.app/en/core/element/)
-- [@overlastic/react](https://unoverlays.vercel.app/en/core/react/)
-- [@overlastic/vue](https://unoverlays.vercel.app/en/vue/)
-- [@overlastic/svelte](https://unoverlays.vercel.app/en/core/svelte/)
-- [@overlastic/core](https://unoverlays.vercel.app/en/core/functions/constructor.html)
+- [@overlastic/vanilla](https://overlastic.vercel.app/en/core/element/)
+- [@overlastic/react](https://overlastic.vercel.app/en/core/react/)
+- [@overlastic/vue](https://overlastic.vercel.app/en/vue/)
+- [@overlastic/svelte](https://overlastic.vercel.app/en/core/svelte/)
+- [@overlastic/core](https://overlastic.vercel.app/en/core/functions/constructor.html)
 
 ## Devtools
 
