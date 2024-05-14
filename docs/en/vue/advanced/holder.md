@@ -1,14 +1,14 @@
 # Injection Holder
 
-In addition to using defineOverlay and renderOverlay to create pop-up components, you can also use useInjectHolder to create pop-up components inside a component and inherit the current context of the application.
+In addition to using defineOverlay and renderOverlay to create pop-up components, you can also use useOverlayHolder to create pop-up components inside a component and inherit the current context of the application.
 
 ```vue
 <!-- App.vue -->
 <script setup>
-import { useInjectHolder } from '@overlastic/vue'
+import { useOverlayHolder } from '@overlastic/vue'
 import OverlayComponent from './overlay.vue'
-// Use useInjectHolder(Component) to create a component holder that supports the current context.
-const [holder, overlayApi] = useInjectHolder(OverlayComponent)
+// Use useOverlayHolder(Component) to create a component holder that supports the current context.
+const [holder, overlayApi] = useOverlayHolder(OverlayComponent)
 
 function open() {
   // Open the pop-up component.

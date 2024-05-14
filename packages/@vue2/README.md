@@ -33,14 +33,14 @@ app.use(unoverlay)
 
 ### Step 1: Define Component
 
-overlays is suitable for most components. Using useOverlay can provide finer control over the component process.
+overlays is suitable for most components. Using usePrograms can provide finer control over the component process.
 
 ```vue
 <!-- overlay.vue -->
 <script>
-import { useOverlay } from '@overlastic/vue2'
+import { usePrograms } from '@overlastic/vue2'
 export default {
-  mixins: [useOverlay({ duration: 1000 })],
+  mixins: [usePrograms({ duration: 1000 })],
   methods: {
     onClick() {
       // use this.$visible
@@ -79,7 +79,7 @@ import { renderOverlay } from '@overlastic/vue'
 import OverlayComponent from './overlay.vue'
 
 const value = await renderOverlay(OverlayComponent, {
-  title: 'useOverlay'
+  title: 'usePrograms'
 })
-// value === "useOverlay:confirmed"
+// value === "usePrograms:confirmed"
 ```

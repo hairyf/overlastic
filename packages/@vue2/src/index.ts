@@ -10,8 +10,8 @@ const install = (_ins: any, parent: any) => {
 const unoverlay: PluginObject<Vue> = { install }
 
 export { install }
-export { useOverlay } from './composable'
-export type { UseOverlayOptions } from './composable'
+export { usePrograms } from './composable'
+export type { ProgramsOptions } from './composable'
 export { defineOverlay, renderOverlay } from './define'
 export { Field } from './components'
 export default unoverlay

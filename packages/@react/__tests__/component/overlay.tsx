@@ -1,11 +1,11 @@
 import type { PropsWithChildren } from 'react'
 import type { PropsWidthOverlays } from '../../src'
-import { useOverlay } from '../../src'
+import { usePrograms } from '../../src'
 
 export type OverlayProps = PropsWidthOverlays<PropsWithChildren<{ duration?: number; title?: string }>>
 
 function Overlay(props: OverlayProps) {
-  const { resolve, reject, visible } = useOverlay({
+  const { resolve, reject, visible } = usePrograms({
     props,
     duration: props.duration,
   })

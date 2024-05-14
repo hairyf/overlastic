@@ -21,8 +21,8 @@ import {
   update_slot_base,
 } from 'svelte/internal'
 import { injectOptionsKey, injectOverlayKey } from '../internal'
-import type { UseOverlayReturn } from '../types'
-import type { UseOverlayOptions } from '../composable'
+import type { ProgramsReturn } from '../types'
+import type { ProgramsOptions } from '../composable'
 
 function create_if_block(ctx: any[]) {
   let current: boolean
@@ -155,8 +155,8 @@ function create_fragment(ctx: any[]) {
 function instance($$self: any, $$props: any, $$invalidate: any) {
   let { $$slots: slots = {}, $$scope } = $$props
   let { visible = false } = $$props
-  const { duration = 0, immediate = true } = getContext<UseOverlayOptions>(injectOptionsKey) || {}
-  const { deferred, vanish } = getContext<UseOverlayReturn>(injectOverlayKey)
+  const { duration = 0, immediate = true } = getContext<ProgramsOptions>(injectOptionsKey) || {}
+  const { deferred, vanish } = getContext<ProgramsReturn>(injectOverlayKey)
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.

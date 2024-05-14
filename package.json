@@ -7,7 +7,9 @@
     "unified",
     "overlay",
     "component",
-    "popup"
+    "popup",
+    "notifications",
+    "prompt"
   ],
   "scripts": {
     "play:vue": "npm -C playgrounds/vue run dev",

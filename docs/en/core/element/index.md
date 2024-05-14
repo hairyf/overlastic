@@ -28,7 +28,7 @@ function Component(props) {
   element.innerHTML = props.title
   element.classList.add('dialog')
 
-  const { resolve, reject, deferred } = useOverlay({
+  const { resolve, reject, deferred } = usePrograms({
     // Duration of overlays duration to avoid premature destruction of the component
     duration: 1000,
   })
@@ -71,9 +71,9 @@ import { defineOverlay } from '@overlastic/vanilla'
 import Component from './overlay'
 
 const value = await renderOverlay(Component, {
-  title: 'useOverlay'
+  title: 'usePrograms'
 })
-// value === "useOverlay:confirmed"
+// value === "usePrograms:confirmed"
 ```
 
 ## Custom Element
@@ -90,7 +90,7 @@ callback1({/* props(attrs) */})
 const CustomComponent = (props) => {
   const customElement = document.createElement('my-custom-element')
 
-  const { resolve, reject } = useOverlay({
+  const { resolve, reject } = usePrograms({
     duration: 1000,
   })
 

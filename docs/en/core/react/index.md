@@ -21,7 +21,7 @@ yarn add @overlastic/react
 ```tsx
 // overlay.tsx
 export function Component(props) {
-  const { visible, resolve, reject } = useOverlay({
+  const { visible, resolve, reject } = usePrograms({
     // Duration of overlay duration, helps prevent premature component destruction
     duration: 200,
   })
@@ -53,9 +53,9 @@ import { renderOverlay } from '@overlastic/react'
 import { Component } from './overlay'
 
 const value = await renderOverlay(Component, {
-  title: 'useOverlay'
+  title: 'usePrograms'
 })
-// value === "useOverlay:confirmed"
+// value === "usePrograms:confirmed"
 ```
 
 ## Injection Provider ✨ (v0.4.8)
@@ -77,11 +77,11 @@ function Main() {
 Using in a page:
 
 ```tsx
-import { useInjectProvider } from '@overlastic/react'
+import { useOverlay } from '@overlastic/react'
 import CustomDialog from './Dialog.tsx'
 
 function Page() {
-  const openDialog = useInjectProvider(CustomDialog)
+  const openDialog = useOverlay(CustomDialog)
   return (
     <button onClick={() => openDialog({ ... })}>
       Open Modal
@@ -92,15 +92,15 @@ function Page() {
 
 ## Injection Holder
 
-In addition to using `defineOverlay` and `renderOverlay` to create popup components, you can also use useInjectHolder to create popup components within a component and inherit the current context of the application.
+In addition to using `defineOverlay` and `renderOverlay` to create popup components, you can also use useOverlayHolder to create popup components within a component and inherit the current context of the application.
 
 ```tsx
-import { useInjectHolder } from '@overlastic/react'
+import { useOverlayHolder } from '@overlastic/react'
 import { OverlayComponent } from './overlay'
 
 export function Main() {
-  // Use useInjectHolder(Component) to create a component holder that supports the current context.
-  const [holder, overlayApi] = useInjectHolder(OverlayComponent)
+  // Use useOverlayHolder(Component) to create a component holder that supports the current context.
+  const [holder, overlayApi] = useOverlayHolder(OverlayComponent)
 
   function open() {
     // Open the popup component
@@ -124,11 +124,11 @@ Components created using `@overlastic/react` support both imperative and declara
 ```tsx
 // If using Typescript, use PropsWithOverlays to define props type
 import type { PropsWithOverlays } from '@overlastic/react'
-import { useOverlay } from '@overlastic/react'
+import { usePrograms } from '@overlastic/react'
 
 export function Component(props: PropsWithOverlays<{ /* ...you props */ }>) {
-  const { visible, resolve, reject } = useOverlay({
-    // pass props to useOverlay for processing
+  const { visible, resolve, reject } = usePrograms({
+    // pass props to usePrograms for processing
     props
   })
 
@@ -165,11 +165,11 @@ export function Main() {
 }
 ```
 
-If you want to replace other fields and event names, you can do so using the `model` and `events` config of useOverlay.
+If you want to replace other fields and event names, you can do so using the `model` and `events` config of usePrograms.
 
 ```jsx
 function Component(props: { onOn?: Function; onNook?: Function; open: boolean }) {
-  const { visible, resolve, reject } = useOverlay({
+  const { visible, resolve, reject } = usePrograms({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',
     props,
@@ -186,11 +186,11 @@ Take [antd(drawer)](https://ant.design/components/drawer-cn) as an example：
 
 ```tsx
 import type { PropsWithOverlays } from '@overlastic/react'
-import { useOverlay } from '@overlastic/react'
+import { usePrograms } from '@overlastic/react'
 import { Button, Drawer } from 'antd'
 
 function MyDrawer(props: PropsWithOverlays<{ title: string }>) {
-  const { visible, resolve, reject } = useOverlay({
+  const { visible, resolve, reject } = usePrograms({
     duration: 200,
     props,
   })

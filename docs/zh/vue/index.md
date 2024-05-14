@@ -26,19 +26,19 @@ yarn add @overlastic/vue
 
 ### 步骤.1: Define Component
 
-overlays 适用于绝大多数组件，使用 `useOverlay` 能对组件流程有更细致的控制。
+overlays 适用于绝大多数组件，使用 `usePrograms` 能对组件流程有更细致的控制。
 
 ```vue
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue'
-import { useOverlay } from '@overlastic/vue'
+import { usePrograms } from '@overlastic/vue'
 const props = defineProps({
   title: String,
 })
 
-// 从 useOverlay 获取 Overlay 信息
-const { visible, resolve, reject } = useOverlay({
+// 从 usePrograms 获取 Overlay 信息
+const { visible, resolve, reject } = usePrograms({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
   duration: 1000,
 })
@@ -73,9 +73,9 @@ import { renderOverlay } from '@overlastic/vue'
 import Overlay from './overlay.vue'
 
 const value = await renderOverlay(Overlay, {
-  title: 'useOverlay'
+  title: 'usePrograms'
 })
-// value === "useOverlay:confirmed"
+// value === "usePrograms:confirmed"
 ```
 
 ## Define Component
@@ -88,7 +88,7 @@ const value = await renderOverlay(Overlay, {
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlay } from '@overlastic/vue'
+import { usePrograms } from '@overlastic/vue'
 const props = defineProps({
   title: String,
   // 在 Template 中使用，需要定义 v-modal 所使用的字段（默认对应 visible）
@@ -98,7 +98,7 @@ const props = defineProps({
 // 定义组件中使用的事件类型（默认：reject、resolve）
 defineEmits(['reject', 'resolve'])
 
-const { visible, resolve, reject } = useOverlay()
+const { visible, resolve, reject } = usePrograms()
 </script>
 ```
 
@@ -132,7 +132,7 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, resolve, reject } = useOverlay({
+const { visible, resolve, reject } = usePrograms({
   events: { resolve: 'ok', reject: 'nook' },
   model: 'modalValue',
 })

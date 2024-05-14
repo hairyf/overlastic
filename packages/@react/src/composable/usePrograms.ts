@@ -5,7 +5,7 @@ import { useContext, useEffect } from 'react'
 import { ScriptsContext } from '../internal'
 import type { PropsWidthOverlays } from '../types'
 
-export interface UseOverlayEvents {
+export interface PromptifyEvents {
   /**
    * reject event name used by the template
    *
@@ -20,7 +20,7 @@ export interface UseOverlayEvents {
   resolve?: string
 }
 
-export interface UseOverlayOptions {
+export interface ProgramsOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -40,7 +40,7 @@ export interface UseOverlayOptions {
   /**
    * props use event name
    */
-  events?: UseOverlayEvents
+  events?: PromptifyEvents
   /**
    * whether to automatically handle components based on visible and duration
    *
@@ -49,7 +49,7 @@ export interface UseOverlayOptions {
   automatic?: boolean
 }
 
-export interface UseOverlayReturn {
+export interface ProgramsReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
   reject: Function
   /** the notification resolve, modify visible, and destroy it after the duration ends */
@@ -64,7 +64,7 @@ export interface UseOverlayReturn {
   deferred?: Promise<any>
 }
 
-export function useOverlay(options: UseOverlayOptions = {}) {
+export function usePrograms(options: ProgramsOptions = {}) {
   const { immediate = true, duration = 0, automatic = true } = options
   const context = useContext(ScriptsContext)
   const dec = Reflect.get(context, 'in_dec')
@@ -85,10 +85,10 @@ export function useOverlay(options: UseOverlayOptions = {}) {
       deferred?.then(destroy).catch(destroy)
   })
 
-  return overlay as UseOverlayReturn
+  return overlay as ProgramsReturn
 }
 
-export function useDeclarative(options: UseOverlayOptions = {}) {
+export function useDeclarative(options: ProgramsOptions = {}) {
   const { props = {}, model = 'visible', events = {} } = options
   const { reject = 'onReject', resolve = 'onResolve' } = events
 

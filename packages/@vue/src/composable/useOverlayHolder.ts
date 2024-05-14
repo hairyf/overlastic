@@ -8,7 +8,7 @@ import { ScriptsInjectionKey } from '../internal'
 
 export type InjectionHolder<Props, Resolved> = [Component, ImperativeOverlay<Props, Resolved>]
 
-export function useInjectHolder<Props, Resolved = void>(
+export function useOverlayHolder<Props, Resolved = void>(
   component: Component,
   options: Omit<GlobalMountOptions, 'appContext'> = {},
 ): InjectionHolder<Props, Resolved> {

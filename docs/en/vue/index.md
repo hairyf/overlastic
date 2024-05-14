@@ -26,17 +26,17 @@ yarn add @overlastic/vue
 
 ### Step 1: Define Component
 
-overlays is suitable for most components. Using useOverlay can provide finer control over the component process.
+overlays is suitable for most components. Using usePrograms can provide finer control over the component process.
 
 ```vue
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue'
-import { useOverlay } from '@overlastic/vue'
+import { usePrograms } from '@overlastic/vue'
 const props = defineProps({
   title: String,
 })
-const { visible, resolve, reject } = useOverlay({
+const { visible, resolve, reject } = usePrograms({
   // Duration of overlay duration to avoid premature destruction of the component
   duration: 1000,
 })
@@ -71,9 +71,9 @@ import { renderOverlay } from '@overlastic/vue'
 import OverlayComponent from './overlay.vue'
 
 const value = await renderOverlay(OverlayComponent, {
-  title: 'useOverlay'
+  title: 'usePrograms'
 })
-// value === "useOverlay:confirmed"
+// value === "usePrograms:confirmed"
 ```
 
 ## Define Component
@@ -88,7 +88,7 @@ To use it in `<template>`, `modal` and `event` must be explicitly defined.
 <!-- Component.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlay } from '@overlastic/vue'
+import { usePrograms } from '@overlastic/vue'
 const props = defineProps({
   title: String,
   // To use in Template, you need to define the field used by v-model (default corresponds to visible)
@@ -98,7 +98,7 @@ const props = defineProps({
 // Define event types used in the component (default: reject, resolve)
 defineEmits(['reject', 'resolve'])
 
-const { visible, resolve, reject } = useOverlay({
+const { visible, resolve, reject } = usePrograms({
   // If using template rendering, duration can be omitted
 })
 </script>
@@ -124,7 +124,7 @@ function reject(value) {
 </template>
 ```
 
-If you want to replace them with other fields and event names, you can do so using the `model` and `events` config of useOverlay.
+If you want to replace them with other fields and event names, you can do so using the `model` and `events` config of usePrograms.
 
 ```ts
 const props = defineProps({
@@ -134,7 +134,7 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, resolve, reject } = useOverlay({
+const { visible, resolve, reject } = usePrograms({
   events: { resolve: 'ok', reject: 'nook' },
   model: 'modalValue',
 })
@@ -153,7 +153,7 @@ export type Resolved = string
 
 // component setup
 const props = defineProps<DialogProps>()
-const { resolve, reject } = useOverlay<Resolved>()
+const { resolve, reject } = usePrograms<Resolved>()
 
 // define overlay
 const callback = defineOverlay<DialogProps, Resolved>(Component)

@@ -8,7 +8,7 @@ import { ScriptsContext } from '../internal'
 
 export type InjectionHolder<Props, Resolved> = [JSX.Element, ImperativeOverlay<Props, Resolved>]
 
-export function useInjectHolder<Props, Resolved = void>(
+export function useOverlayHolder<Props, Resolved = void>(
   Component: FC<Props>,
   options: MountOptions = {},
 ): InjectionHolder<Props, Resolved> {

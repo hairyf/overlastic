@@ -21,7 +21,7 @@ yarn add @overlastic/react
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
-  const { visible, resolve, reject } = useOverlay({
+  const { visible, resolve, reject } = usePrograms({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
     duration: 1000,
   })
@@ -54,14 +54,14 @@ import { renderOverlay } from '@overlastic/react'
 import { OverlayComponent } from './overlay'
 
 const value = await renderOverlay(OverlayComponent, {
-  title: 'useOverlay'
+  title: 'usePrograms'
 })
-// value === "useOverlay:confirmed"
+// value === "usePrograms:confirmed"
 ```
 
 ## Injection Provider ✨ (v0.4.8)
 
-如果有 Context、Provider 的情况下，使用 overlays 获取当前上下文都变得非常麻烦，而使用 useInjectHolder 还需要将 holder 放到某个地方，而通过全局的 Provider 批量渲染所有弹窗，可以减少这部分的工作，我们提供了以下的组件与 Hooks 支持：
+如果有 Context、Provider 的情况下，使用 overlays 获取当前上下文都变得非常麻烦，而使用 useOverlayHolder 还需要将 holder 放到某个地方，而通过全局的 Provider 批量渲染所有弹窗，可以减少这部分的工作，我们提供了以下的组件与 Hooks 支持：
 
 ```tsx
 import { OverlaysProvider } from '@overlastic/react'
@@ -79,11 +79,11 @@ function Main() {
 
 
 ```tsx
-import { useInjectProvider } from '@overlastic/react'
+import { useOverlay } from '@overlastic/react'
 import CustomDialog from './Dialog.tsx'
 
 function Page() {
-  const openDialog = useInjectProvider(CustomDialog)
+  const openDialog = useOverlay(CustomDialog)
   async function onClick() {
     const resolved = await openDialog({ title: 'My Title' })
     console.log(resolved)
@@ -98,15 +98,15 @@ function Page() {
 
 ## Injection Holder
 
-除了使用 `defineOverlay` 与 `renderOverlay` 创建使用弹出层组件外，还支持使用 `useInjectHolder` 创建在组件内部的弹出层组件，并继承应用的当前上下文。
+除了使用 `defineOverlay` 与 `renderOverlay` 创建使用弹出层组件外，还支持使用 `useOverlayHolder` 创建在组件内部的弹出层组件，并继承应用的当前上下文。
 
 ```tsx
-import { useInjectHolder } from '@overlastic/react'
+import { useOverlayHolder } from '@overlastic/react'
 import { OverlayComponent } from './overlay'
 
 export function Main() {
-  // 通过 useInjectHolder(Component) 创建支持当前 context 的组件持有者
-  const [holder, overlayApi] = useInjectHolder(OverlayComponent)
+  // 通过 useOverlayHolder(Component) 创建支持当前 context 的组件持有者
+  const [holder, overlayApi] = useOverlayHolder(OverlayComponent)
 
   function open() {
   // 打开弹出层
@@ -130,10 +130,10 @@ export function Main() {
 ```tsx
 // 如果使用 Typescript 需要使用 PropsWithOverlays 定义 props 类型
 import type { PropsWithOverlays } from '@overlastic/react'
-import { useOverlay } from '@overlastic/react'
+import { usePrograms } from '@overlastic/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, resolve, reject } = useOverlay({
+  const { visible, resolve, reject } = usePrograms({
     // 将 props 传递给 hooks 处理
     props
   })
@@ -175,7 +175,7 @@ export function Main() {
 
 ```jsx
 function Component(props: { onOn?: Function; onNook?: Function; open: boolean }) {
-  const { visible, resolve, reject } = useOverlay({
+  const { visible, resolve, reject } = usePrograms({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',
     props,
@@ -190,11 +190,11 @@ function Component(props: { onOn?: Function; onNook?: Function; open: boolean })
 
 ```tsx
 import type { PropsWithOverlays } from '@overlastic/react'
-import { useOverlay } from '@overlastic/react'
+import { usePrograms } from '@overlastic/react'
 import { Button, Drawer } from 'antd'
 
 function MyDrawer(props: PropsWithOverlays<{ title: string }>) {
-  const { visible, resolve, reject } = useOverlay({
+  const { visible, resolve, reject } = usePrograms({
     duration: 200,
     props,
   })

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { useInjectHolder } from '../../src'
+import { useOverlayHolder } from '../../src'
 import Overlay from './overlay.vue'
 
 const props = withDefaults(defineProps<{
@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<{
   duration?: number
 }>(), { root: undefined })
 
-const [holder, callback] = useInjectHolder<{ title?: string; duration?: number }, string>(Overlay, props)
+const [holder, callback] = useOverlayHolder<{ title?: string; duration?: number }, string>(Overlay, props)
 
 const result = ref<string>()
 

@@ -1,6 +1,6 @@
 import type { Deferred } from '@overlastic/core'
 
-export interface UseOverlayReturn {
+export interface ProgramsReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
   reject: Function
   /** the notification resolve, modify visible, and destroy it after the duration ends */

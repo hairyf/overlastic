@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useOverlay } from '@overlastic/vue'
+import { usePrograms } from '@overlastic/vue'
 export default defineComponent({
   props: {
     visible: {
@@ -16,7 +16,7 @@ export default defineComponent({
   },
   emits: ['resolve', 'reject', 'update:visible'],
   setup: (props) => {
-    const { resolve, reject, vanish, visible } = useOverlay({
+    const { resolve, reject, vanish, visible } = usePrograms({
       duration: props.duration,
     })
     return { resolve, reject, vanish, visible }

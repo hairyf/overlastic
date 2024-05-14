@@ -2,7 +2,7 @@ import { delay } from '@overlastic/core'
 import Vue from 'vue'
 import { ScriptsInjectionKey } from '../internal'
 
-export interface UseOverlayEvents {
+export interface PromptifyEvents {
   /**
    * reject event name used by the template
    *
@@ -17,7 +17,7 @@ export interface UseOverlayEvents {
   resolve?: string
 }
 
-export interface UseOverlayOptions {
+export interface ProgramsOptions {
   /** duration duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -31,7 +31,7 @@ export interface UseOverlayOptions {
   /**
    * template use event name
    */
-  events?: UseOverlayEvents
+  events?: PromptifyEvents
   /**
    * whether to automatically handle components based on visible and duration
    *
@@ -40,7 +40,7 @@ export interface UseOverlayOptions {
   automatic?: boolean
 }
 
-export function useOverlay(options: UseOverlayOptions = {}) {
+export function usePrograms(options: ProgramsOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true, events = {} } = options
   events.reject = events.reject || 'reject'
   events.resolve = events.resolve || 'resolve'

@@ -1,2 +1,2 @@
-export * from './visible'
-export * from './meta'
+export * from './createVisibleScripts'
+export * from './usePrograms'

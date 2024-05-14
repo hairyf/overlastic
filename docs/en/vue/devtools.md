@@ -3,7 +3,7 @@
 When using defineOverlay, a Vue sub-application is created, which is different from the main application and can be viewed and debugged in [Vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN).
 
 
-You can also use [useInjectHolder](/en/vue/advanced/holder) to create pop-ups inside components and inherit the current context of the application.
+You can also use [useOverlayHolder](/en/vue/advanced/holder) to create pop-ups inside components and inherit the current context of the application.
 
 ![html](/html.png)
 
