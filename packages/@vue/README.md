@@ -6,12 +6,12 @@
 
 With pnpm: 
 ```sh
-pnpm add @overlays/vue
+pnpm add @overlastic/vue
 ```
 
 With yarn:
 ```sh
-yarn add @overlays/vue
+yarn add @overlastic/vue
 ```
 
 ## Global
@@ -21,7 +21,7 @@ You can register overlays globally, which will inherit the application context f
 ```ts
 // main.js
 import { createApp } from 'vue'
-import unoverlay from '@overlays/vue'
+import unoverlay from '@overlastic/vue'
 
 const app = createApp({})
 app.use(unoverlay)
@@ -39,7 +39,7 @@ overlays is suitable for most components. Using useOverlay can provide finer con
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue'
-import { useOverlay } from '@overlays/vue'
+import { useOverlay } from '@overlastic/vue'
 const props = defineProps({
   title: String,
 })
@@ -63,7 +63,7 @@ const { visible, resolve, reject } = useOverlay({
 You can use the `defineOverlay` method to convert the component into a modal dialog in Javascript / Typescript, which allows you to call it.
 
 ```ts
-import { defineOverlay } from '@overlays/vue'
+import { defineOverlay } from '@overlastic/vue'
 import OverlayComponent from './overlay.vue'
 
 // Convert to imperative callback
@@ -76,7 +76,7 @@ const value = await callback({ title: 'callbackOverlay' })
 You can also use `renderOverlay` to directly call the component and skip the `defineOverlay` method.
 
 ```ts
-import { renderOverlay } from '@overlays/vue'
+import { renderOverlay } from '@overlastic/vue'
 import OverlayComponent from './overlay.vue'
 
 const value = await renderOverlay(OverlayComponent, {

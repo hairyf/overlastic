@@ -1,8 +1,8 @@
 import type { Ref } from 'vue-demi'
 import { getCurrentInstance, inject, onMounted, provide } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
-import type { Deferred } from '@overlays/core'
-import { delay, noop } from '@overlays/core'
+import type { Deferred } from '@overlastic/core'
+import { delay, noop } from '@overlastic/core'
 import { ScriptsInjectionKey } from '../internal'
 
 export interface UseOverlayEvents {

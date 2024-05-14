@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useOverlay } from '@overlays/vue'
+import { useOverlay } from '@overlastic/vue'
 export default defineComponent({
   props: {
     visible: {

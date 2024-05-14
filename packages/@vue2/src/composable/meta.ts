@@ -1,4 +1,4 @@
-import { delay } from '@overlays/core'
+import { delay } from '@overlastic/core'
 import Vue from 'vue'
 import { ScriptsInjectionKey } from '../internal'
 

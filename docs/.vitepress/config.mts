@@ -3,10 +3,10 @@ import { defineConfig } from 'vitepress'
 
 function getPackageLinks(lang: string) {
   const packages = [
-    { text: '@overlays/element', link: `/${lang}/core/element/` },
-    { text: '@overlays/react', link: `/${lang}/core/react/` },
-    { text: '@overlays/vue', link: `/${lang}/vue/` },
-    { text: '@overlays/svelte', link: `/${lang}/core/svelte/` },
+    { text: '@overlastic/vanilla', link: `/${lang}/core/element/` },
+    { text: '@overlastic/react', link: `/${lang}/core/react/` },
+    { text: '@overlastic/vue', link: `/${lang}/vue/` },
+    { text: '@overlastic/svelte', link: `/${lang}/core/svelte/` },
   ]
   return packages
 }
@@ -36,7 +36,7 @@ const sidebar: DefaultTheme.Sidebar = {
   ],
   '/en/vue/': [
     {
-      text: '@overlays/vue',
+      text: '@overlastic/vue',
       items: [
         { text: 'Started', link: '/en/vue/' },
         { text: 'Devtools', link: '/en/vue/devtools' },
@@ -77,7 +77,7 @@ const sidebar: DefaultTheme.Sidebar = {
   ],
   '/zh/vue/': [
     {
-      text: '@overlays/vue',
+      text: '@overlastic/vue',
       items: [
         { text: '快速开始', link: '/zh/vue/' },
         { text: '开发调试', link: '/zh/vue/devtools' },

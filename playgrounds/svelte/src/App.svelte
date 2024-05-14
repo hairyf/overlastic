@@ -3,7 +3,7 @@
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
   import Modal from './lib/Modal.svelte'
-  import { defineOverlay } from '@overlays/svelte'
+  import { defineOverlay } from '@overlastic/svelte'
   const modal = defineOverlay(Modal, {})
 </script>
 

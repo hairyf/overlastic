@@ -1,13 +1,13 @@
 # Globals Functions
 
-`@overlays/core` provides built-in tools for defining and creating global elements and mapping their hierarchical relationships.
+`@overlastic/core` provides built-in tools for defining and creating global elements and mapping their hierarchical relationships.
 
 ## defineGlobalElement
 
 Defines a mounting node, which is by default mounted in `document.body`. You can pass in a `root` parameter to define a mounting element, or pass in `false` to avoid mounting.
 
 ```ts
-import { defineGlobalElement } from '@overlays/core'
+import { defineGlobalElement } from '@overlastic/core'
 
 const divElement = defineGlobalElement('global-div')
 // body: { <div id="global-div"> }
@@ -22,7 +22,7 @@ const divElement2 = defineGlobalElement('global-div-2', false)
 Defines a name (id) for a mounting element. By default, an index is automatically appended to the end of the name.
 
 ```ts
-import { defineName } from '@overlays/core'
+import { defineName } from '@overlastic/core'
 
 const name1 = defineName() // unified-overlay--1
 const name2 = defineName('my-id') // my-id--1
@@ -31,7 +31,7 @@ const name3 = defineName('my-id2', false) // my-id2
 
 ## getIndex
 
-Gets the index of the current name, which is used internally by `@overlays/core` for passing the index property.
+Gets the index of the current name, which is used internally by `@overlastic/core` for passing the index property.
 
 ```ts
 defineName() // unified-overlay--1

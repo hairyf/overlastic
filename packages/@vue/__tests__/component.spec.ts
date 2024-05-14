@@ -2,7 +2,7 @@
 import { mount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
 import { Field } from '../src/components'
-describe('@overlays/vue:component', () => {
+describe('@overlastic/vue:component', () => {
   it('component:Field:text', () => {
     const Text = defineComponent({
       render() {

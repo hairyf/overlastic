@@ -1,4 +1,4 @@
-# @overlays/svelte
+# @overlastic/svelte
 
 ## 0.4.3
 
@@ -6,7 +6,7 @@
 
 - chore(release): v0.4.3 packages
 - Updated dependencies
-  - @overlays/core@0.4.3
+  - @overlastic/core@0.4.3
 
 ## 0.4.2
 
@@ -14,7 +14,7 @@
 
 - chore(release): v0.4.2 all packages
 - Updated dependencies
-  - @overlays/core@0.4.2
+  - @overlastic/core@0.4.2
 
 ## 0.4.1
 
@@ -22,7 +22,7 @@
 
 - chore(release): v0.4.1 all packages
 - Updated dependencies
-  - @overlays/core@0.4.1
+  - @overlastic/core@0.4.1
 
 ## 0.4.0
 
@@ -33,7 +33,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @overlays/core@0.4.0
+  - @overlastic/core@0.4.0
 
 ## 0.3.0
 
@@ -44,7 +44,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @overlays/core@0.3.0
+  - @overlastic/core@0.3.0
 
 ## 0.2.2
 
@@ -52,7 +52,7 @@
 
 - chore(release): release v0.2.1 versions
 - Updated dependencies
-  - @overlays/core@0.2.2
+  - @overlastic/core@0.2.2
 
 ## 0.2.1
 
@@ -60,7 +60,7 @@
 
 - chore(release): release v0.2.1 versions
 - Updated dependencies
-  - @overlays/core@0.2.1
+  - @overlastic/core@0.2.1
 
 ## 0.2.0
 
@@ -71,4 +71,4 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @overlays/core@0.2.0
+  - @overlastic/core@0.2.0

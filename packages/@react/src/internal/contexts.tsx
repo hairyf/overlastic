@@ -1,4 +1,4 @@
-import { noop } from '@overlays/core'
+import { noop } from '@overlastic/core'
 import type { FC } from 'react'
 import { createContext } from 'react'
 

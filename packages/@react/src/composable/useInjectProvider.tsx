@@ -1,4 +1,4 @@
-import { createConstructor } from '@overlays/core'
+import { createConstructor } from '@overlastic/core'
 import { type FC, useContext } from 'react'
 import { pascalCase } from 'pascal-case'
 import { createPortal } from 'react-dom'

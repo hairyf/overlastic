@@ -1,4 +1,4 @@
-import { createConstructor } from '@overlays/core'
+import { createConstructor } from '@overlastic/core'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { pascalCase } from 'pascal-case'

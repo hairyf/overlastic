@@ -12,11 +12,11 @@ Unified Overlays 是构建弹出层的插件，创建回调（命令式）方法
 
 ## packages
 
-- [@overlays/svelte](/zh/core/svelte/)
-- [@overlays/react](/zh/core/react/)
-- [@overlays/vue](/zh/vue/)
-- [@overlays/element](/zh/core/element/)
-- [@overlays/core](/zh/core/functions/constructor.html) - 快速适应与创建应用程序
+- [@overlastic/svelte](/zh/core/svelte/)
+- [@overlastic/react](/zh/core/react/)
+- [@overlastic/vue](/zh/vue/)
+- [@overlastic/vanilla](/zh/core/element/)
+- [@overlastic/core](/zh/core/functions/constructor.html) - 快速适应与创建应用程序
 
 ## Devtools
 

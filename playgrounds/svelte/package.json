@@ -10,8 +10,8 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
-    "@overlays/core": "workspace:^",
-    "@overlays/svelte": "workspace:^",
+    "@overlastic/core": "workspace:^",
+    "@overlastic/svelte": "workspace:^",
     "@sveltejs/vite-plugin-svelte": "^3.1.0",
     "@tsconfig/svelte": "^5.0.4",
     "svelte": "^3.57.0",

@@ -1,6 +1,6 @@
-# @overlays/vue
+# @overlastic/vue
 
-@overlays/vue is used to define Overlay components in Vue3 and supports both imperative and declarative usage!
+@overlastic/vue is used to define Overlay components in Vue3 and supports both imperative and declarative usage!
 
 ## Installation
 
@@ -8,18 +8,18 @@ Use [vue-demi](https://github.com/vueuse/vue-demi) to support the composition-ap
 
 > If you are using Vue version 2.7 or below, please install [@vue/composition-api](https://github.com/vuejs/composition-api#readme).
 > 
-> If you cannot use composition-api for some reason, use [@overlays/vue2](/zh/vue/vue2).
+> If you cannot use composition-api for some reason, use [@overlastic/vue2](/zh/vue/vue2).
 
 ## Install
 
 With pnpm: 
 ```sh
-pnpm add @overlays/vue
+pnpm add @overlastic/vue
 ```
 
 With yarn:
 ```sh
-yarn add @overlays/vue
+yarn add @overlastic/vue
 ```
 
 ## Usage
@@ -32,7 +32,7 @@ overlays is suitable for most components. Using useOverlay can provide finer con
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue'
-import { useOverlay } from '@overlays/vue'
+import { useOverlay } from '@overlastic/vue'
 const props = defineProps({
   title: String,
 })
@@ -54,7 +54,7 @@ const { visible, resolve, reject } = useOverlay({
 You can use the `defineOverlay` method to convert the component into a modal dialog in Javascript / Typescript, which allows you to call it.
 
 ```ts
-import { defineOverlay } from '@overlays/vue'
+import { defineOverlay } from '@overlastic/vue'
 import OverlayComponent from './overlay.vue'
 
 // Convert to imperative callback
@@ -67,7 +67,7 @@ const value = await callback({ title: 'callbackOverlay' })
 You can also use `renderOverlay` to directly call the component and skip the `defineOverlay` method.
 
 ```ts
-import { renderOverlay } from '@overlays/vue'
+import { renderOverlay } from '@overlastic/vue'
 import OverlayComponent from './overlay.vue'
 
 const value = await renderOverlay(OverlayComponent, {
@@ -78,7 +78,7 @@ const value = await renderOverlay(OverlayComponent, {
 
 ## Define Component
 
-To use a component created with `@overlays/vue`, it can be used not only with imperative methods, but also in `<template>`.
+To use a component created with `@overlastic/vue`, it can be used not only with imperative methods, but also in `<template>`.
 
 > This is an optional option that is very useful when porting old components.
 
@@ -88,7 +88,7 @@ To use it in `<template>`, `modal` and `event` must be explicitly defined.
 <!-- Component.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlay } from '@overlays/vue'
+import { useOverlay } from '@overlastic/vue'
 const props = defineProps({
   title: String,
   // To use in Template, you need to define the field used by v-model (default corresponds to visible)

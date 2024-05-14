@@ -1,4 +1,4 @@
-import type { Deferred } from '@overlays/core'
+import type { Deferred } from '@overlastic/core'
 import mitt from 'mitt'
 
 export interface ScriptsOptions {

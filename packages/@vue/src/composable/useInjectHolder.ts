@@ -1,9 +1,9 @@
 import type { Component } from 'vue-demi'
 import { Teleport, defineComponent, h, provide, ref } from 'vue-demi'
 
-import { createDeferred, defineName } from '@overlays/core'
+import { createDeferred, defineName } from '@overlastic/core'
 import { pascalCase } from 'pascal-case'
-import type { GlobalMountOptions, ImperativeOverlay } from '@overlays/core'
+import type { GlobalMountOptions, ImperativeOverlay } from '@overlastic/core'
 import { ScriptsInjectionKey } from '../internal'
 
 export type InjectionHolder<Props, Resolved> = [Component, ImperativeOverlay<Props, Resolved>]

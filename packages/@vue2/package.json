@@ -1,5 +1,5 @@
 {
-  "name": "@overlays/vue2",
+  "name": "@overlastic/vue2",
   "type": "module",
   "version": "0.4.4",
   "license": "MIT",
@@ -41,7 +41,7 @@
     "vue": "^2.6"
   },
   "dependencies": {
-    "@overlays/core": "workspace:^",
+    "@overlastic/core": "workspace:^",
     "mitt": "^3.0.1",
     "pascal-case": "^4.0.0"
   },

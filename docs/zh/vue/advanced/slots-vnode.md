@@ -4,7 +4,7 @@
 
 ```vue
 <script setup>
-import { useOverlay } from '@overlays/vue'
+import { useOverlay } from '@overlastic/vue'
 defineProps({ title: String })
 
 const { visible, /* ... */ } = useOverlay()
@@ -29,7 +29,7 @@ const { visible, /* ... */ } = useOverlay()
 ```vue
 <script lang="ts" setup>
 import { Component, VNode } from 'vue'
-import { Field, useOverlay } from '@overlays/vue'
+import { Field, useOverlay } from '@overlastic/vue'
 defineProps<{
   title?: String | VNode | Component
 }>()

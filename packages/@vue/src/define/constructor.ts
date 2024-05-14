@@ -1,4 +1,4 @@
-import { createConstructor } from '@overlays/core'
+import { createConstructor } from '@overlastic/core'
 import { pascalCase } from 'pascal-case'
 import type { AppContext, Component } from 'vue-demi'
 import { createApp, defineComponent, h, provide } from 'vue-demi'

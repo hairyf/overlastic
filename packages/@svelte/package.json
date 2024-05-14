@@ -1,5 +1,5 @@
 {
-  "name": "@overlays/svelte",
+  "name": "@overlastic/svelte",
   "type": "module",
   "version": "0.4.3",
   "license": "MIT",
@@ -38,7 +38,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@overlays/core": "workspace:^",
+    "@overlastic/core": "workspace:^",
     "svelte": "^3.57.0"
   }
 }

@@ -1,4 +1,4 @@
-# @overlays/svelte
+# @overlastic/svelte
 
 create imperative overlays in the svelte application, supporting context inheritance!
 
@@ -6,12 +6,12 @@ create imperative overlays in the svelte application, supporting context inherit
 
 With pnpm: 
 ```sh
-pnpm add @overlays/svelte
+pnpm add @overlastic/svelte
 ```
 
 With yarn:
 ```sh
-yarn add @overlays/svelte
+yarn add @overlastic/svelte
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ yarn add @overlays/svelte
 
 ```svelte
 <script lang="ts">
-  import { useOverlay, Overlay } from "@overlays/svelte";
+  import { useOverlay, Overlay } from "@overlastic/svelte";
   import { fly } from "svelte/transition";
   
   export let title: number
@@ -50,7 +50,7 @@ yarn add @overlays/svelte
 You can use the `defineOverlay` method to convert the component into a modal dialog in Javascript / Typescript, which allows you to call it.
 
 ```ts
-import { defineOverlay } from '@overlays/svelte'
+import { defineOverlay } from '@overlastic/svelte'
 import OverlayComponent from './overlay.svelte'
 
 // Convert to imperative callback
@@ -63,7 +63,7 @@ const value = await callback({ title: 'callbackOverlay' })
 You can also use `renderOverlay` to directly call the component and skip the `defineOverlay` method.
 
 ```ts
-import { renderOverlay } from '@overlays/svelte'
+import { renderOverlay } from '@overlastic/svelte'
 import OverlayComponent from './overlay.svelte'
 
 const value = await renderOverlay(OverlayComponent, {
@@ -79,7 +79,7 @@ By default, you do not need to control the display and hiding of the `visible` v
 
 ```svelte
 <script lang="ts">
-  import { useOverlay, Overlay } from "@overlays/svelte";
+  import { useOverlay, Overlay } from "@overlastic/svelte";
 
   let visible = false
 

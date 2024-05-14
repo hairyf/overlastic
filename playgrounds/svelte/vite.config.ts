@@ -10,7 +10,7 @@ export default defineConfig({
       name: 'xxx',
     },
     rollupOptions: {
-      external: ['svelte', '@overlays/svelte', '@overlays/core', 'svelte-check'],
+      external: ['svelte', '@overlastic/svelte', '@overlastic/core', 'svelte-check'],
     },
     minify: false,
   },

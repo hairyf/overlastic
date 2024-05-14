@@ -1,5 +1,5 @@
 import { ref } from 'vue-demi'
-import type { Deferred } from '@overlays/core'
+import type { Deferred } from '@overlastic/core'
 
 export interface ScriptsOptions {
   deferred: Deferred

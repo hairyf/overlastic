@@ -2,7 +2,7 @@
 /* eslint-disable multiline-ternary */
 import type { ComponentConstructorOptions } from 'svelte'
 import { getContext, onMount } from 'svelte'
-import { delay } from '@overlays/core'
+import { delay } from '@overlastic/core'
 import {
   SvelteComponentTyped,
   check_outros,

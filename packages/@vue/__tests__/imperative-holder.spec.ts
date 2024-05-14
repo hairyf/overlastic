@@ -1,9 +1,9 @@
-import { delay } from '@overlays/core'
+import { delay } from '@overlastic/core'
 import { mount } from '@vue/test-utils'
 import { clear, isModalExists, openModal, queryModalTitle, queryModalWrapper, queryTransitionParent, reject, resolve } from '../../__tests__'
 import HolderContainer from './components/holder-container.vue'
 
-describe('@overlays/vue:imperative-holder', () => {
+describe('@overlastic/vue:imperative-holder', () => {
   it('mount', () => {
     const wrapper = mount(HolderContainer)
     expect(() => wrapper.get('.base-modal__mask')).toThrowError()

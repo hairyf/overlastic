@@ -1,17 +1,17 @@
-# @overlays/react
+# @overlastic/react
 
-@overlays/react is used to define Overlay components in react and supports both imperative and declarative usage!
+@overlastic/react is used to define Overlay components in react and supports both imperative and declarative usage!
 
 ## Install
 
 With pnpm: 
 ```sh
-pnpm add @overlays/react
+pnpm add @overlastic/react
 ```
 
 With yarn:
 ```sh
-yarn add @overlays/react
+yarn add @overlastic/react
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ export function Component(props) {
 
 You can convert the component into a modal dialog box by using the `defineOverlay` method, which allows you to call it in Javascript / Typescript.
 ```ts
-import { defineOverlay } from '@overlays/react'
+import { defineOverlay } from '@overlastic/react'
 import { Component } from './overlay'
 
 // Convert to imperative callback
@@ -49,7 +49,7 @@ const value = await callback({ title: 'callbackOverlay' })
 You can also directly call the component through `renderOverlay`, bypassing the `defineOverlay` method.
 
 ```ts
-import { renderOverlay } from '@overlays/react'
+import { renderOverlay } from '@overlastic/react'
 import { Component } from './overlay'
 
 const value = await renderOverlay(Component, {
@@ -63,7 +63,7 @@ const value = await renderOverlay(Component, {
 In the case of using Provider, the overlays mode does not simply access the content injected into the current context. By supporting the following APIs, it allows the use of injected components to inherit the context: 
 
 ```tsx
-import { OverlaysProvider } from '@overlays/react'
+import { OverlaysProvider } from '@overlastic/react'
 
 function Main() {
   return (
@@ -77,7 +77,7 @@ function Main() {
 Using in a page:
 
 ```tsx
-import { useInjectProvider } from '@overlays/react'
+import { useInjectProvider } from '@overlastic/react'
 import CustomDialog from './Dialog.tsx'
 
 function Page() {
@@ -95,7 +95,7 @@ function Page() {
 In addition to using `defineOverlay` and `renderOverlay` to create popup components, you can also use useInjectHolder to create popup components within a component and inherit the current context of the application.
 
 ```tsx
-import { useInjectHolder } from '@overlays/react'
+import { useInjectHolder } from '@overlastic/react'
 import { OverlayComponent } from './overlay'
 
 export function Main() {
@@ -117,14 +117,14 @@ export function Main() {
 
 ## Define Component
 
-Components created using `@overlays/react` support both imperative and declarative methods of calling. In addition to imperative methods, these components can also be used in JSX.
+Components created using `@overlastic/react` support both imperative and declarative methods of calling. In addition to imperative methods, these components can also be used in JSX.
 
 > This is an optional option that is very useful when porting old components.
 
 ```tsx
 // If using Typescript, use PropsWithOverlays to define props type
-import type { PropsWithOverlays } from '@overlays/react'
-import { useOverlay } from '@overlays/react'
+import type { PropsWithOverlays } from '@overlastic/react'
+import { useOverlay } from '@overlastic/react'
 
 export function Component(props: PropsWithOverlays<{ /* ...you props */ }>) {
   const { visible, resolve, reject } = useOverlay({
@@ -180,13 +180,13 @@ function Component(props: { onOn?: Function; onNook?: Function; open: boolean })
 
 ## Customized
 
-You can use `@overlays/react` to modify existing components or component libraries
+You can use `@overlastic/react` to modify existing components or component libraries
 
 Take [antd(drawer)](https://ant.design/components/drawer-cn) as an example：
 
 ```tsx
-import type { PropsWithOverlays } from '@overlays/react'
-import { useOverlay } from '@overlays/react'
+import type { PropsWithOverlays } from '@overlastic/react'
+import { useOverlay } from '@overlastic/react'
 import { Button, Drawer } from 'antd'
 
 function MyDrawer(props: PropsWithOverlays<{ title: string }>) {

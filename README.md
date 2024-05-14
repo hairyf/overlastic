@@ -9,8 +9,8 @@ A create model | dialog | popup promise deferred library
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.org/package/@overlays/core">
-    <img src="https://img.shields.io/npm/v/@overlays/core.svg">
+  <a href="https://www.npmjs.org/package/@overlastic/core">
+    <img src="https://img.shields.io/npm/v/@overlastic/core.svg">
   </a>
 </p>
 
@@ -31,11 +31,11 @@ A create model | dialog | popup promise deferred library
 
 ## Packages
 
-- [@overlays/element](https://unoverlays.vercel.app/en/core/element/)
-- [@overlays/react](https://unoverlays.vercel.app/en/core/react/)
-- [@overlays/vue](https://unoverlays.vercel.app/en/vue/)
-- [@overlays/svelte](https://unoverlays.vercel.app/en/core/svelte/)
-- [@overlays/core](https://unoverlays.vercel.app/en/core/functions/constructor.html)
+- [@overlastic/vanilla](https://unoverlays.vercel.app/en/core/element/)
+- [@overlastic/react](https://unoverlays.vercel.app/en/core/react/)
+- [@overlastic/vue](https://unoverlays.vercel.app/en/vue/)
+- [@overlastic/svelte](https://unoverlays.vercel.app/en/core/svelte/)
+- [@overlastic/core](https://unoverlays.vercel.app/en/core/functions/constructor.html)
 
 ## Devtools
 
@@ -59,9 +59,9 @@ Unified Overlays simplifies modal creation by unifying the redundant processes a
 ## Install
 
 ```
-pnpm add @overlays/vue
+pnpm add @overlastic/vue
 # Or React
-pnpm add @overlays/react
+pnpm add @overlastic/react
 ```
 
 ## Usage

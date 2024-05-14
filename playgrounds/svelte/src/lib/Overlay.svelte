@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { delay } from "@overlays/core";
+  import { delay } from "@overlastic/core";
   import {
     type UseOverlayOptions,
     type UseOverlayReturn,
-  } from "@overlays/svelte";
+  } from "@overlastic/svelte";
   import {
     injectOptionsKey,
     injectOverlayKey,
-  } from '@overlays/svelte/src/internal'
+  } from '@overlastic/svelte/src/internal'
   import { getContext, onMount } from "svelte";
 
   export let visible = false;

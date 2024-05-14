@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { createDeferred } from '@overlays/core'
+import { createDeferred } from '@overlastic/core'
 import { mount } from '@vue/test-utils'
 import Overlay from './components/overlay.vue'
 
-describe('@overlays/vue:declarative', () => {
+describe('@overlastic/vue:declarative', () => {
   it('mount', () => {
     const wrapper = mount(Overlay, {
       props: { visible: false },

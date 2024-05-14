@@ -1,9 +1,9 @@
-import { createDeferred } from '@overlays/core'
+import { createDeferred } from '@overlastic/core'
 import { describe, expect, it } from 'vitest'
 import Overlay from './component/overlay'
 import { mount } from './utils'
 
-describe('@overlays/react:declarative', () => {
+describe('@overlastic/react:declarative', () => {
   it('mount', async () => {
     const wrapper = mount(Overlay, {
       props: { visible: false },

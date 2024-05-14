@@ -1,4 +1,4 @@
-import { createConstructor } from '@overlays/core'
+import { createConstructor } from '@overlastic/core'
 import { injectOverlayKey } from '../internal'
 
 export interface SMountOptions {

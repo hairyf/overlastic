@@ -1,4 +1,4 @@
-# @overlays/core
+# @overlastic/core
 
 ## 0.4.3
 

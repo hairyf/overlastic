@@ -1,4 +1,4 @@
-import type { Deferred } from '@overlays/core'
+import type { Deferred } from '@overlastic/core'
 
 export interface UseOverlayReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */

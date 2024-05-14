@@ -1,4 +1,4 @@
-import { createConstructor, delay } from '@overlays/core'
+import { createConstructor, delay } from '@overlastic/core'
 import { clearOptions, clearTrigger, setupTrigger, useOptions } from '../internal'
 
 export interface EFComponent<T = any> {

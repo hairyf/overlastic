@@ -1,5 +1,5 @@
 {
-  "name": "@overlays/core",
+  "name": "@overlastic/core",
   "type": "module",
   "version": "0.4.3",
   "license": "MIT",

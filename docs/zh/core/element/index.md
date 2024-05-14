@@ -1,4 +1,4 @@
-# @overlays/element
+# @overlastic/vanilla
 
 create imperative overlays in the native application, support custom-element!
 
@@ -6,12 +6,12 @@ create imperative overlays in the native application, support custom-element!
 
 With pnpm: 
 ```sh
-pnpm add @overlays/element
+pnpm add @overlastic/vanilla
 ```
 
 With yarn:
 ```sh
-yarn add @overlays/element
+yarn add @overlastic/vanilla
 ```
 
 ## Usage
@@ -54,7 +54,7 @@ export default Component
 You can use the `defineOverlay` method to convert the component into a modal dialog in Javascript / Typescript, which allows you to call it.
 
 ```ts
-import { defineOverlay } from '@overlays/element'
+import { defineOverlay } from '@overlastic/vanilla'
 import Component from './overlay'
 
 // Convert to imperative callback
@@ -67,7 +67,7 @@ const value = await callback({ title: 'callbackOverlay' })
 You can also use `renderOverlay` to directly call the component and skip the `defineOverlay` method.
 
 ```ts
-import { defineOverlay } from '@overlays/element'
+import { defineOverlay } from '@overlastic/vanilla'
 import Component from './overlay'
 
 const value = await renderOverlay(Component, {

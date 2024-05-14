@@ -1,4 +1,4 @@
-import { createConstructor } from '@overlays/core'
+import { createConstructor } from '@overlastic/core'
 import { defineComponent, h, inject, provide } from 'vue'
 import type { Component, DefineComponent } from 'vue'
 

@@ -1,6 +1,6 @@
 import { defineGlobalElement, defineName } from '../src'
 
-describe('@overlays/core:define', () => {
+describe('@overlastic/core:define', () => {
   it('global', () => {
     const globalElement = defineGlobalElement('global-element')
 

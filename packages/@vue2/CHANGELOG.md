@@ -1,4 +1,4 @@
-# @overlays/vue2
+# @overlastic/vue2
 
 ## 0.4.4
 
@@ -12,7 +12,7 @@
 
 - chore(release): v0.4.3 packages
 - Updated dependencies
-  - @overlays/core@0.4.3
+  - @overlastic/core@0.4.3
 
 ## 0.4.2
 
@@ -20,7 +20,7 @@
 
 - chore(release): v0.4.2 all packages
 - Updated dependencies
-  - @overlays/core@0.4.2
+  - @overlastic/core@0.4.2
 
 ## 0.4.1
 
@@ -28,7 +28,7 @@
 
 - chore(release): v0.4.1 all packages
 - Updated dependencies
-  - @overlays/core@0.4.1
+  - @overlastic/core@0.4.1
 
 ## 0.4.0
 
@@ -39,7 +39,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @overlays/core@0.4.0
+  - @overlastic/core@0.4.0
 
 ## 0.3.0
 
@@ -50,7 +50,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @overlays/core@0.3.0
+  - @overlastic/core@0.3.0
 
 ## 0.2.2
 
@@ -58,7 +58,7 @@
 
 - chore(release): release v0.2.1 versions
 - Updated dependencies
-  - @overlays/core@0.2.2
+  - @overlastic/core@0.2.2
 
 ## 0.2.1
 
@@ -66,7 +66,7 @@
 
 - chore(release): release v0.2.1 versions
 - Updated dependencies
-  - @overlays/core@0.2.1
+  - @overlastic/core@0.2.1
 
 ## 0.2.0
 
@@ -77,7 +77,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @overlays/core@0.2.0
+  - @overlastic/core@0.2.0
 
 ## 0.1.2
 
@@ -85,7 +85,7 @@
 
 - release v0.1.2 versions
 - Updated dependencies
-  - @overlays/core@0.1.2
+  - @overlastic/core@0.1.2
   - vue@0.0.0
 
 ## 0.1.1
@@ -94,7 +94,7 @@
 
 - releases v0.1.1
 - Updated dependencies
-  - @overlays/core@0.1.1
+  - @overlastic/core@0.1.1
 
 ## 0.1.0
 
@@ -105,4 +105,4 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @overlays/core@0.1.0
+  - @overlastic/core@0.1.0

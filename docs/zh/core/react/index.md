@@ -1,17 +1,17 @@
-# @overlays/react
+# @overlastic/react
 
-@overlays/react 用于在 React 中定义 Overlays 组件，并支持命令式与声明式的使用！
+@overlastic/react 用于在 React 中定义 Overlays 组件，并支持命令式与声明式的使用！
 
 ## Install
 
 With pnpm: 
 ```sh
-pnpm add @overlays/react
+pnpm add @overlastic/react
 ```
 
 With yarn:
 ```sh
-yarn add @overlays/react
+yarn add @overlastic/react
 ```
 
 ## Usage
@@ -37,7 +37,7 @@ export function OverlayComponent(props) {
 你可以通过 `defineOverlay` 的方法将组件转换成模态框的方法，它允许你在 `Javascript` / `Typescript` 中调用。
 
 ```ts
-import { defineOverlay } from '@overlays/react'
+import { defineOverlay } from '@overlastic/react'
 import { OverlayComponent } from './overlay'
 
 // 转换为命令式回调
@@ -50,7 +50,7 @@ const value = await callback({ title: 'callbackOverlay' })
 你也可以通过 `renderOverlay` 直接调起组件，跳过 `defineOverlay` 方法。
 
 ```ts
-import { renderOverlay } from '@overlays/react'
+import { renderOverlay } from '@overlastic/react'
 import { OverlayComponent } from './overlay'
 
 const value = await renderOverlay(OverlayComponent, {
@@ -64,7 +64,7 @@ const value = await renderOverlay(OverlayComponent, {
 如果有 Context、Provider 的情况下，使用 overlays 获取当前上下文都变得非常麻烦，而使用 useInjectHolder 还需要将 holder 放到某个地方，而通过全局的 Provider 批量渲染所有弹窗，可以减少这部分的工作，我们提供了以下的组件与 Hooks 支持：
 
 ```tsx
-import { OverlaysProvider } from '@overlays/react'
+import { OverlaysProvider } from '@overlastic/react'
 
 function Main() {
   return (
@@ -79,7 +79,7 @@ function Main() {
 
 
 ```tsx
-import { useInjectProvider } from '@overlays/react'
+import { useInjectProvider } from '@overlastic/react'
 import CustomDialog from './Dialog.tsx'
 
 function Page() {
@@ -101,7 +101,7 @@ function Page() {
 除了使用 `defineOverlay` 与 `renderOverlay` 创建使用弹出层组件外，还支持使用 `useInjectHolder` 创建在组件内部的弹出层组件，并继承应用的当前上下文。
 
 ```tsx
-import { useInjectHolder } from '@overlays/react'
+import { useInjectHolder } from '@overlastic/react'
 import { OverlayComponent } from './overlay'
 
 export function Main() {
@@ -123,14 +123,14 @@ export function Main() {
 
 ## Define Component
 
-使用 `@overlays/react` 创建的组件，除了支持使用命令式（Imperative）方法调用外，还支持在 JSX 中使用。
+使用 `@overlastic/react` 创建的组件，除了支持使用命令式（Imperative）方法调用外，还支持在 JSX 中使用。
 
 > 这是一个可选项，在迁移旧组件时非常有用。
 
 ```tsx
 // 如果使用 Typescript 需要使用 PropsWithOverlays 定义 props 类型
-import type { PropsWithOverlays } from '@overlays/react'
-import { useOverlay } from '@overlays/react'
+import type { PropsWithOverlays } from '@overlastic/react'
+import { useOverlay } from '@overlastic/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
   const { visible, resolve, reject } = useOverlay({
@@ -186,11 +186,11 @@ function Component(props: { onOn?: Function; onNook?: Function; open: boolean })
 
 ## Customized
 
-您可以使用 `@overlays/react` 修改现有组件或组件库，拿 [antd(drawer)](https://ant.design/components/drawer-cn) 举例：
+您可以使用 `@overlastic/react` 修改现有组件或组件库，拿 [antd(drawer)](https://ant.design/components/drawer-cn) 举例：
 
 ```tsx
-import type { PropsWithOverlays } from '@overlays/react'
-import { useOverlay } from '@overlays/react'
+import type { PropsWithOverlays } from '@overlastic/react'
+import { useOverlay } from '@overlastic/react'
 import { Button, Drawer } from 'antd'
 
 function MyDrawer(props: PropsWithOverlays<{ title: string }>) {

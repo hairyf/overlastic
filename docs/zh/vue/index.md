@@ -1,6 +1,6 @@
-# @overlays/vue
+# @overlastic/vue
 
-@overlays/vue 用于在 Vue3 中定义 Overlays 组件，并支持命令式与声明式的使用！
+@overlastic/vue 用于在 Vue3 中定义 Overlays 组件，并支持命令式与声明式的使用！
 
 ## Installation
 
@@ -8,18 +8,18 @@
 
 > 如果您使用 Vue2.7 版本以下，请安装 [@vue/composition-api](https://github.com/vuejs/composition-api#readme)
 > 
-> 如果您因为某些原因无法使用 composition-api，请使用 [@overlays/vue2](/zh/vue/vue2)
+> 如果您因为某些原因无法使用 composition-api，请使用 [@overlastic/vue2](/zh/vue/vue2)
 
 ## Install
 
 With pnpm: 
 ```sh
-pnpm add @overlays/vue
+pnpm add @overlastic/vue
 ```
 
 With yarn:
 ```sh
-yarn add @overlays/vue
+yarn add @overlastic/vue
 ```
 
 ## Usage
@@ -32,7 +32,7 @@ overlays 适用于绝大多数组件，使用 `useOverlay` 能对组件流程有
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue'
-import { useOverlay } from '@overlays/vue'
+import { useOverlay } from '@overlastic/vue'
 const props = defineProps({
   title: String,
 })
@@ -56,7 +56,7 @@ const { visible, resolve, reject } = useOverlay({
 你可以通过 `defineOverlay` 的方法将组件转换成模态框的方法，它允许你在 `Javascript` / `Typescript` 中调用。
 
 ```ts
-import { defineOverlay } from '@overlays/vue'
+import { defineOverlay } from '@overlastic/vue'
 import Overlay from './overlay.vue'
 
 // 转换为命令式回调
@@ -69,7 +69,7 @@ const value = await callback({ title: 'callbackOverlay' })
 你也可以通过 `renderOverlay` 直接调起组件，跳过 `defineOverlay` 方法。
 
 ```ts
-import { renderOverlay } from '@overlays/vue'
+import { renderOverlay } from '@overlastic/vue'
 import Overlay from './overlay.vue'
 
 const value = await renderOverlay(Overlay, {
@@ -80,7 +80,7 @@ const value = await renderOverlay(Overlay, {
 
 ## Define Component
 
-使用 `@overlays/vue` 创建的组件，除了支持使用命令式（Imperative）方法调用外，还支持在 `<template>` 中使用，这是一个可选项，在迁移旧组件时非常有用。
+使用 `@overlastic/vue` 创建的组件，除了支持使用命令式（Imperative）方法调用外，还支持在 `<template>` 中使用，这是一个可选项，在迁移旧组件时非常有用。
 
 在 `<template>` 中使用，需要显式定义 `modal` 与 `event`
 
@@ -88,7 +88,7 @@ const value = await renderOverlay(Overlay, {
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlay } from '@overlays/vue'
+import { useOverlay } from '@overlastic/vue'
 const props = defineProps({
   title: String,
   // 在 Template 中使用，需要定义 v-modal 所使用的字段（默认对应 visible）

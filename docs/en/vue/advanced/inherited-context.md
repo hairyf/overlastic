@@ -5,7 +5,7 @@ You can register overlays globally, which will inherit the application context f
 ```ts
 // main.js
 import { createApp } from 'vue'
-import unoverlay from '@overlays/vue'
+import unoverlay from '@overlastic/vue'
 
 const app = createApp({})
 app.use(unoverlay)

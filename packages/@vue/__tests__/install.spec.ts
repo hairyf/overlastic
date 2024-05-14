@@ -4,7 +4,7 @@ import { Provider, install } from '../src'
 import { context } from '../src/internal'
 import Basic from './components/basic.vue'
 
-describe('@overlays/vue:install', () => {
+describe('@overlastic/vue:install', () => {
   it('install:provider', () => {
     const wrapper = mount(Provider)
 

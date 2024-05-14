@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useOverlay, Overlay } from "@overlays/svelte";
+  import { useOverlay, Overlay } from "@overlastic/svelte";
   import { fly } from "svelte/transition";
   
   export let title = 'Title'
