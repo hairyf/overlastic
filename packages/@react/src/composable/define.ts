@@ -64,7 +64,7 @@ export interface ProgramsReturn {
   deferred?: Promise<any>
 }
 
-export function useOverlayDefine(options: OverlayDefineOptions = {}) {
+export function useDefineOverlay(options: OverlayDefineOptions = {}) {
   const { immediate = true, duration = 0, automatic = true } = options
   const context = useContext(ScriptsContext)
   const dec = Reflect.get(context, 'in_dec')

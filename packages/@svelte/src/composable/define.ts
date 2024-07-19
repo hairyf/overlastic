@@ -9,7 +9,7 @@ export interface OverlayDefineOptions {
   immediate?: boolean
 }
 
-export function useOverlayDefine(options: OverlayDefineOptions = {}) {
+export function useDefineOverlay(options: OverlayDefineOptions = {}) {
   setContext(injectOptionsKey, options)
   return getContext<ProgramsReturn>(injectOverlayKey)
 }

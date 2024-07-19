@@ -4,11 +4,11 @@ If you want to support both slot rendering and fields simultaneously, you just n
 
 ```vue
 <script setup>
-import { useOverlayDefine } from '@overlastic/vue'
+import { useDefineOverlay } from '@overlastic/vue'
 
 defineProps({ title: String })
 
-const { visible, /* ... */ } = useOverlayDefine()
+const { visible, /* ... */ } = useDefineOverlay()
 </script>
 
 <template>
@@ -30,12 +30,12 @@ Here is a complete example that supports Slots, Strings, VNodes, and Components 
 ```vue
 <script lang="ts" setup>
 import { Component, VNode } from 'vue'
-import { Field, useOverlayDefine } from '@overlastic/vue'
+import { Field, useDefineOverlay } from '@overlastic/vue'
 defineProps<{
   title?: string | VNode | Component
 }>()
 
-const { visible, /* ... */ } = useOverlayDefine()
+const { visible, /* ... */ } = useDefineOverlay()
 </script>
 
 <template>

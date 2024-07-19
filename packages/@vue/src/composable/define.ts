@@ -64,7 +64,7 @@ export interface ProgramsReturn {
  * @function vanish destroy the current instance (immediately)
  * @field visible control overlay display and hide
  */
-export function useOverlayDefine(options: OverlayDefineOptions = {}) {
+export function useDefineOverlay(options: OverlayDefineOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
   const overlay = inject(ScriptsInjectionKey, useDeclarative(model, options))
   const dec = Reflect.get(overlay, 'in_dec')
@@ -94,7 +94,7 @@ export function useDeclarative(model: string, options: OverlayDefineOptions = {}
   const instance = getCurrentInstance()
 
   if (!instance)
-    throw new Error('Please use useOverlayDefine in component setup')
+    throw new Error('Please use useDefineOverlay in component setup')
 
   const visible = useVModel(instance.props, model, instance.emit, { passive: true }) as Ref<boolean>
 

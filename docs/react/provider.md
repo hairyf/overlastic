@@ -18,14 +18,14 @@ function Main() {
 export default Main
 ```
 
-Use any Overlay Component on the page with `useOverlay`:
+Use any Overlay Component on the page with `useOverlayInject`:
 
 ```tsx
-import { useOverlay } from '@overlastic/react'
+import { useOverlayInject } from '@overlastic/react'
 import CustomDialog from './Dialog.tsx'
 
 function Page() {
-  const openDialog = useOverlay(CustomDialog)
+  const openDialog = useOverlayInject(CustomDialog)
 
   async function onClick() {
     const resolved = await openDialog({ title: 'My Title' })

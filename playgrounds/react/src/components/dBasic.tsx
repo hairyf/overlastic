@@ -1,8 +1,8 @@
-import { useOverlayDefine } from '@overlastic/react'
+import { useDefineOverlay } from '@overlastic/react'
 import { Modal } from 'antd'
 
 export default function Basic() {
-  const { visible, resolve } = useOverlayDefine({
+  const { visible, resolve } = useDefineOverlay({
     duration: 300,
   })
   return (

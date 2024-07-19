@@ -20,14 +20,14 @@ yarn add @overlastic/svelte
 
 ```svelte
 <script lang="ts">
-  import { useOverlayDefine, Overlay } from "@overlastic/svelte";
+  import { useDefineOverlay, Overlay } from "@overlastic/svelte";
   import { fly } from "svelte/transition";
 
   export let title: number
   export let duration = 200
 
   // duration of overlay duration, helps prevent premature component destroy
-  const { resolve, reject } = useOverlayDefine({ duration })
+  const { resolve, reject } = useDefineOverlay({ duration })
 
   function onClick() {
     resolve(`${title}:confirmed`)
@@ -65,9 +65,9 @@ import { renderOverlay } from '@overlastic/svelte'
 import OverlayComponent from './overlay.svelte'
 
 const value = await renderOverlay(OverlayComponent, {
-  title: 'useOverlayDefine'
+  title: 'useDefineOverlay'
 })
-// value === "useOverlayDefine:confirmed"
+// value === "useDefineOverlay:confirmed"
 ```
 
 ## Controlled manner
@@ -76,11 +76,11 @@ By default, you do not need to control the display and hiding of the `visible` v
 
 ```svelte
 <script lang="ts">
-  import { useOverlayDefine, Overlay } from "@overlastic/svelte";
+  import { useDefineOverlay, Overlay } from "@overlastic/svelte";
 
   let visible = false
 
-  const { resolve, reject, deferred, vanish } = useOverlayDefine({
+  const { resolve, reject, deferred, vanish } = useDefineOverlay({
     // close the transition duration, at this point you need to manually destroy it
     duration: false,
     // cancel setting visible to true immediately

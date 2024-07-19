@@ -17,14 +17,14 @@ function Main() {
 export default Main
 ```
 
-在页面中通过 `useOverlay` 使用任意 Overlay Component：
+在页面中通过 `useOverlayInject` 使用任意 Overlay Component：
 
 ```tsx
-import { useOverlay } from '@overlastic/react'
+import { useOverlayInject } from '@overlastic/react'
 import CustomDialog from './Dialog.tsx'
 
 function Page() {
-  const openDialog = useOverlay(CustomDialog)
+  const openDialog = useOverlayInject(CustomDialog)
   async function onClick() {
     const resolved = await openDialog({ title: 'My Title' })
     console.log(resolved)

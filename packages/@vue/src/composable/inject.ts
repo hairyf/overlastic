@@ -30,7 +30,7 @@ const { define } = createConstructor<Component, Options>((Instance, props, optio
   render(InstanceWithProvider, props)
 }, { container: false })
 
-export function useOverlay<Props, Resolved>(Instance: any) {
+export function useOverlayInject<Props, Resolved>(Instance: any) {
   const { render, vanish } = inject(InstancesInjectionKey)!
   return define<Props, Resolved>(Instance, { render, vanish })
 }

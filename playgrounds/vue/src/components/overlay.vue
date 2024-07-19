@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useOverlay, useOverlayDefine } from '@overlastic/vue'
+import { useDefineOverlay, useOverlayInject } from '@overlastic/vue'
 
 const Component = defineComponent({
   props: {
@@ -17,10 +17,10 @@ const Component = defineComponent({
   },
   emits: ['resolve', 'reject', 'update:visible'],
   setup: (props) => {
-    const { resolve, reject, vanish, visible } = useOverlayDefine({
+    const { resolve, reject, vanish, visible } = useDefineOverlay({
       duration: props.duration,
     })
-    const openMoreOverlay = useOverlay(Component) as any
+    const openMoreOverlay = useOverlayInject(Component) as any
     return { resolve, reject, vanish, visible, openMoreOverlay }
   },
 })

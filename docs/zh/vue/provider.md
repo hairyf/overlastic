@@ -16,13 +16,13 @@ import { OverlayProvider } from '@overlastic/react'
 </template>
 ```
 
-在页面中通过 `useOverlay` 使用任意 Overlay Component：
+在页面中通过 `useOverlayInject` 使用任意 Overlay Component：
 
 ```vue
 <script setup>
-import { useOverlay } from '@overlastic/vue'
+import { useOverlayInject } from '@overlastic/vue'
 
-const openCustomDialog = useOverlay(CustomDialog)
+const openCustomDialog = useOverlayInject(CustomDialog)
 
 async function onClick() {
   const resolved = await openCustomDialog({ title: 'My Title' })

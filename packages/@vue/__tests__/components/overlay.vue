@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <script lang="ts">
 import { defineComponent } from 'vue-demi'
-import { useOverlayDefine } from '../../src'
+import { useDefineOverlay } from '../../src'
 
 export default defineComponent({
   props: {
@@ -17,7 +17,7 @@ export default defineComponent({
   },
   emits: ['resolve', 'reject', 'update:visible'],
   setup: (props) => {
-    const { resolve, reject, vanish, visible } = useOverlayDefine({
+    const { resolve, reject, vanish, visible } = useDefineOverlay({
       duration: props.duration,
     })
     return { resolve, reject, vanish, visible }

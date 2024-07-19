@@ -65,11 +65,11 @@ pnpm add @overlastic/react
 
 ## Usage
 
-使用 `overlays` 提供的 `useOverlayDefine` Hook 创建弹出层组件（Vue、React）
+使用 `overlays` 提供的 `useDefineOverlay` Hook 创建弹出层组件（Vue、React）
 
 ```ts
-// 在你的 Vue、React 弹出层组件中，使用 useOverlayDefine 获取弹出层元信息
-const { visible, resolve, reject } = useOverlayDefine({
+// 在你的 Vue、React 弹出层组件中，使用 useDefineOverlay 获取弹出层元信息
+const { visible, resolve, reject } = useDefineOverlay({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
   duration: 1000
 })

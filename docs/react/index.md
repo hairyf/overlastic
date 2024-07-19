@@ -22,7 +22,7 @@ pnpm add @overlastic/react
 
 ### Step 1: Define Component
 
-Use `useOverlayDefine` to define a pop-up component, which returns the following:
+Use `useDefineOverlay` to define a pop-up component, which returns the following:
 
 - `resolve|reject` returns the result of a Promise, and the component will be destroyed at the end of `duration`
 - `visible` is used to display the component, and the result of the `Promise` will be changed immediately
@@ -30,7 +30,7 @@ Use `useOverlayDefine` to define a pop-up component, which returns the following
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
-  const { visible, resolve, reject } = useOverlayDefine({
+  const { visible, resolve, reject } = useDefineOverlay({
     // Duration of the overlay animation to prevent premature destruction of the component
     duration: 1000,
   })
@@ -65,9 +65,9 @@ import { renderOverlay } from '@overlastic/react'
 import { OverlayComponent } from './overlay'
 
 const value = await renderOverlay(OverlayComponent, {
-  title: 'useOverlayDefine'
+  title: 'useDefineOverlay'
 })
-// value === "useOverlayDefine:confirmed"
+// value === "useDefineOverlay:confirmed"
 ```
 
 ## Usage in JSX
@@ -77,10 +77,10 @@ Components created with `@overlastic/react`, besides supporting callback method 
 ```tsx
 // If using TypeScript, use PropsWithOverlays to define the props type
 import type { PropsWithOverlays } from '@overlastic/react'
-import { useOverlayDefine } from '@overlastic/react'
+import { useDefineOverlay } from '@overlastic/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, resolve, reject } = useOverlayDefine({
+  const { visible, resolve, reject } = useDefineOverlay({
     // Pass props to the hooks for processing
     props
   })
@@ -128,7 +128,7 @@ If you want to replace other field and event names, you can change the `events` 
 
 ```jsx
 function Component(props: { onOn?: Function, onNook?: Function, open: boolean }) {
-  const { visible, resolve, reject } = useOverlayDefine({
+  const { visible, resolve, reject } = useDefineOverlay({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',
     props,

@@ -30,7 +30,7 @@ pnpm add @overlastic/vue
 
 ### Step 1: Define Component
 
-Use `useOverlayDefine` to define a pop-up component, which returns the following:
+Use `useDefineOverlay` to define a pop-up component, which returns the following:
 
 - `resolve|reject` returns the result of a Promise, which will destroy the component when `duration` ends
 - `visible` is used to display the component, executing the `Promise` result immediately
@@ -39,13 +39,13 @@ Use `useOverlayDefine` to define a pop-up component, which returns the following
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue'
-import { useOverlayDefine } from '@overlastic/vue'
+import { useDefineOverlay } from '@overlastic/vue'
 const props = defineProps({
   title: String,
 })
 
-// Get Overlay information from useOverlayDefine
-const { visible, resolve, reject } = useOverlayDefine({
+// Get Overlay information from useDefineOverlay
+const { visible, resolve, reject } = useDefineOverlay({
   // Duration of pop-up animation, prevents premature destruction of the component
   duration: 1000,
 })
@@ -80,9 +80,9 @@ import { renderOverlay } from '@overlastic/vue'
 import Overlay from './overlay.vue'
 
 const value = await renderOverlay(Overlay, {
-  title: 'useOverlayDefine'
+  title: 'useDefineOverlay'
 })
-// value === "useOverlayDefine:confirmed"
+// value === "useDefineOverlay:confirmed"
 ```
 
 ## Template
@@ -97,7 +97,7 @@ When using in `<template>`, you need to explicitly define `modal` and `event`
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useOverlayDefine } from '@overlastic/vue'
+import { useDefineOverlay } from '@overlastic/vue'
 const props = defineProps({
   title: String,
   // When using in Template, define the field used by v-modal (defaults to visible)
@@ -107,7 +107,7 @@ const props = defineProps({
 // Define the event types used in the component (defaults: reject, resolve)
 defineEmits(['reject', 'resolve'])
 
-const { visible, resolve, reject } = useOverlayDefine()
+const { visible, resolve, reject } = useDefineOverlay()
 </script>
 ```
 
@@ -141,7 +141,7 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, resolve, reject } = useOverlayDefine({
+const { visible, resolve, reject } = useDefineOverlay({
   events: { resolve: 'ok', reject: 'nook' },
   model: 'modalValue',
 })

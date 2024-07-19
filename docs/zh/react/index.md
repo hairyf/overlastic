@@ -22,7 +22,7 @@ pnpm add @overlastic/react
 
 ### 步骤.1: 定义组件
 
-使用 `useOverlayDefine` 定义弹出层组件，返回以下内容：
+使用 `useDefineOverlay` 定义弹出层组件，返回以下内容：
 
 - `resolve|reject` 返回 Promise 的结果，将在 `duration` 结束时销毁组件
 - `visible` 用于显示组件，执行 `Promise` 结果将马上被更改
@@ -30,7 +30,7 @@ pnpm add @overlastic/react
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
-  const { visible, resolve, reject } = useOverlayDefine({
+  const { visible, resolve, reject } = useDefineOverlay({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
     duration: 1000,
   })
@@ -65,9 +65,9 @@ import { renderOverlay } from '@overlastic/react'
 import { OverlayComponent } from './overlay'
 
 const value = await renderOverlay(OverlayComponent, {
-  title: 'useOverlayDefine'
+  title: 'useDefineOverlay'
 })
-// value === "useOverlayDefine:confirmed"
+// value === "useDefineOverlay:confirmed"
 ```
 
 ## 在 JSX 中使用
@@ -77,10 +77,10 @@ const value = await renderOverlay(OverlayComponent, {
 ```tsx
 // 如果使用 Typescript 需要使用 PropsWithOverlays 定义 props 类型
 import type { PropsWithOverlays } from '@overlastic/react'
-import { useOverlayDefine } from '@overlastic/react'
+import { useDefineOverlay } from '@overlastic/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, resolve, reject } = useOverlayDefine({
+  const { visible, resolve, reject } = useDefineOverlay({
     // 将 props 传递给 hooks 处理
     props
   })
@@ -128,7 +128,7 @@ export function Main() {
 
 ```jsx
 function Component(props: { onOn?: Function, onNook?: Function, open: boolean }) {
-  const { visible, resolve, reject } = useOverlayDefine({
+  const { visible, resolve, reject } = useDefineOverlay({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',
     props,

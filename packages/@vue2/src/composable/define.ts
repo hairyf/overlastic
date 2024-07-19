@@ -40,7 +40,7 @@ export interface OverlayDefineOptions {
   automatic?: boolean
 }
 
-export function useOverlayDefine(options: OverlayDefineOptions = {}) {
+export function useDefineOverlay(options: OverlayDefineOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true, events = {} } = options
   events.reject = events.reject || 'reject'
   events.resolve = events.resolve || 'resolve'

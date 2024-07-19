@@ -16,13 +16,13 @@ import { OverlayProvider } from '@overlastic/react'
 </template>
 ```
 
-In the page, use any Overlay Component using `useOverlay`:
+In the page, use any Overlay Component using `useOverlayInject`:
 
 ```vue
 <script setup>
-import { useOverlay } from '@overlastic/vue'
+import { useOverlayInject } from '@overlastic/vue'
 
-const openCustomDialog = useOverlay(CustomDialog)
+const openCustomDialog = useOverlayInject(CustomDialog)
 
 async function onClick() {
   const resolved = await openCustomDialog({ title: 'My Title' })

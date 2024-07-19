@@ -31,7 +31,7 @@ const { define } = createConstructor<FC<any>, Options>((Instance, props, options
   render(InstanceWithProvider, props)
 }, { container: false })
 
-export function useOverlay<Props, Resolved>(Instance: FC<Props>) {
+export function useOverlayInject<Props, Resolved>(Instance: FC<Props>) {
   const { render, vanish } = useContext(InstancesContext)
   return define<Props, Resolved>(Instance, { render, vanish })
 }
