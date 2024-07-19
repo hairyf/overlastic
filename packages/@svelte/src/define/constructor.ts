@@ -1,3 +1,4 @@
+/* eslint-disable ts/no-use-before-define */
 import { createConstructor } from '@overlastic/core'
 import { injectOverlayKey } from '../internal'
 
@@ -10,7 +11,7 @@ export const constructor = createConstructor<any, SMountOptions>((Inst, props, o
   const { container, deferred, context: _context = new Map() } = options
 
   function vanish() {
-    childApp.$destroy()
+    app.$destroy()
     container.remove()
   }
 
@@ -24,7 +25,7 @@ export const constructor = createConstructor<any, SMountOptions>((Inst, props, o
     vanish,
   })
 
-  const childApp = new Inst({
+  const app = new Inst({
     target: container,
     props,
     context,

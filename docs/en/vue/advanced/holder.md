@@ -25,4 +25,3 @@ function open() {
   <component :is="holder" />
 </template>
 ```
-

@@ -1,7 +1,7 @@
-/* eslint-disable vue/one-component-per-file */
 import { mount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
 import { Field } from '../src/components'
+
 describe('@overlastic/vue:component', () => {
   it('component:Field:text', () => {
     const Text = defineComponent({

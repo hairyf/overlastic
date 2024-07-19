@@ -1,32 +1,28 @@
 {
   "compilerOptions": {
     "target": "ES2018",
+    "jsx": "preserve",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
-    "strict": true,
-    "declaration": true,
-    "jsx": "preserve",
-    "sourceMap": true,
+    "paths": {
+      "react": ["./global.react.d.ts"]
+    },
     "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "downlevelIteration": true,
     "types": [
       "vitest/globals",
       "vite/client"
     ],
-    "paths": {
-      "react": ["./global.react.d.ts"]
-    },
-    "lib": [
-      "esnext",
-      "dom"
-    ]
+    "strict": true,
+    "declaration": true,
+    "downlevelIteration": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
-  "exclude": [
-    "**/dist/*.ts",
-    "**/dist/*.d.ts"
-  ],
   "include": [
     "./**/*.ts",
     "./**/*.d.ts",
@@ -34,5 +30,9 @@
     "./**/*.vue",
     "types/**.d.ts",
     "types/**/**.d.ts"
+  ],
+  "exclude": [
+    "**/dist/*.ts",
+    "**/dist/*.d.ts"
   ]
 }

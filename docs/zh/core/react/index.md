@@ -4,7 +4,7 @@
 
 ## Install
 
-With pnpm: 
+With pnpm:
 ```sh
 pnpm add @overlastic/react
 ```
@@ -21,14 +21,16 @@ yarn add @overlastic/react
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
-  const { visible, resolve, reject } = usePrograms({
+  const { visible, resolve, reject } = useOverlayDefine({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
     duration: 1000,
   })
 
-  return <div className={visible && 'is--visible'}>
-    <span onClick={() => resolve(`${props.title}:confirmed`)}> Confirm </span>
-  </div>
+  return (
+    <div className={visible && 'is--visible'}>
+      <span onClick={() => resolve(`${props.title}:confirmed`)}> Confirm </span>
+    </div>
+  )
 }
 ```
 
@@ -54,12 +56,12 @@ import { renderOverlay } from '@overlastic/react'
 import { OverlayComponent } from './overlay'
 
 const value = await renderOverlay(OverlayComponent, {
-  title: 'usePrograms'
+  title: 'useOverlayDefine'
 })
-// value === "usePrograms:confirmed"
+// value === "useOverlayDefine:confirmed"
 ```
 
-## Injection Provider ✨ (v0.4.8)
+## Injection Provider ✨ (v0.5.0)
 
 如果有 Context、Provider 的情况下，使用 overlays 获取当前上下文都变得非常麻烦，而使用 useOverlayHolder 还需要将 holder 放到某个地方，而通过全局的 Provider 批量渲染所有弹窗，可以减少这部分的工作，我们提供了以下的组件与 Hooks 支持：
 
@@ -73,10 +75,10 @@ function Main() {
     </OverlayProvider>
   )
 }
+export default Main
 ```
 
 在页面中使用 Overlay Component:
-
 
 ```tsx
 import { useOverlay } from '@overlastic/react'
@@ -94,6 +96,8 @@ function Page() {
     </button>
   )
 }
+
+export default Page
 ```
 
 ## Injection Holder
@@ -113,11 +117,13 @@ export function Main() {
     overlayApi()
       .then((result) => {})
   }
-  return (<>
-    <div onClick={open}> open </div>
-    {/* 挂载 holder */}
-    {holder}
-  </>)
+  return (
+    <>
+      <div onClick={open}> open </div>
+      {/* 挂载 holder */}
+      {holder}
+    </>
+  )
 }
 ```
 
@@ -130,17 +136,19 @@ export function Main() {
 ```tsx
 // 如果使用 Typescript 需要使用 PropsWithOverlays 定义 props 类型
 import type { PropsWithOverlays } from '@overlastic/react'
-import { usePrograms } from '@overlastic/react'
+import { useOverlayDefine } from '@overlastic/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, resolve, reject } = usePrograms({
+  const { visible, resolve, reject } = useOverlayDefine({
     // 将 props 传递给 hooks 处理
     props
   })
 
-  return <div className={visible && 'is--visible'}>
-    ...
-  </div>
+  return (
+    <div className={visible && 'is--visible'}>
+      ...
+    </div>
+  )
 }
 ```
 
@@ -174,8 +182,8 @@ export function Main() {
 如果您想替换为其他的字段与事件名，可以更改 `events` 与 `model` 配置。
 
 ```jsx
-function Component(props: { onOn?: Function; onNook?: Function; open: boolean }) {
-  const { visible, resolve, reject } = usePrograms({
+function Component(props: { onOn?: Function, onNook?: Function, open: boolean }) {
+  const { visible, resolve, reject } = useOverlayDefine({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',
     props,
@@ -190,11 +198,11 @@ function Component(props: { onOn?: Function; onNook?: Function; open: boolean })
 
 ```tsx
 import type { PropsWithOverlays } from '@overlastic/react'
-import { usePrograms } from '@overlastic/react'
+import { useOverlayDefine } from '@overlastic/react'
 import { Button, Drawer } from 'antd'
 
 function MyDrawer(props: PropsWithOverlays<{ title: string }>) {
-  const { visible, resolve, reject } = usePrograms({
+  const { visible, resolve, reject } = useOverlayDefine({
     duration: 200,
     props,
   })
@@ -208,4 +216,5 @@ function MyDrawer(props: PropsWithOverlays<{ title: string }>) {
     </Drawer>
   )
 }
+export default MyDrawer
 ```

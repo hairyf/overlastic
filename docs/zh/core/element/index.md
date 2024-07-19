@@ -4,7 +4,7 @@ create imperative overlays in the native application, support custom-element!
 
 ## Install
 
-With pnpm: 
+With pnpm:
 ```sh
 pnpm add @overlastic/vanilla
 ```
@@ -15,7 +15,6 @@ yarn add @overlastic/vanilla
 ```
 
 ## Usage
-
 
 ### Step 1: Define Component
 
@@ -28,7 +27,7 @@ function Component(props) {
   element.innerHTML = props.title
   element.classList.add('dialog')
 
-  const { resolve, reject, deferred } = usePrograms({
+  const { resolve, reject, deferred } = useOverlayDefine({
     // Duration of overlays duration to avoid premature destruction of the component
     duration: 1000,
   })
@@ -38,7 +37,7 @@ function Component(props) {
     resolve('ok')
   }
 
-    // Use setTimeout to wait for the element to be appended, then add a class name with animation
+  // Use setTimeout to wait for the element to be appended, then add a class name with animation
   setTimeout(() => element.classList.add('show'))
   // When the deferred is triggered, remove the displayed class name
   deferred.finally(() => element.classList.remove('show'))
@@ -71,9 +70,9 @@ import { defineOverlay } from '@overlastic/vanilla'
 import Component from './overlay'
 
 const value = await renderOverlay(Component, {
-  title: 'usePrograms'
+  title: 'useOverlayDefine'
 })
-// value === "usePrograms:confirmed"
+// value === "useOverlayDefine:confirmed"
 ```
 
 ## Custom Element
@@ -87,10 +86,10 @@ const callback1 = defineOverlay('my-custom-element')
 
 callback1({/* props(attrs) */})
 
-const CustomComponent = (props) => {
+function CustomComponent(props) {
   const customElement = document.createElement('my-custom-element')
 
-  const { resolve, reject } = usePrograms({
+  const { resolve, reject } = useOverlayDefine({
     duration: 1000,
   })
 

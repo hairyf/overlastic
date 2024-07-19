@@ -1,3 +1,4 @@
+/* eslint-disable ts/no-use-before-define */
 import { createConstructor } from '@overlastic/core'
 import { pascalCase } from 'pascal-case'
 import type { AppContext, Component } from 'vue-demi'

@@ -1,28 +1,30 @@
 import type { PropsWithChildren } from 'react'
 import type { PropsWidthOverlays } from '../../src'
-import { usePrograms } from '../../src'
+import { useOverlayDefine } from '../../src'
 
-export type OverlayProps = PropsWidthOverlays<PropsWithChildren<{ duration?: number; title?: string }>>
+export type OverlayProps = PropsWidthOverlays<PropsWithChildren<{ duration?: number, title?: string }>>
 
 function Overlay(props: OverlayProps) {
-  const { resolve, reject, visible } = usePrograms({
+  const { resolve, reject, visible } = useOverlayDefine({
     props,
     duration: props.duration,
   })
 
   return visible
-    ? <div className='base-modal__mask'>
-    <div className='base-modal__content'>
-      <div className='base-modal__title'>
-        {props.title || 'Title'}
+    ? (
+      <div className="base-modal__mask">
+        <div className="base-modal__content">
+          <div className="base-modal__title">
+            {props.title || 'Title'}
+          </div>
+          {props.children}
+          <div className="base-modal__control">
+            <span className="modal__confirm" onClick={() => resolve('resolve')}>resolve</span>
+            <span className="modal__cancel" onClick={() => reject('reject')}>reject</span>
+          </div>
+        </div>
       </div>
-      {props.children}
-      <div className='base-modal__control'>
-        <span className='modal__confirm' onClick={() => resolve('resolve')}>resolve</span>
-        <span className='modal__cancel' onClick={() => reject('reject')}>reject</span>
-      </div>
-    </div>
-  </div>
+      )
     : null
 }
 export default Overlay

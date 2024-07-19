@@ -20,7 +20,7 @@ export interface PromptifyEvents {
   resolve?: string
 }
 
-export interface ProgramsOptions {
+export interface OverlayDefineOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -63,9 +63,8 @@ export interface ProgramsReturn {
  * @function resolve the notification resolve, modify visible, and destroy it after the duration ends
  * @function vanish destroy the current instance (immediately)
  * @field visible control overlay display and hide
- * @returns
  */
-export function usePrograms(options: ProgramsOptions = {}) {
+export function useOverlayDefine(options: OverlayDefineOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
   const overlay = inject(ScriptsInjectionKey, useDeclarative(model, options))
   const dec = Reflect.get(overlay, 'in_dec')
@@ -89,13 +88,13 @@ export function usePrograms(options: ProgramsOptions = {}) {
   return overlay
 }
 
-export function useDeclarative(model: string, options: ProgramsOptions = {}) {
+export function useDeclarative(model: string, options: OverlayDefineOptions = {}) {
   const { reject = 'reject', resolve = 'resolve' } = options.events || {}
 
   const instance = getCurrentInstance()
 
   if (!instance)
-    throw new Error('Please use usePrograms in component setup')
+    throw new Error('Please use useOverlayDefine in component setup')
 
   const visible = useVModel(instance.props, model, instance.emit, { passive: true }) as Ref<boolean>
 

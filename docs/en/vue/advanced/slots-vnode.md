@@ -4,10 +4,10 @@ If you want to support rendering slots and a certain field passed in props in te
 
 ```vue
 <script setup>
-import { usePrograms } from '@overlastic/vue'
+import { useOverlayDefine } from '@overlastic/vue'
 defineProps({ title: String })
 
-const { visible, /* ... */ } = usePrograms()
+const { visible, /* ... */ } = useOverlayDefine()
 </script>
 
 <template>
@@ -29,12 +29,12 @@ Here is a complete example that supports rendering Slots, String, VNode, and Com
 ```vue
 <script lang="ts" setup>
 import { Component, VNode } from 'vue'
-import { Field, usePrograms } from '@overlastic/vue'
+import { Field, useOverlayDefine } from '@overlastic/vue'
 defineProps<{
-  title?: String | VNode | Component
+  title?: string | VNode | Component
 }>()
 
-const { visible, /* ... */ } = usePrograms()
+const { visible, /* ... */ } = useOverlayDefine()
 </script>
 
 <template>

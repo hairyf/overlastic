@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { OverlayProvider} from '@overlastic/vue'
+import { OverlayProvider } from '@overlastic/vue'
 import ProviderContainer from './components/provider-container.vue'
 </script>
 

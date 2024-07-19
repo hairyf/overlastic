@@ -18,7 +18,13 @@ export function useOverlayHolder<Props, Resolved = void>(
 
   function render() {
     const root = options.root || (typeof document !== 'undefined' ? document.body : undefined)
-    const content = <div id={name}> <Component {...props} /> </div>
+    const content = (
+      <div id={name}>
+        {' '}
+        <Component {...props} />
+        {' '}
+      </div>
+    )
     return (options.root !== false && root)
       ? createPortal(content, root)
       : content

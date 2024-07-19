@@ -4,7 +4,7 @@ create imperative overlays in the native application, support custom-element!
 
 ## Install
 
-With pnpm: 
+With pnpm:
 ```sh
 pnpm add @overlastic/vanilla
 ```
@@ -16,7 +16,6 @@ yarn add @overlastic/vanilla
 
 ## Usage
 
-
 ### Step 1: Define Component
 
 Create custom elements in the form of functions and return them.
@@ -27,7 +26,7 @@ function Component(props) {
   const element = document.createElement('div')
   element.innerHTML = props.title
 
-  const { resolve, reject, deferred } = usePrograms({
+  const { resolve, reject, deferred } = useOverlayDefine({
     // Duration of overlays duration to avoid premature destruction of the component
     duration: 1000,
   })
@@ -70,9 +69,9 @@ import { defineOverlay } from '@overlastic/vanilla'
 import Component from './overlay'
 
 const value = await renderOverlay(Component, {
-  title: 'usePrograms'
+  title: 'useOverlayDefine'
 })
-// value === "usePrograms:confirmed"
+// value === "useOverlayDefine:confirmed"
 ```
 
 ## Custom Element
@@ -86,10 +85,10 @@ const callback1 = defineOverlay('my-custom-element')
 
 callback1({/* props(attrs) */})
 
-const CustomComponent = (props) => {
+function CustomComponent(props) {
   const customElement = document.createElement('my-custom-element')
 
-  const { resolve, reject } = usePrograms({
+  const { resolve, reject } = useOverlayDefine({
     duration: 1000,
   })
 

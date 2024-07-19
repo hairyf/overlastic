@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { OverlayProvider } from '@overlastic/react'
 import App from './App.tsx'
 import './index.css'
-import { OverlayProvider } from '@overlastic/react'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

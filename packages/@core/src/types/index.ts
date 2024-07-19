@@ -24,11 +24,11 @@ export interface GlobalMountOptions {
   only?: boolean
 }
 
-export interface ImperativeOverlay<Props, Resolved, Opts = {}> {
+export interface ImperativeOverlay<Props, Resolved, Opts = unknown> {
   (props?: Props, options?: MountOptions<Opts>): Deferred<Resolved>
 }
 
-export type MountOptions<Opts = {}> = GlobalMountOptions & Opts
+export type MountOptions<Opts = unknown> = GlobalMountOptions & Opts
 
 export interface ClickPosition {
   x: number

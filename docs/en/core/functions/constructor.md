@@ -84,7 +84,6 @@ function Component(props) {
 const callback = constructor.define(Component, { className: 'custom-class' })
 ```
 
-
 Mount the custom component by using the imperative callback defined by `constructor.define` and obtain the return value.
 
 ```ts

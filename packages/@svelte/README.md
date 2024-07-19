@@ -4,7 +4,7 @@ create imperative overlays in the svelte application, supporting context inherit
 
 ## Install
 
-With pnpm: 
+With pnpm:
 ```sh
 pnpm add @overlastic/svelte
 ```
@@ -16,20 +16,18 @@ yarn add @overlastic/svelte
 
 ## Usage
 
-
 ### Step 1: Define Component
-
 
 ```svelte
 <script lang="ts">
-  import { usePrograms, Overlay } from "@overlastic/svelte";
+  import { useOverlayDefine, Overlay } from "@overlastic/svelte";
   import { fly } from "svelte/transition";
-  
+
   export let title: number
   export let duration = 200
 
   // duration of overlay duration, helps prevent premature component destroy
-  const { resolve, reject } = usePrograms({ duration })
+  const { resolve, reject } = useOverlayDefine({ duration })
 
   function onClick() {
     resolve(`${title}:confirmed`)
@@ -67,23 +65,22 @@ import { renderOverlay } from '@overlastic/svelte'
 import OverlayComponent from './overlay.svelte'
 
 const value = await renderOverlay(OverlayComponent, {
-  title: 'usePrograms'
+  title: 'useOverlayDefine'
 })
-// value === "usePrograms:confirmed"
+// value === "useOverlayDefine:confirmed"
 ```
 
 ## Controlled manner
 
 By default, you do not need to control the display and hiding of the `visible` variable. The value is controlled by the component `Overlay`, and you can pass in `visible` to control the display
 
-
 ```svelte
 <script lang="ts">
-  import { usePrograms, Overlay } from "@overlastic/svelte";
+  import { useOverlayDefine, Overlay } from "@overlastic/svelte";
 
   let visible = false
 
-  const { resolve, reject, deferred, vanish } = usePrograms({
+  const { resolve, reject, deferred, vanish } = useOverlayDefine({
     // close the transition duration, at this point you need to manually destroy it
     duration: false,
     // cancel setting visible to true immediately

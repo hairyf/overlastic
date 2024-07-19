@@ -2,14 +2,14 @@ import { getContext, setContext } from 'svelte'
 import type { ProgramsReturn } from '../types'
 import { injectOptionsKey, injectOverlayKey } from '../internal'
 
-export interface ProgramsOptions {
+export interface OverlayDefineOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
   immediate?: boolean
 }
 
-export function usePrograms(options: ProgramsOptions = {}) {
+export function useOverlayDefine(options: OverlayDefineOptions = {}) {
   setContext(injectOptionsKey, options)
   return getContext<ProgramsReturn>(injectOverlayKey)
 }

@@ -1,3 +1,4 @@
+/* eslint-disable ts/no-use-before-define */
 import { createConstructor } from '@overlastic/core'
 import { pascalCase } from 'pascal-case'
 
@@ -13,7 +14,7 @@ export interface VMountOptions {
 export const constructor = createConstructor<Component, VMountOptions>((Inst, props, options) => {
   const { container, id, deferred } = options
   function vanish() {
-    childApp.$destroy()
+    app.$destroy()
     container.remove()
   }
 
@@ -22,7 +23,7 @@ export const constructor = createConstructor<Component, VMountOptions>((Inst, pr
     vanish,
   })
 
-  const childApp = new Vue({
+  const app = new Vue({
     name: pascalCase(id),
     parent: options.parent,
     provide: () => ({ $overlay }),
@@ -31,5 +32,5 @@ export const constructor = createConstructor<Component, VMountOptions>((Inst, pr
 
   const child = document.createElement('div')
   container.appendChild(child)
-  childApp.$mount(child)
+  app.$mount(child)
 })

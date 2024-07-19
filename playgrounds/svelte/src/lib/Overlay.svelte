@@ -1,7 +1,7 @@
 <script lang="ts">
   import { delay } from "@overlastic/core";
   import {
-    type ProgramsOptions,
+    type OverlayDefineOptions,
     type ProgramsReturn,
   } from "@overlastic/svelte";
   import {
@@ -12,7 +12,7 @@
 
   export let visible = false;
 
-  const { duration = 0 } = getContext<ProgramsOptions>(injectOptionsKey) || {};
+  const { duration = 0 } = getContext<OverlayDefineOptions>(injectOptionsKey) || {};
   const { deferred, vanish } = getContext<ProgramsReturn>(injectOverlayKey);
 
   deferred.finally(async () => {

@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable multiline-ternary */
+/* eslint-disable ts/ban-ts-comment */
+/* eslint-disable style/multiline-ternary */
 import type { ComponentConstructorOptions } from 'svelte'
 import { getContext, onMount } from 'svelte'
 import { delay } from '@overlastic/core'
@@ -22,7 +22,7 @@ import {
 } from 'svelte/internal'
 import { injectOptionsKey, injectOverlayKey } from '../internal'
 import type { ProgramsReturn } from '../types'
-import type { ProgramsOptions } from '../composable'
+import type { OverlayDefineOptions } from '../composable'
 
 function create_if_block(ctx: any[]) {
   let current: boolean
@@ -52,7 +52,7 @@ function create_if_block(ctx: any[]) {
     p(ctx2: any[], dirty: number) {
       if (default_slot) {
         if (default_slot.p && (!current || dirty /* $$scope */
-        & 2)) {
+          & 2)) {
           update_slot_base(
             default_slot,
             default_slot_template,
@@ -155,7 +155,7 @@ function create_fragment(ctx: any[]) {
 function instance($$self: any, $$props: any, $$invalidate: any) {
   let { $$slots: slots = {}, $$scope } = $$props
   let { visible = false } = $$props
-  const { duration = 0, immediate = true } = getContext<ProgramsOptions>(injectOptionsKey) || {}
+  const { duration = 0, immediate = true } = getContext<OverlayDefineOptions>(injectOptionsKey) || {}
   const { deferred, vanish } = getContext<ProgramsReturn>(injectOverlayKey)
 
   // The component directly obtains the default value

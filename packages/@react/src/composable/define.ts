@@ -20,7 +20,7 @@ export interface PromptifyEvents {
   resolve?: string
 }
 
-export interface ProgramsOptions {
+export interface OverlayDefineOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -64,7 +64,7 @@ export interface ProgramsReturn {
   deferred?: Promise<any>
 }
 
-export function usePrograms(options: ProgramsOptions = {}) {
+export function useOverlayDefine(options: OverlayDefineOptions = {}) {
   const { immediate = true, duration = 0, automatic = true } = options
   const context = useContext(ScriptsContext)
   const dec = Reflect.get(context, 'in_dec')
@@ -88,7 +88,7 @@ export function usePrograms(options: ProgramsOptions = {}) {
   return overlay as ProgramsReturn
 }
 
-export function useDeclarative(options: ProgramsOptions = {}) {
+export function useDeclarative(options: OverlayDefineOptions = {}) {
   const { props = {}, model = 'visible', events = {} } = options
   const { reject = 'onReject', resolve = 'onResolve' } = events
 

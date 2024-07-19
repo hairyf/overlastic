@@ -1,7 +1,8 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useOverlay, usePrograms } from '@overlastic/vue'
+import { useOverlay, useOverlayDefine } from '@overlastic/vue'
+
 const Component = defineComponent({
   props: {
     visible: {
@@ -16,7 +17,7 @@ const Component = defineComponent({
   },
   emits: ['resolve', 'reject', 'update:visible'],
   setup: (props) => {
-    const { resolve, reject, vanish, visible } = usePrograms({
+    const { resolve, reject, vanish, visible } = useOverlayDefine({
       duration: props.duration,
     })
     const openMoreOverlay = useOverlay(Component) as any
@@ -34,7 +35,9 @@ export default Component
         <div class="base-modal__title">
           {{ title || 'Title' }}
         </div>
-        <button @click="openMoreOverlay({ duration: 300 })">open More overlay</button>
+        <button @click="openMoreOverlay({ duration: 300 })">
+          open More overlay
+        </button>
         <slot />
         <div class="base-modal__control">
           <span class="modal__confirm" @click="resolve('resolve')">resolve</span>

@@ -4,12 +4,12 @@ You can use [@overlastic/vue](https://overlastic.vercel.app/en/vue/) to create c
 <!-- overlay.vue -->
 <script setup>
 import { defineProps } from 'vue'
-import { usePrograms } from '@overlastic/vue'
+import { useOverlayDefine } from '@overlastic/vue'
 const props = defineProps({
   content: String,
 })
-// Get overlay information from usePrograms
-const { visible, resolve, reject } = usePrograms({
+// Get overlay information from useOverlayDefine
+const { visible, resolve, reject } = useOverlayDefine({
   // Duration of the overlay duration to avoid premature component destruction
   duration: 1000,
 })

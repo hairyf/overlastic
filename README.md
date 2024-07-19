@@ -18,7 +18,7 @@ A create model | dialog | popup promise deferred library
   English | <a href="https://github.com/hairyf/overlastic/blob/master/README_CN.md">Chinese</a> | <a href="https://overlastic.vercel.app">docs</a>
 </p>
 
-    Unified Overlays are used to create callback (imperative) methods for 
+    Unified Overlays are used to create callback (imperative) methods for
     components and also support declarative use of Vue, React, and other components.
 
 ###### Features
@@ -66,12 +66,12 @@ pnpm add @overlastic/react
 
 ## Usage
 
-Use the `usePrograms` Hook provided by overlays to obtain overlays metadata and create overlays components (Vue, React).
+Use the `useOverlayDefine` Hook provided by overlays to obtain overlays metadata and create overlays components (Vue, React).
 
 ```ts
 // In your Vue, React overlays component,
-// use usePrograms to obtain overlays metadata.
-const { visible, resolve, reject } = usePrograms({
+// use useOverlayDefine to obtain overlays metadata.
+const { visible, resolve, reject } = useOverlayDefine({
   // The duration of the overlays duration prevents
   // the component from being destroyed too early.
   duration: 1000

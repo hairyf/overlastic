@@ -1,4 +1,4 @@
-# Inherited context 
+# Inherited context
 
 You can register overlays globally, which will inherit the application context for all popups.
 

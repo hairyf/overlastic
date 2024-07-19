@@ -1,8 +1,8 @@
-import { createConstructor, MountConstructorOptions } from '@overlastic/core'
+import { createConstructor } from '@overlastic/core'
 import { type FC, useContext } from 'react'
 import { pascalCase } from 'pascal-case'
 import { InstancesContext, ScriptsContext, defineAnonymousComponent } from '../internal'
-import { useScripts } from './useScripts'
+import { useScripts } from './scripts'
 
 interface Options {
   render: (instance: FC, props: any) => void

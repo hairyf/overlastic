@@ -4,7 +4,7 @@
 
 ## Install
 
-With pnpm: 
+With pnpm:
 ```sh
 pnpm add @overlastic/vue
 ```
@@ -29,18 +29,16 @@ app.use(unoverlay)
 
 ## Usage
 
-
-
 ### Step 1: Define Component
 
-overlays is suitable for most components. Using usePrograms can provide finer control over the component process.
+overlays is suitable for most components. Using useOverlayDefine can provide finer control over the component process.
 
 ```vue
 <!-- overlay.vue -->
 <script>
-import { usePrograms } from '@overlastic/vue2'
+import { useOverlayDefine } from '@overlastic/vue2'
 export default {
-  mixins: [usePrograms({ duration: 1000 })],
+  mixins: [useOverlayDefine({ duration: 1000 })],
   methods: {
     onClick() {
       // use this.$visible
@@ -79,7 +77,7 @@ import { renderOverlay } from '@overlastic/vue'
 import OverlayComponent from './overlay.vue'
 
 const value = await renderOverlay(OverlayComponent, {
-  title: 'usePrograms'
+  title: 'useOverlayDefine'
 })
-// value === "usePrograms:confirmed"
+// value === "useOverlayDefine:confirmed"
 ```

@@ -4,7 +4,7 @@
 
 ## Install
 
-With pnpm: 
+With pnpm:
 ```sh
 pnpm add @overlastic/react
 ```
@@ -21,14 +21,16 @@ yarn add @overlastic/react
 ```tsx
 // overlay.tsx
 export function Component(props) {
-  const { visible, resolve, reject } = usePrograms({
+  const { visible, resolve, reject } = useOverlayDefine({
     // Duration of overlay duration, helps prevent premature component destruction
     duration: 200,
   })
 
-  return <div className={visible && 'is--visible'}>
-    <span onClick={() => resolve(`${props.title}:confirmed`)}> Confirm </span>
-  </div>
+  return (
+    <div className={visible && 'is--visible'}>
+      <span onClick={() => resolve(`${props.title}:confirmed`)}> Confirm </span>
+    </div>
+  )
 }
 ```
 
@@ -53,9 +55,9 @@ import { renderOverlay } from '@overlastic/react'
 import { Component } from './overlay'
 
 const value = await renderOverlay(Component, {
-  title: 'usePrograms'
+  title: 'useOverlayDefine'
 })
-// value === "usePrograms:confirmed"
+// value === "useOverlayDefine:confirmed"
 ```
 
 ## Injection Holder
@@ -75,11 +77,13 @@ export function Main() {
     overlayApi()
       .then((result) => {})
   }
-  return (<>
-    <div onClick={open}> open </div>
-    {/* Mount the holder */}
-    {holder}
-  </>)
+  return (
+    <>
+      <div onClick={open}> open </div>
+      {/* Mount the holder */}
+      {holder}
+    </>
+  )
 }
 ```
 
@@ -92,17 +96,19 @@ Components created using `@overlastic/react` support both imperative and declara
 ```tsx
 // If using Typescript, use PropsWithOverlays to define props type
 import type { PropsWithOverlays } from '@overlastic/react'
-import { usePrograms } from '@overlastic/react'
+import { useOverlayDefine } from '@overlastic/react'
 
 export function Component(props: PropsWithOverlays<{ /* ...you props */ }>) {
-  const { visible, resolve, reject } = usePrograms({
-    // pass props to usePrograms for processing
+  const { visible, resolve, reject } = useOverlayDefine({
+    // pass props to useOverlayDefine for processing
     props
   })
 
-  return <div className={visible && 'is--visible'}>
-    ...
-  </div>
+  return (
+    <div className={visible && 'is--visible'}>
+      ...
+    </div>
+  )
 }
 ```
 
@@ -133,11 +139,11 @@ export function Main() {
 }
 ```
 
-If you want to replace other fields and event names, you can do so using the `model` and `events` config of usePrograms.
+If you want to replace other fields and event names, you can do so using the `model` and `events` config of useOverlayDefine.
 
 ```jsx
-function Component(props: { onOn?: Function; onNook?: Function; open: boolean }) {
-  const { visible, resolve, reject } = usePrograms({
+function Component(props: { onOn?: Function, onNook?: Function, open: boolean }) {
+  const { visible, resolve, reject } = useOverlayDefine({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',
     props,
@@ -154,11 +160,11 @@ Take [antd(drawer)](https://ant.design/components/drawer-cn) as an example：
 
 ```tsx
 import type { PropsWithOverlays } from '@overlastic/react'
-import { usePrograms } from '@overlastic/react'
+import { useOverlayDefine } from '@overlastic/react'
 import { Button, Drawer } from 'antd'
 
 function MyDrawer(props: PropsWithOverlays<{ title: string }>) {
-  const { visible, resolve, reject } = usePrograms({
+  const { visible, resolve, reject } = useOverlayDefine({
     duration: 200,
     props,
   })
@@ -172,4 +178,6 @@ function MyDrawer(props: PropsWithOverlays<{ title: string }>) {
     </Drawer>
   )
 }
+
+export default MyDrawer
 ```

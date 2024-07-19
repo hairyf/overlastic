@@ -1,7 +1,7 @@
-import { usePrograms } from '../src'
+import { useOverlayDefine } from '../src'
 
 describe('@overlastic/utils:composable', () => {
   it('use hooks in not setup', () => {
-    expect(() => usePrograms()).toThrowError()
+    expect(() => useOverlayDefine()).toThrowError()
   })
 })

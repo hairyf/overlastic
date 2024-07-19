@@ -7,12 +7,12 @@
 通过 `vue-demi` 从而支持 Vue2 & 3 中 composition-api 用法！
 
 > 如果您使用 Vue2.7 版本以下，请安装 [@vue/composition-api](https://github.com/vuejs/composition-api#readme)
-> 
+>
 > 如果您因为某些原因无法使用 composition-api，请使用 [@overlastic/vue2](/zh/vue/vue2)
 
 ## Install
 
-With pnpm: 
+With pnpm:
 ```sh
 pnpm add @overlastic/vue
 ```
@@ -26,19 +26,19 @@ yarn add @overlastic/vue
 
 ### 步骤.1: Define Component
 
-overlays 适用于绝大多数组件，使用 `usePrograms` 能对组件流程有更细致的控制。
+overlays 适用于绝大多数组件，使用 `useOverlayDefine` 能对组件流程有更细致的控制。
 
 ```vue
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue'
-import { usePrograms } from '@overlastic/vue'
+import { useOverlayDefine } from '@overlastic/vue'
 const props = defineProps({
   title: String,
 })
 
-// 从 usePrograms 获取 Overlay 信息
-const { visible, resolve, reject } = usePrograms({
+// 从 useOverlayDefine 获取 Overlay 信息
+const { visible, resolve, reject } = useOverlayDefine({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
   duration: 1000,
 })
@@ -73,9 +73,9 @@ import { renderOverlay } from '@overlastic/vue'
 import Overlay from './overlay.vue'
 
 const value = await renderOverlay(Overlay, {
-  title: 'usePrograms'
+  title: 'useOverlayDefine'
 })
-// value === "usePrograms:confirmed"
+// value === "useOverlayDefine:confirmed"
 ```
 
 ## Define Component
@@ -88,7 +88,7 @@ const value = await renderOverlay(Overlay, {
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { usePrograms } from '@overlastic/vue'
+import { useOverlayDefine } from '@overlastic/vue'
 const props = defineProps({
   title: String,
   // 在 Template 中使用，需要定义 v-modal 所使用的字段（默认对应 visible）
@@ -98,7 +98,7 @@ const props = defineProps({
 // 定义组件中使用的事件类型（默认：reject、resolve）
 defineEmits(['reject', 'resolve'])
 
-const { visible, resolve, reject } = usePrograms()
+const { visible, resolve, reject } = useOverlayDefine()
 </script>
 ```
 
@@ -132,7 +132,7 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, resolve, reject } = usePrograms({
+const { visible, resolve, reject } = useOverlayDefine({
   events: { resolve: 'ok', reject: 'nook' },
   model: 'modalValue',
 })

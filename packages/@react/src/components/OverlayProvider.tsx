@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unstable-context-value */
+/* eslint-disable react/no-array-index-key */
 import type { FC, PropsWithChildren } from 'react'
 import { useState } from 'react'
 import { InstancesContext } from '../internal'

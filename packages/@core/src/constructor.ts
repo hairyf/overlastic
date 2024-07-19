@@ -60,12 +60,12 @@ export interface ConstructorOptions {
  * })
  */
 
-export function createConstructor<Inst, Opts = {}>(
-  mount: MountConstructor<Inst, Opts>,
-  options: ConstructorOptions = {}
-): OverlaysConstructor<Inst, Opts> {
+export function createConstructor<Instance, Options = unknown>(
+  mount: MountConstructor<Instance, Options>,
+  options: ConstructorOptions = {},
+): OverlaysConstructor<Instance, Options> {
   const { container: globalContainer } = options
-  function define(instance: Inst, options?: any) {
+  function define(instance: Instance, options?: any) {
     function executor(props: any, options?: any) {
       const deferred = createDeferred()
       const name = defineName(options.id, options.autoIncrement)
@@ -100,7 +100,7 @@ export function createConstructor<Inst, Opts = {}>(
     return caller
   }
 
-  function render(instance: Inst, props?: any, options?: any) {
+  function render(instance: Instance, props?: any, options?: any) {
     return define(instance, options)(props)
   }
 

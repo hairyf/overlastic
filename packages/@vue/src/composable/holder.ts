@@ -16,10 +16,7 @@ export function useOverlayHolder<Props, Resolved = void>(
   const name = defineName(options.id, options.autoIncrement)
 
   function render() {
-    return h(Teleport,
-      { to: options.root || document.body, disabled: options.root === false },
-      h('div', { id: name }, [h(component, props.value)]),
-    )
+    return h(Teleport, { to: options.root || document.body, disabled: options.root === false }, h('div', { id: name }, [h(component, props.value)]))
   }
 
   const Holder = defineComponent({

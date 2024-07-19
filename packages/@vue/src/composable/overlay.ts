@@ -1,10 +1,10 @@
 import { createConstructor } from '@overlastic/core'
 import { defineComponent, h, inject, provide } from 'vue'
-import type { Component, DefineComponent } from 'vue'
+import type { Component } from 'vue'
 
 import { pascalCase } from 'pascal-case'
 import { InstancesInjectionKey, ScriptsInjectionKey } from '../internal'
-import { useScripts } from './useScripts'
+import { useScripts } from './scripts'
 
 interface Options {
   render: (instance: Component, props: any) => void
@@ -17,7 +17,7 @@ const { define } = createConstructor<Component, Options>((Instance, props, optio
   const InstanceWithProvider = defineComponent({
     name: pascalCase(id),
     setup: () => {
-      const scripts = useScripts({ vanish, deferred })  
+      const scripts = useScripts({ vanish, deferred })
       provide(ScriptsInjectionKey, scripts)
     },
     render: () => h(Instance, props),

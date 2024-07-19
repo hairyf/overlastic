@@ -7,12 +7,12 @@
 Use [vue-demi](https://github.com/vueuse/vue-demi) to support the composition-api usage in Vue2 & 3!
 
 > If you are using Vue version 2.7 or below, please install [@vue/composition-api](https://github.com/vuejs/composition-api#readme).
-> 
+>
 > If you cannot use composition-api for some reason, use [@overlastic/vue2](/zh/vue/vue2).
 
 ## Install
 
-With pnpm: 
+With pnpm:
 ```sh
 pnpm add @overlastic/vue
 ```
@@ -26,17 +26,17 @@ yarn add @overlastic/vue
 
 ### Step 1: Define Component
 
-overlays is suitable for most components. Using usePrograms can provide finer control over the component process.
+overlays is suitable for most components. Using useOverlayDefine can provide finer control over the component process.
 
 ```vue
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue'
-import { usePrograms } from '@overlastic/vue'
+import { useOverlayDefine } from '@overlastic/vue'
 const props = defineProps({
   title: String,
 })
-const { visible, resolve, reject } = usePrograms({
+const { visible, resolve, reject } = useOverlayDefine({
   // Duration of overlay duration to avoid premature destruction of the component
   duration: 1000,
 })
@@ -71,9 +71,9 @@ import { renderOverlay } from '@overlastic/vue'
 import OverlayComponent from './overlay.vue'
 
 const value = await renderOverlay(OverlayComponent, {
-  title: 'usePrograms'
+  title: 'useOverlayDefine'
 })
-// value === "usePrograms:confirmed"
+// value === "useOverlayDefine:confirmed"
 ```
 
 ## Define Component
@@ -88,7 +88,7 @@ To use it in `<template>`, `modal` and `event` must be explicitly defined.
 <!-- Component.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { usePrograms } from '@overlastic/vue'
+import { useOverlayDefine } from '@overlastic/vue'
 const props = defineProps({
   title: String,
   // To use in Template, you need to define the field used by v-model (default corresponds to visible)
@@ -98,7 +98,7 @@ const props = defineProps({
 // Define event types used in the component (default: reject, resolve)
 defineEmits(['reject', 'resolve'])
 
-const { visible, resolve, reject } = usePrograms({
+const { visible, resolve, reject } = useOverlayDefine({
   // If using template rendering, duration can be omitted
 })
 </script>
@@ -124,7 +124,7 @@ function reject(value) {
 </template>
 ```
 
-If you want to replace them with other fields and event names, you can do so using the `model` and `events` config of usePrograms.
+If you want to replace them with other fields and event names, you can do so using the `model` and `events` config of useOverlayDefine.
 
 ```ts
 const props = defineProps({
@@ -134,10 +134,49 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, resolve, reject } = usePrograms({
+const { visible, resolve, reject } = useOverlayDefine({
   events: { resolve: 'ok', reject: 'nook' },
   model: 'modalValue',
 })
+```
+
+## Injection Provider ✨ (v0.4.8)
+
+In the case of using Provider, the overlays mode does not simply access the content injected into the current context. By supporting the following APIs, it allows the use of injected components to inherit the context:
+
+```html
+<script setup>
+import { OverlayProvider } from '@overlastic/react'
+const visible = ref(false)
+
+function resolve(value) {
+  // ...
+}
+function reject(value) {
+  // ...
+}
+</script>
+<template>
+  <OverlayProvider>
+    <App />
+  </OverlayProvider>
+</template>
+```
+
+Using in a page:
+
+```html
+<script setup>
+import { useOverlay } from '@overlastic/vue'
+
+const openDialog = useOverlay(CustomDialog)
+
+</script>
+<template>
+  <button @click="openDialog({ /* props... */ })">
+    Open Modal
+  </button>
+</template>
 ```
 
 ## Typescript
@@ -153,7 +192,7 @@ export type Resolved = string
 
 // component setup
 const props = defineProps<DialogProps>()
-const { resolve, reject } = usePrograms<Resolved>()
+const { resolve, reject } = useOverlayDefine<Resolved>()
 
 // define overlay
 const callback = defineOverlay<DialogProps, Resolved>(Component)

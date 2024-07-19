@@ -6,12 +6,12 @@
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { usePrograms } from '@overlastic/vue'
+import { useOverlayDefine } from '@overlastic/vue'
 const props = defineProps({
   title: String,
 })
 
-const { visible, resolve, reject } = usePrograms({
+const { visible, resolve, reject } = useOverlayDefine({
   duration: 1000
 })
 </script>
