@@ -1,10 +1,11 @@
 # Slots And Vnode Field
 
-If you want to support rendering slots and a certain field passed in props in template mode, you just need to define default content for the slot.
+如果您想同时支持下渲染插槽和字段，只需要定义插槽后传入默认内容。
 
 ```vue
 <script setup>
 import { useOverlayDefine } from '@overlastic/vue'
+
 defineProps({ title: String })
 
 const { visible, /* ... */ } = useOverlayDefine()
@@ -13,18 +14,18 @@ const { visible, /* ... */ } = useOverlayDefine()
 <template>
   <div v-if="visible">
     <slot name="title">
-      <!-- default content -->
+      <!-- 传入默认内容 -->
       {{ title }}
     </slot>
   </div>
 </template>
 ```
 
-If you want to support rendering a certain field as a [VNode](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) in callback (imperative) mode, we recommend using the built-in Field component.
+如果您想支持某个字段渲染 [VNode](https://cn.vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom)，可以使用内置组件 `Field`。
 
-Field will help you handle the rendering of VNode|Component|string, and it can be used in both callback and template mode.
+`Field` 会处理 VNode、Component、String 的渲染。
 
-Here is a complete example that supports rendering Slots, String, VNode, and Component:
+以下是同时支持 Slots、String、VNode、Component 的完整例子：
 
 ```vue
 <script lang="ts" setup>
@@ -40,7 +41,7 @@ const { visible, /* ... */ } = useOverlayDefine()
 <template>
   <div v-if="visible">
     <slot name="title">
-      <!-- string, VNode, or Component -->
+      <!-- 传入字符串、虚拟节点或组件 -->
       <Field :is="title" />
     </slot>
   </div>

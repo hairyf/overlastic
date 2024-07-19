@@ -2,17 +2,21 @@
 
 create imperative overlays in the native application, support custom-element!
 
-## Install
+::: code-group
 
-With pnpm:
-```sh
+```bash [npm]
+npm install @overlastic/vanilla
+```
+
+```bash [yarn]
+yarn add @overlastic/vanilla
+```
+
+```bash [pnpm]
 pnpm add @overlastic/vanilla
 ```
 
-With yarn:
-```sh
-yarn add @overlastic/vanilla
-```
+:::
 
 ## Usage
 

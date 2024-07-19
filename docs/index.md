@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /en/core/guide/getting-started
+      link: /guide/getting-started
     - theme: alt
       text: View on GitHub
       link: https://github.com/hairyf/overlastic

@@ -1,13 +1,12 @@
 # What is overlays?
 
-overlays is a unified plugin for building overlays that allows the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
+Overlastic is a unified plugin for building overlays that allows the creation of callback (imperative) methods and the use of Template/JSX (declarative) in Vue Template or React Jsx.
 
 ###### Features
 
 - 💫 Simplify the create message or dialog and call your UI as a promise
 - 🧩 Integration and customization of existing component libraries
 - 🦾 provide secure type prompts for each constructor
-- 🌟 Highly stable with **99.54%** unit test coverage
 - ➿ Supports component inheritance of global application context
 
 ## Packages
@@ -20,16 +19,11 @@ overlays is a unified plugin for building overlays that allows the creation of c
 
 ## Devtools
 
-Components created by Unified Overlays support Devtools for their corresponding frameworks (React, Vue).
-
-###### Supported
+Components created by Unified Overlays support Devtools for their corresponding frameworks.
 
 | React Developer Tools | Vue.js Devtools                 |
 | --------------------- | ------------------------------- |
-| ✅<sup>(holder)</sup>  | ✅<sup>(holder\|child-app)</sup> |
-
-- `holder` inserts a holder into the corresponding component, making it available in the virtual DOM.
-- `child-app` creates a separate application that can be recognized by devtools.
+| ✅<sup>(holder\|provider)</sup>  | ✅<sup>(holder\|child-app\|provider)</sup> |
 
 ## Why use overlays?
 

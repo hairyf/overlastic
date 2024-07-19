@@ -1,6 +1,6 @@
 # Vue2 Support
 
-If you are using Vue2, you can install the `@overlastic/vue2` and use mixins to pass properties to components. Here's an example:
+If you are using Vue2, you can install `@overlastic/vue2` and use a `mixin` to pass properties to the component. Here is an example:
 
 ```ts
 import { useOverlayDefine } from '@overlastic/vue2'

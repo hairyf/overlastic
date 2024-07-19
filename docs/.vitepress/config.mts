@@ -2,23 +2,24 @@ import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 
 function getPackageLinks(lang: string) {
+  const prefix = lang === 'en' ? '' : `/${lang}`
   const packages = [
-    { text: '@overlastic/vanilla', link: `/${lang}/core/element/` },
-    { text: '@overlastic/react', link: `/${lang}/core/react/` },
-    { text: '@overlastic/vue', link: `/${lang}/vue/` },
-    { text: '@overlastic/svelte', link: `/${lang}/core/svelte/` },
+    { text: '@overlastic/vanilla', link: `${prefix}/element/` },
+    { text: '@overlastic/react', link: `${prefix}/react/` },
+    { text: '@overlastic/vue', link: `${prefix}/vue/` },
+    { text: '@overlastic/svelte', link: `${prefix}/svelte/` },
   ]
   return packages
 }
 
 const sidebar: DefaultTheme.Sidebar = {
-  '/en/core/': [
+  '/': [
     {
       text: 'Introduction',
       items: [
-        { text: 'Getting Started', link: '/en/core/guide/getting-started' },
-        { text: 'Externally', link: '/en/core/guide/external-control' },
-        { text: 'Singleton', link: '/en/core/guide/support-only' },
+        { text: 'Getting Started', link: '/guide/getting-started' },
+        { text: 'Externally', link: '/guide/external-control' },
+        { text: 'Singleton', link: '/guide/support-only' },
       ],
     },
     {
@@ -28,78 +29,66 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Core Functions',
       items: [
-        { text: 'Constructor', link: '/en/core/functions/constructor' },
-        { text: 'Deferred', link: '/en/core/functions/deferred' },
-        { text: 'Globals', link: '/en/core/functions/defines' },
+        { text: 'Constructor', link: '/functions/constructor' },
+        { text: 'Deferred', link: '/functions/deferred' },
+        { text: 'Globals', link: '/functions/defines' },
       ],
     },
   ],
-  '/en/vue/': [
-    {
-      text: '@overlastic/vue',
-      items: [
-        { text: 'Started', link: '/en/vue/' },
-        { text: 'Devtools', link: '/en/vue/devtools' },
-        { text: 'Vue 2', link: '/en/vue/vue2' },
-      ],
-    },
-    {
-      text: 'Advanced',
-      items: [
-        { text: 'Inherited context', link: '/en/vue/advanced/inherited-context' },
-        { text: 'Slot | VNode', link: '/en/vue/advanced/slots-vnode' },
-        { text: 'Holder', link: '/en/vue/advanced/holder' },
-        { text: 'Customized', link: '/en/vue/advanced/customized' },
-      ],
-    },
-  ],
-  '/zh/core': [
+
+  '/zh/': [
     {
       text: 'Introduction',
       items: [
-        { text: '开始使用', link: '/zh/core/guide/getting-started' },
-        { text: '外部控制', link: '/zh/core/guide/external-control' },
-        { text: '单例模式', link: '/zh/core/guide/support-only' },
+        { text: '介绍', link: '/zh/guide/getting-started' },
+        { text: '外部控制', link: '/zh/guide/external-control' },
       ],
     },
     {
       text: 'Packages',
-      items: getPackageLinks('zh'),
+      items: [
+        { text: '@overlastic/vanilla', link: `/zh/element/` },
+        {
+          text: '@overlastic/react',
+          link: `/zh/react/`,
+          items: [
+            { text: '快速开始', link: '/zh/react/' },
+            { text: '注入模式✨', link: '/zh/react/provider' },
+            { text: '持有模式', link: '/zh/react/holder' },
+            { text: '定制化', link: '/zh/react/customized' },
+          ],
+          collapsed: true,
+        },
+        {
+          text: '@overlastic/vue',
+          link: `/zh/vue/`,
+          items: [
+            { text: '快速开始', link: '/zh/vue/' },
+            { text: '注入模式✨', link: '/zh/vue/provider' },
+            { text: '定制化', link: '/zh/vue/customized' },
+            { text: 'Vue 2', link: '/zh/vue/vue2' },
+          ],
+          collapsed: true,
+        },
+        { text: '@overlastic/svelte', link: `/zh/svelte/` },
+      ],
     },
     {
       text: 'Core Functions',
       items: [
-        { text: '构造器', link: '/zh/core/functions/constructor' },
-        { text: '承诺者', link: '/zh/core/functions/deferred' },
-        { text: '定义', link: '/zh/core/functions/defines' },
+        { text: '构造器', link: '/zh/functions/constructor' },
+        { text: '承诺者', link: '/zh/functions/deferred' },
+        { text: '定义', link: '/zh/functions/defines' },
       ],
     },
   ],
-  '/zh/vue/': [
-    {
-      text: '@overlastic/vue',
-      items: [
-        { text: '快速开始', link: '/zh/vue/' },
-        { text: '开发调试', link: '/zh/vue/devtools' },
-        { text: 'Vue 2', link: '/zh/vue/vue2' },
-      ],
-    },
-    {
-      text: 'Advanced',
-      items: [
-        { text: '上下文继承', link: '/zh/vue/advanced/inherited-context' },
-        { text: 'Slot 与 VNode', link: '/zh/vue/advanced/slots-vnode' },
-        { text: '持有者', link: '/zh/vue/advanced/holder' },
-        { text: '定制化', link: '/zh/vue/advanced/customized' },
-      ],
-    },
-  ],
+
 }
 
 const nav: DefaultTheme.NavItem[] = [
   {
     text: 'Guide',
-    link: '/en/core/guide/getting-started',
+    link: '/guide/getting-started',
   },
   {
     text: 'Packages',
@@ -115,16 +104,10 @@ const config = defineConfig({
   lang: 'zh',
   title: 'Unified Overlays',
   head: [['link', { rel: 'icon', href: '/circle.svg', type: 'image/svg+xml' }]],
+
   locales: {
-    'root': {
-      label: 'Unified Overlays',
-      lang: 'en-US',
-    },
-    '/zh/': {
-      label: 'Unified Overlays',
-      lang: 'zh-CN',
-      link: '/zh/',
-    },
+    root: { label: 'English' },
+    zh: { label: '简体中文', link: '/zh/' },
   },
   lastUpdated: true,
   themeConfig: {
@@ -134,7 +117,6 @@ const config = defineConfig({
       message: 'MIT Licensed',
       copyright: 'Copyright © 2019-present hairyf',
     },
-
   },
 })
 

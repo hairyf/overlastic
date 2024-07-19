@@ -1,83 +1,29 @@
-# Getting Started
+<p align="center">
+  <a href="https://overlastic.vercel.app/" target="blank">
+    <img src="https://github.com/hairyf/overlastic/raw/master/docs/public/circle.svg" width="120" alt="Nest Logo" />
+  </a>
+</p>
 
-> overlays only supports Vue3 | Vue2 Composition-api
+<p align="center">
+ A create modal | dialog | popup promise deferred library
+</p>
 
-## Install
+<p align="center">
+  <a href="https://www.npmjs.com/@overlastic/vue2"><img src="https://img.shields.io/npm/v/@overlastic/vue2.svg" alt="NPM Version" /></a>
+  <a href="https://www.npmjs.com/@overlastic/vue2"><img src="https://img.shields.io/npm/l/@overlastic/vue2.svg" alt="Package License" /></a>
+  <a href="https://www.npmjs.com/@overlastic/vue2"><img src="https://img.shields.io/npm/dm/@overlastic/vue2.svg" alt="NPM Downloads" /></a>
+</p>
 
-With pnpm:
-```sh
-pnpm add @overlastic/vue
+## Description
+
+Create messages or dialog overlays using Overlastic in Vue2 APP.
+
+## Installation
+
+```bash
+$ npm install --save @overlastic/vue2
 ```
 
-With yarn:
-```sh
-yarn add @overlastic/vue
-```
+## Quick Start
 
-## Global
-
-You can register overlays globally, which will inherit the application context for all popups.
-
-```ts
-// main.js
-import Vue from 'vue'
-import unoverlay from '@overlastic/vue'
-
-const app = new Vue({})
-app.use(unoverlay)
-```
-
-## Usage
-
-### Step 1: Define Component
-
-overlays is suitable for most components. Using useOverlayDefine can provide finer control over the component process.
-
-```vue
-<!-- overlay.vue -->
-<script>
-import { useOverlayDefine } from '@overlastic/vue2'
-export default {
-  mixins: [useOverlayDefine({ duration: 1000 })],
-  methods: {
-    onClick() {
-      // use this.$visible
-      // use this.$resolve or this.$reject
-    }
-  }
-}
-</script>
-
-<template>
-  <div v-if="visible" @click="resolve(`${title}:confirmed`)">
-    {{ title }}
-  </div>
-</template>
-```
-
-### Step 2: Create Overlay
-
-You can use the `defineOverlay` method to convert the component into a modal dialog in Javascript / Typescript, which allows you to call it.
-
-```ts
-import { defineOverlay } from '@overlastic/vue'
-import OverlayComponent from './overlay.vue'
-
-// Convert to imperative callback
-const callback = defineOverlay(OverlayComponent)
-// Call the component and get the value of the resolve callback
-const value = await callback({ title: 'callbackOverlay' })
-// value === "callbackOverlay:confirmed"
-```
-
-You can also use `renderOverlay` to directly call the component and skip the `defineOverlay` method.
-
-```ts
-import { renderOverlay } from '@overlastic/vue'
-import OverlayComponent from './overlay.vue'
-
-const value = await renderOverlay(OverlayComponent, {
-  title: 'useOverlayDefine'
-})
-// value === "useOverlayDefine:confirmed"
-```
+[Overview & Tutorial](https://overlastic.vercel.app/en/vue/vue2)

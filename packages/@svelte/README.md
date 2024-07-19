@@ -1,99 +1,29 @@
-# Getting Started
+<p align="center">
+  <a href="https://overlastic.vercel.app/" target="blank">
+    <img src="https://github.com/hairyf/overlastic/raw/master/docs/public/circle.svg" width="120" alt="Nest Logo" />
+  </a>
+</p>
 
-create imperative overlays in the svelte application, supporting context inheritance!
+<p align="center">
+ A create modal | dialog | popup promise deferred library
+</p>
 
-## Install
+<p align="center">
+  <a href="https://www.npmjs.com/@overlastic/svelte"><img src="https://img.shields.io/npm/v/@overlastic/svelte.svg" alt="NPM Version" /></a>
+  <a href="https://www.npmjs.com/@overlastic/svelte"><img src="https://img.shields.io/npm/l/@overlastic/svelte.svg" alt="Package License" /></a>
+  <a href="https://www.npmjs.com/@overlastic/svelte"><img src="https://img.shields.io/npm/dm/@overlastic/svelte.svg" alt="NPM Downloads" /></a>
+</p>
 
-With pnpm:
-```sh
-pnpm add @overlastic/svelte
+## Description
+
+Create messages or dialog overlays using Overlastic in Svelte APP.
+
+## Installation
+
+```bash
+$ npm install --save @overlastic/svelte
 ```
 
-With yarn:
-```sh
-yarn add @overlastic/svelte
-```
+## Quick Start
 
-## Usage
-
-### Step 1: Define Component
-
-```svelte
-<script lang="ts">
-  import { useOverlayDefine, Overlay } from "@overlastic/svelte";
-  import { fly } from "svelte/transition";
-
-  export let title: number
-  export let duration = 200
-
-  // duration of overlay duration, helps prevent premature component destroy
-  const { resolve, reject } = useOverlayDefine({ duration })
-
-  function onClick() {
-    resolve(`${title}:confirmed`)
-  }
-</script>
-
-<Overlay>
-  <div transition:fly={{ opacity: 0, duration }} on:click={onClick}>
-    <slot name="title">
-      { title }
-    </slot>
-  </div>
-</Overlay>
-```
-
-### Step 2: Create Overlay
-
-You can use the `defineOverlay` method to convert the component into a modal dialog in Javascript / Typescript, which allows you to call it.
-
-```ts
-import { defineOverlay } from '@overlastic/svelte'
-import OverlayComponent from './overlay.svelte'
-
-// Convert to imperative callback
-const callback = defineOverlay(OverlayComponent)
-// Call the component and get the value of the resolve callback
-const value = await callback({ title: 'callbackOverlay' })
-// value === "callbackOverlay:confirmed"
-```
-
-You can also use `renderOverlay` to directly call the component and skip the `defineOverlay` method.
-
-```ts
-import { renderOverlay } from '@overlastic/svelte'
-import OverlayComponent from './overlay.svelte'
-
-const value = await renderOverlay(OverlayComponent, {
-  title: 'useOverlayDefine'
-})
-// value === "useOverlayDefine:confirmed"
-```
-
-## Controlled manner
-
-By default, you do not need to control the display and hiding of the `visible` variable. The value is controlled by the component `Overlay`, and you can pass in `visible` to control the display
-
-```svelte
-<script lang="ts">
-  import { useOverlayDefine, Overlay } from "@overlastic/svelte";
-
-  let visible = false
-
-  const { resolve, reject, deferred, vanish } = useOverlayDefine({
-    // close the transition duration, at this point you need to manually destroy it
-    duration: false,
-    // cancel setting visible to true immediately
-    immediate: false
-  })
-
-  // Manually set vanish (when promise ends)
-  deferred.finally(() => vanish())
-</script>
-
-<Overlay bind:visible={visible}>
-  <div on:click={() => resolve(`${title}:confirmed`)}>
-    ...
-  </div>
-</Overlay>
-```
+[Overview & Tutorial](https://overlastic.vercel.app/en/svelte/)

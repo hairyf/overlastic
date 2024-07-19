@@ -1,14 +1,14 @@
 # @overlastic/vue
 
-@overlastic/vue 用于在 Vue3 中定义弹出层组件，并支持回调和模版中使用。
+@overlastic/vue is used to define pop-up components in Vue3 and supports callbacks and usage in templates.
 
 ## Installation
 
-通过 `vue-demi` 从而支持 Vue2 & 3 中 composition-api 用法！
+Use `vue-demi` to support composition-api usage in Vue2 & 3!
 
-> 如果您使用 Vue2.7 版本以下，请安装 [@vue/composition-api](https://github.com/vuejs/composition-api#readme)
+> If you are using Vue version below 2.7, please install [@vue/composition-api](https://github.com/vuejs/composition-api#readme)
 >
-> 如果您因为某些原因无法使用 composition-api，请使用 [@overlastic/vue2](/zh/vue/vue2)
+> If you are unable to use composition-api for some reason, use [@overlastic/vue2](/zh/vue/vue2)
 
 ::: code-group
 
@@ -28,12 +28,12 @@ pnpm add @overlastic/vue
 
 ## Usage
 
-### 步骤.1: 定义组件
+### Step 1: Define Component
 
-使用 `useOverlayDefine` 定义弹出层组件，返回以下内容：
+Use `useOverlayDefine` to define a pop-up component, which returns the following:
 
-- `resolve|reject` 返回 Promise 的结果，将在 `duration` 结束时销毁组件
-- `visible` 用于显示组件，执行 `Promise` 结果将马上被更改
+- `resolve|reject` returns the result of a Promise, which will destroy the component when `duration` ends
+- `visible` is used to display the component, executing the `Promise` result immediately
 
 ```vue
 <!-- overlay.vue -->
@@ -44,9 +44,9 @@ const props = defineProps({
   title: String,
 })
 
-// 从 useOverlayDefine 获取 Overlay 信息
+// Get Overlay information from useOverlayDefine
 const { visible, resolve, reject } = useOverlayDefine({
-  // 弹出层动画的持续时间, 可以避免组件过早被销毁
+  // Duration of pop-up animation, prevents premature destruction of the component
   duration: 1000,
 })
 </script>
@@ -58,22 +58,22 @@ const { visible, resolve, reject } = useOverlayDefine({
 </template>
 ```
 
-### 步骤.2: 创建弹出层
+### Step 2: Create Pop-up
 
-使用 `defineOverlay` 方法将组件转换为模态对话框，该方法允许在你 Javascript/Typescript 中调用它。
+Use the `defineOverlay` method to convert the component into a modal dialog, allowing you to call it in your Javascript/Typescript.
 
 ```ts
 import { defineOverlay } from '@overlastic/vue'
 import Overlay from './overlay.vue'
 
-// 转换为回调方法
+// Convert to a callback method
 const callback = defineOverlay(Overlay)
-// 调用组件并获取 resolve 回调的值
+// Call the component and get the value of the resolve callback
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
 
-你也可以通过 `renderOverlay` 直接渲染组件，跳过 `defineOverlay` 方法。
+You can also directly render the component using `renderOverlay` and skip the `defineOverlay` method.
 
 ```ts
 import { renderOverlay } from '@overlastic/vue'
@@ -87,11 +87,11 @@ const value = await renderOverlay(Overlay, {
 
 ## Template
 
-使用 `@overlastic/vue` 创建的组件，除了支持使用回调方法调用以外，依旧支持在 `<template>` 中使用，这是一个可选项，在迁移旧组件时非常有用。
+Components created using `@overlastic/vue`, besides supporting callback method invocation, still support usage in `<template>`, which is optional and very useful when migrating old components.
 
 ---
 
-在 `<template>` 中使用，需要显式定义 `modal` 与 `event`
+When using in `<template>`, you need to explicitly define `modal` and `event`
 
 ```vue
 <!-- overlay.vue -->
@@ -100,18 +100,18 @@ import { defineEmits, defineProps } from 'vue-demi'
 import { useOverlayDefine } from '@overlastic/vue'
 const props = defineProps({
   title: String,
-  // 在 Template 中使用，需要定义 v-modal 所使用的字段（默认对应 visible）
+  // When using in Template, define the field used by v-modal (defaults to visible)
   visible: Boolean
 })
 
-// 定义组件中使用的事件类型（默认：reject、resolve）
+// Define the event types used in the component (defaults: reject, resolve)
 defineEmits(['reject', 'resolve'])
 
 const { visible, resolve, reject } = useOverlayDefine()
 </script>
 ```
 
-参数定义后，即可在 template 中使用弹出层组件。
+After defining the parameters, you can use the pop-up component in the template.
 
 ```vue
 <script setup>
@@ -131,7 +131,7 @@ function reject(value) {
 </template>
 ```
 
-如果您想替换为其他的字段与事件名，可以更改 `events` 与 `model` 配置。
+If you want to replace with other fields and event names, you can change the `events` and `model` configurations.
 
 ```ts
 const props = defineProps({

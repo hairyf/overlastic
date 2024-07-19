@@ -1,24 +1,24 @@
 <p align="center">
-<img src="docs/public/circle.svg" style="width:100px;" />
+  <img src="https://github.com/hairyf/overlastic/raw/master/docs/public/circle.svg" style="width:100px;" />
 </p>
 
 <h1 align="center">Unified Overlays</h1>
 
 <p align="center">
-A create model | dialog | popup promise deferred library
+  A create modal | dialog | popup promise deferred library
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.org/package/@overlastic/core">
-    <img src="https://img.shields.io/npm/v/@overlastic/core.svg">
-  </a>
+  <a href="https://www.npmjs.com/@overlastic/core"><img src="https://img.shields.io/npm/v/@overlastic/core.svg" alt="NPM Version" /></a>
+  <a href="https://www.npmjs.com/@overlastic/core"><img src="https://img.shields.io/npm/l/@overlastic/core.svg" alt="Package License" /></a>
+  <a href="https://www.npmjs.com/@overlastic/core"><img src="https://img.shields.io/npm/dm/@overlastic/core.svg" alt="NPM Downloads" /></a>
 </p>
 
 <p align="center">
-  English | <a href="https://github.com/hairyf/overlastic/blob/master/README_CN.md">Chinese</a> | <a href="https://overlastic.vercel.app">docs</a>
+  English | <a href="https://github.com/hairyf/overlastic/blob/master/README_CN.md">Chinese</a> | <a href="https://overlastic.vercel.app">Docs</a>
 </p>
 
-    Unified Overlays are used to create callback (imperative) methods for
+    Unified Overlays are used to create callback methods for
     components and also support declarative use of Vue, React, and other components.
 
 ###### Features
@@ -26,7 +26,6 @@ A create model | dialog | popup promise deferred library
 - 💫 Simplify the create message or dialog and call your UI as a promise
 - 🧩 Integration and customization of existing component libraries
 - 🦾 provide secure type prompts for each constructor
-- 🌟 Highly stable with **99.54%** unit test coverage
 - ➿ Supports component inheritance of global application context
 
 ## Packages
