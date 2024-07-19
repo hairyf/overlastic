@@ -1,7 +1,7 @@
 {
   "name": "@overlastic/core",
   "type": "module",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "license": "MIT",
   "homepage": "https://github.com/hairyf/overlastic#readme",
   "repository": {
