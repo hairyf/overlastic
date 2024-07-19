@@ -1,5 +1,4 @@
 packages:
-  - 'playgrounds/**'
   - 'packages/**'
   - '!**/test/**'
   - '!**/dist/**'
