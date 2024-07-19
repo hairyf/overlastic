@@ -11,11 +11,11 @@ Overlastic is a unified plugin for building overlays that allows the creation of
 
 ## Packages
 
-- [@overlastic/vanilla](/en/core/element/)
-- [@overlastic/react](/en/core/react/)
-- [@overlastic/vue](/en/vue/)
-- [@overlastic/svelte](/en/core/svelte/)
-- [@overlastic/core](/en/core/functions/constructor.html)
+- [@overlastic/vanilla](/core/element/)
+- [@overlastic/react](/core/react/)
+- [@overlastic/vue](/vue/)
+- [@overlastic/svelte](/core/svelte/)
+- [@overlastic/core](/core/functions/constructor.html)
 
 ## Devtools
 

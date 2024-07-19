@@ -26,4 +26,4 @@ $ npm install --save @overlastic/svelte
 
 ## Quick Start
 
-[Overview & Tutorial](https://overlastic.vercel.app/en/svelte/)
+[Overview & Tutorial](https://overlastic.vercel.app/svelte/)

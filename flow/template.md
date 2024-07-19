@@ -1,4 +1,4 @@
-You can use [@overlastic/vue](https://overlastic.vercel.app/en/vue/) to create components, reduce component DTL syntax through customization, and use function calls.
+You can use [@overlastic/vue](https://overlastic.vercel.app/vue/) to create components, reduce component DTL syntax through customization, and use function calls.
 
 ```html
 <!-- overlay.vue -->

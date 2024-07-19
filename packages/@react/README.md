@@ -26,4 +26,4 @@ $ npm install --save @overlastic/react
 
 ## Quick Start
 
-[Overview & Tutorial](https://overlastic.vercel.app/en/react/)
+[Overview & Tutorial](https://overlastic.vercel.app/react/)

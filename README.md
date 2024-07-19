@@ -30,11 +30,11 @@
 
 ## Packages
 
-- [@overlastic/vanilla](https://overlastic.vercel.app/en/core/element/)
-- [@overlastic/react](https://overlastic.vercel.app/en/core/react/)
-- [@overlastic/vue](https://overlastic.vercel.app/en/vue/)
-- [@overlastic/svelte](https://overlastic.vercel.app/en/core/svelte/)
-- [@overlastic/core](https://overlastic.vercel.app/en/core/functions/constructor.html)
+- [@overlastic/vanilla](https://overlastic.vercel.app/core/element/)
+- [@overlastic/react](https://overlastic.vercel.app/core/react/)
+- [@overlastic/vue](https://overlastic.vercel.app/vue/)
+- [@overlastic/svelte](https://overlastic.vercel.app/core/svelte/)
+- [@overlastic/core](https://overlastic.vercel.app/core/functions/constructor.html)
 
 ## Devtools
 

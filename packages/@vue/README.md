@@ -26,4 +26,4 @@ $ npm install --save @overlastic/vue
 
 ## Quick Start
 
-[Overview & Tutorial](https://overlastic.vercel.app/en/vue/)
+[Overview & Tutorial](https://overlastic.vercel.app/vue/)

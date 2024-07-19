@@ -26,4 +26,4 @@ $ npm install --save @overlastic/vanilla
 
 ## Quick Start
 
-[Overview & Tutorial](https://overlastic.vercel.app/en/vanilla/)
+[Overview & Tutorial](https://overlastic.vercel.app/vanilla/)
