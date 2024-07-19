@@ -63,13 +63,13 @@ const value = await renderOverlay(Component, {
 In the case of using Provider, the overlays mode does not simply access the content injected into the current context. By supporting the following APIs, it allows the use of injected components to inherit the context: 
 
 ```tsx
-import { OverlaysProvider } from '@overlastic/react'
+import { OverlayProvider } from '@overlastic/react'
 
 function Main() {
   return (
-    <OverlaysProvider>
+    <OverlayProvider>
       <App />
-    </OverlaysProvider>
+    </OverlayProvider>
   )
 }
 ```

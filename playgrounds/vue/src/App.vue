@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import HolderContainer from './components/holder-container.vue'
+import { OverlayProvider} from '@overlastic/vue'
+import ProviderContainer from './components/provider-container.vue'
 </script>
 
 <template>
-  <HolderContainer :duration="300" />
+  <OverlayProvider>
+    <ProviderContainer :duration="300" />
+  </OverlayProvider>
 </template>
 
 <style scoped>

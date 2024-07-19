@@ -22,6 +22,6 @@ export function useScripts(options: ScriptsOptions) {
     reject: options.deferred.reject,
     deferred: options.deferred,
     visible,
-    vanish,
+    vanish
   }
 }

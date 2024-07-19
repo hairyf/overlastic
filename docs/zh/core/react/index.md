@@ -64,13 +64,13 @@ const value = await renderOverlay(OverlayComponent, {
 如果有 Context、Provider 的情况下，使用 overlays 获取当前上下文都变得非常麻烦，而使用 useOverlayHolder 还需要将 holder 放到某个地方，而通过全局的 Provider 批量渲染所有弹窗，可以减少这部分的工作，我们提供了以下的组件与 Hooks 支持：
 
 ```tsx
-import { OverlaysProvider } from '@overlastic/react'
+import { OverlayProvider } from '@overlastic/react'
 
 function Main() {
   return (
-    <OverlaysProvider>
+    <OverlayProvider>
       <App />
-    </OverlaysProvider>
+    </OverlayProvider>
   )
 }
 ```

@@ -9,7 +9,7 @@ const unoverlay = { install }
 export type { ProgramsOptions, ProgramsReturn, InjectionHolder } from './composable'
 export { usePrograms, useOverlayHolder, useOverlay } from './composable'
 export { defineOverlay, renderOverlay } from './define'
-export { Field, Provider, OverlaysProvider } from './components'
+export { Field, OverlayProvider } from './components'
 export { install }
 
 export default unoverlay

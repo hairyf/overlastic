@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { usePrograms } from '@overlastic/vue'
-export default defineComponent({
+import { useOverlay, usePrograms } from '@overlastic/vue'
+const Component = defineComponent({
   props: {
     visible: {
       type: Boolean,
@@ -19,9 +19,11 @@ export default defineComponent({
     const { resolve, reject, vanish, visible } = usePrograms({
       duration: props.duration,
     })
-    return { resolve, reject, vanish, visible }
+    const openMoreOverlay = useOverlay(Component) as any
+    return { resolve, reject, vanish, visible, openMoreOverlay }
   },
 })
+export default Component
 </script>
 
 <template>
@@ -32,6 +34,7 @@ export default defineComponent({
         <div class="base-modal__title">
           {{ title || 'Title' }}
         </div>
+        <button @click="openMoreOverlay({ duration: 300 })">open More overlay</button>
         <slot />
         <div class="base-modal__control">
           <span class="modal__confirm" @click="resolve('resolve')">resolve</span>
@@ -51,6 +54,7 @@ export default defineComponent({
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .base-modal__content {
   position: absolute;
   border-radius: 20px;
@@ -62,10 +66,12 @@ export default defineComponent({
   transform: translate(-50%, -50%);
   padding: 20px;
 }
+
 .base-modal__control {
   position: absolute;
   right: 0;
   bottom: 20px;
+
   span {
     margin-right: 20px;
   }
@@ -75,10 +81,12 @@ export default defineComponent({
 .fade-leave-active {
   transition: opacity 0.2s;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
+
 .fade-enter-top,
 .fade-leave-from {
   opacity: 1;

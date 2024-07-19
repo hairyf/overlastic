@@ -38,6 +38,9 @@ export interface OverlaysConstructor<Instance, Options> {
   render: <Props, Resolved = void>(instance: Instance, props?: Props, options?: MountOptions<Options>) => Promise<Resolved>
 }
 
+export interface ConstructorOptions {
+  container?: boolean
+}
 /**
  * Create a overlays constructor
  * @param mount Trigger Mount
@@ -57,13 +60,19 @@ export interface OverlaysConstructor<Instance, Options> {
  * })
  */
 
-export function createConstructor<Inst, Opts = {}>(mount: MountConstructor<Inst, Opts>): OverlaysConstructor<Inst, Opts> {
+export function createConstructor<Inst, Opts = {}>(
+  mount: MountConstructor<Inst, Opts>,
+  options: ConstructorOptions = {}
+): OverlaysConstructor<Inst, Opts> {
+  const { container: globalContainer } = options
   function define(instance: Inst, options?: any) {
     function executor(props: any, options?: any) {
       const deferred = createDeferred()
       const name = defineName(options.id, options.autoIncrement)
       const index = getIndex(options.id)
-      const container = defineGlobalElement(name, options.root)
+      const container = globalContainer
+        ? defineGlobalElement(name, options.root)
+        : document.body
       mount(instance, props, Object.assign(options, {
         position: context.position,
         id: name,
@@ -94,6 +103,7 @@ export function createConstructor<Inst, Opts = {}>(mount: MountConstructor<Inst,
   function render(instance: Inst, props?: any, options?: any) {
     return define(instance, options)(props)
   }
+
   return { define, render }
 }
 

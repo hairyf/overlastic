@@ -12,12 +12,12 @@ interface Options {
 }
 
 const { define } = createConstructor<Component, Options>((Instance, props, options) => {
-  const { container, id, deferred, render, vanish: _vanish } = options
+  const { id, deferred, render, vanish: _vanish } = options
 
   const InstanceWithProvider = defineComponent({
     name: pascalCase(id),
     setup: () => {
-      const scripts = useScripts({ vanish, deferred })
+      const scripts = useScripts({ vanish, deferred })  
       provide(ScriptsInjectionKey, scripts)
     },
     render: () => h(Instance, props),
@@ -25,13 +25,12 @@ const { define } = createConstructor<Component, Options>((Instance, props, optio
 
   function vanish() {
     _vanish(InstanceWithProvider)
-    container.remove()
   }
 
-  render(Instance, props)
-})
+  render(InstanceWithProvider, props)
+}, { container: false })
 
-export function useOverlay<Props, Resolved>(Instance: DefineComponent<Props>) {
+export function useOverlay<Props, Resolved>(Instance: any) {
   const { render, vanish } = inject(InstancesInjectionKey)!
   return define<Props, Resolved>(Instance, { render, vanish })
 }

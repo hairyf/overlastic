@@ -7,7 +7,7 @@ export interface Instance {
   props: any
 }
 
-export function OverlaysProvider(props: PropsWithChildren) {
+export function OverlayProvider(props: PropsWithChildren) {
   const [instances, setInstances] = useState<Instance[]>([])
 
   function render(Instance: FC<any>, props: any) {
@@ -15,7 +15,7 @@ export function OverlaysProvider(props: PropsWithChildren) {
   }
 
   function vanish(instance: FC<any>) {
-    setInstances(instances => [...instances.filter(({ Instance }) => instance === Instance)])
+    setInstances(instances => [...instances.filter(({ Instance }) => instance !== Instance)])
   }
   return (
     <InstancesContext.Provider value={{ render, vanish }}>
