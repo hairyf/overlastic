@@ -11,11 +11,11 @@ Overlastic 提供了一套标准流程用于创建消息或对话框，并将你
 
 ## packages
 
-- [@overlastic/svelte](/zh/core/svelte/)
-- [@overlastic/react](/zh/core/react/)
+- [@overlastic/svelte](/zh/svelte/)
+- [@overlastic/react](/zh/react/)
 - [@overlastic/vue](/zh/vue/)
-- [@overlastic/vanilla](/zh/core/element/)
-- [@overlastic/core](/zh/core/functions/constructor.html)
+- [@overlastic/vanilla](/zh/element/)
+- [@overlastic/core](/zh/functions/constructor.html)
 
 ## Devtools
 

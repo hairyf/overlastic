@@ -30,11 +30,11 @@ A create modal | dialog | popup library
 
 ## packages
 
-- [@overlastic/vanilla](https://overlastic.vercel.app/zh/core/element/)
-- [@overlastic/react](https://overlastic.vercel.app/zh/core/react/)
+- [@overlastic/vanilla](https://overlastic.vercel.app/zh/element/)
+- [@overlastic/react](https://overlastic.vercel.app/zh/react/)
 - [@overlastic/vue](https://overlastic.vercel.app/zh/vue/)
-- [@overlastic/svelte](https://overlastic.vercel.app/zh/core/svelte/)
-- [@overlastic/core](https://overlastic.vercel.app/zh/core/functions/constructor.html)
+- [@overlastic/svelte](https://overlastic.vercel.app/zh/svelte/)
+- [@overlastic/core](https://overlastic.vercel.app/zh/functions/constructor.html)
 
 ## Devtools
 

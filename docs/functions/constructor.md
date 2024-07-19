@@ -2,7 +2,7 @@
 
 `constructor` is the core method of `@overlastic/core`, representing a special `overlays` constructor that receives all the information needed to mount a pop-up layer and implements the mounting of the `overlays` layer.
 
-> You may not need to use Constructor. We provide different Overlays Constructor implementations for different frameworks. Please check the [packages](/zh/core/guide/getting-started#packages) to find the one for the framework you are using!
+> You may not need to use Constructor. We provide different Overlays Constructor implementations for different frameworks. Please check the [packages](/zh/guide/getting-started#packages) to find the one for the framework you are using!
 
 ## Custom Constructor
 

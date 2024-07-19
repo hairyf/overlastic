@@ -2,7 +2,7 @@
 
 `constructor` 是 `@overlastic/core` 的核心方法，代表特殊的 `overlays` 构造器，内部接收挂载弹出层所需的所有信息，并实现 `overlays` 层的挂载。
 
-> 你可能不需要使用 Constructor，我们提供了不同框架的 Overlays Constructor 实现，查看 [packages](/zh/core/guide/getting-started#packages) 寻找你所使用的框架！
+> 你可能不需要使用 Constructor，我们提供了不同框架的 Overlays Constructor 实现，查看 [packages](/zh/guide/getting-started#packages) 寻找你所使用的框架！
 
 ## Custom Constructor
 
