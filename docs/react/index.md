@@ -127,7 +127,12 @@ export function Main() {
 If you want to replace other field and event names, you can change the `events` and `model` configurations.
 
 ```jsx
-function Component(props: { onOn?: Function, onNook?: Function, open: boolean }) {
+interface ComponentProps {
+  onOn?: (value?: any) => void
+  onNook?: (value?: any) => void
+  open: boolean
+}
+function Component(props: ComponentProps) {
   const { visible, resolve, reject } = useDefineOverlay({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',

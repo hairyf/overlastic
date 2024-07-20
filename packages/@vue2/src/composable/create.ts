@@ -3,7 +3,7 @@ import mitt from 'mitt'
 
 export interface ScriptsOptions {
   deferred?: Deferred
-  vanish?: Function
+  vanish?: () => void
 }
 
 export function createVisibleScripts(options: ScriptsOptions) {

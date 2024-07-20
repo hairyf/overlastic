@@ -17,7 +17,7 @@ export interface PromptifyEvents {
   resolve?: string
 }
 
-export interface OverlayDefineOptions {
+export interface DefineOverlayOptions {
   /** duration duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -40,7 +40,7 @@ export interface OverlayDefineOptions {
   automatic?: boolean
 }
 
-export function useDefineOverlay(options: OverlayDefineOptions = {}) {
+export function useDefineOverlay(options: DefineOverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true, events = {} } = options
   events.reject = events.reject || 'reject'
   events.resolve = events.resolve || 'resolve'

@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export interface ScriptsOptions {
   deferred: Deferred
-  vanish?: Function
+  vanish?: () => void
 }
 export function useScripts(options: ScriptsOptions) {
   const { reject: _reject } = options.deferred || {}

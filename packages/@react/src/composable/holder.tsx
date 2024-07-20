@@ -9,7 +9,7 @@ import { ScriptsContext } from '../internal'
 export type InjectionHolder<Props, Resolved> = [JSX.Element, ImperativeOverlay<Props, Resolved>]
 
 export function useOverlayHolder<Props, Resolved = void>(
-  Component: FC<Props>,
+  component: FC<Props>,
   options: MountOptions = {},
 ): InjectionHolder<Props, Resolved> {
   const { callback, scripts, props, refresh } = useRefreshMetadata()
@@ -18,10 +18,11 @@ export function useOverlayHolder<Props, Resolved = void>(
 
   function render() {
     const root = options.root || (typeof document !== 'undefined' ? document.body : undefined)
+    const Comp = component
     const content = (
       <div id={name}>
         {' '}
-        <Component {...props} />
+        <Comp {...props} />
         {' '}
       </div>
     )
@@ -42,7 +43,7 @@ export function useOverlayHolder<Props, Resolved = void>(
   return [holder, callback as any]
 }
 
-export function useRefreshMetadata() {
+function useRefreshMetadata() {
   const [props, setProps] = useState<any>()
   const [refresh, setRefresh] = useState(false)
   const [visible, setVisible] = useState(false)

@@ -1,6 +1,6 @@
 export type Deferred<T = void> = Promise<T> & {
   resolve: (value: T) => void
-  reject: (value?: any) => void
+  reject: (reason?: any) => void
 }
 
 export function createDeferred<T = void>(): Deferred<T> {

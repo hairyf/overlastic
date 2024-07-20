@@ -1,12 +1,12 @@
 import type { Deferred } from '@overlastic/core'
 
-export interface ProgramsReturn {
+export interface DefineOverlayReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
-  reject: Function
+  reject: (reason?: any) => void
   /** the notification resolve, modify visible, and destroy it after the duration ends */
-  resolve: Function
+  resolve: (value?: any) => void
   /** destroy the current instance (immediately) */
-  vanish: Function
+  vanish: () => void
   /** visible control popup display and hide */
   /** current deferred */
   deferred?: Deferred<any>

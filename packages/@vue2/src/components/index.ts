@@ -5,7 +5,7 @@ export const Field: Component = {
   props: {
     value: [String, Object] as PropType<string | VNode | Component>,
   },
-  render(this: any, h: Function) {
+  render(this: any, h) {
     return h(this.value)
   },
 }

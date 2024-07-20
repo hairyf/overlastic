@@ -1,11 +1,11 @@
 import { context, setupOptions } from '../internal'
 
-export interface OverlayDefineOptions {
+export interface DefineOverlayOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
 }
 
-export function useDefineOverlay(options?: OverlayDefineOptions) {
+export function useDefineOverlay(options?: DefineOverlayOptions) {
   const trigger = context.trigger
   if (!trigger)
     throw new Error('Please execute in the overlays constructor')

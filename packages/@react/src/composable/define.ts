@@ -20,7 +20,7 @@ export interface PromptifyEvents {
   resolve?: string
 }
 
-export interface OverlayDefineOptions {
+export interface DefineOverlayOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -49,13 +49,13 @@ export interface OverlayDefineOptions {
   automatic?: boolean
 }
 
-export interface ProgramsReturn {
+export interface DefineOverlayReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
-  reject: Function
+  reject: (reason?: any) => void
   /** the notification resolve, modify visible, and destroy it after the duration ends */
-  resolve: Function
+  resolve: (value?: any) => void
   /** destroy the current instance (immediately) */
-  vanish: Function
+  vanish: () => void
   /** visible control popup display and hide */
   visible: boolean
   /** visible dispatch change */
@@ -64,7 +64,7 @@ export interface ProgramsReturn {
   deferred?: Promise<any>
 }
 
-export function useDefineOverlay(options: OverlayDefineOptions = {}) {
+export function useDefineOverlay(options: DefineOverlayOptions = {}) {
   const { immediate = true, duration = 0, automatic = true } = options
   const context = useContext(ScriptsContext)
   const dec = Reflect.get(context, 'in_dec')
@@ -85,10 +85,10 @@ export function useDefineOverlay(options: OverlayDefineOptions = {}) {
       deferred?.then(destroy).catch(destroy)
   })
 
-  return overlay as ProgramsReturn
+  return overlay as DefineOverlayReturn
 }
 
-export function useDeclarative(options: OverlayDefineOptions = {}) {
+function useDeclarative(options: DefineOverlayOptions = {}) {
   const { props = {}, model = 'visible', events = {} } = options
   const { reject = 'onReject', resolve = 'onResolve' } = events
 
@@ -109,6 +109,6 @@ export function useDeclarative(options: OverlayDefineOptions = {}) {
   }
 }
 
-export function useMount(callback: Function = noop) {
+function useMount(callback: Function = noop) {
   useEffect(() => callback(), [])
 }
