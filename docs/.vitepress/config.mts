@@ -24,7 +24,32 @@ const sidebar: DefaultTheme.Sidebar = {
     },
     {
       text: 'Packages',
-      items: getPackageLinks('en'),
+      items: [
+        { text: '@overlastic/vanilla', link: `/element/` },
+        {
+          text: '@overlastic/react',
+          link: `/react/`,
+          items: [
+            { text: 'Usage', link: '/react/' },
+            { text: 'Inject mode✨', link: '/react/provider' },
+            { text: 'Hold mode', link: '/react/holder' },
+            { text: 'Customized', link: '/react/customized' },
+          ],
+          collapsed: true,
+        },
+        {
+          text: '@overlastic/vue',
+          link: `/vue/`,
+          items: [
+            { text: 'Usage', link: '/vue/' },
+            { text: 'Inject mode✨', link: '/vue/provider' },
+            { text: 'Customized', link: '/vue/customized' },
+            { text: 'Vue 2', link: '/vue/vue2' },
+          ],
+          collapsed: true,
+        },
+        { text: '@overlastic/svelte', link: `/svelte/` },
+      ],
     },
     {
       text: 'Core Functions',
