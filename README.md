@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://github.com/hairyf/overlastic/raw/master/docs/public/logo.svg" style="width:100px;" />
+  <img src="https://github.com/hairyf/overlastic/raw/master/docs/public/logo.svg" style="width:120px;" />
 </p>
 
-<h1 align="center">Unified Overlays</h1>
+<h1 align="center">Overlastic</h1>
 
 <p align="center">
   A create modal | dialog | popup promise deferred library
