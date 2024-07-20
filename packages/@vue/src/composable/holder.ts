@@ -5,18 +5,28 @@ import { createDeferred, defineName } from '@overlastic/core'
 import { pascalCase } from 'pascal-case'
 import type { GlobalMountOptions, ImperativeOverlay } from '@overlastic/core'
 import { ScriptsInjectionKey } from '../internal'
+import { AbstractFn } from '../types'
 
-export type InjectionHolder<Props, Resolved> = [Component, ImperativeOverlay<Props, Resolved>]
+export type InjectionHolder<Component extends AbstractFn, Resolved> = [Component, ImperativeOverlay<InstanceType<Component>['$props'], Resolved>]
 
-export function useOverlayHolder<Props, Resolved = void>(
+export function useOverlayHolder<Component extends AbstractFn, Resolved = any>(
   component: Component,
   options: Omit<GlobalMountOptions, 'appContext'> = {},
-): InjectionHolder<Props, Resolved> {
+): InjectionHolder<Component, Resolved> {
   const { callback, scripts, props, refresh } = useRefreshMetadata()
   const name = defineName(options.id, options.autoIncrement)
 
   function render() {
-    return h(Teleport, { to: options.root || document.body, disabled: options.root === false }, h('div', { id: name }, [h(component, props.value)]))
+    return h(
+      Teleport,
+      {
+        to: options.root || document.body,
+        disabled: options.root === false,
+      },
+      h('div', { id: name }, [
+        h(component as any, props.value),
+      ]),
+    )
   }
 
   const Holder = defineComponent({
@@ -27,7 +37,7 @@ export function useOverlayHolder<Props, Resolved = void>(
     },
   })
 
-  return [Holder, callback as any]
+  return [Holder as any, callback as any]
 }
 
 export function useRefreshMetadata() {

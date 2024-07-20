@@ -3,7 +3,7 @@ import type { Deferred } from '@overlastic/core'
 
 export interface ScriptsOptions {
   deferred: Deferred
-  vanish?: Function
+  vanish?: () => void
 }
 
 export function useScripts(options: ScriptsOptions) {

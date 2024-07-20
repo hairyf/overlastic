@@ -20,7 +20,7 @@ export interface PromptifyEvents {
   resolve?: string
 }
 
-export interface OverlayDefineOptions {
+export interface DefineOverlayOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -44,13 +44,13 @@ export interface OverlayDefineOptions {
   automatic?: boolean
 }
 
-export interface ProgramsReturn {
+export interface DefineOverlayReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
-  reject: Function
+  reject: (reason?: any) => void
   /** the notification resolve, modify visible, and destroy it after the duration ends */
-  resolve: Function
+  resolve: (value?: any) => void
   /** destroy the current instance (immediately) */
-  vanish: Function
+  vanish: () => void
   /** visible control popup display and hide */
   visible: Ref<boolean>
   /** current deferred */
@@ -64,7 +64,7 @@ export interface ProgramsReturn {
  * @function vanish destroy the current instance (immediately)
  * @field visible control overlay display and hide
  */
-export function useDefineOverlay(options: OverlayDefineOptions = {}) {
+export function useDefineOverlay(options: DefineOverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
   const overlay = inject(ScriptsInjectionKey, useDeclarative(model, options))
   const dec = Reflect.get(overlay, 'in_dec')
@@ -88,7 +88,7 @@ export function useDefineOverlay(options: OverlayDefineOptions = {}) {
   return overlay
 }
 
-export function useDeclarative(model: string, options: OverlayDefineOptions = {}) {
+export function useDeclarative(model: string, options: DefineOverlayOptions = {}) {
   const { reject = 'reject', resolve = 'resolve' } = options.events || {}
 
   const instance = getCurrentInstance()
