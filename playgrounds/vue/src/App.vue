@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { OverlayProvider } from '@overlastic/vue'
+import { OverlaysProvider } from '@overlastic/vue'
 import ProviderContainer from './components/provider-container.vue'
 </script>
 
 <template>
-  <OverlayProvider>
+  <OverlaysProvider>
     <ProviderContainer :duration="300" />
-  </OverlayProvider>
+  </OverlaysProvider>
 </template>
 
 <style scoped>

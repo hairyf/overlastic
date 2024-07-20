@@ -6,4 +6,4 @@ export {
   useOverlayInject,
 } from './composable'
 export { defineOverlay, renderOverlay } from './define'
-export { OverlayProvider } from './components'
+export { OverlaysProvider } from './components'

@@ -9,7 +9,7 @@ export interface Instance {
   props: any
 }
 
-export const OverlayProvider = defineComponent({
+export const OverlaysProvider = defineComponent({
   setup(_, { slots }) {
     const instances = ref<Instance[]>([])
     function render(Instance: Component, props: any) {

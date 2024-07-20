@@ -5,13 +5,13 @@ Obtaining the current node's context can be quite cumbersome when there is a Con
 Therefore, we provide the following components and hooks support:
 
 ```tsx
-import { OverlayProvider } from '@overlastic/react'
+import { OverlaysProvider } from '@overlastic/react'
 
 function Main() {
   return (
-    <OverlayProvider>
+    <OverlaysProvider>
       <App />
-    </OverlayProvider>
+    </OverlaysProvider>
   )
 }
 

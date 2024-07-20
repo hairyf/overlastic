@@ -9,7 +9,7 @@ export interface Instance {
   props: any
 }
 
-export function OverlayProvider(props: PropsWithChildren) {
+export function OverlaysProvider(props: PropsWithChildren) {
   const [instances, setInstances] = useState<Instance[]>([])
 
   function render(Instance: FC<any>, props: any) {

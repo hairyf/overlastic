@@ -6,13 +6,13 @@
 
 ```vue
 <script setup>
-import { OverlayProvider } from '@overlastic/react'
+import { OverlaysProvider } from '@overlastic/react'
 </script>
 
 <template>
-  <OverlayProvider>
+  <OverlaysProvider>
     <App />
-  </OverlayProvider>
+  </OverlaysProvider>
 </template>
 ```
 

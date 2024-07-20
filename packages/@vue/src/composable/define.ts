@@ -78,7 +78,6 @@ export function useExtendOverlay(options: ExtendOverlayOptions = {}) {
     vanish?.()
     return Promise.resolve()
   }
-
   if (!dec && automatic)
     deferred?.then(destroy).catch(destroy)
   if (!dec && immediate)

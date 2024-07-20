@@ -5,13 +5,13 @@
 所以我们提供了以下的组件与钩子支持：
 
 ```tsx
-import { OverlayProvider } from '@overlastic/react'
+import { OverlaysProvider } from '@overlastic/react'
 
 function Main() {
   return (
-    <OverlayProvider>
+    <OverlaysProvider>
       <App />
-    </OverlayProvider>
+    </OverlaysProvider>
   )
 }
 export default Main

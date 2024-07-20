@@ -1,1 +1,1 @@
-export * from './OverlayProvider'
+export * from './Provider'

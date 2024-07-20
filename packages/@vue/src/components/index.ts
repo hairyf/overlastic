@@ -1,2 +1,2 @@
 export * from './Field'
-export * from './OverlayProvider'
+export * from './Provider'
