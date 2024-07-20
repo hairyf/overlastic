@@ -1,4 +1,4 @@
-# Injection Provider ✨ (v0.5.0)
+# Injection Provider ✨ (v0.5.0+)
 
 Obtaining the current node's context can be quite cumbersome when there is a Context/Provider present. While using `useOverlayHolder` requires placing the `holder` in the node, a global `Provider` can inherit the context from the node and render all pop-ups in bulk.
 

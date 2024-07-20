@@ -1,4 +1,4 @@
-# Injection Provider ✨ (v0.5.0)
+# Injection Provider ✨ (v0.5.0+)
 
 在存在 Context/Provider 的情况下，获取当前节点上下文变得相当麻烦。而使用 `useOverlayHolder` 需要将 `holder` 放置到节点中，全局的 `Provider` 可以继承节点中的上下文，并批量渲染所有弹窗。
 
