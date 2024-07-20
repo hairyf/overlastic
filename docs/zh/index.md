@@ -16,7 +16,7 @@ hero:
       text: View on GitHub
       link: https://github.com/hairyf/overlastic
   image:
-    src: /circle.svg
+    src: /logo.svg
     alt: Overlays
 features:
   - title: 基于 Hooks

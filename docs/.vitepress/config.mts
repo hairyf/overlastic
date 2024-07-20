@@ -127,8 +127,8 @@ const nav: DefaultTheme.NavItem[] = [
 
 const config = defineConfig({
   lang: 'zh',
-  title: 'Unified Overlays',
-  head: [['link', { rel: 'icon', href: '/circle.svg', type: 'image/svg+xml' }]],
+  title: 'Overlastic',
+  head: [['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }]],
 
   locales: {
     root: { label: 'English' },

@@ -1,5 +1,5 @@
 <p align="center">
-<img src="docs/public/circle.svg" style="width:100px;" />
+<img src="docs/public/logo.svg" style="width:100px;" />
 </p>
 
 <h1 align="center">Unified Overlays</h1>

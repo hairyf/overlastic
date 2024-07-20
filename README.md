@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/hairyf/overlastic/raw/master/docs/public/circle.svg" style="width:100px;" />
+  <img src="https://github.com/hairyf/overlastic/raw/master/docs/public/logo.svg" style="width:100px;" />
 </p>
 
 <h1 align="center">Unified Overlays</h1>

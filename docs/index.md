@@ -16,15 +16,15 @@ hero:
       text: View on GitHub
       link: https://github.com/hairyf/overlastic
   image:
-    src: /circle.svg
+    src: /logo.svg
     alt: Overlays
 features:
-  - title: Based on Hooks
-    details: It has good expansibility, allowing you to use it without any constraints.
+  - title: Scalability
+    details: Offers excellent extensibility, enabling unrestricted usage.
   - title: Based on Frameworks
-    details: Used in different frameworks, including React, Vue, Vanilla, Svelte
+    details: Works seamlessly with various frameworks such as React, Vue, Vanilla, and Svelte.
   - title: Simple API
-    details: Lets you create powerful overlays with minimal effort.
+    details: Effortlessly create robust overlays with minimal input.
   - title: Type Strong
-    details: With type integrity, you get better guarantees when you use it, it's up to you.
+    details: Ensures type integrity for enhanced reliability and flexibility in usage.
 ---

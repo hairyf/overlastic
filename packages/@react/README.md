@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://overlastic.vercel.app/" target="blank">
-    <img src="https://github.com/hairyf/overlastic/raw/master/docs/public/circle.svg" width="120" alt="Nest Logo" />
+    <img src="https://github.com/hairyf/overlastic/raw/master/docs/public/logo.svg" width="120" alt="Nest Logo" />
   </a>
 </p>
 
