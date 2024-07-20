@@ -10,8 +10,8 @@ function install(_ins: any, parent: any) {
 const unoverlay: PluginObject<Vue> = { install }
 
 export { install }
-export { useDefineOverlay } from './composable'
-export type { DefineOverlayOptions } from './composable'
+export { useExtendOverlay } from './composable'
+export type { ExtendOverlayOptions } from './composable'
 export { defineOverlay, renderOverlay } from './define'
 export { Field } from './components'
 export default unoverlay

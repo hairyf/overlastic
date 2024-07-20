@@ -1,6 +1,6 @@
 import type { Deferred } from '@overlastic/core'
 
-export interface DefineOverlayReturn {
+export interface ExtendOverlayReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
   reject: (reason?: any) => void
   /** the notification resolve, modify visible, and destroy it after the duration ends */

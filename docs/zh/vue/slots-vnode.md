@@ -4,11 +4,11 @@
 
 ```vue
 <script setup>
-import { useDefineOverlay } from '@overlastic/vue'
+import { useExtendOverlay } from '@overlastic/vue'
 
 defineProps({ title: String })
 
-const { visible, /* ... */ } = useDefineOverlay()
+const { visible, /* ... */ } = useExtendOverlay()
 </script>
 
 <template>
@@ -30,12 +30,12 @@ const { visible, /* ... */ } = useDefineOverlay()
 ```vue
 <script lang="ts" setup>
 import { Component, VNode } from 'vue'
-import { Field, useDefineOverlay } from '@overlastic/vue'
+import { Field, useExtendOverlay } from '@overlastic/vue'
 defineProps<{
   title?: string | VNode | Component
 }>()
 
-const { visible, /* ... */ } = useDefineOverlay()
+const { visible, /* ... */ } = useExtendOverlay()
 </script>
 
 <template>

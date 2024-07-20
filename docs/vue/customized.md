@@ -6,12 +6,12 @@ Take [element-plus(dialog)](https://element.eleme.cn/#/en-US/component/dialog) a
 <!-- overlay.vue -->
 <script setup>
 import { defineEmits, defineProps } from 'vue-demi'
-import { useDefineOverlay } from '@overlastic/vue'
+import { useExtendOverlay } from '@overlastic/vue'
 const props = defineProps({
   title: String,
 })
 
-const { visible, resolve, reject } = useDefineOverlay({
+const { visible, resolve, reject } = useExtendOverlay({
   duration: 1000
 })
 </script>

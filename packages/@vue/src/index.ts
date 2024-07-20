@@ -6,8 +6,8 @@ function install(app: App) {
 }
 const unoverlay = { install }
 
-export type { DefineOverlayOptions, DefineOverlayReturn, InjectionHolder } from './composable'
-export { useDefineOverlay, useOverlayHolder, useOverlayInject } from './composable'
+export type { ExtendOverlayOptions, ExtendOverlayReturn, InjectionHolder } from './composable'
+export { useExtendOverlay, useOverlayHolder, useOverlayInject } from './composable'
 export { defineOverlay, renderOverlay } from './define'
 export { Field, OverlayProvider } from './components'
 export { install }

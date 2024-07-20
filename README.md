@@ -65,12 +65,12 @@ pnpm add @overlastic/react
 
 ## Usage
 
-Use the `useDefineOverlay` Hook provided by overlays to obtain overlays metadata and create overlays components (Vue, React).
+Use the `useExtendOverlay` Hook provided by overlays to obtain overlays metadata and create overlays components (Vue, React).
 
 ```ts
 // In your Vue, React overlays component,
-// use useDefineOverlay to obtain overlays metadata.
-const { visible, resolve, reject } = useDefineOverlay({
+// use useExtendOverlay to obtain overlays metadata.
+const { visible, resolve, reject } = useExtendOverlay({
   // The duration of the overlays duration prevents
   // the component from being destroyed too early.
   duration: 1000

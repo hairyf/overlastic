@@ -20,7 +20,7 @@ export interface PromptifyEvents {
   resolve?: string
 }
 
-export interface DefineOverlayOptions {
+export interface ExtendOverlayOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -44,7 +44,7 @@ export interface DefineOverlayOptions {
   automatic?: boolean
 }
 
-export interface DefineOverlayReturn {
+export interface ExtendOverlayReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
   reject: (reason?: any) => void
   /** the notification resolve, modify visible, and destroy it after the duration ends */
@@ -64,7 +64,7 @@ export interface DefineOverlayReturn {
  * @function vanish destroy the current instance (immediately)
  * @field visible control overlay display and hide
  */
-export function useDefineOverlay(options: DefineOverlayOptions = {}) {
+export function useExtendOverlay(options: ExtendOverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
   const overlay = inject(ScriptsInjectionKey, useDeclarative(model, options))
   const dec = Reflect.get(overlay, 'in_dec')
@@ -88,13 +88,13 @@ export function useDefineOverlay(options: DefineOverlayOptions = {}) {
   return overlay
 }
 
-export function useDeclarative(model: string, options: DefineOverlayOptions = {}) {
+export function useDeclarative(model: string, options: ExtendOverlayOptions = {}) {
   const { reject = 'reject', resolve = 'resolve' } = options.events || {}
 
   const instance = getCurrentInstance()
 
   if (!instance)
-    throw new Error('Please use useDefineOverlay in component setup')
+    throw new Error('Please use useExtendOverlay in component setup')
 
   const visible = useVModel(instance.props, model, instance.emit, { passive: true }) as Ref<boolean>
 

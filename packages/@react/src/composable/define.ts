@@ -20,7 +20,7 @@ export interface PromptifyEvents {
   resolve?: string
 }
 
-export interface DefineOverlayOptions {
+export interface ExtendOverlayOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -49,7 +49,7 @@ export interface DefineOverlayOptions {
   automatic?: boolean
 }
 
-export interface DefineOverlayReturn {
+export interface ExtendOverlayReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
   reject: (reason?: any) => void
   /** the notification resolve, modify visible, and destroy it after the duration ends */
@@ -64,7 +64,7 @@ export interface DefineOverlayReturn {
   deferred?: Promise<any>
 }
 
-export function useDefineOverlay(options: DefineOverlayOptions = {}) {
+export function useExtendOverlay(options: ExtendOverlayOptions = {}) {
   const { immediate = true, duration = 0, automatic = true } = options
   const context = useContext(ScriptsContext)
   const dec = Reflect.get(context, 'in_dec')
@@ -85,10 +85,10 @@ export function useDefineOverlay(options: DefineOverlayOptions = {}) {
       deferred?.then(destroy).catch(destroy)
   })
 
-  return overlay as DefineOverlayReturn
+  return overlay as ExtendOverlayReturn
 }
 
-function useDeclarative(options: DefineOverlayOptions = {}) {
+function useDeclarative(options: ExtendOverlayOptions = {}) {
   const { props = {}, model = 'visible', events = {} } = options
   const { reject = 'onReject', resolve = 'onResolve' } = events
 

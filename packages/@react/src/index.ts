@@ -1,7 +1,7 @@
-export type { DefineOverlayOptions, DefineOverlayReturn, InjectionHolder } from './composable'
+export type { ExtendOverlayOptions, ExtendOverlayReturn, InjectionHolder } from './composable'
 export type { PropsWidthOverlays } from './types'
 export {
-  useDefineOverlay,
+  useExtendOverlay,
   useOverlayHolder,
   useOverlayInject,
 } from './composable'

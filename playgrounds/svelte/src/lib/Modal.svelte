@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { useDefineOverlay, Overlay } from "@overlastic/svelte";
+  import { useExtendOverlay, Overlay } from "@overlastic/svelte";
   import { fly } from "svelte/transition";
   
   export let title = 'Title'
   export let duration = 200
 
   // duration of overlay duration, helps prevent premature component destroy
-  const { resolve, reject } = useDefineOverlay({ duration })
+  const { resolve, reject } = useExtendOverlay({ duration })
 
 </script>
 <Overlay>
