@@ -68,6 +68,7 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: '介绍', link: '/zh/guide/getting-started' },
         { text: '外部控制', link: '/zh/guide/external-control' },
+        { text: '单例', link: '/zh/guide/support-only' },
       ],
     },
     {
