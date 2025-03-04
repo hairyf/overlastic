@@ -39,6 +39,6 @@
   },
   "dependencies": {
     "@overlastic/core": "workspace:^",
-    "svelte": "^3.57.0"
+    "svelte": "^4.0.0"
   }
 }
