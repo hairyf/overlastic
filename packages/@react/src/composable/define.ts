@@ -3,7 +3,7 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useContext, useEffect } from 'react'
 
 import { ScriptsContext } from '../internal'
-import type { PropsWidthOverlays } from '../types'
+import type { PropsWithOverlays } from '../types'
 
 export interface PromptifyEvents {
   /**
@@ -28,7 +28,7 @@ export interface ExtendOverlayOptions {
   /**
    * pass in the required props on jsx
    */
-  props?: PropsWidthOverlays
+  props?: PropsWithOverlays
 
   /**
    *  fields used by jsx show

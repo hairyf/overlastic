@@ -1,8 +1,8 @@
 import type { PropsWithChildren } from 'react'
-import type { PropsWidthOverlays } from '../../src'
+import type { PropsWithOverlays } from '../../src'
 import { useExtendOverlay } from '../../src'
 
-export type OverlayProps = PropsWidthOverlays<PropsWithChildren<{ duration?: number, title?: string }>>
+export type OverlayProps = PropsWithOverlays<PropsWithChildren<{ duration?: number, title?: string }>>
 
 function Overlay(props: OverlayProps) {
   const { resolve, reject, visible } = useExtendOverlay({
