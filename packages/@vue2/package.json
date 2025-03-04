@@ -38,7 +38,7 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "vue": "^2.6"
+    "vue": "^3.0.0"
   },
   "dependencies": {
     "@overlastic/core": "workspace:^",
@@ -46,6 +46,6 @@
     "pascal-case": "3.1.2"
   },
   "devDependencies": {
-    "vue": "^2.6"
+    "vue": "^3.0.0"
   }
 }
