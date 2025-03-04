@@ -6,7 +6,7 @@
 
 ```vue
 <script setup>
-import { OverlaysProvider } from '@overlastic/react'
+import { OverlaysProvider } from '@overlastic/vue'
 </script>
 
 <template>
