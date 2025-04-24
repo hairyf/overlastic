@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { useOverlayHolder } from '@overlastic/vue'
+import { ref } from 'vue'
 import Overlay from './overlay.vue'
 
 const props = withDefaults(defineProps<{

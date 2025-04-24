@@ -29,8 +29,8 @@ Here is a complete example that supports Slots, Strings, VNodes, and Components 
 
 ```vue
 <script lang="ts" setup>
-import { Component, VNode } from 'vue'
 import { Field, useExtendOverlay } from '@overlastic/vue'
+import { Component, VNode } from 'vue'
 defineProps<{
   title?: string | VNode | Component
 }>()

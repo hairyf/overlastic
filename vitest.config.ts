@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitest/config'
-import Vue from '@vitejs/plugin-vue'
 import React from '@vitejs/plugin-react'
+import Vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   plugins: [

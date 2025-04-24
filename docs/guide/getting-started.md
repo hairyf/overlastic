@@ -23,9 +23,9 @@ Unified Overlays support Devtools for different frameworks (React, Vue)
 
 ###### Supported
 
-| React Developer Tools | Vue.js Devtools                 |
-| --------------------- | ------------------------------- |
-| ✅<sup>(holder)</sup>  | ✅<sup>(holder\|child-app)</sup> |
+| React Developer Tools | Vue.js Devtools                  |
+| --------------------- | -------------------------------- |
+| ✅<sup>(holder)</sup> | ✅<sup>(holder\|child-app)</sup> |
 
 ## Why?
 

@@ -29,8 +29,8 @@ const { visible, /* ... */ } = useExtendOverlay()
 
 ```vue
 <script lang="ts" setup>
-import { Component, VNode } from 'vue'
 import { Field, useExtendOverlay } from '@overlastic/vue'
+import { Component, VNode } from 'vue'
 defineProps<{
   title?: string | VNode | Component
 }>()

@@ -1,9 +1,9 @@
+import type { Deferred, ImperativeOverlay, MountOptions } from '@overlastic/core'
+import type { FC } from 'react'
 import { createDeferred, defineName } from '@overlastic/core'
 import { pascalCase } from 'pascal-case'
-import type { FC } from 'react'
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import type { Deferred, ImperativeOverlay, MountOptions } from '@overlastic/core'
 import { ScriptsContext } from '../internal'
 
 export type InjectionHolder<Props, Resolved> = [JSX.Element, ImperativeOverlay<Props, Resolved>]

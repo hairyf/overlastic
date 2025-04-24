@@ -1,9 +1,9 @@
-import { delay, noop } from '@overlastic/core'
 import type { Dispatch, SetStateAction } from 'react'
-import { useContext, useEffect } from 'react'
-
-import { ScriptsContext } from '../internal'
 import type { PropsWithOverlays } from '../types'
+import { delay, noop } from '@overlastic/core'
+
+import { useContext, useEffect } from 'react'
+import { ScriptsContext } from '../internal'
 
 export interface PromptifyEvents {
   /**

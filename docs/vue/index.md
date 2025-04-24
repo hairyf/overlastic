@@ -38,8 +38,8 @@ Use `useExtendOverlay` to define a pop-up component, which returns the following
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { defineEmits, defineProps } from 'vue'
 import { useExtendOverlay } from '@overlastic/vue'
+import { defineEmits, defineProps } from 'vue'
 const props = defineProps({
   title: String,
 })
@@ -96,8 +96,8 @@ When using in `<template>`, you need to explicitly define `modal` and `event`
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { defineEmits, defineProps } from 'vue-demi'
 import { useExtendOverlay } from '@overlastic/vue'
+import { defineEmits, defineProps } from 'vue-demi'
 const props = defineProps({
   title: String,
   // When using in Template, define the field used by v-modal (defaults to visible)

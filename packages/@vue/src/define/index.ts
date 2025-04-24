@@ -1,7 +1,7 @@
-import { ImperativeOverlay, MountOptions } from '@overlastic/core'
-import { defineComponent } from 'vue'
-import { AbstractFn } from '../types'
-import { VMountOptions, constructor } from './constructor'
+import type { ImperativeOverlay, MountOptions } from '@overlastic/core'
+import type { AbstractFn } from '../types'
+import type { VMountOptions } from './constructor'
+import { constructor } from './constructor'
 
 export const defineOverlay = constructor.define as <Component extends AbstractFn, Resolved = any>(instance: Component, options?: MountOptions<VMountOptions> | undefined) => ImperativeOverlay<InstanceType<Component>['$props'], Resolved, VMountOptions>
 

@@ -1,5 +1,5 @@
-import { act } from '@testing-library/react'
 import type { FC } from 'react'
+import { act } from '@testing-library/react'
 import { useState } from 'react'
 import { render } from './render'
 

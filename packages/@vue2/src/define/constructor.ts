@@ -1,8 +1,8 @@
 /* eslint-disable ts/no-use-before-define */
-import { createConstructor } from '@overlastic/core'
-import { pascalCase } from 'pascal-case'
-
 import type { Component } from 'vue'
+import { createConstructor } from '@overlastic/core'
+
+import { pascalCase } from 'pascal-case'
 import Vue from 'vue'
 import { createVisibleScripts } from '../composable'
 

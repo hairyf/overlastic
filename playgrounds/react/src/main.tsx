@@ -1,6 +1,6 @@
+import { OverlaysProvider } from '@overlastic/react'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { OverlaysProvider } from '@overlastic/react'
 import App from './App.tsx'
 import './index.css'
 

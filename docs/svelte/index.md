@@ -5,11 +5,13 @@ create imperative overlays in the svelte application, supporting context inherit
 ## Install
 
 With pnpm:
+
 ```sh
 pnpm add @overlastic/svelte
 ```
 
 With yarn:
+
 ```sh
 yarn add @overlastic/svelte
 ```
@@ -19,9 +21,9 @@ yarn add @overlastic/svelte
 ### Step 1: Define Component
 
 ```svelte
-<script lang="ts">
-  import { useExtendOverlay, Overlay } from "@overlastic/svelte";
-  import { fly } from "svelte/transition";
+<script lang='ts'>
+  import { Overlay, useExtendOverlay } from '@overlastic/svelte'
+  import { fly } from 'svelte/transition'
 
   export let title: number
   export let duration = 200
@@ -36,8 +38,8 @@ yarn add @overlastic/svelte
 
 <Overlay>
   <div transition:fly={{ opacity: 0, duration }} on:click={onClick}>
-    <slot name="title">
-      { title }
+    <slot name='title'>
+      {title}
     </slot>
   </div>
 </Overlay>
@@ -75,8 +77,8 @@ const value = await renderOverlay(OverlayComponent, {
 By default, you do not need to control the display and hiding of the `visible` variable. The value is controlled by the component `Overlay`, and you can pass in `visible` to control the display
 
 ```svelte
-<script lang="ts">
-  import { useExtendOverlay, Overlay } from "@overlastic/svelte";
+<script lang='ts'>
+  import { Overlay, useExtendOverlay } from '@overlastic/svelte'
 
   let visible = false
 
@@ -84,7 +86,7 @@ By default, you do not need to control the display and hiding of the `visible` v
     // close the transition duration, at this point you need to manually destroy it
     duration: false,
     // cancel setting visible to true immediately
-    immediate: false
+    immediate: false,
   })
 
   // Manually set vanish (when promise ends)

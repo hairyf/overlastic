@@ -4,20 +4,22 @@ In addition to creating pop-up components using `defineOverlay` and `renderOverl
 
 ```vue
 <script setup>
-import { useOverlayHolder } from "@overlastic/vue";
-import { OverlayComponent } from "./overlay";
+import { useOverlayHolder } from '@overlastic/vue'
+import { OverlayComponent } from './overlay'
 
 // Create a component holder that supports the current context using useOverlayHolder(Component)
-const [holder, openOverlay] = useOverlayHolder(OverlayComponent);
-const onClick = () => {
+const [holder, openOverlay] = useOverlayHolder(OverlayComponent)
+function onClick() {
   // Open the overlay
-  openOverlay().then((result) => {});
-};
+  openOverlay().then((result) => {})
+}
 </script>
 
 <template>
   <!-- Mount the holder -->
   <holder />
-  <button @click="onClick">open</button>
+  <button @click="onClick">
+    open
+  </button>
 </template>
 ```

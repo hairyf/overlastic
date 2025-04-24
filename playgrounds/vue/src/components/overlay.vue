@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <script lang="ts">
-import { defineComponent } from 'vue'
 import { useExtendOverlay, useOverlayInject } from '@overlastic/vue'
+import { defineComponent } from 'vue'
 
 const Component = defineComponent({
   props: {

@@ -1,5 +1,5 @@
-import { getContext, setContext } from 'svelte'
 import type { ExtendOverlayReturn } from '../types'
+import { getContext, setContext } from 'svelte'
 import { injectOptionsKey, injectOverlayKey } from '../internal'
 
 export interface ExtendOverlayOptions {

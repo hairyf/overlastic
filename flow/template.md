@@ -3,16 +3,16 @@ You can use [@overlastic/vue](https://overlastic.vercel.app/vue/) to create comp
 ```html
 <!-- overlay.vue -->
 <script setup>
-import { defineProps } from 'vue'
-import { useExtendOverlay } from '@overlastic/vue'
-const props = defineProps({
-  content: String,
-})
-// Get overlay information from useExtendOverlay
-const { visible, resolve, reject } = useExtendOverlay({
-  // Duration of the overlay duration to avoid premature component destruction
-  duration: 1000,
-})
+  import { defineProps } from 'vue'
+  import { useExtendOverlay } from '@overlastic/vue'
+  const props = defineProps({
+    content: String,
+  })
+  // Get overlay information from useExtendOverlay
+  const { visible, resolve, reject } = useExtendOverlay({
+    // Duration of the overlay duration to avoid premature component destruction
+    duration: 1000,
+  })
 </script>
 
 <template>
@@ -20,9 +20,10 @@ const { visible, resolve, reject } = useExtendOverlay({
   <v-dialog v-model="visible">
     <div>{{ content }}</div>
 
-    <button @click="resolve(`${content}:confirmed`)"> click confirm </button>
+    <button @click="resolve(`${content}:confirmed`)">click confirm</button>
   </v-dialog>
 </template>
+
 ```
 
 You can use the `defineOverlay` method to convert the component into a modal dialog in Javascript / Typescript, which allows you to call it.
@@ -41,9 +42,9 @@ const value = await callback({ content: 'callbackOverlay' })
 You can register overlays globally, which will inherit the application context for all popups.
 
 ```ts
+import unoverlay from '@overlastic/vue'
 // main.js
 import { createApp } from 'vue'
-import unoverlay from '@overlastic/vue'
 
 const app = createApp({})
 app.use(unoverlay)

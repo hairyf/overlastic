@@ -4,20 +4,22 @@
 
 ```vue
 <script setup>
-import { useOverlayHolder } from "@overlastic/vue";
-import { OverlayComponent } from "./overlay";
+import { useOverlayHolder } from '@overlastic/vue'
+import { OverlayComponent } from './overlay'
 
 // 通过 useOverlayHolder(Component) 创建支持当前 context 的组件持有者
-const [holder, openOverlay] = useOverlayHolder(OverlayComponent);
-const onClick = () => {
+const [holder, openOverlay] = useOverlayHolder(OverlayComponent)
+function onClick() {
   // 打开弹出层
-  openOverlay().then((result) => {});
-};
+  openOverlay().then((result) => {})
+}
 </script>
 
 <template>
   <!-- 挂载 holder -->
   <holder />
-  <button @click="onClick">open</button>
+  <button @click="onClick">
+    open
+  </button>
 </template>
 ```

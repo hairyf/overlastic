@@ -1,5 +1,5 @@
 export * from './define'
-export * from './scripts'
 export * from './holder'
-export * from './scripts'
 export * from './inject'
+export * from './scripts'
+export * from './scripts'

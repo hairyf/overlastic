@@ -42,9 +42,9 @@ A create modal | dialog | popup library
 
 ###### Supported
 
-| React Developer Tools | Vue.js Devtools                 |
-| --------------------- | ------------------------------- |
-| ✅<sup>(holder)</sup>  | ✅<sup>(holder\|child-app)</sup> |
+| React Developer Tools | Vue.js Devtools                  |
+| --------------------- | -------------------------------- |
+| ✅<sup>(holder)</sup> | ✅<sup>(holder\|child-app)</sup> |
 
 - `holder` 在对应的组件中插入持有者，使其在虚拟 DOM 当中。
 - `child-app` 创建独立的应用，由 devtools 识别新应用。

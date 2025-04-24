@@ -1,9 +1,9 @@
-import { defineGlobalElement, defineName, getIndex } from './define'
 import type { Deferred } from './deferred'
+import type { ClickPosition, ImperativeOverlay, MountOptions } from './types'
 import { createDeferred } from './deferred'
 
+import { defineGlobalElement, defineName, getIndex } from './define'
 import { watchClickPosition } from './events'
-import type { ClickPosition, ImperativeOverlay, MountOptions } from './types'
 import { context } from './internal'
 
 export type MountConstructorOptions<Options> = Options & {
@@ -70,8 +70,8 @@ export function createConstructor<Instance, Options = unknown>(
       const deferred = createDeferred()
       const name = defineName(options.id, options.autoIncrement)
       const index = getIndex(options.id)
-      const root = globalContainer ? options.root : document.body;
-      const container = defineGlobalElement(name, root);
+      const root = globalContainer ? options.root : document.body
+      const container = defineGlobalElement(name, root)
       mount(instance, props, Object.assign(options, {
         position: context.position,
         id: name,

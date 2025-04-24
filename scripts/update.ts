@@ -1,4 +1,5 @@
 import path from 'node:path'
+import process from 'node:process'
 import { getPackages } from '@manypkg/get-packages'
 import fs from 'fs-extra'
 

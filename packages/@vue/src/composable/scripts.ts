@@ -1,12 +1,12 @@
-import { ref } from 'vue-demi'
 import type { Deferred } from '@overlastic/core'
+import { ref } from 'vue-demi'
 
 export interface ScriptsOptions {
   deferred: Deferred
   vanish?: () => void
 }
 
-export function useScripts(options: ScriptsOptions) {
+export function createScripts(options: ScriptsOptions) {
   const { reject: _reject } = options.deferred || {}
   const { vanish: _vanish } = options
 

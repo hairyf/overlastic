@@ -38,8 +38,8 @@ pnpm add @overlastic/vue
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { defineEmits, defineProps } from 'vue'
 import { useExtendOverlay } from '@overlastic/vue'
+import { defineEmits, defineProps } from 'vue'
 const props = defineProps({
   title: String,
 })
@@ -96,8 +96,8 @@ const value = await renderOverlay(Overlay, {
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { defineEmits, defineProps } from 'vue-demi'
 import { useExtendOverlay } from '@overlastic/vue'
+import { defineEmits, defineProps } from 'vue-demi'
 const props = defineProps({
   title: String,
   // 在 Template 中使用，需要定义 v-modal 所使用的字段（默认对应 visible）

@@ -1,9 +1,9 @@
 import { createConstructor } from '@overlastic/core'
+import { pascalCase } from 'pascal-case'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { pascalCase } from 'pascal-case'
-import { useScripts } from '../composable'
-import { ScriptsContext, defineAnonymousComponent } from '../internal'
+import { createScripts } from '../composable'
+import { defineAnonymousComponent, ScriptsContext } from '../internal'
 
 export const constructor = createConstructor<React.FC<any>>((Instance, props, options) => {
   const { container, id, deferred } = options
@@ -13,7 +13,7 @@ export const constructor = createConstructor<React.FC<any>>((Instance, props, op
   const Provider = defineAnonymousComponent(() => {
     return (
       <ScriptsContext.Provider
-        value={useScripts({ deferred, vanish })}
+        value={createScripts({ deferred, vanish })}
         {...{ id: pascalCase(id) }}
       >
         <Instance {...props} />

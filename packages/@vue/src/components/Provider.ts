@@ -1,7 +1,7 @@
 import type { Component } from 'vue-demi'
-import { Fragment, defineComponent, h, provide, ref } from 'vue-demi'
-
 import { markRaw } from 'vue'
+
+import { defineComponent, Fragment, h, provide, ref } from 'vue-demi'
 import { InstancesInjectionKey } from '../internal'
 
 export interface Instance {

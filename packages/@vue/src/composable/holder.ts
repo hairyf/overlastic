@@ -1,11 +1,10 @@
-import type { Component } from 'vue-demi'
-import { Teleport, defineComponent, h, provide, ref } from 'vue-demi'
+import type { GlobalMountOptions, ImperativeOverlay } from '@overlastic/core'
 
+import type { AbstractFn } from '../types'
 import { createDeferred, defineName } from '@overlastic/core'
 import { pascalCase } from 'pascal-case'
-import type { GlobalMountOptions, ImperativeOverlay } from '@overlastic/core'
+import { defineComponent, h, provide, ref, Teleport } from 'vue-demi'
 import { ScriptsInjectionKey } from '../internal'
-import { AbstractFn } from '../types'
 
 export type InjectionHolder<Component extends AbstractFn, Resolved> = [Component, ImperativeOverlay<InstanceType<Component>['$props'], Resolved>]
 

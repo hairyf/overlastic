@@ -1,4 +1,5 @@
-import { Component, PropType, VNode, defineComponent, h } from 'vue'
+import type { Component, PropType, VNode } from 'vue'
+import { defineComponent, h } from 'vue'
 
 export const Field = defineComponent({
   name: 'Field',

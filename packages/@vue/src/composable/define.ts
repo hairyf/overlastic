@@ -1,8 +1,8 @@
-import type { Ref } from 'vue-demi'
-import { getCurrentInstance, inject, onMounted, provide } from 'vue-demi'
-import { useVModel } from '@vueuse/core'
 import type { Deferred } from '@overlastic/core'
+import type { Ref } from 'vue-demi'
 import { delay, noop } from '@overlastic/core'
+import { useVModel } from '@vueuse/core'
+import { getCurrentInstance, inject, onMounted, provide } from 'vue-demi'
 import { ScriptsInjectionKey } from '../internal'
 
 export interface PromptifyEvents {

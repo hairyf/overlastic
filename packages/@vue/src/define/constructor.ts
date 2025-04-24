@@ -1,11 +1,11 @@
 /* eslint-disable ts/no-use-before-define */
+import type { AppContext, Component } from 'vue-demi'
 import { createConstructor } from '@overlastic/core'
 import { pascalCase } from 'pascal-case'
-import type { AppContext, Component } from 'vue-demi'
 import { createApp, defineComponent, h, provide } from 'vue-demi'
 
+import { createScripts } from '../composable'
 import { ScriptsInjectionKey } from '../internal'
-import { useScripts } from '../composable'
 import { inheritParent } from '../utils'
 
 export interface VMountOptions {
@@ -24,7 +24,7 @@ export const constructor = createConstructor<Component, VMountOptions>((Instance
   const InstanceWithProvider = defineComponent({
     name: pascalCase(id),
     setup: () => {
-      const scripts = useScripts({
+      const scripts = createScripts({
         vanish,
         deferred,
       })

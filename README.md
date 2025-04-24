@@ -42,9 +42,9 @@ Components created by Unified Overlays support Devtools for their corresponding 
 
 ###### Supported
 
-| React Developer Tools | Vue.js Devtools                 |
-| --------------------- | ------------------------------- |
-| ✅<sup>(holder)</sup>  | ✅<sup>(holder\|child-app)</sup> |
+| React Developer Tools | Vue.js Devtools                  |
+| --------------------- | -------------------------------- |
+| ✅<sup>(holder)</sup> | ✅<sup>(holder\|child-app)</sup> |
 
 - `holder` inserts a holder into the corresponding component, making it available in the virtual DOM.
 - `child-app` creates a separate application that can be recognized by devtools.

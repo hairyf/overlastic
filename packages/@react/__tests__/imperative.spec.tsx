@@ -1,7 +1,7 @@
 import { delay } from '@overlastic/core'
 import { describe, expect, it } from 'vitest'
-import { defineOverlay, renderOverlay } from '../src'
 import { clear, isModalExists, queryModalTitle, reject, resolve } from '../../__tests__'
+import { defineOverlay, renderOverlay } from '../src'
 import Overlay from './component/overlay'
 
 describe('@overlastic/react:imperative', () => {
