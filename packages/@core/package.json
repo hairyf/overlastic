@@ -36,6 +36,5 @@
     "build": "tsup src/index.ts",
     "lint": "eslint .",
     "prepublishOnly": "npm run build"
-  },
-  "dependencies": {}
+  }
 }

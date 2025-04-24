@@ -10,8 +10,8 @@ export default function Basic() {
       title="asdasdasdad"
       centered
       open={visible}
-      onCancel={() => resolve()}
-      onClose={() => resolve()}
+      onCancel={resolve}
+      onClose={resolve}
     >
       asdasd
     </Modal>
