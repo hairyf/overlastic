@@ -39,9 +39,9 @@
   },
   "dependencies": {
     "@overlastic/core": "workspace:^",
-    "@vueuse/core": "^10.9.0",
+    "@vueuse/core": "^10.11.1",
     "pascal-case": "3.1.2",
     "vue": "^3.3.2",
-    "vue-demi": ">=0.14.7"
+    "vue-demi": ">=0.14.10"
   }
 }
