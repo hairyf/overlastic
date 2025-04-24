@@ -126,13 +126,13 @@ export function Main() {
 
 If you want to replace other field and event names, you can change the `events` and `model` configurations.
 
-```jsx
-interface ComponentProps {
+```tsx
+export interface ComponentProps {
   onOn?: (value?: any) => void
   onNook?: (value?: any) => void
   open: boolean
 }
-function Component(props: ComponentProps) {
+export function Component(props: ComponentProps) {
   const { visible, resolve, reject } = useExtendOverlay({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',

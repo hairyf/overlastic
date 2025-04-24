@@ -13,7 +13,6 @@ export const OverlaysProvider = defineComponent({
   setup(_, { slots }) {
     const instances = ref<Instance[]>([])
     function render(Instance: Component, props: any) {
-      console.log({ Instance, props })
       instances.value.push({ Instance: markRaw(Instance), props })
     }
 

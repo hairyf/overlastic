@@ -126,13 +126,13 @@ export function Main() {
 
 如果您想替换为其他的字段与事件名，可以更改 `events` 与 `model` 配置。
 
-```jsx
-interface ComponentProps {
+```tsx
+export interface ComponentProps {
   onOn?: (value?: any) => void
   onNook?: (value?: any) => void
   open: boolean
 }
-function Component(props: ComponentProps) {
+export function Component(props: ComponentProps) {
   const { visible, resolve, reject } = useExtendOverlay({
     events: { resolve: 'onOk', reject: 'onNook' },
     model: 'open',

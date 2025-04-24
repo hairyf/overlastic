@@ -109,6 +109,6 @@ function useDeclarative(options: ExtendOverlayOptions = {}) {
   }
 }
 
-function useMount(callback: Function = noop) {
+function useMount(callback: any = noop) {
   useEffect(() => callback(), [])
 }

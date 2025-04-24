@@ -33,7 +33,7 @@ function Page() {
   }
 
   return (
-    <button onClick={onClick}>
+    <button type="button" onClick={onClick}>
       Open Modal
     </button>
   )
