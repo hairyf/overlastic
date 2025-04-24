@@ -1,1 +1,1 @@
-export { default as Overlays } from './lib/Overlay.svelte'
+export { default as Overlay } from './lib/Overlay.svelte'
