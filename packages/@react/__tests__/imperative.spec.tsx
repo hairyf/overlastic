@@ -1,6 +1,6 @@
 import { delay } from '@overlastic/core'
 import { describe, expect, it } from 'vitest'
-import { clear, isModalExists, queryModalTitle, reject, resolve } from '../../__tests__'
+import { clear, isModalExists, queryModalTitle, cancel, confirm } from '../../__tests__'
 import { defineOverlay, renderOverlay } from '../src'
 import Overlay from './component/overlay'
 
@@ -56,52 +56,52 @@ describe('@overlastic/react:imperative', () => {
     clear()
   })
 
-  it('emit:resolve', async () => {
+  it('emit:confirm', async () => {
     const callback = defineOverlay<unknown, string>(Overlay)
 
-    expect(callback()).resolves.toBe('resolve')
+    expect(callback()).confirms.toBe('confirm')
 
     await toModalExists(true)
 
-    resolve()
+    confirm()
 
     await toModalExists(false)
   })
 
-  it('emit:reject', async () => {
+  it('emit:cancel', async () => {
     const callback = defineOverlay<unknown, string>(Overlay)
 
     callback()
 
     await toModalExists(true)
 
-    reject()
+    cancel()
 
     await toModalExists(false)
   })
 
-  it('manual:resolve', async () => {
+  it('manual:confirm', async () => {
     const callback = defineOverlay<unknown, string>(Overlay)
     const instance = callback()
 
-    expect(instance).resolves.toBe('manual-confirm')
+    expect(instance).confirms.toBe('manual-confirm')
 
     await toModalExists(true)
 
-    instance.resolve('manual-confirm')
+    instance.confirm('manual-confirm')
 
     await toModalExists(false)
   })
 
-  it('manual:reject', async () => {
+  it('manual:cancel', async () => {
     const callback = defineOverlay<unknown, string>(Overlay)
     const instance = callback()
 
     await toModalExists(true)
 
-    expect(instance).rejects.toBe('manual-cancel')
+    expect(instance).cancels.toBe('manual-cancel')
 
-    instance.reject('manual-cancel')
+    instance.cancel('manual-cancel')
 
     await toModalExists(false)
   })
@@ -113,7 +113,7 @@ describe('@overlastic/react:imperative', () => {
 
     await toModalExists(true)
 
-    await instance.resolve('manual:not-allowed')
+    await instance.confirm('manual:not-allowed')
 
     await toModalExists(false)
   })
@@ -127,7 +127,7 @@ describe('@overlastic/react:imperative', () => {
 
     expect(queryModalTitle().textContent).toBe('transmit-props-title')
 
-    resolve()
+    confirm()
 
     await toModalExists(false)
   })

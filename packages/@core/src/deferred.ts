@@ -1,21 +1,25 @@
 export type Deferred<T = void> = Promise<T> & {
-  resolve: (value: T) => void
-  reject: (reason?: any) => void
+  confirm: (value: T) => void
+  cancel: (reason?: any) => void
+  close: () => void
 }
 
 export function createDeferred<T = void>(): Deferred<T> {
-  let resolve: any, reject: any
+  let confirm: any, cancel: any
 
-  const promise = new Promise<any>((_resolve, _reject) => {
-    resolve = _resolve
-    reject = _reject
+  const promise = new Promise<any>((_confirm, _cancel) => {
+    confirm = _confirm
+    cancel = _cancel
   }) as unknown as any
 
-  promise.resolve = (v: any) => {
-    resolve(v)
+  promise.confirm = (v: any) => {
+    confirm(v)
     return promise
   }
-  promise.reject = reject
+  promise.close = () => {
+    confirm()
+  }
+  promise.cancel = cancel
 
   return promise
 }

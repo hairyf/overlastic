@@ -8,20 +8,20 @@ export interface ScriptsOptions {
 }
 
 export function createScripts(options: ScriptsOptions) {
-  const { reject: _reject } = options.deferred || {}
+  const { cancel: _cancel } = options.deferred || {}
   const { vanish: _vanish } = options
 
   const [visible, change] = useState(false)
 
   function vanish() {
     _vanish?.()
-    _reject?.()
+    _cancel?.()
   }
 
   return {
-    confirm: options.deferred.resolve,
-    cancel: options.deferred.reject,
-    close: () => options.deferred.resolve(),
+    confirm: options.deferred.confirm,
+    cancel: options.deferred.cancel,
+    close: () => options.deferred.confirm(),
     deferred: options.deferred,
     change,
     visible,
@@ -38,9 +38,9 @@ export function createRefreshMetadata() {
 
   const scripts = {
     deferred: deferred.current,
-    confirm: deferred.current.resolve,
-    cancel: deferred.current.reject,
-    close: () => deferred.current.resolve(),
+    confirm: deferred.current.confirm,
+    cancel: deferred.current.cancel,
+    close: () => deferred.current.confirm(),
     vanish,
     visible,
     change,

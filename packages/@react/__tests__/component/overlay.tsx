@@ -5,7 +5,7 @@ import { useDisclosure } from '../../src'
 export type OverlayProps = PropsWithOverlays<PropsWithChildren<{ duration?: number, title?: string }>>
 
 function Overlay(props: OverlayProps) {
-  const { resolve, reject, visible } = useDisclosure({
+  const { confirm, cancel, visible } = useDisclosure({
     props,
     duration: props.duration,
   })
@@ -19,8 +19,8 @@ function Overlay(props: OverlayProps) {
             </div>
             {props.children}
             <div className="base-modal__control">
-              <span className="modal__confirm" onClick={() => resolve('resolve')}>resolve</span>
-              <span className="modal__cancel" onClick={() => reject('reject')}>reject</span>
+              <span className="modal__confirm" onClick={() => confirm('confirm')}>confirm</span>
+              <span className="modal__cancel" onClick={() => cancel('cancel')}>cancel</span>
             </div>
           </div>
         </div>

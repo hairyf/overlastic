@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isModalExists, openModal, queryModalTitle, reject, resolve } from '../../__tests__'
+import { isModalExists, openModal, queryModalTitle, cancel, confirm } from '../../__tests__'
 import HolderContainer from './component/holder-container'
 import { act, mount } from './utils'
 
@@ -53,33 +53,33 @@ describe('@overlastic/react:imperative-holder', () => {
 
     expect(isModalExists()).toBeTruthy()
 
-    await act(async () => resolve())
+    await act(async () => confirm())
 
     expect(isModalExists()).toBeFalsy()
 
     wrapper.unmount()
   })
 
-  it('emit:resolve', async () => {
+  it('emit:confirm', async () => {
     const wrapper = mount(HolderContainer)
 
     act(() => openModal(wrapper))
 
-    await act(async () => resolve())
+    await act(async () => confirm())
 
-    expect(wrapper.get('.modal__value').text()).toBe('resolve')
+    expect(wrapper.get('.modal__value').text()).toBe('confirm')
 
     wrapper.unmount()
   })
 
-  it('emit:reject', async () => {
+  it('emit:cancel', async () => {
     const wrapper = mount(HolderContainer)
 
     act(() => openModal(wrapper))
 
-    await act(async () => reject())
+    await act(async () => cancel())
 
-    expect(wrapper.get('.modal__value').text()).toBe('reject')
+    expect(wrapper.get('.modal__value').text()).toBe('cancel')
 
     wrapper.unmount()
   })

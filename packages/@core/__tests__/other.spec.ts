@@ -23,16 +23,16 @@ describe('@overlastic/core:define', () => {
   it('allowed', () => {
     expect(() => allowed()).toThrowError()
   })
-  it('promise:resolve', () => {
+  it('promise:confirm', () => {
     const deferred = createDeferred<string>()
 
-    deferred.resolve('resolve')
-    expect(deferred).resolves.toBe('resolve')
+    deferred.confirm('confirm')
+    expect(deferred).resolves.toBe('confirm')
   })
-  it('promise:reject', () => {
+  it('promise:cancel', () => {
     const deferred = createDeferred<string>()
 
-    deferred.reject('reject')
-    expect(deferred).rejects.toBe('reject')
+    deferred.cancel('cancel')
+    expect(deferred).cancels.toBe('cancel')
   })
 })

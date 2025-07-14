@@ -7,17 +7,17 @@ import { ScriptsContext } from '../internal'
 
 export interface PromptifyEvents {
   /**
-   * resolve event name used by the template
+   * confirm event name used by the template
    */
   close?: string
   /**
-   * reject event name used by the template
+   * cancel event name used by the template
    *
    * @default 'onCancel'
    */
   cancel?: string
   /**
-   * resolve event name used by the template
+   * confirm event name used by the template
    *
    * @default 'onConfirm'
    */
@@ -54,11 +54,11 @@ export interface UseDisclosureOptions {
 }
 
 export interface UseDisclosureReturn {
-  /** the notification reject(reason), modify visible, and destroy it after the duration ends */
+  /** the notification cancel(reason), modify visible, and destroy it after the duration ends */
   cancel: (reason?: any) => void
-  /** the notification resolve(value), modify visible, and destroy it after the duration ends */
+  /** the notification confirm(value), modify visible, and destroy it after the duration ends */
   confirm: (value?: any) => void
-  /** the notification resolve(void), modify visible, and destroy it after the duration ends */
+  /** the notification confirm(void), modify visible, and destroy it after the duration ends */
   close: () => void
   /** destroy the current instance (immediately) */
   vanish: () => void
@@ -99,21 +99,21 @@ export function useDisclosure(options: UseDisclosureOptions = {}) {
  * Use `useDisclosure` instead.
  */
 export function useExtendOverlay(options: UseDisclosureOptions = {}) {
-  const { confirm: resolve, cancel: reject, ...others } = useDisclosure(options)
-  return { resolve, reject, others }
+  const { confirm: confirm, cancel: cancel, ...others } = useDisclosure(options)
+  return { confirm, cancel, others }
 }
 
 function useDeclarative(options: UseDisclosureOptions = {}) {
   const { props = {}, model = 'visible', events = {} } = options as any
   const { cancel = 'onCancel', confirm = 'onConfirm', close = 'onClose' } = events
 
-  const _reject = (value?: any) => props[cancel]?.(value)
-  const _resolve = (value?: any) => props[confirm]?.(value)
+  const _cancel = (value?: any) => props[cancel]?.(value)
+  const _confirm = (value?: any) => props[confirm]?.(value)
   const _close = (value?: any) => props[close]?.(value)
 
   return {
-    cancel: _reject,
-    confirm: _resolve,
+    cancel: _cancel,
+    confirm: _confirm,
     close: _close,
     visible: props[model],
     vanish: noop,

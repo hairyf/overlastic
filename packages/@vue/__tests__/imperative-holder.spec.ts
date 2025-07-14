@@ -1,6 +1,6 @@
 import { delay } from '@overlastic/core'
 import { mount } from '@vue/test-utils'
-import { clear, isModalExists, openModal, queryModalTitle, queryModalWrapper, queryTransitionParent, reject, resolve } from '../../__tests__'
+import { clear, isModalExists, openModal, queryModalTitle, queryModalWrapper, queryTransitionParent, cancel, confirm } from '../../__tests__'
 import HolderContainer from './components/holder-container.vue'
 
 describe('@overlastic/vue:imperative-holder', () => {
@@ -63,7 +63,7 @@ describe('@overlastic/vue:imperative-holder', () => {
 
     await delay()
 
-    resolve()
+    confirm()
 
     expect(isModalExists()).toBeTruthy()
 
@@ -79,35 +79,35 @@ describe('@overlastic/vue:imperative-holder', () => {
     clear()
   })
 
-  it('emit:resolve', async () => {
+  it('emit:confirm', async () => {
     const wrapper = mount(HolderContainer)
 
     openModal(wrapper)
 
     await delay()
 
-    resolve()
+    confirm()
 
     await delay()
 
-    expect(wrapper.get('.modal__value').text()).toBe('resolve')
+    expect(wrapper.get('.modal__value').text()).toBe('confirm')
 
     wrapper.unmount()
     clear()
   })
 
-  it('emit:reject', async () => {
+  it('emit:cancel', async () => {
     const wrapper = mount(HolderContainer)
 
     openModal(wrapper)
 
     await delay(100)
 
-    reject()
+    cancel()
 
     await delay()
 
-    expect(wrapper.get('.modal__value').text()).toBe('reject')
+    expect(wrapper.get('.modal__value').text()).toBe('cancel')
 
     wrapper.unmount()
     clear()

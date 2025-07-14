@@ -7,19 +7,19 @@ import { ScriptsInjectionKey } from '../internal'
 
 export interface PromptifyEvents {
   /**
-   * reject event name used by the template
+   * cancel event name used by the template
    *
    * @default 'cancel'
    */
   cancel?: string
   /**
-   * resolve event name used by the template
+   * confirm event name used by the template
    *
    * @default 'confirm'
    */
   confirm?: string
   /**
-   * resolve event name used by the template
+   * confirm event name used by the template
    *
    * @default 'close'
    */
@@ -51,11 +51,11 @@ export interface UseDisclosureOptions {
 }
 
 export interface UseDisclosureReturn {
-  /** the notification reject, modify visible, and destroy it after the duration ends */
+  /** the notification cancel, modify visible, and destroy it after the duration ends */
   cancel: (reason?: any) => void
-  /** the notification resolve, modify visible, and destroy it after the duration ends */
+  /** the notification confirm, modify visible, and destroy it after the duration ends */
   confirm: (value?: any) => void
-  /** the notification resolve, modify visible, and destroy it after the duration ends */
+  /** the notification confirm, modify visible, and destroy it after the duration ends */
   close: () => void
   /** destroy the current instance (immediately) */
   vanish: () => void
@@ -67,8 +67,8 @@ export interface UseDisclosureReturn {
 
 /**
  * get overlay layer meta information
- * @function reject  the notification reject, modify visible, and destroy it after the duration ends
- * @function resolve the notification resolve, modify visible, and destroy it after the duration ends
+ * @function cancel  the notification cancel, modify visible, and destroy it after the duration ends
+ * @function confirm the notification confirm, modify visible, and destroy it after the duration ends
  * @function vanish destroy the current instance (immediately)
  * @field visible control overlay display and hide
  */
@@ -96,7 +96,7 @@ export function useDisclosure(options: UseDisclosureOptions = {}) {
 }
 
 function useDeclarative(model: string, options: UseDisclosureOptions = {}) {
-  const { cancel = 'reject', confirm = 'resolve', close = 'close' } = options.events || {}
+  const { cancel = 'cancel', confirm = 'confirm', close = 'close' } = options.events || {}
 
   const instance = getCurrentInstance()
 

@@ -32,34 +32,34 @@ describe('@overlastic/react:declarative', () => {
     wrapper.unmount()
   })
 
-  it('emit:resolve', async () => {
+  it('emit:confirm', async () => {
     const deferred = createDeferred<string>()
 
     const wrapper = mount(Overlay, {
       props: {
-        onConfirm: deferred.resolve,
+        onConfirm: deferred.confirm,
         visible: true,
       },
     })
 
     wrapper.get<HTMLDivElement>('.modal__confirm').element.click()
 
-    expect(deferred).resolves.toBe('resolve')
+    expect(deferred).confirms.toBe('confirm')
 
     wrapper.unmount()
   })
 
-  it('emit:reject', async () => {
+  it('emit:cancel', async () => {
     const deferred = createDeferred<string>()
     const wrapper = mount(Overlay, {
       props: {
-        onCancel: deferred.reject,
+        onCancel: deferred.cancel,
         visible: true,
       },
     })
     wrapper.get<HTMLDivElement>('.modal__cancel').element.click()
 
-    expect(deferred).rejects.toThrow('reject')
+    expect(deferred).cancels.toThrow('cancel')
 
     wrapper.unmount()
   })

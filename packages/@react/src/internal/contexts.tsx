@@ -3,8 +3,8 @@ import { noop } from '@overlastic/core'
 import { createContext } from 'react'
 
 export const ScriptsContext = createContext({
-  reject: noop,
-  resolve: noop,
+  cancel: noop,
+  confirm: noop,
   change: noop,
   vanish: noop,
   visible: false,

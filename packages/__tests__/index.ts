@@ -1,10 +1,10 @@
-export function resolve() {
+export function confirm() {
   const element = document.querySelector('.modal__confirm') as HTMLDivElement
   if (element)
     element.click()
 }
 
-export function reject() {
+export function cancel() {
   const element = document.querySelector('.modal__cancel') as HTMLDivElement
   if (element)
     element.click()

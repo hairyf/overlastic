@@ -7,34 +7,34 @@ export interface ScriptsOptions {
 }
 
 export function createVisibleScripts(options: ScriptsOptions) {
-  const { reject: _reject, resolve: _resolve } = options.deferred || {}
+  const { cancel: _cancel, confirm: _confirm } = options.deferred || {}
   const { vanish: _vanish } = options
 
   const { on, off, emit } = mitt()
 
-  function reject(this: any, value?: any) {
-    emit('reject', value)
-    _reject?.(value)
+  function cancel(this: any, value?: any) {
+    emit('cancel', value)
+    _cancel?.(value)
   }
-  function resolve(this: any, value?: any) {
-    options.deferred?.resolve(value)
-    emit('resolve', value)
-    return _resolve?.(value)
+  function confirm(this: any, value?: any) {
+    options.deferred?.confirm(value)
+    emit('confirm', value)
+    return _confirm?.(value)
   }
   function vanish() {
     _vanish?.()
-    reject()
+    cancel()
     off('*')
   }
 
   if (options.deferred) {
-    options.deferred.resolve = resolve as any
-    options.deferred.reject = reject
+    options.deferred.confirm = confirm as any
+    options.deferred.cancel = cancel
   }
 
   return {
-    resolve,
-    reject,
+    confirm,
+    cancel,
     vanish,
     on,
   }

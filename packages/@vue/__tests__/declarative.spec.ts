@@ -31,34 +31,34 @@ describe('@overlastic/vue:declarative', () => {
     wrapper.unmount()
   })
 
-  it('emit:resolve', async () => {
+  it('emit:confirm', async () => {
     const deferred = createDeferred<string>()
 
     const wrapper = mount(Overlay, {
       props: {
         visible: true,
-        onConfirm: deferred.resolve,
+        onConfirm: deferred.confirm,
       },
     })
 
     wrapper.get<HTMLDivElement>('.modal__confirm').element.click()
 
-    expect(deferred).resolves.toBe('resolve')
+    expect(deferred).confirms.toBe('confirm')
 
     wrapper.unmount()
   })
 
-  it('emit:reject', async () => {
+  it('emit:cancel', async () => {
     const deferred = createDeferred<string>()
     const wrapper = mount(Overlay, {
       props: {
         visible: true,
-        onCancel: deferred.reject,
+        onCancel: deferred.cancel,
       },
     })
     wrapper.get<HTMLDivElement>('.modal__cancel').element.click()
 
-    expect(deferred).rejects.toThrow('reject')
+    expect(deferred).cancels.toThrow('cancel')
 
     wrapper.unmount()
   })

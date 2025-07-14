@@ -48,11 +48,11 @@ export interface ConstructorOptions {
  * const constructor = createConstructor<HTMLDivElement, { class: any }>((inst, props, options) => {
  *  const { deferred, container } = options
  *  inst.querySelector('button.confirm').onclick = function () {
- *    deferred.resolve('ok')
+ *    deferred.confirm('ok')
  *    container.remove()
  *  }
  *  inst.querySelector('button.close').onclick = function () {
- *    deferred.reject('close')
+ *    deferred.cancel('close')
  *    container.remove()
  *  }
  *  inst.dataset['props'] = JSON.stringify(props)

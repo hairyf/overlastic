@@ -15,8 +15,8 @@ export const constructor = createConstructor<ElementComponent>((Inst, props, opt
   }
 
   setupTrigger({
-    resolve: deferred.resolve,
-    reject: deferred.reject,
+    confirm: deferred.confirm,
+    cancel: deferred.cancel,
     deferred,
     vanish,
   })

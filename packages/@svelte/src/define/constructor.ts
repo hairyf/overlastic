@@ -18,8 +18,8 @@ export const constructor = createConstructor<any, SMountOptions>((Inst, props, o
   const context = new Map([..._context.entries()])
 
   context.set(injectOverlayKey, {
-    confirm: deferred.resolve,
-    cannel: deferred.reject,
+    confirm: deferred.confirm,
+    cannel: deferred.cancel,
     deferred,
     visible: false,
     vanish,
