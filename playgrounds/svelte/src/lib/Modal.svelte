@@ -1,11 +1,11 @@
 <script lang='ts'>
-  import { Overlay, useExtendOverlay } from '@overlastic/svelte'
+  import { Overlay, useDisclosure } from '@overlastic/svelte'
   import { fly } from 'svelte/transition'
 
   export let title = 'Title'
   export let duration = 200
   // duration of overlay duration, helps prevent premature component destroy
-  const { resolve, reject } = useExtendOverlay({ duration })
+  const { confrim, cancel } = useDisclosure({ duration })
 
 </script>
 <Overlay>
@@ -18,8 +18,8 @@
       </div>
       <slot />
       <div class='base-modal__control'>
-        <button class='modal__confirm' on:click={resolve}>resolve</button>
-        <button class='modal__cancel' on:click={reject}>reject</button>
+        <button class='modal__confirm' on:click={confrim}>confrim</button>
+        <button class='modal__cancel' on:click={cancel}>cancel</button>
       </div>
     </div>
   </div>

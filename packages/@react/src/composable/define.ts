@@ -7,20 +7,24 @@ import { ScriptsContext } from '../internal'
 
 export interface PromptifyEvents {
   /**
+   * resolve event name used by the template
+   */
+  close?: string
+  /**
    * reject event name used by the template
    *
-   * @default 'onReject'
+   * @default 'onCancel'
    */
-  reject?: string
+  cancel?: string
   /**
    * resolve event name used by the template
    *
-   * @default 'onResolve'
+   * @default 'onConfrim'
    */
-  resolve?: string
+  confrim?: string
 }
 
-export interface ExtendOverlayOptions {
+export interface UseDisclosureOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -49,62 +53,71 @@ export interface ExtendOverlayOptions {
   automatic?: boolean
 }
 
-export interface ExtendOverlayReturn {
-  /** the notification reject, modify visible, and destroy it after the duration ends */
-  reject: (reason?: any) => void
-  /** the notification resolve, modify visible, and destroy it after the duration ends */
-  resolve: (value?: any) => void
+export interface UseDisclosureReturn {
+  /** the notification reject(reason), modify visible, and destroy it after the duration ends */
+  cancel: (reason?: any) => void
+  /** the notification resolve(value), modify visible, and destroy it after the duration ends */
+  confirm: (value?: any) => void
+  /** the notification resolve(void), modify visible, and destroy it after the duration ends */
+  close: () => void
   /** destroy the current instance (immediately) */
   vanish: () => void
   /** visible control popup display and hide */
   visible: boolean
   /** visible dispatch change */
-  setVisible: Dispatch<SetStateAction<boolean>>
+  change: Dispatch<SetStateAction<boolean>>
   /** current deferred */
   deferred?: Promise<any>
 }
 
-export function useExtendOverlay(options: ExtendOverlayOptions = {}) {
+export function useDisclosure(options: UseDisclosureOptions = {}) {
   const { immediate = true, duration = 0, automatic = true } = options
   const context = useContext(ScriptsContext)
-  const dec = Reflect.get(context, 'in_dec')
-  const overlay = dec ? useDeclarative(options) : context
-  const { setVisible, vanish, deferred } = overlay
+  const isDeclarative = Reflect.get(context, '__is_declarative')
+  const overlay = isDeclarative ? useDeclarative(options) : context
 
   // The component directly obtains the default value
   // vanish will have no effect, and no watch will be performed.
   async function destroy() {
-    setVisible(false)
+    overlay.change(false)
     await delay(duration)
-    vanish?.()
+    overlay.vanish?.()
     return Promise.resolve()
   }
-  useMount(() => immediate && setVisible(true))
+  useMount(() => immediate && overlay.change(true))
   useMount(() => {
-    if (!dec && automatic)
-      deferred?.then(destroy).catch(destroy)
+    if (!isDeclarative && automatic)
+      overlay.deferred?.then(destroy).catch(destroy)
   })
 
-  return overlay as ExtendOverlayReturn
+  return overlay as UseDisclosureReturn
 }
 
-function useDeclarative(options: ExtendOverlayOptions = {}) {
-  const { props = {}, model = 'visible', events = {} } = options
-  const { reject = 'onReject', resolve = 'onResolve' } = events
+/**
+ * @deprecated
+ *
+ * Use `useDisclosure` instead.
+ */
+export function useExtendOverlay(options: UseDisclosureOptions = {}) {
+  const { confirm: resolve, cancel: reject, ...others } = useDisclosure(options)
+  return { resolve, reject, others }
+}
 
-  const _reject = (value?: any) => {
-    (props as any)[reject]?.(value)
-  }
-  const _resolve = (value?: any) => {
-    (props as any)[resolve]?.(value)
-  }
+function useDeclarative(options: UseDisclosureOptions = {}) {
+  const { props = {}, model = 'visible', events = {} } = options as any
+  const { cancel = 'onCancel', confrim = 'onConfrim', close = 'onClose' } = events
+
+  const _reject = (value?: any) => props[cancel]?.(value)
+  const _resolve = (value?: any) => props[confrim]?.(value)
+  const _close = (value?: any) => props[close]?.(value)
 
   return {
-    reject: _reject,
-    resolve: _resolve,
-    visible: (props as any)[model],
+    cancel: _reject,
+    confirm: _resolve,
+    close: _close,
+    visible: props[model],
     vanish: noop,
-    setVisible: noop,
+    change: noop,
     deferred: undefined,
   }
 }

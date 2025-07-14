@@ -5,10 +5,10 @@ import { createContext } from 'react'
 export const ScriptsContext = createContext({
   reject: noop,
   resolve: noop,
-  setVisible: noop,
+  change: noop,
   vanish: noop,
   visible: false,
-  in_dec: true,
+  __is_declarative: true,
 } as any)
 
 export const InstancesContext = createContext<{

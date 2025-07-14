@@ -5,7 +5,7 @@ export interface ExtendOverlayOptions {
   duration?: number
 }
 
-export function useExtendOverlay(options?: ExtendOverlayOptions) {
+export function useDisclosure(options?: ExtendOverlayOptions) {
   const trigger = context.trigger
   if (!trigger)
     throw new Error('Please execute in the overlays constructor')

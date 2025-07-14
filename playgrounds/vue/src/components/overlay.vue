@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <script lang="ts">
-import { useExtendOverlay, useOverlayInject } from '@overlastic/vue'
+import { useDisclosure, useOverlayInject } from '@overlastic/vue'
 import { defineComponent } from 'vue'
 
 const Component = defineComponent({
@@ -17,7 +17,7 @@ const Component = defineComponent({
   },
   emits: ['resolve', 'reject', 'update:visible'],
   setup: (props) => {
-    const { resolve, reject, vanish, visible } = useExtendOverlay({
+    const { resolve, reject, vanish, visible } = useDisclosure({
       duration: props.duration,
     })
     const openMoreOverlay = useOverlayInject(Component) as any

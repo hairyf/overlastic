@@ -9,18 +9,24 @@ export interface PromptifyEvents {
   /**
    * reject event name used by the template
    *
-   * @default 'reject'
+   * @default 'cancel'
    */
-  reject?: string
+  cancel?: string
   /**
    * resolve event name used by the template
    *
-   * @default 'resolve'
+   * @default 'confrim'
    */
-  resolve?: string
+  confrim?: string
+  /**
+   * resolve event name used by the template
+   *
+   * @default 'close'
+   */
+  close?: string
 }
 
-export interface ExtendOverlayOptions {
+export interface UseDisclosureOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -44,11 +50,13 @@ export interface ExtendOverlayOptions {
   automatic?: boolean
 }
 
-export interface ExtendOverlayReturn {
+export interface UseDisclosureReturn {
   /** the notification reject, modify visible, and destroy it after the duration ends */
-  reject: (reason?: any) => void
+  cancel: (reason?: any) => void
   /** the notification resolve, modify visible, and destroy it after the duration ends */
-  resolve: (value?: any) => void
+  confirm: (value?: any) => void
+  /** the notification resolve, modify visible, and destroy it after the duration ends */
+  close: () => void
   /** destroy the current instance (immediately) */
   vanish: () => void
   /** visible control popup display and hide */
@@ -64,7 +72,7 @@ export interface ExtendOverlayReturn {
  * @function vanish destroy the current instance (immediately)
  * @field visible control overlay display and hide
  */
-export function useExtendOverlay(options: ExtendOverlayOptions = {}) {
+export function useDisclosure(options: UseDisclosureOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true } = options
   const overlay = inject(ScriptsInjectionKey, useDeclarative(model, options))
   const dec = Reflect.get(overlay, 'in_dec')
@@ -87,28 +95,33 @@ export function useExtendOverlay(options: ExtendOverlayOptions = {}) {
   return overlay
 }
 
-export function useDeclarative(model: string, options: ExtendOverlayOptions = {}) {
-  const { reject = 'reject', resolve = 'resolve' } = options.events || {}
+function useDeclarative(model: string, options: UseDisclosureOptions = {}) {
+  const { cancel = 'reject', confrim = 'resolve', close = 'close' } = options.events || {}
 
   const instance = getCurrentInstance()
 
   if (!instance)
-    throw new Error('Please use useExtendOverlay in component setup')
+    throw new Error('Please use useDisclosure in component setup')
 
   const visible = useVModel(instance.props, model, instance.emit, { passive: true }) as Ref<boolean>
 
-  const _reject = (value?: any) => {
-    instance?.emit(reject, value)
+  const _cancel = (value?: any) => {
+    instance?.emit(cancel, value)
     visible.value = false
   }
-  const _resolve = (value?: any) => {
-    instance?.emit(resolve, value)
+  const _confirm = (value?: any) => {
+    instance?.emit(confrim, value)
+    visible.value = false
+  }
+  const _close = (value?: any) => {
+    instance?.emit(close, value)
     visible.value = false
   }
 
   return {
-    reject: _reject,
-    resolve: _resolve,
+    cancel: _cancel,
+    confirm: _confirm,
+    close: _close,
     vanish: noop,
     visible,
     in_dec: true,

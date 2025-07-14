@@ -1,5 +1,5 @@
-export type PropsWithOverlays<P = unknown> = P & {
+export type PropsWithOverlays<P = unknown, V = void> = P & {
   visible?: boolean
-  onReject?: (value: any) => void
-  onResolve?: (value: any) => void
+  onCancel?: (value: any) => void
+  onConfrim?: (value: V) => void
 }

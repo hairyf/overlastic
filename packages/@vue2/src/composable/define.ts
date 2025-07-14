@@ -4,17 +4,17 @@ import { ScriptsInjectionKey } from '../internal'
 
 export interface PromptifyEvents {
   /**
-   * reject event name used by the template
+   * confrim event name used by the template
    *
-   * @default 'reject'
+   * @default 'confrim'
    */
-  reject?: string
+  cancel?: string
   /**
-   * resolve event name used by the template
+   * cancel event name used by the template
    *
-   * @default 'resolve'
+   * @default 'cancel'
    */
-  resolve?: string
+  confrim?: string
 }
 
 export interface ExtendOverlayOptions {
@@ -40,10 +40,10 @@ export interface ExtendOverlayOptions {
   automatic?: boolean
 }
 
-export function useExtendOverlay(options: ExtendOverlayOptions = {}) {
+export function useDisclosure(options: ExtendOverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true, events = {} } = options
-  events.reject = events.reject || 'reject'
-  events.resolve = events.resolve || 'resolve'
+  events.confrim = events.confrim || 'confrim'
+  events.cancel = events.cancel || 'cancel'
 
   const mixinOptions = Vue.extend({
     inject: [ScriptsInjectionKey],
@@ -76,15 +76,15 @@ export function useExtendOverlay(options: ExtendOverlayOptions = {}) {
         (this.$overlay as any).on('*', this.$runtime_effect)
     },
     methods: {
-      async $runtime_effect(type: 'reject' | 'resolve', value: any) {
+      async $runtime_effect(type: 'confrim' | 'cancel', value: any) {
         this.$emit(events[type]!, value)
         this.$visible = false
       },
-      async $resolve(value: any) {
-        (this.$overlay as any)?.resolve(value)
+      async $cancel(value: any) {
+        (this.$overlay as any)?.cancel(value)
       },
-      async $reject(value: any) {
-        (this.$overlay as any)?.reject(value)
+      async $confrim(value: any) {
+        (this.$overlay as any)?.confrim(value)
       },
     },
   })

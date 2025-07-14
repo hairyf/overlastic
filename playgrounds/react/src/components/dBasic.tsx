@@ -1,8 +1,8 @@
-import { useExtendOverlay } from '@overlastic/react'
+import { useDisclosure } from '@overlastic/react'
 import { Modal } from 'antd'
 
 export default function Basic() {
-  const { visible, resolve } = useExtendOverlay({
+  const { visible, close } = useDisclosure({
     duration: 300,
   })
   return (
@@ -10,8 +10,8 @@ export default function Basic() {
       title="asdasdasdad"
       centered
       open={visible}
-      onCancel={resolve}
-      onClose={resolve}
+      onCancel={close}
+      onClose={close}
     >
       asdasd
     </Modal>

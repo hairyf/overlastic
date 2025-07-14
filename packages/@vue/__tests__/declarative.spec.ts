@@ -37,7 +37,7 @@ describe('@overlastic/vue:declarative', () => {
     const wrapper = mount(Overlay, {
       props: {
         visible: true,
-        onResolve: deferred.resolve,
+        onConfrim: deferred.resolve,
       },
     })
 
@@ -53,7 +53,7 @@ describe('@overlastic/vue:declarative', () => {
     const wrapper = mount(Overlay, {
       props: {
         visible: true,
-        onReject: deferred.reject,
+        onCancel: deferred.reject,
       },
     })
     wrapper.get<HTMLDivElement>('.modal__cancel').element.click()

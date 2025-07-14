@@ -1,15 +1,15 @@
-import type { ExtendOverlayReturn } from '../types'
+import type { UseDisclosureReturn } from '../types'
 import { getContext, setContext } from 'svelte'
 import { injectOptionsKey, injectOverlayKey } from '../internal'
 
-export interface ExtendOverlayOptions {
+export interface UseDisclosureOptions {
   /** animation duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
   immediate?: boolean
 }
 
-export function useExtendOverlay(options: ExtendOverlayOptions = {}) {
+export function useDisclosure(options: UseDisclosureOptions = {}) {
   setContext(injectOptionsKey, options)
-  return getContext<ExtendOverlayReturn>(injectOverlayKey)
+  return getContext<UseDisclosureReturn>(injectOverlayKey)
 }

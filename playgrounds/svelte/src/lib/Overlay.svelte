@@ -1,5 +1,5 @@
 <script lang='ts'>
-  import type { ExtendOverlayOptions, ExtendOverlayReturn } from '@overlastic/svelte'
+  import type { UseDisclosureOptions, UseDisclosureReturn } from '@overlastic/svelte'
   import { delay } from '@overlastic/core'
   import {
     injectOptionsKey,
@@ -9,8 +9,8 @@
 
   export let visible = false
 
-  const { duration = 0 } = getContext<ExtendOverlayOptions>(injectOptionsKey) || {}
-  const { deferred, vanish } = getContext<ExtendOverlayReturn>(injectOverlayKey)
+  const { duration = 0 } = getContext<UseDisclosureOptions>(injectOptionsKey) || {}
+  const { deferred, vanish } = getContext<UseDisclosureReturn>(injectOverlayKey)
 
   deferred?.finally(async () => {
     visible = false

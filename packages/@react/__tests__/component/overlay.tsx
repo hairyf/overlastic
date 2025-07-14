@@ -1,11 +1,11 @@
 import type { PropsWithChildren } from 'react'
 import type { PropsWithOverlays } from '../../src'
-import { useExtendOverlay } from '../../src'
+import { useDisclosure } from '../../src'
 
 export type OverlayProps = PropsWithOverlays<PropsWithChildren<{ duration?: number, title?: string }>>
 
 function Overlay(props: OverlayProps) {
-  const { resolve, reject, visible } = useExtendOverlay({
+  const { resolve, reject, visible } = useDisclosure({
     props,
     duration: props.duration,
   })
