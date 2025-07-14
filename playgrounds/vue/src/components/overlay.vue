@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-dupe-keys -->
 <script lang="ts">
-import { useDisclosure, useOverlayInject } from '@overlastic/vue'
+import { useDisclosure, useOverlay } from '@overlastic/vue'
 import { defineComponent } from 'vue'
 
 const Component = defineComponent({
@@ -11,17 +11,16 @@ const Component = defineComponent({
     },
     duration: {
       type: Number,
-      default: 0,
     },
     title: String,
   },
-  emits: ['resolve', 'reject', 'update:visible'],
+  emits: ['confirm', 'cancel', 'update:visible'],
   setup: (props) => {
-    const { resolve, reject, vanish, visible } = useDisclosure({
+    const { confirm, cancel, vanish, visible } = useDisclosure({
       duration: props.duration,
     })
-    const openMoreOverlay = useOverlayInject(Component) as any
-    return { resolve, reject, vanish, visible, openMoreOverlay }
+    const openMoreOverlay = useOverlay(Component) as Function
+    return { confirm, cancel, vanish, visible, openMoreOverlay }
   },
 })
 export default Component
@@ -40,8 +39,8 @@ export default Component
         </button>
         <slot />
         <div class="base-modal__control">
-          <span class="modal__confirm" @click="resolve('resolve')">resolve</span>
-          <span class="modal__cancel" @click="reject('reject')">reject</span>
+          <span class="modal__confirm" @click="confirm('confirm')">confirm</span>
+          <span class="modal__cancel" @click="cancel('cancel')">cancel</span>
         </div>
       </div>
     </div>

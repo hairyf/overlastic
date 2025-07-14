@@ -19,9 +19,9 @@ export interface PromptifyEvents {
   /**
    * resolve event name used by the template
    *
-   * @default 'onConfrim'
+   * @default 'onConfirm'
    */
-  confrim?: string
+  confirm?: string
 }
 
 export interface UseDisclosureOptions {
@@ -71,7 +71,7 @@ export interface UseDisclosureReturn {
 }
 
 export function useDisclosure(options: UseDisclosureOptions = {}) {
-  const { immediate = true, duration = 0, automatic = true } = options
+  const { immediate = true, duration = 300, automatic = true } = options
   const context = useContext(ScriptsContext)
   const isDeclarative = Reflect.get(context, '__is_declarative')
   const overlay = isDeclarative ? useDeclarative(options) : context
@@ -105,10 +105,10 @@ export function useExtendOverlay(options: UseDisclosureOptions = {}) {
 
 function useDeclarative(options: UseDisclosureOptions = {}) {
   const { props = {}, model = 'visible', events = {} } = options as any
-  const { cancel = 'onCancel', confrim = 'onConfrim', close = 'onClose' } = events
+  const { cancel = 'onCancel', confirm = 'onConfirm', close = 'onClose' } = events
 
   const _reject = (value?: any) => props[cancel]?.(value)
-  const _resolve = (value?: any) => props[confrim]?.(value)
+  const _resolve = (value?: any) => props[confirm]?.(value)
   const _close = (value?: any) => props[close]?.(value)
 
   return {

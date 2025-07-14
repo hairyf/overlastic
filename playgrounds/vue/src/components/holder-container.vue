@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useOverlayHolder } from '@overlastic/vue'
+import { useOverlay } from '@overlastic/vue'
 import { ref } from 'vue'
 import Overlay from './overlay.vue'
 
@@ -8,7 +8,8 @@ const props = withDefaults(defineProps<{
   duration?: number
 }>(), { root: undefined })
 
-const [Holder, callback] = useOverlayHolder(Overlay, {
+const [Holder, callback] = useOverlay(Overlay, {
+  type: 'holder',
   root: props.root,
 })
 

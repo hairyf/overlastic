@@ -1,10 +1,8 @@
-import { useDisclosure } from '@overlastic/react'
+import { useDisclosure,PropsWithOverlays } from '@overlastic/react'
 import { Modal } from 'antd'
 
-export default function Basic() {
-  const { visible, close } = useDisclosure({
-    duration: 300,
-  })
+export default function Basic(props: PropsWithOverlays<{}, string>) {
+  const { visible, close } = useDisclosure()
   return (
     <Modal
       title="asdasdasdad"

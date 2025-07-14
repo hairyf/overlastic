@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useOverlayInject } from '@overlastic/vue'
+import { useOverlay } from '@overlastic/vue'
 import { ref } from 'vue'
 import Overlay from './overlay.vue'
 
@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<{
   duration?: number
 }>(), { root: undefined })
 
-const callback = useOverlayInject(Overlay)
+const callback = useOverlay(Overlay)
 
 const result = ref<any>()
 

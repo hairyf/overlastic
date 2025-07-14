@@ -5,7 +5,7 @@
   export let title = 'Title'
   export let duration = 200
   // duration of overlay duration, helps prevent premature component destroy
-  const { confrim, cancel } = useDisclosure({ duration })
+  const { confirm, cancel } = useDisclosure({ duration })
 
 </script>
 <Overlay>
@@ -18,7 +18,7 @@
       </div>
       <slot />
       <div class='base-modal__control'>
-        <button class='modal__confirm' on:click={confrim}>confrim</button>
+        <button class='modal__confirm' on:click={confirm}>confirm</button>
         <button class='modal__cancel' on:click={cancel}>cancel</button>
       </div>
     </div>

@@ -37,7 +37,7 @@ describe('@overlastic/react:declarative', () => {
 
     const wrapper = mount(Overlay, {
       props: {
-        onConfrim: deferred.resolve,
+        onConfirm: deferred.resolve,
         visible: true,
       },
     })

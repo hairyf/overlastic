@@ -15,9 +15,9 @@ export interface PromptifyEvents {
   /**
    * resolve event name used by the template
    *
-   * @default 'confrim'
+   * @default 'confirm'
    */
-  confrim?: string
+  confirm?: string
   /**
    * resolve event name used by the template
    *
@@ -96,7 +96,7 @@ export function useDisclosure(options: UseDisclosureOptions = {}) {
 }
 
 function useDeclarative(model: string, options: UseDisclosureOptions = {}) {
-  const { cancel = 'reject', confrim = 'resolve', close = 'close' } = options.events || {}
+  const { cancel = 'reject', confirm = 'resolve', close = 'close' } = options.events || {}
 
   const instance = getCurrentInstance()
 
@@ -110,7 +110,7 @@ function useDeclarative(model: string, options: UseDisclosureOptions = {}) {
     visible.value = false
   }
   const _confirm = (value?: any) => {
-    instance?.emit(confrim, value)
+    instance?.emit(confirm, value)
     visible.value = false
   }
   const _close = (value?: any) => {

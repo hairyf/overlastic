@@ -4,9 +4,9 @@ import { ScriptsInjectionKey } from '../internal'
 
 export interface PromptifyEvents {
   /**
-   * confrim event name used by the template
+   * confirm event name used by the template
    *
-   * @default 'confrim'
+   * @default 'confirm'
    */
   cancel?: string
   /**
@@ -14,7 +14,7 @@ export interface PromptifyEvents {
    *
    * @default 'cancel'
    */
-  confrim?: string
+  confirm?: string
 }
 
 export interface ExtendOverlayOptions {
@@ -42,7 +42,7 @@ export interface ExtendOverlayOptions {
 
 export function useDisclosure(options: ExtendOverlayOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true, events = {} } = options
-  events.confrim = events.confrim || 'confrim'
+  events.confirm = events.confirm || 'confirm'
   events.cancel = events.cancel || 'cancel'
 
   const mixinOptions = Vue.extend({
@@ -76,15 +76,15 @@ export function useDisclosure(options: ExtendOverlayOptions = {}) {
         (this.$overlay as any).on('*', this.$runtime_effect)
     },
     methods: {
-      async $runtime_effect(type: 'confrim' | 'cancel', value: any) {
+      async $runtime_effect(type: 'confirm' | 'cancel', value: any) {
         this.$emit(events[type]!, value)
         this.$visible = false
       },
       async $cancel(value: any) {
         (this.$overlay as any)?.cancel(value)
       },
-      async $confrim(value: any) {
-        (this.$overlay as any)?.confrim(value)
+      async $confirm(value: any) {
+        (this.$overlay as any)?.confirm(value)
       },
     },
   })

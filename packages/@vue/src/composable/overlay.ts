@@ -15,8 +15,11 @@ export type InjectionOptions = {
   vanish: (instance: Component) => void
 }
 
+type KnownKeys<T> = { [K in keyof T]: T[K] extends unknown ? (unknown extends T[K] ? never : K) : never }[keyof T];
+type PickKnown<T> = Pick<T, KnownKeys<T>>;
+
 export type ExtractEvent<T extends AbstractFn> = Parameters<Required<InstanceType<T>['$props']>['onConfirm']>[0]
-export type ExtractProps<T extends AbstractFn> = Omit<InstanceType<T>['$props'], keyof VNodeProps>
+export type ExtractProps<T extends AbstractFn> = PickKnown<Omit<InstanceType<T>['$props'], keyof VNodeProps | `on${string}`>>
 
 const { define: defineInject } = createConstructor<Component, InjectionOptions>((Instance, props, options) => {
   const { id, deferred, render, vanish: _vanish } = options
@@ -37,7 +40,7 @@ const { define: defineInject } = createConstructor<Component, InjectionOptions>(
   render(InstanceWithProvider, props)
 }, { container: false })
 
-export function defineHolder(component: Component, options: Omit<GlobalMountOptions, 'appContext'> = {}, ) {
+export function defineHolder(component: Component, options: Omit<GlobalMountOptions, 'appContext'> = {},) {
   const { callback, scripts, props, refresh } = createRefreshMetadata()
   const name = defineName(options.id, options.autoIncrement)
 

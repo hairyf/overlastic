@@ -1,4 +1,4 @@
-import { useOverlayInject } from '@overlastic/react'
+import { useOverlay } from '@overlastic/react'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import Basic from './components/dBasic'
@@ -8,7 +8,7 @@ import viteLogo from '/vite.svg'
 function App() {
   const [count, setCount] = useState(0)
 
-  const openOverlay = useOverlayInject(Basic)
+  const openOverlay = useOverlay(Basic)
 
   return (
     <>
