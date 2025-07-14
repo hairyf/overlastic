@@ -32,7 +32,7 @@ yarn add @overlastic/svelte
   const { confirm, cancel } = useDisclosure({ duration })
 
   function onClick() {
-    resolve(`${title}:confirmed`)
+    confirm(`${title}:confirmed`)
   }
 </script>
 
@@ -55,7 +55,7 @@ import OverlayComponent from './overlay.svelte'
 
 // Convert to imperative callback
 const callback = defineOverlay(OverlayComponent)
-// Call the component and get the value of the resolve callback
+// Call the component and get the value of the confirm callback
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
@@ -82,7 +82,7 @@ By default, you do not need to control the display and hiding of the `visible` v
 
   let visible = false
 
-  const { resolve, reject, deferred, vanish } = useDisclosure({
+  const { confirm, cancel, deferred, vanish } = useDisclosure({
     // close the transition duration, at this point you need to manually destroy it
     duration: false,
     // cancel setting visible to true immediately
@@ -94,7 +94,7 @@ By default, you do not need to control the display and hiding of the `visible` v
 </script>
 
 <Overlay bind:visible={visible}>
-  <div on:click={() => resolve(`${title}:confirmed`)}>
+  <div on:click={() => confirm(`${title}:confirmed`)}>
     ...
   </div>
 </Overlay>

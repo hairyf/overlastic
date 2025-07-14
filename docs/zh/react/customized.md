@@ -14,9 +14,9 @@ function MyDrawer(props: PropsWithOverlays<{ title: string }>) {
   })
 
   return (
-    <Drawer title={props.title} onClose={reject} open={visible}>
+    <Drawer title={props.title} onClose={cancel} open={visible}>
       {/* Custom contents.... */}
-      <Button type="primary" onClick={() => resolve(`${props.title}:confirmed`)}>
+      <Button type="primary" onClick={() => confirm(`${props.title}:confirmed`)}>
         Confirm
       </Button>
     </Drawer>

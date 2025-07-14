@@ -51,7 +51,7 @@ Components created by Unified Overlays support Devtools for their corresponding 
 
 ## Why?
 
-Creating Model classes repetitive and time-consuming. When reusing a component that uses a Model class, common fields such as reject, resolve, and visible need to be defined repeatedly. Additionally, controlling the Model process (`clear data` -> `open model` -> `edit data` -> `onConfirm` -> `save data`) can lead to a lot of redundant code, especially for frequently used components like an image selector.
+Creating Model classes repetitive and time-consuming. When reusing a component that uses a Model class, common fields such as cancel, confirm, and visible need to be defined repeatedly. Additionally, controlling the Model process (`clear data` -> `open model` -> `edit data` -> `onConfirm` -> `save data`) can lead to a lot of redundant code, especially for frequently used components like an image selector.
 
 Unified Overlays simplifies modal creation by unifying the redundant processes and state management. It can effectively create imperative components, and can still be used declaratively.
 

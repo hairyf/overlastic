@@ -66,12 +66,12 @@ function Component(props) {
 
   // Add events that cause the pop-up layer to end
   element.querySelector('button.confirm').onclick = function () {
-    props.deferred.resolve('ok')
+    props.deferred.confirm('ok')
   }
 
   // Add events that cause the pop-up layer to pop up
   element.querySelector('button.close').onclick = function () {
-    props.deferred.reject('close')
+    props.deferred.cancel('close')
   }
 
   // When the deferred is triggered by the outside or the component, the component should be destroyed.

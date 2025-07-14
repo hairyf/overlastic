@@ -24,7 +24,7 @@ pnpm add @overlastic/react
 
 Use `useDisclosure` to define a pop-up component, which returns the following:
 
-- `resolve|reject` returns the result of a Promise, and the component will be destroyed at the end of `duration`
+- `confirm|cancel` returns the result of a Promise, and the component will be destroyed at the end of `duration`
 - `visible` is used to display the component, and the result of the `Promise` will be changed immediately
 
 ```tsx
@@ -37,7 +37,7 @@ export function OverlayComponent(props) {
 
   return (
     <div className={visible && 'is--visible'}>
-      <span onClick={() => resolve(`${props.title}:confirmed`)}> Confirm </span>
+      <span onClick={() => confirm(`${props.title}:confirmed`)}> Confirm </span>
     </div>
   )
 }
@@ -53,7 +53,7 @@ import { OverlayComponent } from './overlay'
 
 // Convert to a callback method
 const callback = defineOverlay(OverlayComponent)
-// Call the component and get the value of the resolve callback
+// Call the component and get the value of the confirm callback
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```

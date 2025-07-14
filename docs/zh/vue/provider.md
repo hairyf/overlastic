@@ -25,8 +25,8 @@ import { useOverlay } from '@overlastic/vue'
 const openCustomDialog = useOverlay(CustomDialog)
 
 async function onClick() {
-  const resolved = await openCustomDialog({ title: 'My Title' })
-  console.log(resolved)
+  const confirmd = await openCustomDialog({ title: 'My Title' })
+  console.log(confirmd)
 }
 </script>
 

@@ -31,14 +31,14 @@ function Component(props) {
   element.innerHTML = props.title
   element.classList.add('dialog')
 
-  const { resolve, reject, deferred } = useDisclosure({
+  const { confirm, cancel, deferred } = useDisclosure({
     // Duration of overlays duration to avoid premature destruction of the component
     duration: 1000,
   })
 
   // Add events that cause the overlays to end
   element.onclick = function () {
-    resolve('ok')
+    confirm('ok')
   }
 
   // Use setTimeout to wait for the element to be appended, then add a class name with animation

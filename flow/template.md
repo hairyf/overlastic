@@ -20,7 +20,7 @@ You can use [@overlastic/vue](https://overlastic.vercel.app/vue/) to create comp
   <v-dialog v-model="visible">
     <div>{{ content }}</div>
 
-    <button @click="resolve(`${content}:confirmed`)">click confirm</button>
+    <button @click="confirm(`${content}:confirmed`)">click confirm</button>
   </v-dialog>
 </template>
 
@@ -34,7 +34,7 @@ import OverlayComponent from './overlay.vue'
 
 // Convert to imperative callback
 const callback = defineOverlay(OverlayComponent)
-// Call the component and get the value of the resolve callback
+// Call the component and get the value of the confirm callback
 const value = await callback({ content: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```

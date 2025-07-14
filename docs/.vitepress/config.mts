@@ -25,7 +25,6 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Packages',
       items: [
-        { text: '@overlastic/vanilla', link: `/element/` },
         {
           text: '@overlastic/react',
           link: `/react/`,
@@ -50,6 +49,7 @@ const sidebar: DefaultTheme.Sidebar = {
           collapsed: true,
         },
         { text: '@overlastic/svelte', link: `/svelte/` },
+        { text: '@overlastic/vanilla', link: `/element/` },
       ],
     },
     {

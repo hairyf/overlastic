@@ -66,12 +66,12 @@ function Component(props) {
 
   // 添加导致弹出层结束的事件
   element.querySelector('button.confirm').onclick = function () {
-    props.deferred.resolve('ok')
+    props.deferred.confirm('ok')
   }
 
   // 添加导致弹出层弹出的事件
   element.querySelector('button.close').onclick = function () {
-    props.deferred.reject('close')
+    props.deferred.cancel('close')
   }
 
   // 当外部或组件触发了 deferred，进行销毁组件

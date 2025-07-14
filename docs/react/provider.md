@@ -28,8 +28,8 @@ function Page() {
   const openDialog = useOverlay(CustomDialog)
 
   async function onClick() {
-    const resolved = await openDialog({ title: 'My Title' })
-    console.log(resolved)
+    const confirmd = await openDialog({ title: 'My Title' })
+    console.log(confirmd)
   }
 
   return (

@@ -24,7 +24,7 @@ pnpm add @overlastic/react
 
 使用 `useDisclosure` 定义弹出层组件，返回以下内容：
 
-- `resolve|reject` 返回 Promise 的结果，将在 `duration` 结束时销毁组件
+- `confirm, cancel` 返回 Promise 的结果，将在 `duration` 结束时销毁组件
 - `visible` 用于显示组件，执行 `Promise` 结果将马上被更改
 
 ```tsx
@@ -37,7 +37,7 @@ export function OverlayComponent(props) {
 
   return (
     <div className={visible && 'is--visible'}>
-      <span onClick={() => resolve(`${props.title}:confirmed`)}> Confirm </span>
+      <span onClick={() => confirm(`${props.title}:confirmed`)}> Confirm </span>
     </div>
   )
 }
@@ -53,7 +53,7 @@ import { OverlayComponent } from './overlay'
 
 // 转换为回调方法
 const callback = defineOverlay(OverlayComponent)
-// 调用组件并获取 resolve 回调的值
+// 调用组件并获取 confirm 回调的值
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```

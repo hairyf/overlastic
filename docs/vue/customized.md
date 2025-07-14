@@ -17,9 +17,9 @@ const { visible, confirm, cancel } = useDisclosure({
 </script>
 
 <template>
-  <el-dialog v-model="visible" :title="title" @close="reject()">
+  <el-dialog v-model="visible" :title="title" @close="cancel()">
     <!-- your content -->
-    <button @click="resolve(`${title}:confirmed`)" />
+    <button @click="confirm(`${title}:confirmed`)" />
   </el-dialog>
 </template>
 ```

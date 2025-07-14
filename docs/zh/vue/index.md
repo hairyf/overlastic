@@ -32,7 +32,7 @@ pnpm add @overlastic/vue
 
 使用 `useDisclosure` 定义弹出层组件，返回以下内容：
 
-- `resolve|reject` 返回 Promise 的结果，将在 `duration` 结束时销毁组件
+- `confirm, cancel` 返回 Promise 的结果，将在 `duration` 结束时销毁组件
 - `visible` 用于显示组件，执行 `Promise` 结果将马上被更改
 
 ```vue
@@ -52,7 +52,7 @@ const { visible, confirm, cancel } = useDisclosure({
 </script>
 
 <template>
-  <div v-if="visible" @click="resolve(`${title}:confirmed`)">
+  <div v-if="visible" @click="confirm(`${title}:confirmed`)">
     {{ title }}
   </div>
 </template>
@@ -68,7 +68,7 @@ import Overlay from './overlay.vue'
 
 // 转换为回调方法
 const callback = defineOverlay(Overlay)
-// 调用组件并获取 resolve 回调的值
+// 调用组件并获取 confirm 回调的值
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
@@ -104,8 +104,8 @@ const props = defineProps({
   visible: Boolean
 })
 
-// 定义组件中使用的事件类型（默认：reject、resolve）
-defineEmits(['reject', 'resolve'])
+// 定义组件中使用的事件类型（默认：cancel、confirm）
+defineEmits(['cancel', 'confirm'])
 
 const { visible, confirm, cancel } = useDisclosure()
 </script>
@@ -118,16 +118,16 @@ const { visible, confirm, cancel } = useDisclosure()
 import Overlay from './overlay.vue'
 const visible = ref(false)
 
-function resolve(value) {
+function confirm(value) {
   // ...
 }
-function reject(value) {
+function cancel(value) {
   // ...
 }
 </script>
 
 <template>
-  <Overlay v-model:visible="visible" title="Hairyf" @resolve="resolve" @reject="reject" />
+  <Overlay v-model:visible="visible" title="Hairyf" @confirm="confirm" @cancel="cancel" />
 </template>
 ```
 

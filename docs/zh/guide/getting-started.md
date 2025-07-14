@@ -29,6 +29,6 @@ Unified Overlays 支持不同框架的 Devtools（React、Vue）
 
 ## Why?
 
-创建弹窗组件是一个重复且耗时的任务。而每次重用这类组件时，都需要重复定义 reject、resolve 和 visible 等公共字段。此外，控制这个过程（`clear data`->`open Model`->`edit data`->`onConfirm`->`save data`）也会导致大量冗余代码，尤其是对于一些全局组件。
+创建弹窗组件是一个重复且耗时的任务。而每次重用这类组件时，都需要重复定义 cancel、confirm 和 visible 等公共字段。此外，控制这个过程（`clear data`->`open Model`->`edit data`->`onConfirm`->`save data`）也会导致大量冗余代码，尤其是对于一些全局组件。
 
 Overlastic 简化了弹出层的创建，通过减少冗余流程和管理相应状态。它能够有效地创建命令式组件，同时支持声明式使用。

@@ -32,7 +32,7 @@ pnpm add @overlastic/vue
 
 Use `useDisclosure` to define a pop-up component, which returns the following:
 
-- `resolve|reject` returns the result of a Promise, which will destroy the component when `duration` ends
+- `confirm|cancel` returns the result of a Promise, which will destroy the component when `duration` ends
 - `visible` is used to display the component, executing the `Promise` result immediately
 
 ```vue
@@ -52,7 +52,7 @@ const { visible, confirm, cancel } = useDisclosure({
 </script>
 
 <template>
-  <div v-if="visible" @click="resolve(`${title}:confirmed`)">
+  <div v-if="visible" @click="confirm(`${title}:confirmed`)">
     {{ title }}
   </div>
 </template>
@@ -68,7 +68,7 @@ import Overlay from './overlay.vue'
 
 // Convert to a callback method
 const callback = defineOverlay(Overlay)
-// Call the component and get the value of the resolve callback
+// Call the component and get the value of the confirm callback
 const value = await callback({ title: 'callbackOverlay' })
 // value === "callbackOverlay:confirmed"
 ```
@@ -104,8 +104,8 @@ const props = defineProps({
   visible: Boolean
 })
 
-// Define the event types used in the component (defaults: reject, resolve)
-defineEmits(['reject', 'resolve'])
+// Define the event types used in the component (defaults: cancel, confirm)
+defineEmits(['cancel', 'confirm'])
 
 const { visible, confirm, cancel } = useDisclosure()
 </script>
@@ -118,16 +118,16 @@ After defining the parameters, you can use the pop-up component in the template.
 import Overlay from './overlay.vue'
 const visible = ref(false)
 
-function resolve(value) {
+function confirm(value) {
   // ...
 }
-function reject(value) {
+function cancel(value) {
   // ...
 }
 </script>
 
 <template>
-  <Overlay v-model:visible="visible" title="Hairyf" @resolve="resolve" @reject="reject" />
+  <Overlay v-model:visible="visible" title="Hairyf" @confirm="confirm" @cancel="cancel" />
 </template>
 ```
 

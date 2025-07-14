@@ -29,6 +29,6 @@ Unified Overlays support Devtools for different frameworks (React, Vue)
 
 ## Why?
 
-Creating pop-up components is a repetitive and time-consuming task. Each time you reuse such components, you need to redefine common fields like reject, resolve, and visible. Additionally, controlling this process (`clear data`->`open Model`->`edit data`->`onConfirm`->`save data`) can lead to a lot of redundant code, especially for some global components.
+Creating pop-up components is a repetitive and time-consuming task. Each time you reuse such components, you need to redefine common fields like cancel, confirm, and visible. Additionally, controlling this process (`clear data`->`open Model`->`edit data`->`onConfirm`->`save data`) can lead to a lot of redundant code, especially for some global components.
 
 Overlastic simplifies the creation of pop-up components by reducing redundant processes and managing the corresponding state. It effectively creates imperative components while also supporting declarative usage.
