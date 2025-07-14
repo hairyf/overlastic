@@ -7,7 +7,7 @@ function install(app: App) {
 const unoverlay = { install }
 
 export { Field, OverlaysProvider } from './components'
-export type { UseDisclosureOptions, UseDisclosureReturn, InjectionHolder } from './composable'
+export type { UseDisclosureOptions, UseDisclosureReturn } from './composable'
 export { useDisclosure, useOverlay } from './composable'
 export { defineOverlay, renderOverlay } from './define'
 export { install }

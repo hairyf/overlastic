@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { useOverlayHolder } from '../../src'
+import { useOverlay } from '../../src'
 import Overlay from './overlay.vue'
 
 const props = withDefaults(defineProps<{
@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<{
   duration?: number
 }>(), { root: undefined })
 
-const [holder, callback] = useOverlayHolder<{ title?: string, duration?: number }, string>(Overlay, props)
+const [holder, callback] = useOverlay(Overlay, { type: 'holder', ...props })
 
 const result = ref<string>()
 

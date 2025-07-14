@@ -1,6 +1,6 @@
 # Injection Provider ✨ (v0.5.0+)
 
-In the presence of Context/Provider, accessing the current node context can become quite cumbersome. Using `useOverlayHolder` requires placing the `holder` in the node, while a global `Provider` can inherit the context from the node and render all pop-ups in batches.
+In the presence of Context/Provider, accessing the current node context can become quite cumbersome. Using `useOverlay` requires placing the `holder` in the node, while a global `Provider` can inherit the context from the node and render all pop-ups in batches.
 
 Therefore, we provide the following components and hooks support:
 
@@ -16,13 +16,13 @@ import { OverlaysProvider } from '@overlastic/vue'
 </template>
 ```
 
-In the page, use any Overlay Component using `useOverlayInject`:
+In the page, use any Overlay Component using `useOverlay`:
 
 ```vue
 <script setup>
-import { useOverlayInject } from '@overlastic/vue'
+import { useOverlay } from '@overlastic/vue'
 
-const openCustomDialog = useOverlayInject(CustomDialog)
+const openCustomDialog = useOverlay(CustomDialog)
 
 async function onClick() {
   const resolved = await openCustomDialog({ title: 'My Title' })

@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { useOverlayHolder } from '../../src'
+import { useOverlay } from '../../src'
 import Overlay from './overlay'
 
 function HolderContainer(props?: { duration?: number, root?: any }) {
-  const [holder, callback] = useOverlayHolder<{ title?: string, duration?: number }, string>(Overlay, { root: props?.root })
+  const [holder, callback] = useOverlay<{ title?: string, duration?: number }, string>(Overlay, { root: props?.root, type: 'holder' })
   const [result, setResult] = useState<any>()
 
   async function getModalValue() {

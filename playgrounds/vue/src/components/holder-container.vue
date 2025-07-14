@@ -8,10 +8,7 @@ const props = withDefaults(defineProps<{
   duration?: number
 }>(), { root: undefined })
 
-const [Holder, callback] = useOverlay(Overlay, {
-  type: 'holder',
-  root: props.root,
-})
+const [Holder, callback] = useOverlay(Overlay, { type: 'holder', root: props.root })
 
 const result = ref<any>()
 

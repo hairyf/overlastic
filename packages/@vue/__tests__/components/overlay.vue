@@ -15,12 +15,12 @@ export default defineComponent({
     },
     title: String,
   },
-  emits: ['resolve', 'reject', 'update:visible'],
+  emits: ['confirm', 'cancel', 'update:visible'],
   setup: (props) => {
-    const { resolve, reject, vanish, visible } = useDisclosure({
+    const { confirm, cancel, vanish, visible } = useDisclosure({
       duration: props.duration,
     })
-    return { resolve, reject, vanish, visible }
+    return { confirm, cancel, vanish, visible }
   },
 })
 </script>
@@ -35,8 +35,8 @@ export default defineComponent({
         </div>
         <slot />
         <div class="base-modal__control">
-          <span class="modal__confirm" @click="resolve('resolve')">resolve</span>
-          <span class="modal__cancel" @click="reject('reject')">reject</span>
+          <span class="modal__confirm" @click="confirm('confirm')">confirm</span>
+          <span class="modal__cancel" @click="cancel('cancel')">cancel</span>
         </div>
       </div>
     </div>

@@ -8,8 +8,6 @@ import { InstancesInjectionKey, ScriptsInjectionKey } from '../internal'
 import { createRefreshMetadata, createScripts } from './utils'
 import { VNodeProps } from 'vue'
 
-export type InjectionHolder<Component extends AbstractFn, Resolved> = [Component, ImperativeOverlay<InstanceType<Component>['$props'], Resolved>]
-
 export type InjectionOptions = {
   render: (instance: Component, props: any) => void
   vanish: (instance: Component) => void
@@ -19,7 +17,7 @@ type KnownKeys<T> = { [K in keyof T]: T[K] extends unknown ? (unknown extends T[
 type PickKnown<T> = Pick<T, KnownKeys<T>>;
 
 export type ExtractEvent<T extends AbstractFn> = Parameters<Required<InstanceType<T>['$props']>['onConfirm']>[0]
-export type ExtractProps<T extends AbstractFn> = PickKnown<Omit<InstanceType<T>['$props'], keyof VNodeProps | `on${string}`>>
+export type ExtractProps<T extends AbstractFn> = PickKnown<Omit<InstanceType<T>['$props'], keyof VNodeProps | `on${string}` | 'visible'>>
 
 const { define: defineInject } = createConstructor<Component, InjectionOptions>((Instance, props, options) => {
   const { id, deferred, render, vanish: _vanish } = options
@@ -72,7 +70,7 @@ export function defineHolder(component: Component, options: Omit<GlobalMountOpti
 }
 
 export function useOverlay<Comp extends AbstractFn, Resolved = ExtractEvent<Comp>>(Instance: Comp, options?: MountOptions<{ type?: 'inject' }>): ImperativeOverlay<ExtractProps<Comp>, Resolved>
-export function useOverlay<Comp extends AbstractFn, Resolved = ExtractEvent<Comp>>(Instance: Comp, options?: MountOptions<{ type?: 'holder' }>): InjectionHolder<Comp, ImperativeOverlay<ExtractProps<Comp>, Resolved>>
+export function useOverlay<Comp extends AbstractFn, Resolved = ExtractEvent<Comp>>(Instance: Comp, options?: MountOptions<{ type?: 'holder' }>): [Comp, ImperativeOverlay<ExtractProps<Comp>, Resolved>]
 export function useOverlay(Instance: any, options: MountOptions<{ type?: 'holder' | 'inject' }> = {}): any {
   const { type = 'inject' } = options ?? {}
   if (type === 'inject') {
