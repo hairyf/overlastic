@@ -30,7 +30,7 @@ pnpm add @overlastic/vue
 
 ### 步骤.1: 定义组件
 
-使用 `useExtendOverlay` 定义弹出层组件，返回以下内容：
+使用 `useDisclosure` 定义弹出层组件，返回以下内容：
 
 - `resolve|reject` 返回 Promise 的结果，将在 `duration` 结束时销毁组件
 - `visible` 用于显示组件，执行 `Promise` 结果将马上被更改
@@ -38,14 +38,14 @@ pnpm add @overlastic/vue
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { useExtendOverlay } from '@overlastic/vue'
+import { useDisclosure } from '@overlastic/vue'
 import { defineEmits, defineProps } from 'vue'
 const props = defineProps({
   title: String,
 })
 
-// 从 useExtendOverlay 获取 Overlay 信息
-const { visible, resolve, reject } = useExtendOverlay({
+// 从 useDisclosure 获取 Overlay 信息
+const { visible, confrim, cancel } = useDisclosure({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
   duration: 1000,
 })
@@ -80,9 +80,9 @@ import { renderOverlay } from '@overlastic/vue'
 import Overlay from './overlay.vue'
 
 const value = await renderOverlay(Overlay, {
-  title: 'useExtendOverlay'
+  title: 'useDisclosure'
 })
-// value === "useExtendOverlay:confirmed"
+// value === "useDisclosure:confirmed"
 ```
 
 ## Template
@@ -96,7 +96,7 @@ const value = await renderOverlay(Overlay, {
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { useExtendOverlay } from '@overlastic/vue'
+import { useDisclosure } from '@overlastic/vue'
 import { defineEmits, defineProps } from 'vue-demi'
 const props = defineProps({
   title: String,
@@ -107,7 +107,7 @@ const props = defineProps({
 // 定义组件中使用的事件类型（默认：reject、resolve）
 defineEmits(['reject', 'resolve'])
 
-const { visible, resolve, reject } = useExtendOverlay()
+const { visible, confrim, cancel } = useDisclosure()
 </script>
 ```
 
@@ -141,8 +141,8 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, resolve, reject } = useExtendOverlay({
-  events: { resolve: 'ok', reject: 'nook' },
+const { visible, confrim, cancel } = useDisclosure({
+  events: { confirm: 'ok', cancel: 'nook' },
   model: 'modalValue',
 })
 ```

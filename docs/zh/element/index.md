@@ -31,7 +31,7 @@ function Component(props) {
   element.innerHTML = props.title
   element.classList.add('dialog')
 
-  const { resolve, reject, deferred } = useExtendOverlay({
+  const { resolve, reject, deferred } = useDisclosure({
     // Duration of overlays duration to avoid premature destruction of the component
     duration: 1000,
   })
@@ -74,9 +74,9 @@ import { defineOverlay } from '@overlastic/vanilla'
 import Component from './overlay'
 
 const value = await renderOverlay(Component, {
-  title: 'useExtendOverlay'
+  title: 'useDisclosure'
 })
-// value === "useExtendOverlay:confirmed"
+// value === "useDisclosure:confirmed"
 ```
 
 ## Custom Element
@@ -93,7 +93,7 @@ callback1({/* props(attrs) */})
 function CustomComponent(props) {
   const customElement = document.createElement('my-custom-element')
 
-  const { resolve, reject } = useExtendOverlay({
+  const { confrim, cancel } = useDisclosure({
     duration: 1000,
   })
 

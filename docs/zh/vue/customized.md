@@ -5,13 +5,13 @@
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { useExtendOverlay } from '@overlastic/vue'
+import { useDisclosure } from '@overlastic/vue'
 import { defineEmits, defineProps } from 'vue-demi'
 const props = defineProps({
   title: String,
 })
 
-const { visible, resolve, reject } = useExtendOverlay({
+const { visible, confrim, cancel } = useDisclosure({
   duration: 1000
 })
 </script>

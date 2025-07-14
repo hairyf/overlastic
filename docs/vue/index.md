@@ -30,7 +30,7 @@ pnpm add @overlastic/vue
 
 ### Step 1: Define Component
 
-Use `useExtendOverlay` to define a pop-up component, which returns the following:
+Use `useDisclosure` to define a pop-up component, which returns the following:
 
 - `resolve|reject` returns the result of a Promise, which will destroy the component when `duration` ends
 - `visible` is used to display the component, executing the `Promise` result immediately
@@ -38,14 +38,14 @@ Use `useExtendOverlay` to define a pop-up component, which returns the following
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { useExtendOverlay } from '@overlastic/vue'
+import { useDisclosure } from '@overlastic/vue'
 import { defineEmits, defineProps } from 'vue'
 const props = defineProps({
   title: String,
 })
 
-// Get Overlay information from useExtendOverlay
-const { visible, resolve, reject } = useExtendOverlay({
+// Get Overlay information from useDisclosure
+const { visible, confrim, cancel } = useDisclosure({
   // Duration of pop-up animation, prevents premature destruction of the component
   duration: 1000,
 })
@@ -80,9 +80,9 @@ import { renderOverlay } from '@overlastic/vue'
 import Overlay from './overlay.vue'
 
 const value = await renderOverlay(Overlay, {
-  title: 'useExtendOverlay'
+  title: 'useDisclosure'
 })
-// value === "useExtendOverlay:confirmed"
+// value === "useDisclosure:confirmed"
 ```
 
 ## Template
@@ -96,7 +96,7 @@ When using in `<template>`, you need to explicitly define `modal` and `event`
 ```vue
 <!-- overlay.vue -->
 <script setup>
-import { useExtendOverlay } from '@overlastic/vue'
+import { useDisclosure } from '@overlastic/vue'
 import { defineEmits, defineProps } from 'vue-demi'
 const props = defineProps({
   title: String,
@@ -107,7 +107,7 @@ const props = defineProps({
 // Define the event types used in the component (defaults: reject, resolve)
 defineEmits(['reject', 'resolve'])
 
-const { visible, resolve, reject } = useExtendOverlay()
+const { visible, confrim, cancel } = useDisclosure()
 </script>
 ```
 
@@ -141,8 +141,8 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, resolve, reject } = useExtendOverlay({
-  events: { resolve: 'ok', reject: 'nook' },
+const { visible, confrim, cancel } = useDisclosure({
+  events: { confirm: 'ok', cancel: 'nook' },
   model: 'modalValue',
 })
 ```

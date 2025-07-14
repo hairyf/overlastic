@@ -4,11 +4,11 @@
 
 ```tsx
 import type { PropsWithOverlays } from '@overlastic/react'
-import { useExtendOverlay } from '@overlastic/react'
+import { useDisclosure } from '@overlastic/react'
 import { Button, Drawer } from 'antd'
 
 function MyDrawer(props: PropsWithOverlays<{ title: string }>) {
-  const { visible, resolve, reject } = useExtendOverlay({
+  const { visible, confrim, cancel } = useDisclosure({
     duration: 200,
     props,
   })

@@ -4,12 +4,12 @@ You can use [@overlastic/vue](https://overlastic.vercel.app/vue/) to create comp
 <!-- overlay.vue -->
 <script setup>
   import { defineProps } from 'vue'
-  import { useExtendOverlay } from '@overlastic/vue'
+  import { useDisclosure } from '@overlastic/vue'
   const props = defineProps({
     content: String,
   })
-  // Get overlay information from useExtendOverlay
-  const { visible, resolve, reject } = useExtendOverlay({
+  // Get overlay information from useDisclosure
+  const { visible, confrim, cancel } = useDisclosure({
     // Duration of the overlay duration to avoid premature component destruction
     duration: 1000,
   })

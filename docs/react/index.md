@@ -22,7 +22,7 @@ pnpm add @overlastic/react
 
 ### Step 1: Define Component
 
-Use `useExtendOverlay` to define a pop-up component, which returns the following:
+Use `useDisclosure` to define a pop-up component, which returns the following:
 
 - `resolve|reject` returns the result of a Promise, and the component will be destroyed at the end of `duration`
 - `visible` is used to display the component, and the result of the `Promise` will be changed immediately
@@ -30,7 +30,7 @@ Use `useExtendOverlay` to define a pop-up component, which returns the following
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
-  const { visible, resolve, reject } = useExtendOverlay({
+  const { visible, confrim, cancel } = useDisclosure({
     // Duration of the overlay animation to prevent premature destruction of the component
     duration: 1000,
   })
@@ -65,9 +65,9 @@ import { renderOverlay } from '@overlastic/react'
 import { OverlayComponent } from './overlay'
 
 const value = await renderOverlay(OverlayComponent, {
-  title: 'useExtendOverlay'
+  title: 'useDisclosure'
 })
-// value === "useExtendOverlay:confirmed"
+// value === "useDisclosure:confirmed"
 ```
 
 ## Usage in JSX
@@ -77,10 +77,10 @@ Components created with `@overlastic/react`, besides supporting callback method 
 ```tsx
 // If using TypeScript, use PropsWithOverlays to define the props type
 import type { PropsWithOverlays } from '@overlastic/react'
-import { useExtendOverlay } from '@overlastic/react'
+import { useDisclosure } from '@overlastic/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, resolve, reject } = useExtendOverlay({
+  const { visible, confrim, cancel } = useDisclosure({
     // Pass props to the hooks for processing
     props
   })
@@ -106,19 +106,19 @@ export function Main() {
     setVisible(true)
   }
 
-  function onResolve(value) {
+  function onConfrim(value) {
     setVisible(false)
   }
 
-  function onReject(value) {
+  function onCancel(value) {
     setVisible(false)
   }
 
   return (
     <Component
       visible={visible}
-      onResolve={onResolve}
-      onReject={onReject}
+      onConfrim={onConfrim}
+      onCancel={onCancel}
     />
   )
 }
@@ -133,8 +133,8 @@ export interface ComponentProps {
   open: boolean
 }
 export function Component(props: ComponentProps) {
-  const { visible, resolve, reject } = useExtendOverlay({
-    events: { resolve: 'onOk', reject: 'onNook' },
+  const { visible, confrim, cancel } = useDisclosure({
+    events: { confirm: 'onOk', cancel: 'onNook' },
     model: 'open',
     props,
   })
