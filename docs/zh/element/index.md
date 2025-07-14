@@ -93,7 +93,7 @@ callback1({/* props(attrs) */})
 function CustomComponent(props) {
   const customElement = document.createElement('my-custom-element')
 
-  const { confrim, cancel } = useDisclosure({
+  const { confirm, cancel } = useDisclosure({
     duration: 1000,
   })
 

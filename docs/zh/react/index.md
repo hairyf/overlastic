@@ -30,7 +30,7 @@ pnpm add @overlastic/react
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
-  const { visible, confrim, cancel } = useDisclosure({
+  const { visible, confirm, cancel } = useDisclosure({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
     duration: 1000,
   })
@@ -80,7 +80,7 @@ import type { PropsWithOverlays } from '@overlastic/react'
 import { useDisclosure } from '@overlastic/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, confrim, cancel } = useDisclosure({
+  const { visible, confirm, cancel } = useDisclosure({
     // 将 props 传递给 hooks 处理
     props
   })
@@ -106,7 +106,7 @@ export function Main() {
     setVisible(true)
   }
 
-  function onConfrim(value) {
+  function onConfirm(value) {
     setVisible(false)
   }
 
@@ -117,7 +117,7 @@ export function Main() {
   return (
     <Component
       visible={visible}
-      onConfrim={onConfrim}
+      onConfirm={onConfirm}
       onCancel={onCancel}
     />
   )
@@ -133,7 +133,7 @@ export interface ComponentProps {
   open: boolean
 }
 export function Component(props: ComponentProps) {
-  const { visible, confrim, cancel } = useDisclosure({
+  const { visible, confirm, cancel } = useDisclosure({
     events: { confirm: 'onOk', cancel: 'onNook' },
     model: 'open',
     props,

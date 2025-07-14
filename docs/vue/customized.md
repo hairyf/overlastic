@@ -11,7 +11,7 @@ const props = defineProps({
   title: String,
 })
 
-const { visible, confrim, cancel } = useDisclosure({
+const { visible, confirm, cancel } = useDisclosure({
   duration: 1000
 })
 </script>

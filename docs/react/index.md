@@ -30,7 +30,7 @@ Use `useDisclosure` to define a pop-up component, which returns the following:
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
-  const { visible, confrim, cancel } = useDisclosure({
+  const { visible, confirm, cancel } = useDisclosure({
     // Duration of the overlay animation to prevent premature destruction of the component
     duration: 1000,
   })
@@ -80,7 +80,7 @@ import type { PropsWithOverlays } from '@overlastic/react'
 import { useDisclosure } from '@overlastic/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
-  const { visible, confrim, cancel } = useDisclosure({
+  const { visible, confirm, cancel } = useDisclosure({
     // Pass props to the hooks for processing
     props
   })
@@ -106,7 +106,7 @@ export function Main() {
     setVisible(true)
   }
 
-  function onConfrim(value) {
+  function onConfirm(value) {
     setVisible(false)
   }
 
@@ -117,7 +117,7 @@ export function Main() {
   return (
     <Component
       visible={visible}
-      onConfrim={onConfrim}
+      onConfirm={onConfirm}
       onCancel={onCancel}
     />
   )
@@ -133,7 +133,7 @@ export interface ComponentProps {
   open: boolean
 }
 export function Component(props: ComponentProps) {
-  const { visible, confrim, cancel } = useDisclosure({
+  const { visible, confirm, cancel } = useDisclosure({
     events: { confirm: 'onOk', cancel: 'onNook' },
     model: 'open',
     props,

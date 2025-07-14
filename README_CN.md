@@ -69,7 +69,7 @@ pnpm add @overlastic/react
 
 ```ts
 // 在你的 Vue、React 弹出层组件中，使用 useDisclosure 获取弹出层元信息
-const { visible, confrim, cancel } = useDisclosure({
+const { visible, confirm, cancel } = useDisclosure({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
   duration: 1000
 })

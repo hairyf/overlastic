@@ -29,7 +29,7 @@ yarn add @overlastic/svelte
   export let duration = 200
 
   // duration of overlay duration, helps prevent premature component destroy
-  const { confrim, cancel } = useDisclosure({ duration })
+  const { confirm, cancel } = useDisclosure({ duration })
 
   function onClick() {
     resolve(`${title}:confirmed`)

@@ -45,7 +45,7 @@ const props = defineProps({
 })
 
 // 从 useDisclosure 获取 Overlay 信息
-const { visible, confrim, cancel } = useDisclosure({
+const { visible, confirm, cancel } = useDisclosure({
   // 弹出层动画的持续时间, 可以避免组件过早被销毁
   duration: 1000,
 })
@@ -107,7 +107,7 @@ const props = defineProps({
 // 定义组件中使用的事件类型（默认：reject、resolve）
 defineEmits(['reject', 'resolve'])
 
-const { visible, confrim, cancel } = useDisclosure()
+const { visible, confirm, cancel } = useDisclosure()
 </script>
 ```
 
@@ -141,7 +141,7 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, confrim, cancel } = useDisclosure({
+const { visible, confirm, cancel } = useDisclosure({
   events: { confirm: 'ok', cancel: 'nook' },
   model: 'modalValue',
 })

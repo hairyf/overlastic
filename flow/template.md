@@ -9,7 +9,7 @@ You can use [@overlastic/vue](https://overlastic.vercel.app/vue/) to create comp
     content: String,
   })
   // Get overlay information from useDisclosure
-  const { visible, confrim, cancel } = useDisclosure({
+  const { visible, confirm, cancel } = useDisclosure({
     // Duration of the overlay duration to avoid premature component destruction
     duration: 1000,
   })

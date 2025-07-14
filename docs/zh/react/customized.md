@@ -8,7 +8,7 @@ import { useDisclosure } from '@overlastic/react'
 import { Button, Drawer } from 'antd'
 
 function MyDrawer(props: PropsWithOverlays<{ title: string }>) {
-  const { visible, confrim, cancel } = useDisclosure({
+  const { visible, confirm, cancel } = useDisclosure({
     duration: 200,
     props,
   })

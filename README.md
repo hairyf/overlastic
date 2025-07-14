@@ -70,7 +70,7 @@ Use the `useDisclosure` Hook provided by overlays to obtain overlays metadata an
 ```ts
 // In your Vue, React overlays component,
 // use useDisclosure to obtain overlays metadata.
-const { visible, confrim, cancel } = useDisclosure({
+const { visible, confirm, cancel } = useDisclosure({
   // The duration of the overlays duration prevents
   // the component from being destroyed too early.
   duration: 1000

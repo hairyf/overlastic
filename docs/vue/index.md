@@ -45,7 +45,7 @@ const props = defineProps({
 })
 
 // Get Overlay information from useDisclosure
-const { visible, confrim, cancel } = useDisclosure({
+const { visible, confirm, cancel } = useDisclosure({
   // Duration of pop-up animation, prevents premature destruction of the component
   duration: 1000,
 })
@@ -107,7 +107,7 @@ const props = defineProps({
 // Define the event types used in the component (defaults: reject, resolve)
 defineEmits(['reject', 'resolve'])
 
-const { visible, confrim, cancel } = useDisclosure()
+const { visible, confirm, cancel } = useDisclosure()
 </script>
 ```
 
@@ -141,7 +141,7 @@ const props = defineProps({
 
 defineEmits(['nook', 'ok'])
 
-const { visible, confrim, cancel } = useDisclosure({
+const { visible, confirm, cancel } = useDisclosure({
   events: { confirm: 'ok', cancel: 'nook' },
   model: 'modalValue',
 })
