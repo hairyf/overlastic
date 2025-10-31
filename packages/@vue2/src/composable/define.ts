@@ -17,7 +17,7 @@ export interface PromptifyEvents {
   confirm?: string
 }
 
-export interface ExtendOverlayOptions {
+export interface UseDisclosureOptions {
   /** duration duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -40,7 +40,7 @@ export interface ExtendOverlayOptions {
   automatic?: boolean
 }
 
-export function useDisclosure(options: ExtendOverlayOptions = {}) {
+export function useDisclosure(options: UseDisclosureOptions = {}) {
   const { duration = 0, immediate = true, model = 'visible', automatic = true, events = {} } = options
   events.confirm = events.confirm || 'confirm'
   events.cancel = events.cancel || 'cancel'

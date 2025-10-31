@@ -99,7 +99,7 @@ export function useDisclosure(options: UseDisclosureOptions = {}) {
  * Use `useDisclosure` instead.
  */
 export function useExtendOverlay(options: UseDisclosureOptions = {}) {
-  const { confirm: confirm, cancel: cancel, ...others } = useDisclosure(options)
+  const { confirm, cancel, ...others } = useDisclosure(options)
   return { confirm, cancel, others }
 }
 
