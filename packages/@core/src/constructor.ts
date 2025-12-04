@@ -70,8 +70,10 @@ export function createConstructor<Instance, Options = unknown>(
       const deferred = createDeferred()
       const name = defineName(options.id, options.autoIncrement)
       const index = getIndex(options.id)
-      const root = globalContainer ? options.root : document.body
-      const container = defineGlobalElement(name, root)
+      const root = options.root ? options.root : document.body
+      const container = globalContainer !== false
+        ? defineGlobalElement(name, root)
+        : undefined
       mount(instance, props, Object.assign(options, {
         position: context.position,
         id: name,
