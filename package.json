@@ -17,7 +17,7 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
-    "publish:ci": "pnpm -r publish --no-git-checks --access public",
+    "release": "bumpp -r && pnpm -r publish",
     "test": "vitest",
     "lint": "eslint .",
     "test:coverage": "vitest run --coverage"
