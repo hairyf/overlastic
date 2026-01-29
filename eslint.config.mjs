@@ -13,4 +13,7 @@ export default antfu({
     'react-dom/no-missing-button-type': 'off',
     'unused-imports/no-unused-vars': 'off',
   },
+  ignores: [
+    '**/skills/**',
+  ],
 })
