@@ -43,9 +43,45 @@ export function OverlayComponent(props) {
 }
 ```
 
-### 步骤.2: 创建弹出层
+### 步骤.2: 挂载 Provider
 
-使用 `defineOverlay` 方法将组件转换为模态对话框，该方法允许在你 Javascript/Typescript 中调用它。
+在应用根节点挂载 `OverlaysProvider`，以便所有弹出层组件都能继承应用的上下文。
+
+```tsx
+import { OverlaysProvider } from '@overlastic/react'
+
+function Main() {
+  return (
+    <OverlaysProvider>
+      <App />
+    </OverlaysProvider>
+  )
+}
+```
+
+### 步骤.3: 调用弹出层
+
+在任意组件中使用 `useOverlay` 调用组件。
+
+```tsx
+import { useOverlay } from '@overlastic/react'
+import { OverlayComponent } from './overlay'
+
+function Page() {
+  const openOverlay = useOverlay(OverlayComponent)
+
+  async function handleClick() {
+    const value = await openOverlay({ title: 'useOverlay' })
+    // value === "useOverlay:confirmed"
+  }
+
+  return <button onClick={handleClick}>Open</button>
+}
+```
+
+### 独立使用
+
+如果你不想使用 `OverlaysProvider`，可以使用 `defineOverlay` 方法将组件转换为模态对话框，该方法允许在你 Javascript/Typescript 中调用它。
 
 ```ts
 import { defineOverlay } from '@overlastic/react'

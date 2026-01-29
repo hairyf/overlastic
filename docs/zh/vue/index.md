@@ -58,9 +58,47 @@ const { visible, confirm, cancel } = useDisclosure({
 </template>
 ```
 
-### 步骤.2: 创建弹出层
+### 步骤.2: 挂载 Provider
 
-使用 `defineOverlay` 方法将组件转换为模态对话框，该方法允许在你 Javascript/Typescript 中调用它。
+在应用根节点挂载 `OverlaysProvider`，以便所有弹出层组件都能继承应用的上下文。
+
+```vue
+<script setup>
+import { OverlaysProvider } from '@overlastic/vue'
+</script>
+
+<template>
+  <OverlaysProvider>
+    <App />
+  </OverlaysProvider>
+</template>
+```
+
+### 步骤.3: 调用弹出层
+
+在任意组件中使用 `useOverlay` 调用组件。
+
+```vue
+<script setup>
+import { useOverlay } from '@overlastic/vue'
+import Overlay from './overlay.vue'
+
+const openOverlay = useOverlay(Overlay)
+
+async function handleClick() {
+  const value = await openOverlay({ title: 'useOverlay' })
+  // value === "useOverlay:confirmed"
+}
+</script>
+
+<template>
+  <button @click="handleClick">Open</button>
+</template>
+```
+
+### 独立使用
+
+如果你不想使用 `OverlaysProvider`，可以使用 `defineOverlay` 方法将组件转换为模态对话框，该方法允许在你 Javascript/Typescript 中调用它。
 
 ```ts
 import { defineOverlay } from '@overlastic/vue'

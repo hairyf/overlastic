@@ -43,9 +43,45 @@ export function OverlayComponent(props) {
 }
 ```
 
-### Step 2: Create Overlay
+### Step 2: Mount Provider
 
-Use the `defineOverlay` method to convert the component into a modal dialog, allowing you to call it in your JavaScript/TypeScript.
+Mount `OverlaysProvider` at the root of your application so that all popup components can inherit the context of the application.
+
+```tsx
+import { OverlaysProvider } from '@overlastic/react'
+
+function Main() {
+  return (
+    <OverlaysProvider>
+      <App />
+    </OverlaysProvider>
+  )
+}
+```
+
+### Step 3: Call Overlay
+
+Use `useOverlay` to call the component in any component.
+
+```tsx
+import { useOverlay } from '@overlastic/react'
+import { OverlayComponent } from './overlay'
+
+function Page() {
+  const openOverlay = useOverlay(OverlayComponent)
+
+  async function handleClick() {
+    const value = await openOverlay({ title: 'useOverlay' })
+    // value === "useOverlay:confirmed"
+  }
+
+  return <button onClick={handleClick}>Open</button>
+}
+```
+
+### Standalone Usage
+
+If you don't want to use `OverlaysProvider`, you can use `defineOverlay` to convert the component into a modal dialog, allowing you to call it in your JavaScript/TypeScript.
 
 ```ts
 import { defineOverlay } from '@overlastic/react'

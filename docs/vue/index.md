@@ -58,9 +58,47 @@ const { visible, confirm, cancel } = useDisclosure({
 </template>
 ```
 
-### Step 2: Create Pop-up
+### Step 2: Mount Provider
 
-Use the `defineOverlay` method to convert the component into a modal dialog, allowing you to call it in your Javascript/Typescript.
+Mount `OverlaysProvider` at the root of your application so that all popup components can inherit the context of the application.
+
+```vue
+<script setup>
+import { OverlaysProvider } from '@overlastic/vue'
+</script>
+
+<template>
+  <OverlaysProvider>
+    <App />
+  </OverlaysProvider>
+</template>
+```
+
+### Step 3: Call Overlay
+
+Use `useOverlay` to call the component in any component.
+
+```vue
+<script setup>
+import { useOverlay } from '@overlastic/vue'
+import Overlay from './overlay.vue'
+
+const openOverlay = useOverlay(Overlay)
+
+async function handleClick() {
+  const value = await openOverlay({ title: 'useOverlay' })
+  // value === "useOverlay:confirmed"
+}
+</script>
+
+<template>
+  <button @click="handleClick">Open</button>
+</template>
+```
+
+### Standalone Usage
+
+If you don't want to use `OverlaysProvider`, you can use `defineOverlay` to convert the component into a modal dialog, allowing you to call it in your JavaScript/TypeScript.
 
 ```ts
 import { defineOverlay } from '@overlastic/vue'

@@ -9,6 +9,8 @@ export default antfu({
     'react-hooks/exhaustive-deps': 'off',
     'react-hooks/rules-of-hooks': 'off',
     'no-unused-vars': 'off',
+    'react-refresh/only-export-components': 'off',
+    'react-dom/no-missing-button-type': 'off',
     'unused-imports/no-unused-vars': 'off',
   },
 })
