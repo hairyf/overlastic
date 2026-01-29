@@ -1,5 +1,5 @@
 ---
-name: overlastic-skills
+name: overlastic
 description: Comprehensive skills for working with Overlastic
 metadata:
   author: Hairyf
