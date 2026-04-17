@@ -18,36 +18,23 @@ const sidebar: DefaultTheme.Sidebar = {
       text: 'Introduction',
       items: [
         { text: 'Getting Started', link: '/guide/getting-started' },
-        { text: 'Externally', link: '/guide/external-control' },
-        { text: 'Singleton', link: '/guide/support-only' },
       ],
     },
     {
       text: 'Packages',
       items: [
-        {
-          text: 'React',
-          link: `/react/`,
-          items: [
-            { text: 'Guide', link: '/react/' },
-            { text: 'Holder', link: '/react/holder' },
-            { text: 'Custom', link: '/react/customized' },
-          ],
-          collapsed: true,
-        },
-        {
-          text: 'Vue',
-          link: `/vue/`,
-          items: [
-            { text: 'Guide', link: '/vue/' },
-            { text: 'Holder', link: '/vue/holder' },
-            { text: 'Custom', link: '/vue/customized' },
-            { text: 'Vue 2', link: '/vue/vue2' },
-          ],
-          collapsed: true,
-        },
-        { text: 'Svelte', link: `/svelte/` },
+        { text: 'React', link: `/react/` },
+        { text: 'Vue', link: `/vue/` },
+        { text: 'Vue 2', link: `/vue/vue2` },
         { text: 'Vanilla', link: `/element/` },
+        { text: 'Svelte', link: `/svelte/` },
+      ],
+    },
+    {
+      text: 'Advanced',
+      items: [
+        { text: 'External Control', link: '/guide/external-control' },
+        { text: 'Standalone', link: '/react/island' },
       ],
     },
     {
@@ -65,36 +52,23 @@ const sidebar: DefaultTheme.Sidebar = {
       text: 'Introduction',
       items: [
         { text: '介绍', link: '/zh/guide/getting-started' },
-        { text: '外部控制', link: '/zh/guide/external-control' },
-        { text: '单例', link: '/zh/guide/support-only' },
       ],
     },
     {
       text: 'Packages',
       items: [
-        {
-          text: 'React',
-          link: `/zh/react/`,
-          items: [
-            { text: '快速开始', link: '/zh/react/' },
-            { text: '持有模式', link: '/zh/react/holder' },
-            { text: '定制化', link: '/zh/react/customized' },
-          ],
-          collapsed: true,
-        },
-        {
-          text: 'Vue',
-          link: `/zh/vue/`,
-          items: [
-            { text: '快速开始', link: '/zh/vue/' },
-            { text: '持有者', link: '/zh/vue/holder' },
-            { text: '定制化', link: '/zh/vue/customized' },
-            { text: 'Vue 2', link: '/zh/vue/vue2' },
-          ],
-          collapsed: true,
-        },
+        { text: 'React', link: `/zh/react/` },
+        { text: 'Vue', link: `/zh/vue/` },
+        { text: 'Vue 2', link: `/zh/vue/vue2` },
         { text: 'Svelte', link: `/zh/svelte/` },
         { text: 'Vanilla', link: `/zh/element/` },
+      ],
+    },
+    {
+      text: 'Advanced',
+      items: [
+        { text: '外部控制', link: '/guide/external-control' },
+        { text: '孤岛模式', link: '/react/island' },
       ],
     },
     {

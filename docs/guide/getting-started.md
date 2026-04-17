@@ -11,10 +11,10 @@ Overlastic provides a standard process for creating messages or dialogs and defi
 
 ## Packages
 
-- [@overlastic/svelte](/svelte/)
 - [@overlastic/react](/react/)
 - [@overlastic/vue](/vue/)
 - [@overlastic/vanilla](/element/)
+- [@overlastic/svelte](/svelte/)
 - [@overlastic/core](/functions/constructor.html)
 
 ## Devtools
