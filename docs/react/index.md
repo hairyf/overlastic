@@ -1,6 +1,6 @@
 # @overlastic/react
 
-@overlastic/react is used to define Overlay components in React, supporting both imperative and declarative usage!
+`@overlastic/react` is used to define overlay components in React, supporting both imperative and declarative usage!
 
 ::: code-group
 
@@ -20,18 +20,15 @@ pnpm add @overlastic/react
 
 ## Usage
 
-### Step 1: Define Component
+### Step 1: Define the Component
 
-Use `useDisclosure` to define a pop-up component, which returns the following:
-
-- `confirm|cancel` returns the result of a Promise, and the component will be destroyed at the end of `duration`
-- `visible` is used to display the component, and the result of the `Promise` will be changed immediately
+Use `useDisclosure` to define your overlay component:
 
 ```tsx
 // overlay.tsx
 export function OverlayComponent(props) {
   const { visible, confirm, cancel } = useDisclosure({
-    // Duration of the overlay animation to prevent premature destruction of the component
+    // Duration of the overlay animation to prevent the component from being destroyed too early
     duration: 1000,
   })
 
@@ -43,9 +40,9 @@ export function OverlayComponent(props) {
 }
 ```
 
-### Step 2: Mount Provider
+### Step 2: Mount the Provider
 
-Mount `OverlaysProvider` at the root of your application so that all popup components can inherit the context of the application.
+Mount the `OverlaysProvider` at the root of your application:
 
 ```tsx
 import { OverlaysProvider } from '@overlastic/react'
@@ -59,9 +56,9 @@ function Main() {
 }
 ```
 
-### Step 3: Call Overlay
+### Step 3: Invoke the Overlay
 
-Use `useOverlay` to call the component in any component.
+Use `useOverlay` in any component to trigger the overlay.
 
 ```tsx
 import { useOverlay } from '@overlastic/react'
@@ -71,53 +68,28 @@ function Page() {
   const openOverlay = useOverlay(OverlayComponent)
 
   async function handleClick() {
-    const value = await openOverlay({ title: 'useOverlay' })
-    // value === "useOverlay:confirmed"
+    const value = await openOverlay({ title: 'overlay' })
+    // value === "overlay:confirmed"
   }
 
   return <button onClick={handleClick}>Open</button>
 }
 ```
 
-### Standalone Usage
-
-If you don't want to use `OverlaysProvider`, you can use `defineOverlay` to convert the component into a modal dialog, allowing you to call it in your JavaScript/TypeScript.
-
-```ts
-import { defineOverlay } from '@overlastic/react'
-import { OverlayComponent } from './overlay'
-
-// Convert to a callback method
-const callback = defineOverlay(OverlayComponent)
-// Call the component and get the value of the confirm callback
-const value = await callback({ title: 'callbackOverlay' })
-// value === "callbackOverlay:confirmed"
-```
-
-You can also directly render the component using `renderOverlay`, bypassing the `defineOverlay` method.
-
-```ts
-import { renderOverlay } from '@overlastic/react'
-import { OverlayComponent } from './overlay'
-
-const value = await renderOverlay(OverlayComponent, {
-  title: 'useDisclosure'
-})
-// value === "useDisclosure:confirmed"
-```
+---
 
 ## Usage in JSX
 
-Components created with `@overlastic/react`, besides supporting callback method invocation, can still be used in JSX, which is optional and useful when migrating old components.
+Components created with `@overlastic/react` can be used within JSX in addition to being called via imperative methods. This is optional and highly useful when migrating legacy components.
 
 ```tsx
-// If using TypeScript, use PropsWithOverlays to define the props type
+// If using TypeScript, use PropsWithOverlays to define props types
 import type { PropsWithOverlays } from '@overlastic/react'
 import { useDisclosure } from '@overlastic/react'
 
 export function OverlayComponent(props: PropsWithOverlays) {
   const { visible, confirm, cancel } = useDisclosure({
-    // Pass props to the hooks for processing
+    // Pass props to the hook for handling
     props
   })
 
@@ -129,7 +101,7 @@ export function OverlayComponent(props: PropsWithOverlays) {
 }
 ```
 
-Once the component receives props, you can use the pop-up component in JSX.
+Once the component receives props, it can be used directly in JSX:
 
 ```tsx
 import { useState } from 'react'
@@ -138,42 +110,47 @@ import { Component } from './overlay'
 export function Main() {
   const [visible, setVisible] = useState(false)
 
-  function openOverlay() {
-    setVisible(true)
-  }
-
-  function onConfirm(value) {
-    setVisible(false)
-  }
-
-  function onCancel(value) {
-    setVisible(false)
-  }
-
   return (
-    <Component
-      visible={visible}
-      onConfirm={onConfirm}
-      onCancel={onCancel}
-    />
+    <>
+      <button onClick={() => setVisible(true)}>open</button>
+      <Component
+        visible={visible}
+        onConfirm={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+      />
+    </>
   )
 }
 ```
 
-If you want to replace other field and event names, you can change the `events` and `model` configurations.
+If you wish to replace the default fields and event names, you can modify the `events` and `model` configurations:
 
 ```tsx
 export interface ComponentProps {
-  onOn?: (value?: any) => void
-  onNook?: (value?: any) => void
+  onOk?: (value?: any) => void
+  onNo?: (value?: any) => void
   open: boolean
 }
+
 export function Component(props: ComponentProps) {
   const { visible, confirm, cancel } = useDisclosure({
-    events: { confirm: 'onOk', cancel: 'onNook' },
+    events: { confirm: 'onOk', cancel: 'onNo' },
     model: 'open',
     props,
   })
+  // ...
+}
+```
+
+---
+
+## Type Safety
+
+You can use `PropsWithOverlays` to define the `props` and the `result` type of the overlay.
+
+```tsx
+function Component(props: PropsWithOverlays<{ title: string }, string>) {
+  const { visible, confirm, cancel } = useDisclosure()
   // ...
 }
 ```

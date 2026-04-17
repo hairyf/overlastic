@@ -26,30 +26,28 @@ const sidebar: DefaultTheme.Sidebar = {
       text: 'Packages',
       items: [
         {
-          text: '@overlastic/react',
+          text: 'React',
           link: `/react/`,
           items: [
-            { text: 'Usage', link: '/react/' },
-            { text: 'Inject mode✨', link: '/react/provider' },
-            { text: 'Hold mode', link: '/react/holder' },
-            { text: 'Customized', link: '/react/customized' },
+            { text: 'Guide', link: '/react/' },
+            { text: 'Holder', link: '/react/holder' },
+            { text: 'Custom', link: '/react/customized' },
           ],
           collapsed: true,
         },
         {
-          text: '@overlastic/vue',
+          text: 'Vue',
           link: `/vue/`,
           items: [
-            { text: 'Usage', link: '/vue/' },
-            { text: 'Inject mode✨', link: '/vue/provider' },
-            { text: 'Hold mode', link: '/vue/holder' },
-            { text: 'Customized', link: '/vue/customized' },
+            { text: 'Guide', link: '/vue/' },
+            { text: 'Holder', link: '/vue/holder' },
+            { text: 'Custom', link: '/vue/customized' },
             { text: 'Vue 2', link: '/vue/vue2' },
           ],
           collapsed: true,
         },
-        { text: '@overlastic/svelte', link: `/svelte/` },
-        { text: '@overlastic/vanilla', link: `/element/` },
+        { text: 'Svelte', link: `/svelte/` },
+        { text: 'Vanilla', link: `/element/` },
       ],
     },
     {
@@ -74,31 +72,29 @@ const sidebar: DefaultTheme.Sidebar = {
     {
       text: 'Packages',
       items: [
-        { text: '@overlastic/vanilla', link: `/zh/element/` },
         {
-          text: '@overlastic/react',
+          text: 'React',
           link: `/zh/react/`,
           items: [
             { text: '快速开始', link: '/zh/react/' },
-            { text: '注入模式✨', link: '/zh/react/provider' },
             { text: '持有模式', link: '/zh/react/holder' },
             { text: '定制化', link: '/zh/react/customized' },
           ],
           collapsed: true,
         },
         {
-          text: '@overlastic/vue',
+          text: 'Vue',
           link: `/zh/vue/`,
           items: [
             { text: '快速开始', link: '/zh/vue/' },
-            { text: '注入模式✨', link: '/zh/vue/provider' },
-            { text: '持有模式', link: '/zh/vue/holder' },
+            { text: '持有者', link: '/zh/vue/holder' },
             { text: '定制化', link: '/zh/vue/customized' },
             { text: 'Vue 2', link: '/zh/vue/vue2' },
           ],
           collapsed: true,
         },
-        { text: '@overlastic/svelte', link: `/zh/svelte/` },
+        { text: 'Svelte', link: `/zh/svelte/` },
+        { text: 'Vanilla', link: `/zh/element/` },
       ],
     },
     {

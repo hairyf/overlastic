@@ -22,10 +22,7 @@ pnpm add @overlastic/react
 
 ### 步骤.1: 定义组件
 
-使用 `useDisclosure` 定义弹出层组件，返回以下内容：
-
-- `confirm, cancel` 返回 Promise 的结果，将在 `duration` 结束时销毁组件
-- `visible` 用于显示组件，执行 `Promise` 结果将马上被更改
+使用 `useDisclosure` 定义弹出层组件：
 
 ```tsx
 // overlay.tsx
@@ -45,7 +42,7 @@ export function OverlayComponent(props) {
 
 ### 步骤.2: 挂载 Provider
 
-在应用根节点挂载 `OverlaysProvider`，以便所有弹出层组件都能继承应用的上下文。
+在应用根节点挂载 `OverlaysProvider`：
 
 ```tsx
 import { OverlaysProvider } from '@overlastic/react'
@@ -69,41 +66,12 @@ import { OverlayComponent } from './overlay'
 
 function Page() {
   const openOverlay = useOverlay(OverlayComponent)
-
   async function handleClick() {
-    const value = await openOverlay({ title: 'useOverlay' })
-    // value === "useOverlay:confirmed"
+    const value = await openOverlay({ title: 'overlay' })
+    // value === "overlay:onfirmed"
   }
-
   return <button onClick={handleClick}>Open</button>
 }
-```
-
-### 独立使用
-
-如果你不想使用 `OverlaysProvider`，可以使用 `defineOverlay` 方法将组件转换为模态对话框，该方法允许在你 Javascript/Typescript 中调用它。
-
-```ts
-import { defineOverlay } from '@overlastic/react'
-import { OverlayComponent } from './overlay'
-
-// 转换为回调方法
-const callback = defineOverlay(OverlayComponent)
-// 调用组件并获取 confirm 回调的值
-const value = await callback({ title: 'callbackOverlay' })
-// value === "callbackOverlay:confirmed"
-```
-
-你也可以通过 `renderOverlay` 直接渲染组件，跳过 `defineOverlay` 方法。
-
-```ts
-import { renderOverlay } from '@overlastic/react'
-import { OverlayComponent } from './overlay'
-
-const value = await renderOverlay(OverlayComponent, {
-  title: 'useDisclosure'
-})
-// value === "useDisclosure:confirmed"
 ```
 
 ## 在 JSX 中使用
@@ -138,24 +106,15 @@ import { Component } from './overlay'
 export function Main() {
   const [visible, setVisible] = useState(false)
 
-  function openOverlay() {
-    setVisible(true)
-  }
-
-  function onConfirm(value) {
-    setVisible(false)
-  }
-
-  function onCancel(value) {
-    setVisible(false)
-  }
-
   return (
-    <Component
-      visible={visible}
-      onConfirm={onConfirm}
-      onCancel={onCancel}
-    />
+    <>
+      <button onClick={() => setVisible(true)}>open</button>
+      <Component
+        visible={visible}
+        onConfirm={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+      />
+    </>
   )
 }
 ```
@@ -174,6 +133,17 @@ export function Component(props: ComponentProps) {
     model: 'open',
     props,
   })
+  // ...
+}
+```
+
+## 类型安全
+
+你可以通过 `PropsWithOverlays` 定义弹窗的 `props` 与 `result`。
+
+```tsx
+function Component(props: PropsWithOverlays<{ title: string }, string>) {
+  const { visible, confirm, cancel } = useDisclosure()
   // ...
 }
 ```
