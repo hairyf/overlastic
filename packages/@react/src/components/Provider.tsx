@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-context-value */
 /* eslint-disable react/no-array-index-key */
-import type { FC, PropsWithChildren } from 'react'
+import type { FC, ReactNode } from 'react'
 import { useState } from 'react'
 import { InstancesContext } from '../internal'
 
@@ -9,7 +9,11 @@ export interface Instance {
   props: any
 }
 
-export function OverlaysProvider(props: PropsWithChildren) {
+export interface OverlaysProviderProps {
+  children: ReactNode
+}
+
+export function OverlaysProvider(props: OverlaysProviderProps) {
   const [instances, setInstances] = useState<Instance[]>([])
 
   function render(Instance: FC<any>, props: any) {
@@ -17,7 +21,7 @@ export function OverlaysProvider(props: PropsWithChildren) {
   }
 
   function vanish(instance: FC<any>) {
-    setInstances(instances => [...instances.filter(({ Instance }) => instance !== Instance)])
+    setInstances(instances => [...instances.filter(({ Instance }) => instance.name !== Instance.name)])
   }
   return (
     <InstancesContext.Provider value={{ render, vanish }}>
