@@ -1,7 +1,7 @@
 import { context } from '../internal'
 
 export function watchClickPosition() {
-  if (typeof window === 'undefined' && typeof document === 'undefined')
+  if (typeof document === 'undefined')
     return
   document.addEventListener('click', (event) => {
     if (event.target instanceof Element) {
