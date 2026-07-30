@@ -127,5 +127,7 @@ function useDeclarative(options: UseDisclosureOptions = {}) {
 }
 
 function useMount(callback: any = noop) {
-  useEffect(() => callback(), [])
+  useEffect(() => {
+    callback()
+  }, [])
 }
