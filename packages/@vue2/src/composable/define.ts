@@ -18,6 +18,8 @@ export interface PromptifyEvents {
 }
 
 export interface UseDisclosureOptions {
+  /** delay display to avoid premature destruction of components */
+  delay?: number
   /** duration duration to avoid premature destruction of components */
   duration?: number
   /** whether to set visible to true immediately */
@@ -71,7 +73,7 @@ export function useDisclosure(options: UseDisclosureOptions = {}) {
     },
     created() {
       if (immediate)
-        this.$visible = true
+        delay(options.delay).then(() => this.$visible = true)
       if (this.$overlay)
         (this.$overlay as any).on('*', this.$runtime_effect)
     },

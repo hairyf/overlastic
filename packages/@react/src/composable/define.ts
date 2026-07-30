@@ -25,8 +25,12 @@ export interface PromptifyEvents {
 }
 
 export interface UseDisclosureOptions {
+  /** delay display to avoid premature destruction of components */
+  delay?: number
+
   /** animation duration to avoid premature destruction of components */
   duration?: number
+
   /** whether to set visible to true immediately */
   immediate?: boolean
   /**
@@ -84,7 +88,7 @@ export function useDisclosure(options: UseDisclosureOptions = {}) {
     overlay.vanish?.()
     return Promise.resolve()
   }
-  useMount(() => immediate && overlay.change(true))
+  useMount(() => immediate && delay(options.delay).then(() => overlay.change(true)))
   useMount(() => {
     if (!isDeclarative && automatic)
       overlay.deferred?.then(destroy).catch(destroy)
