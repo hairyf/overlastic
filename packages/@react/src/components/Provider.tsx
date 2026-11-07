@@ -21,7 +21,7 @@ export function OverlaysProvider(props: OverlaysProviderProps) {
   }
 
   function vanish(instance: FC<any>) {
-    setInstances(instances => [...instances.filter(({ Instance }) => instance.name !== Instance.name)])
+    setInstances(instances => instances.filter(({ Instance }) => Instance !== instance))
   }
   return (
     <InstancesContext.Provider value={{ render, vanish }}>
